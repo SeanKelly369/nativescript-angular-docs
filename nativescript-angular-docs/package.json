@@ -1,13 +1,17 @@
 {
   "name": "nativescript-angular-docs",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "NativeScript-Angular documentation website",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "dev": "ng serve",
+    "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:nativescript-angular-docs": "node dist/nativescript-angular-docs/server/server.mjs"
+    "serve:ssr:nativescript-angular-docs": "node dist/nativescript-angular-docs/server/server.mjs",
+    "preview": "ng serve --configuration=production",
+    "check-links": "npx linkinator dist/"
   },
   "prettier": {
     "overrides": [
@@ -29,10 +33,15 @@
     "@angular/platform-server": "^20.1.0",
     "@angular/router": "^20.1.0",
     "@angular/ssr": "^20.1.1",
+    "@angular/cdk": "^20.1.0",
+    "@angular/material": "^20.1.0",
     "express": "^5.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.15.0",
+    "marked": "^15.0.2",
+    "prismjs": "^1.29.0",
+    "highlight.js": "^11.10.0"
   },
   "devDependencies": {
     "@angular/build": "^20.1.1",
@@ -41,12 +50,15 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "@types/marked": "^6.0.0",
+    "@types/prismjs": "^1.26.4",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.8.2"
+    "typescript": "~5.8.2",
+    "linkinator": "^6.1.2"
   }
 }
