@@ -12,7 +12,7 @@ import { RouterLink, RouterOutlet, Router } from '@angular/router';
         <nav class="sidebar-nav">
           <h3>Guide</h3>
           <ul>
-            <li><a routerLink="/guide" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Overview</a></li>
+            <li><a routerLink="/guide" routerLinkActive="active">Overview</a></li>
             <li><a routerLink="/guide/project-structure" routerLinkActive="active">Project Structure</a></li>
             <li><a routerLink="/guide/components" routerLinkActive="active">UI Components</a></li>
             <li><a routerLink="/guide/navigation" routerLinkActive="active">Navigation</a></li>
