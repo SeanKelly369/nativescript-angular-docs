@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
@@ -9,7 +9,8 @@ import { marked } from 'marked';
   standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './getting-started.component.html',
-  styleUrl: './getting-started.component.styles.scss'
+  styleUrl: './getting-started.component.styles.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GettingStartedComponent implements OnInit {
   private http = inject(HttpClient);
