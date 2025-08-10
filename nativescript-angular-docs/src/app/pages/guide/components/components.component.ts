@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
 
@@ -7,7 +7,8 @@ import { marked } from 'marked';
   standalone: true,
   imports: [CommonModule],
   templateUrl: 'components.component.html',
-  styleUrl: './components.component.styles.scss'
+  styleUrl: './components.component.styles.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class ComponentsComponent implements OnInit {
   htmlContent = '';
