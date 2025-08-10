@@ -1,1 +1,55 @@
-<div class="content-wrapper" [innerHTML]="htmlContent"></div>
+<div class="content-wrapper">
+  <h1>Project Structure</h1>
+  <p>Understanding the structure of a NativeScript-Angular project.</p>
+
+  <h2>Overview</h2>
+  <p>A typical NativeScript-Angular project follows Angular conventions while adding mobile-specific configurations and directories.</p>
+
+  <pre><code>my-app/
+├── src/
+│   └── app/
+│       ├── app.component.ts
+│       ├── app.component.html
+│       ├── app.component.css
+│       ├── app.module.ts
+│       ├── app-routing.module.ts
+│       └── main.ts
+├── App_Resources/
+│   ├── Android/
+│   └── iOS/
+├── platforms/
+├── node_modules/
+├── nativescript.config.ts
+├── package.json
+├── tsconfig.json
+└── webpack.config.js
+</code></pre>
+
+  <h2>Core Directories</h2>
+
+  <h3>/src/app/</h3>
+  <p>Contains your Angular application code:</p>
+  <ul>
+    <li><code>app.component.ts</code> — Root component</li>
+    <li><code>app.component.html</code> — Root component template</li>
+    <li><code>app.component.css</code> — Root component styles</li>
+    <li><code>app.module.ts</code> — Root NgModule</li>
+    <li><code>app-routing.module.ts</code> — Routing configuration</li>
+    <li><code>main.ts</code> — Application bootstrap</li>
+  </ul>
+
+  <h3>/App_Resources/</h3>
+  <p>Platform-specific resources:</p>
+
+  <h4>/App_Resources/Android/</h4>
+  <ul>
+    <li><code>src/main/AndroidManifest.xml</code> — Android manifest</li>
+    <li><code>src/main/res/</code> — Android resources (icons, splash screens)</li>
+    <li><code>src/main/assets/</code> — Android assets</li>
+  </ul>
+
+  <h4>/App_Resources/iOS/</h4>
+  <ul>
+    <li><code>Info.plist</code> — iOS app configuration</li>
+    <li><code>build.xcconfig</code> — Build configuration</li>
+    <li><code>Assets.xcassets/</code> — iOS assets

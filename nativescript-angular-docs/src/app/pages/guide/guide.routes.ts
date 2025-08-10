@@ -27,6 +27,14 @@ export const guideRoutes: Routes = [
         loadComponent: () => import('./styling/styling.component').then(m => m.StylingComponent)
       },
       {
+        path: 'data-binding',
+        loadComponent: () => import('./../guide/data-binding/data-binding').then(m => m.DataBindingComponent)
+      },
+      {
+        path: 'services',
+        loadComponent: () => import('./../guide/services/services').then(m => m.ServicesComponent)
+      },
+      {
         path: 'first-app',
         loadComponent: () => import('./first-app/first-app.component').then(m => m.FirstAppComponent)
       }

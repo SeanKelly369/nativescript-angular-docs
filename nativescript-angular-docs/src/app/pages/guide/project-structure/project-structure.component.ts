@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
 
@@ -7,7 +7,8 @@ import { marked } from 'marked';
   standalone: true,
   imports: [CommonModule],
   templateUrl: 'project-structure.component.html',
-  styleUrl: './project-structure.component.styles.scss'
+  styleUrl: './project-structure.component.styles.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectStructureComponent implements OnInit {
   htmlContent = '';
