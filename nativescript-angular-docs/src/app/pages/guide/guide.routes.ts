@@ -43,6 +43,14 @@ export const guideRoutes: Routes = [
         loadComponent: () => import('./../guide/code-sharing/code-sharing').then(m => m.CodeSharingComponent)
       },
       {
+        path: 'performance',
+        loadComponent: () => import('./../guide/performance/performance').then(m => m.PerformanceComponent)
+      },
+      {
+        path: 'testing',
+        loadComponent: () => import('./../guide/testing/testing').then(m => m.TestingComponent)
+      },
+      {
         path: 'first-app',
         loadComponent: () => import('./first-app/first-app.component').then(m => m.FirstAppComponent)
       }
