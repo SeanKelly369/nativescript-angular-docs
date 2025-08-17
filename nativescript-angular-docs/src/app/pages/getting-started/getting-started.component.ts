@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { marked } from 'marked';
 
@@ -13,11 +12,14 @@ import { marked } from 'marked';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GettingStartedComponent implements OnInit {
-  private http = inject(HttpClient);
+
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
+
   htmlContent = '';
 
   ngOnInit() {
     this.loadMarkdownContent();
+    this.changeDetectorRef.markForCheck();
   }
 
   private async loadMarkdownContent() {
