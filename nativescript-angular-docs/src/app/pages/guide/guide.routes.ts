@@ -53,6 +53,30 @@ export const guideRoutes: Routes = [
       {
         path: 'first-app',
         loadComponent: () => import('./essentials/first-app/first-app.component').then(m => m.FirstAppComponent)
+      },
+      {
+        path: 'native-apis',
+        loadComponent: () => import('./utilities/native-apis/native-apis').then(m => m.NativeApis)
+      },
+      {
+        path: 'plugins',
+        loadComponent: () => import('./utilities/plugins/plugins').then(m => m.Plugins)
+      },
+      {
+        path: 'deployment',
+        loadComponent: () => import('./utilities/deployment/deployment').then(m => m.Deployment)
+      },
+      {
+        path: 'troubleshooting',
+        loadComponent: () => import('./utilities/troubleshooting/troubleshooting').then(m => m.Troubleshooting)
+      },
+      {
+        path: 'nativescript-components',
+        loadComponent: () => import('./components/nativescript-components/nativescript-components').then(m => m.NativescriptComponents)
+      },
+      {
+        path: 'listview',
+        loadComponent: () => import('./components/listview/listview').then(m => m.Listview)
       }
     ]
   }
