@@ -6,7 +6,6 @@ import { marked } from 'marked';
   selector: 'app-performance',
   imports: [],
   templateUrl: './performance.html',
-  styleUrl: './performance.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PerformanceComponent implements OnInit {

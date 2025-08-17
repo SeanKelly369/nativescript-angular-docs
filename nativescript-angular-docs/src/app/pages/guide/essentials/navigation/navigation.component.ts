@@ -6,13 +6,12 @@ import { marked } from 'marked';
   selector: 'app-navigation',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: 'navigation.component.html',
-  styleUrl: './navigation.component.styles.scss'
+  templateUrl: 'navigation.component.html'
 })
 export class NavigationComponent implements OnInit {
   htmlContent = '';
 
-  async ngOnInit() {
+  async ngOnInit(): Promise<void> {
     const markdownContent = `# Navigation in NativeScript-Angular
 
 Master mobile navigation patterns and routing in NativeScript-Angular applications. This guide covers the unique navigation capabilities that make mobile apps feel native and intuitive.

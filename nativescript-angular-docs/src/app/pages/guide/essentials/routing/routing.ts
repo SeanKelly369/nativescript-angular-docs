@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { marked } from 'marked';
 
 @Component({
   selector: 'app-routing',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './routing.html',
   styleUrl: './routing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -15,8 +16,7 @@ export class RoutingComponent implements OnInit {
   constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
-const markdownContent = `
-  # Performance in NativeScript-Angular
+    const markdownContent = `# Performance in NativeScript-Angular
 
   Practical tips to keep your apps **fast and smooth**, especially on lower-spec devices.
 
@@ -170,7 +170,7 @@ const markdownContent = `
   - [ ] Heavy work in Web Workers
   - [ ] Images pre-sized and cached
   - [ ] Production build for release
-  `;
+`;
 
     const html = await marked(markdownContent);
     this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);

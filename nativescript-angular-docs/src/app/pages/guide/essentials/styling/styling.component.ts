@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-styling',
@@ -9,7 +10,7 @@ import { marked } from 'marked';
   templateUrl: './styling.component.html',
 })
 export class StylingComponent implements OnInit {
-  htmlContent = '';
+  htmlContent: SafeHtml = '';
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Styling in NativeScript-Angular

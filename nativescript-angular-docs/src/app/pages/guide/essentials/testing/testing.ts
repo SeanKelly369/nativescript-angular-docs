@@ -15,196 +15,195 @@ export class TestingComponent implements OnInit {
   constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
-    const markdownContent = `
-    # Testing in NativeScript-Angular
+    const markdownContent = `# Testing in NativeScript-Angular
 
-    The goal is the same as web Angular: **fast, reliable unit tests** for services and component logic, plus **E2E** for real UI and navigation.
-    You usually don't need a device for unit tests—treat components like normal Angular classes and **mock NativeScript specifics**.
+The goal is the same as web Angular: **fast, reliable unit tests** for services and component logic, plus **E2E** for real UI and navigation.
+You usually don't need a device for unit tests—treat components like normal Angular classes and **mock NativeScript specifics**.
 
-    ---
+---
 
-    ## Test Runners
+## Test Runners
 
-    You can use **Jest** or **Jasmine/Karma**. Examples below work with either (minor matcher differences aside).
+You can use **Jest** or **Jasmine/Karma**. Examples below work with either (minor matcher differences aside).
 
-    **Scripts (examples):**
-    \`\`\`json
-    // package.json (Jest)
-    { "scripts": { "test": "jest", "test:watch": "jest --watch" } }
-    // or (Karma)
-    { "scripts": { "test": "ng test" } }
-    \`\`\`
+**Scripts (examples):**
+\`\`\`json
+// package.json (Jest)
+{ "scripts": { "test": "jest", "test:watch": "jest --watch" } }
+// or (Karma)
+{ "scripts": { "test": "ng test" } }
+\`\`\`
 
-    ---
+---
 
-    ## 1) Service Tests (HttpClient)
+## 1) Service Tests (HttpClient)
 
-    Use Angular's **HttpClientTestingModule** + **HttpTestingController**.
+Use Angular's **HttpClientTestingModule** + **HttpTestingController**.
 
-    \`\`\`ts
-    import { TestBed } from '@angular/core/testing';
-    import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-    import { AnimalsService } from './animals.service';
+\`\`\`ts
+import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { AnimalsService } from './animals.service';
 
-    describe('AnimalsService', () => {
-      let service: AnimalsService;
-      let http: HttpTestingController;
+describe('AnimalsService', () => {
+  let service: AnimalsService;
+  let http: HttpTestingController;
 
-      beforeEach(() => {
-        TestBed.configureTestingModule({
-          imports: [HttpClientTestingModule],
-          providers: [AnimalsService],
-        });
-        service = TestBed.inject(AnimalsService);
-        http = TestBed.inject(HttpTestingController);
-      });
-
-      afterEach(() => http.verify());
-
-      it('loads animals', () => {
-        let result: any[] | undefined;
-        service.getAnimals().subscribe(r => (result = r));
-
-        const req = http.expectOne('/api/animals');
-        req.flush([{ id: 1 }, { id: 2 }]);
-
-        expect(result?.length).toBe(2);
-      });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [AnimalsService],
     });
-    \`\`\`
+    service = TestBed.inject(AnimalsService);
+    http = TestBed.inject(HttpTestingController);
+  });
 
-    ---
+  afterEach(() => http.verify());
 
-    ## 2) Component Class Tests (ignore native tags)
+  it('loads animals', () => {
+    let result: any[] | undefined;
+    service.getAnimals().subscribe(r => (result = r));
 
-    When testing components that use NativeScript tags (\`<Label>\`, \`<Button>\`, \`<GridLayout>\`), ignore unknown elements with **NO_ERRORS_SCHEMA** and test the **class logic**.
+    const req = http.expectOne('/api/animals');
+    req.flush([{ id: 1 }, { id: 2 }]);
 
-    \`\`\`ts
-    import { TestBed } from '@angular/core/testing';
-    import { NO_ERRORS_SCHEMA } from '@angular/core';
-    import { HomeComponent } from './home.component';
-    import { LoggingService } from '../services/logging.service';
+    expect(result?.length).toBe(2);
+  });
+});
+\`\`\`
 
-    describe('HomeComponent', () => {
-      const loggingMock = { log: jasmine.createSpy('log') };
+---
 
-      beforeEach(() => {
-        TestBed.configureTestingModule({
-          declarations: [HomeComponent],
-          providers: [{ provide: LoggingService, useValue: loggingMock }],
-          schemas: [NO_ERRORS_SCHEMA], // ignore NativeScript elements
-        }).compileComponents();
-      });
+## 2) Component Class Tests (ignore native tags)
 
-      it('logs on action', () => {
-        const fixture = TestBed.createComponent(HomeComponent);
-        const cmp = fixture.componentInstance;
+When testing components that use NativeScript tags (\`<Label>\`, \`<Button>\`, \`<GridLayout>\`), ignore unknown elements with **NO_ERRORS_SCHEMA** and test the **class logic**.
 
-        cmp.doLog(); // call the method bound to (tap)
-        expect(loggingMock.log).toHaveBeenCalledWith('Button tapped in NativeScript!');
-      });
-    });
-    \`\`\`
+\`\`\`ts
+import { TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HomeComponent } from './home.component';
+import { LoggingService } from '../services/logging.service';
 
-    > Tip: You can still query by selectors via \`fixture.debugElement\`, but for NativeScript tags it's often simpler to call the component method directly.
+describe('HomeComponent', () => {
+  const loggingMock = { log: jasmine.createSpy('log') };
 
-    ---
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [HomeComponent],
+      providers: [{ provide: LoggingService, useValue: loggingMock }],
+      schemas: [NO_ERRORS_SCHEMA], // ignore NativeScript elements
+    }).compileComponents();
+  });
 
-    ## 3) Routing Tests (RouterExtensions)
+  it('logs on action', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    const cmp = fixture.componentInstance;
 
-    Mock **RouterExtensions** to verify navigation without real pages.
+    cmp.doLog(); // call the method bound to (tap)
+    expect(loggingMock.log).toHaveBeenCalledWith('Button tapped in NativeScript!');
+  });
+});
+\`\`\`
 
-    \`\`\`ts
-    import { TestBed } from '@angular/core/testing';
-    import { NO_ERRORS_SCHEMA } from '@angular/core';
-    import { RouterExtensions } from '@nativescript/angular';
-    import { HomeComponent } from './home.component';
+> Tip: You can still query by selectors via \`fixture.debugElement\`, but for NativeScript tags it's often simpler to call the component method directly.
 
-    class RouterExtensionsStub {
-      navigate = jasmine.createSpy('navigate');
-      back = jasmine.createSpy('back');
-    }
+---
 
-    describe('HomeComponent navigation', () => {
-      let router: RouterExtensionsStub;
+## 3) Routing Tests (RouterExtensions)
 
-      beforeEach(() => {
-        router = new RouterExtensionsStub();
-        TestBed.configureTestingModule({
-          declarations: [HomeComponent],
-          providers: [{ provide: RouterExtensions, useValue: router }],
-          schemas: [NO_ERRORS_SCHEMA],
-        }).compileComponents();
-      });
+Mock **RouterExtensions** to verify navigation without real pages.
 
-      it('navigates to details with id', () => {
-        const fixture = TestBed.createComponent(HomeComponent);
-        const cmp = fixture.componentInstance;
+\`\`\`ts
+import { TestBed } from '@angular/core/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { RouterExtensions } from '@nativescript/angular';
+import { HomeComponent } from './home.component';
 
-        cmp.goToDetails();
-        expect(router.navigate).toHaveBeenCalledWith(['/details', 42], { transition: { name: 'slideLeft' } });
-      });
-    });
-    \`\`\`
+class RouterExtensionsStub {
+  navigate = jasmine.createSpy('navigate');
+  back = jasmine.createSpy('back');
+}
 
-    ---
+describe('HomeComponent navigation', () => {
+  let router: RouterExtensionsStub;
 
-    ## 4) Async & Timers
+  beforeEach(() => {
+    router = new RouterExtensionsStub();
+    TestBed.configureTestingModule({
+      declarations: [HomeComponent],
+      providers: [{ provide: RouterExtensions, useValue: router }],
+      schemas: [NO_ERRORS_SCHEMA],
+    }).compileComponents();
+  });
 
-    For polling/timeouts, use **fakeAsync** + **tick** (Jasmine/Karma) or **jest.useFakeTimers()** (Jest).
+  it('navigates to details with id', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    const cmp = fixture.componentInstance;
 
-    \`\`\`ts
-    import { fakeAsync, tick } from '@angular/core/testing';
+    cmp.goToDetails();
+    expect(router.navigate).toHaveBeenCalledWith(['/details', 42], { transition: { name: 'slideLeft' } });
+  });
+});
+\`\`\`
 
-    it('polls every second', fakeAsync(() => {
-      cmp.startPolling(); // sets setInterval
-      tick(1000);
-      // expect updates...
-    }));
-    \`\`\`
+---
 
-    \`\`\`ts
-    // Jest equivalent
-    jest.useFakeTimers();
-    cmp.startPolling();
-    jest.advanceTimersByTime(1000);
-    \`\`\`
+## 4) Async & Timers
 
-    ---
+For polling/timeouts, use **fakeAsync** + **tick** (Jasmine/Karma) or **jest.useFakeTimers()** (Jest).
 
-    ## 5) Lists (CollectionView/ListView)
+\`\`\`ts
+import { fakeAsync, tick } from '@angular/core/testing';
 
-    Unit tests shouldn't try to validate **native UI rendering**.
-    Instead test the **data shaping** logic and \`trackBy\` functions:
+it('polls every second', fakeAsync(() => {
+  cmp.startPolling(); // sets setInterval
+  tick(1000);
+  // expect updates...
+}));
+\`\`\`
 
-    \`\`\`ts
-    it('trackBy returns stable id', () => {
-      expect(cmp.trackById(0, { id: 7 })).toBe(7);
-    });
-    \`\`\`
+\`\`\`ts
+// Jest equivalent
+jest.useFakeTimers();
+cmp.startPolling();
+jest.advanceTimersByTime(1000);
+\`\`\`
 
-    For real UI behavior (scroll, selection), rely on **E2E**.
+---
 
-    ---
+## 5) Lists (CollectionView/ListView)
 
-    ## 6) E2E (Device UI)
+Unit tests shouldn't try to validate **native UI rendering**.
+Instead test the **data shaping** logic and \`trackBy\` functions:
 
-    For device-level UI and navigation, use an automation tool (e.g., Appium) to drive the app on iOS/Android.
-    Keep E2E focused on **critical flows** (launch → login → key screen → back navigation).
+\`\`\`ts
+it('trackBy returns stable id', () => {
+  expect(cmp.trackById(0, { id: 7 })).toBe(7);
+});
+\`\`\`
 
-    ---
+For real UI behavior (scroll, selection), rely on **E2E**.
 
-    ## Cheatsheet
+---
 
-    - Use **HttpClientTestingModule** for HTTP.
-    - Add **NO_ERRORS_SCHEMA** to ignore NativeScript tags in unit tests.
-    - **Mock RouterExtensions** to test navigation.
-    - Prefer testing **logic**, not native rendering.
-    - For timers/async → **fakeAsync/tick** or **Jest fake timers**.
-    - Use E2E only for end-to-end flows.
+## 6) E2E (Device UI)
 
-    That’s the bulk of what you need to test NativeScript-Angular effectively.
-    `;
+For device-level UI and navigation, use an automation tool (e.g., Appium) to drive the app on iOS/Android.
+Keep E2E focused on **critical flows** (launch → login → key screen → back navigation).
+
+---
+
+## Cheatsheet
+
+- Use **HttpClientTestingModule** for HTTP.
+- Add **NO_ERRORS_SCHEMA** to ignore NativeScript tags in unit tests.
+- **Mock RouterExtensions** to test navigation.
+- Prefer testing **logic**, not native rendering.
+- For timers/async → **fakeAsync/tick** or **Jest fake timers**.
+- Use E2E only for end-to-end flows.
+
+That’s the bulk of what you need to test NativeScript-Angular effectively.
+`;
     const html = await marked(markdownContent);
     this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
