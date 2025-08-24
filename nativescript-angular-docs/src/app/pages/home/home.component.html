@@ -1,0 +1,199 @@
+    <div class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Build Native Mobile Apps with 
+          <span class="highlight">Angular</span>
+        </h1>
+        <p class="hero-description">
+          NativeScript-Angular combines the power of Angular with native mobile development 
+          to create truly native iOS and Android applications with shared code.
+        </p>
+        <div class="hero-actions">
+          <a routerLink="/getting-started" class="btn btn-primary">Get Started</a>
+          <a href="https://github.com/NativeScript/nativescript-angular" target="_blank" class="btn btn-secondary">
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <div class="app-preview">
+              <div class="app-header">NativeScript App</div>
+              <div class="app-content">
+                <div class="feature-item">📱 Native Performance</div>
+                <div class="feature-item">🅰️ Angular Integration</div>
+                <div class="feature-item">🔄 Cross-Platform</div>
+                <div class="feature-item">💪 TypeScript Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">Why Choose NativeScript-Angular?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Native Performance</h3>
+            <p>Direct access to native APIs without WebViews for truly native performance and user experience.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🅰️</div>
+            <h3>Angular Integration</h3>
+            <p>Use familiar Angular concepts like components, services, routing, and dependency injection.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>Cross-Platform</h3>
+            <p>Write once, run on both iOS and Android with platform-specific customizations when needed.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💪</div>
+            <h3>TypeScript Support</h3>
+            <p>Full TypeScript support with strong typing and excellent IDE integration.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔥</div>
+            <h3>Hot Module Replacement</h3>
+            <p>Fast development workflow with instant updates and state preservation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Native UI</h3>
+            <p>Access to platform-specific UI components and native styling capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <div class="container">
+        <h2 class="section-title">NativeScript-Angular vs Web Angular</h2>
+        <div class="comparison-grid">
+          <div class="comparison-card">
+            <h3>📱 Mobile-First Architecture</h3>
+            <p>Built specifically for mobile development with native navigation patterns, gestures, and platform-specific UI components.</p>
+          </div>
+          <div class="comparison-card">
+            <h3>🎯 Page-Router-Outlet</h3>
+            <p>Enhanced routing system with <code>page-router-outlet</code> that provides native mobile navigation and ActionBar support.</p>
+          </div>
+          <div class="comparison-card">
+            <h3>📦 Native Modules</h3>
+            <p>Direct access to device APIs like camera, GPS, contacts, and file system without plugins or bridges.</p>
+          </div>
+        </div>
+        <div class="code-comparison">
+          <div class="comparison-item">
+            <h4>Web Angular</h4>
+            <pre class="code-block"><code>&lt;div class="container"&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;button (click)="onClick()"&gt;Click me&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+          <div class="comparison-item">
+            <h4>NativeScript-Angular</h4>
+            <pre class="code-block"><code>&lt;ActionBar title="My App"&gt;&lt;/ActionBar&gt;
+&lt;StackLayout class="container"&gt;
+  &lt;Label text="Hello World"&gt;&lt;/Label&gt;
+  &lt;Button text="Click me" (tap)="onClick()"&gt;&lt;/Button&gt;
+&lt;/StackLayout&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="code-sharing-section">
+      <div class="container">
+        <h2 class="section-title">Code Sharing Between Web & Mobile</h2>
+        <div class="sharing-content">
+          <div class="sharing-text">
+            <h3>Maximize Code Reuse</h3>
+            <p>Share business logic, services, and models between your web and mobile applications. NativeScript-Angular supports code sharing strategies that let you maintain a single codebase for multiple platforms.</p>
+            <ul class="feature-list">
+              <li>✅ Shared services and business logic</li>
+              <li>✅ Common data models and interfaces</li>
+              <li>✅ Reusable Angular modules</li>
+              <li>✅ Platform-specific UI implementations</li>
+            </ul>
+            <a routerLink="/guide/code-sharing" class="btn btn-primary">Learn Code Sharing</a>
+          </div>
+          <div class="sharing-visual">
+            <div class="architecture-diagram">
+              <div class="shared-layer">
+                <h4>Shared Code</h4>
+                <div class="layer-item">Services</div>
+                <div class="layer-item">Models</div>
+                <div class="layer-item">Business Logic</div>
+              </div>
+              <div class="platform-layers">
+                <div class="platform-layer">
+                  <h4>Web</h4>
+                  <div class="layer-item">HTML Templates</div>
+                  <div class="layer-item">CSS Styles</div>
+                </div>
+                <div class="platform-layer">
+                  <h4>Mobile</h4>
+                  <div class="layer-item">XML Templates</div>
+                  <div class="layer-item">Native Styles</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="getting-started-preview">
+      <div class="container">
+        <h2 class="section-title">Quick Start</h2>
+        <div class="code-example">
+          <div class="code-header">
+            <span class="code-title">Create your first NativeScript-Angular app</span>
+          </div>
+          <pre class="code-block"><code># Install NativeScript CLI
+npm install -g @nativescript/cli
+
+# Create a new Angular project
+ns create my-app --ng
+
+# Run on device/emulator
+cd my-app
+ns run ios     # or ns run android</code></pre>
+        </div>
+        <div class="cta-section">
+          <p>Ready to get started?</p>
+          <a routerLink="/getting-started" class="btn btn-primary">View Full Setup Guide</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="community-section">
+      <div class="container">
+        <h2 class="section-title">Join the Community</h2>
+        <div class="community-grid">
+          <div class="community-card">
+            <div class="community-icon">💬</div>
+            <h3>Discord</h3>
+            <p>Join our active Discord community for real-time help and discussions.</p>
+            <a href="https://discord.com/invite/RgmpGky9GR" target="_blank" class="btn btn-secondary">Join Discord</a>
+          </div>
+          <div class="community-card">
+            <div class="community-icon">📚</div>
+            <h3>Stack Overflow</h3>
+            <p>Get answers to your questions from the community and NativeScript team.</p>
+            <a href="https://stackoverflow.com/questions/tagged/nativescript-angular" target="_blank" class="btn btn-secondary">Ask Questions</a>
+          </div>
+          <div class="community-card">
+            <div class="community-icon">🐙</div>
+            <h3>GitHub</h3>
+            <p>Contribute to the project, report issues, and explore the source code.</p>
+            <a href="https://github.com/NativeScript/nativescript-angular" target="_blank" class="btn btn-secondary">View GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>

@@ -51,7 +51,7 @@ export const MAIN_ROUTES: Routes = [
         path: 'components',
         children: [
           { path: 'nativescript-components', component: ComponentsNativeScriptComponents },
-          { path: 'list-view', component: ComponentsListView },
+          { path: 'listview', component: ComponentsListView },
           { path: 'root-layout', component: ComponentsRootLayout },
         ]
       },
