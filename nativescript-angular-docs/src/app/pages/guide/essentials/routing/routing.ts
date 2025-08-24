@@ -1,11 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { marked } from 'marked';
 
 @Component({
   selector: 'app-routing',
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './routing.html',
   styleUrl: './routing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

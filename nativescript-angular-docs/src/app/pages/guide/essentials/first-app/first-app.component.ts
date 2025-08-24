@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { marked } from 'marked';
 
 @Component({
   selector: 'app-first-app',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: 'first-app.component.html',
-  styleUrl: './first-app.component.styles.scss'
+  styleUrl: './first-app.component.styles.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FirstAppComponent implements OnInit {
   htmlContent = '';

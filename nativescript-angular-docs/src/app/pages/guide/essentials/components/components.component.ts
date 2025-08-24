@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-components',
@@ -8,10 +9,12 @@ import { marked } from 'marked';
   imports: [CommonModule],
   templateUrl: 'components.component.html',
   styleUrl: './components.component.styles.scss',
-  encapsulation: ViewEncapsulation.None
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ComponentsComponent implements OnInit {
-  htmlContent = '';
+  htmlContent!: SafeHtml;
+
+  constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit() {
     const markdownContent = `# NativeScript-Angular UI Components
@@ -612,6 +615,8 @@ Use layout containers effectively for different screen sizes:
 - **[Data Binding](/guide/data-binding)** - Understand Angular data binding in mobile context
 - **[Performance](/guide/performance)** - Optimize your app's performance`;
 
-    this.htmlContent = await marked(markdownContent);
+    const html = await marked(markdownContent);
+    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.changeDetectorRef.markForCheck();
   }
 }
