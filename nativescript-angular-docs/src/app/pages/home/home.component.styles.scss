@@ -5,6 +5,8 @@
       display: flex;
       align-items: center;
       min-height: 500px;
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
     .hero-content {
@@ -12,7 +14,7 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 4rem;
+      gap: 1.2rem;
       align-items: center;
       width: 100%;
     }
@@ -123,6 +125,8 @@
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       font-size: 0.875rem;
+      color: rgb(36, 36, 36);
+      width: 87%;
     }
 
     .features {

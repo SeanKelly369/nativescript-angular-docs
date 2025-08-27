@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
 
@@ -6,10 +6,13 @@ import { marked } from 'marked';
   selector: 'app-navigation',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: 'navigation.component.html'
+  templateUrl: 'navigation.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationComponent implements OnInit {
   htmlContent = '';
+
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Navigation in NativeScript-Angular
@@ -598,5 +601,6 @@ const routes: Routes = [
 - **[Examples](/examples)** - Explore navigation examples`;
 
     this.htmlContent = await marked(markdownContent);
+    this.changeDetectorRef.markForCheck();
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { marked } from 'marked';
 import { SafeHtml } from '@angular/platform-browser';
@@ -11,6 +11,8 @@ import { SafeHtml } from '@angular/platform-browser';
 })
 export class StylingComponent implements OnInit {
   htmlContent: SafeHtml = '';
+
+  private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Styling in NativeScript-Angular
@@ -70,5 +72,6 @@ $border-radius: 5;
 - [First App](/guide/first-app) - Build your first complete app`;
 
     this.htmlContent = await marked(markdownContent);
+    this.changeDetectorRef.markForCheck();
   }
 }
