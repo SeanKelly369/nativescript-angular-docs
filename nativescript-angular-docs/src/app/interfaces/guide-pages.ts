@@ -23,3 +23,10 @@ export const GUIDE_PAGES: GuidePage[] = [
   { title: "NativeScript Components", route: "/guide/nativescript-components" },
   { title: "ListView", route: "/guide/listview" }
 ];
+
+export const GETTING_STARTED_PAGES: GuidePage[] = [
+  { title: "Overview", route: "/getting-started/overview" },
+  { title: "Prerequisites", route: "/getting-started/prerequisites" },
+  { title: "Quick Start", route: "/getting-started/quick-start" },
+  { title: "Environment Setup", route: "/getting-started/environment-setup" }
+];
