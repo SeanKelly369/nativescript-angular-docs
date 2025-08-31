@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-environment-setup',
   imports: [],
   templateUrl: './environment-setup.html',
-  styleUrl: './environment-setup.scss'
+  styleUrl: './environment-setup.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EnvironmentSetup {
+export class EnvironmentSetupComponent {
 
 }

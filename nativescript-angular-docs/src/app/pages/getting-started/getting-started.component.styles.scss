@@ -1,3 +1,9 @@
+.gs-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; }
+.gs-nav.card { padding: 1rem; border-radius: 12px; background: #fff1; }
+.gs-nav a { display:block; padding:.5rem .75rem; border-radius:8px; text-decoration:none; }
+.gs-nav a.active { font-weight:600; background:#fff2; }
+.gs-content { min-height: 60vh; }
+
 .docs-container {
     display: flex;
     gap: 2rem;

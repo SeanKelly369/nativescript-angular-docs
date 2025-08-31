@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { marked } from 'marked';
 
 @Component({
   selector: 'app-getting-started',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [RouterLink, CommonModule, RouterOutlet],
   templateUrl: './getting-started.component.html',
   styleUrl: './getting-started.component.styles.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -18,7 +18,7 @@ export class GettingStartedComponent implements OnInit {
   htmlContent = '';
 
   ngOnInit() {
-    this.loadMarkdownContent();
+    // this.loadMarkdownContent();
     this.changeDetectorRef.markForCheck();
   }
 

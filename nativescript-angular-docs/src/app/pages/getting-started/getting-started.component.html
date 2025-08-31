@@ -3,30 +3,31 @@
     <nav class="sidebar-nav">
         <h3>Getting Started</h3>
         <ul>
-        <li><a routerLink="/getting-started/overview">Overview</a></li>
-        <li><a routerLink="/getting-started/prerequisites">Prerequisites</a></li>
-        <li><a routerLink="/getting-started/quick-start">Quick Start</a></li>
-        <li><a routerLink="/getting-started/environment-setup">Environment Setup</a></li>
+            <li><a routerLink="/getting-started/overview">Overview</a></li>
+            <li><a routerLink="/getting-started/prerequisites">Prerequisites</a></li>
+            <li><a routerLink="/getting-started/quick-start">Quick Start</a></li>
+            <li><a routerLink="/getting-started/environment-setup">Environment Setup</a></li>
         </ul>
     </nav>
     </div>
 
     <main class="docs-content">
-    <div class="content-wrapper"[innerHTML]="htmlContent"></div>
+        <div class="content-wrapper"[innerHTML]="htmlContent"></div>
 
-    <div class="docs-navigation">
-        <div class="nav-previous">
-        <a routerLink="/" class="nav-link">
-            <span class="nav-direction">← Previous</span>
-            <span class="nav-title">Home</span>
-        </a>
+        <div class="docs-navigation">
+            <div class="nav-previous">
+            <a routerLink="/" class="nav-link">
+                <span class="nav-direction">← Previous</span>
+                <span class="nav-title">Home</span>
+            </a>
+            </div>
+            <div class="nav-next">
+            <a routerLink="/guide" class="nav-link">
+                <span class="nav-direction">Next →</span>
+                <span class="nav-title">Guide</span>
+            </a>
+            </div>
         </div>
-        <div class="nav-next">
-        <a routerLink="/guide" class="nav-link">
-            <span class="nav-direction">Next →</span>
-            <span class="nav-title">Guide</span>
-        </a>
-        </div>
-    </div>
+        <router-outlet></router-outlet>
     </main>
-    </div>
+</div>
