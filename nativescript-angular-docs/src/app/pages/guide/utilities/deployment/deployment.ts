@@ -13,7 +13,7 @@ export class Deployment implements OnInit {
   htmlContent!: SafeHtml;
 
   constructor(
-    private readonly sanitizer: DomSanitizer,
+    private readonly sanitiser: DomSanitizer,
     private readonly changeDetectorReference: ChangeDetectorRef
   ) {}
 
@@ -204,7 +204,7 @@ jobs:
 - [ ] Test on real devices (especially low spec)
 `;
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorReference.markForCheck();
   }
 

@@ -12,7 +12,7 @@ import { marked } from 'marked';
 export class CodeSharingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Code Sharing in NativeScript-Angular
@@ -128,7 +128,7 @@ That way your NativeScript-Angular app feels native, while your web Angular app 
 `;
 
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }

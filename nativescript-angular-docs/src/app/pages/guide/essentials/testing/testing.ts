@@ -12,7 +12,7 @@ import { marked } from 'marked';
 export class TestingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Testing in NativeScript-Angular
@@ -205,7 +205,7 @@ Keep E2E focused on **critical flows** (launch → login → key screen → back
 That’s the bulk of what you need to test NativeScript-Angular effectively.
 `;
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 

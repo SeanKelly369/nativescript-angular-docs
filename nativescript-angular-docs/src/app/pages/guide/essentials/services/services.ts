@@ -12,7 +12,7 @@ import { marked } from 'marked';
 export class ServicesComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
   const markdownContent = `
@@ -95,7 +95,7 @@ export class ServicesComponent implements OnInit {
 
 
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }

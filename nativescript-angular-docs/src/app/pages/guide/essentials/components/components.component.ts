@@ -14,7 +14,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ComponentsComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit() {
     const markdownContent = `# NativeScript-Angular UI Components
@@ -616,7 +616,7 @@ Use layout containers effectively for different screen sizes:
 - **[Performance](/guide/performance)** - Optimize your app's performance`;
 
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }

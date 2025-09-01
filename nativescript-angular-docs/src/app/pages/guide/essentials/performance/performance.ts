@@ -12,7 +12,7 @@ export class PerformanceComponent implements OnInit {
   htmlContent!: SafeHtml;
 
   constructor(
-    private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -174,7 +174,7 @@ export class PerformanceComponent implements OnInit {
   `;
 
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }
