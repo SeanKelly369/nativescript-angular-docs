@@ -1,33 +1,34 @@
 <div class="docs-container">
-    <div class="docs-sidebar">
+  <div class="docs-sidebar">
     <nav class="sidebar-nav">
-        <h3>Getting Started</h3>
-        <ul>
-            <li><a routerLink="/getting-started/overview">Overview</a></li>
-            <li><a routerLink="/getting-started/prerequisites">Prerequisites</a></li>
-            <li><a routerLink="/getting-started/quick-start">Quick Start</a></li>
-            <li><a routerLink="/getting-started/environment-setup">Environment Setup</a></li>
-        </ul>
+      <h3>Getting Started</h3>
+      <ul>
+        <!-- Use absolute or relative; either is fine. routerLinkActive just for UX -->
+        <li><a routerLink="/getting-started/overview" routerLinkActive="active">Overview</a></li>
+        <li><a routerLink="/getting-started/prerequisites" routerLinkActive="active">Prerequisites</a></li>
+        <li><a routerLink="/getting-started/quick-start" routerLinkActive="active">Quick Start</a></li>
+        <li><a routerLink="/getting-started/environment-setup" routerLinkActive="active">Environment Setup</a></li>
+      </ul>
     </nav>
+  </div>
+
+  <main class="docs-content">
+    <!-- Put outlet FIRST so child content is not affected by any parent HTML -->
+    <router-outlet></router-outlet>
+
+    <div class="docs-navigation">
+      <div class="nav-previous">
+        <a routerLink="/" class="nav-link">
+          <span class="nav-direction">← Previous</span>
+          <span class="nav-title">Home</span>
+        </a>
+      </div>
+      <div class="nav-next">
+        <a routerLink="/guide" class="nav-link">
+          <span class="nav-direction">Next →</span>
+          <span class="nav-title">Guide</span>
+        </a>
+      </div>
     </div>
-
-    <main class="docs-content">
-        <div class="content-wrapper"[innerHTML]="htmlContent"></div>
-
-        <div class="docs-navigation">
-            <div class="nav-previous">
-            <a routerLink="/" class="nav-link">
-                <span class="nav-direction">← Previous</span>
-                <span class="nav-title">Home</span>
-            </a>
-            </div>
-            <div class="nav-next">
-            <a routerLink="/guide" class="nav-link">
-                <span class="nav-direction">Next →</span>
-                <span class="nav-title">Guide</span>
-            </a>
-            </div>
-        </div>
-        <router-outlet></router-outlet>
-    </main>
+  </main>
 </div>
