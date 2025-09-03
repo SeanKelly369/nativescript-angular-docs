@@ -5,8 +5,10 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    height: 100%;
 }
 
 html {
