@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
-import { CommonModule, ViewportScroller } from '@angular/common';
-import { RouterLink, RouterOutlet, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { CommonModule, ViewportScroller, Location } from '@angular/common';
+import { RouterLink, RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { GuideService } from '../../services/guide-service/guide-service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -23,7 +23,7 @@ export class GuideComponent {
 
   private readonly router = inject(Router);
   private readonly scroller = inject(ViewportScroller);
-  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly location = inject(Location);
   private readonly guideService = inject(GuideService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
 
@@ -43,14 +43,14 @@ export class GuideComponent {
         // scroll behaviour
         const url = this.router.parseUrl(event.urlAfterRedirects);
         if (!url.fragment) {
-          this.scroller.scrollToPosition([0, 0]);
+          this.scrollContentToTop();
         }
         // rebuild table of contents after navigation (allow content to render)
         setTimeout(() => {
           this.updateToc();
-          // if there is a fragment, scroll to it after TOC IDs are ensured
+          // if there is a fragment, scroll to it within content container after TOC IDs are ensured
           if (url.fragment) {
-            setTimeout(() => this.scroller.scrollToAnchor(url.fragment as string), 0);
+            setTimeout(() => this.scrollContentToAnchor(url.fragment as string), 0);
           }
         }, 50);
         this.changeDetectorRef.markForCheck()
@@ -63,20 +63,39 @@ export class GuideComponent {
       this.updateToc();
       const url = this.router.parseUrl(this.router.url);
       if (url.fragment) {
-        setTimeout(() => this.scroller.scrollToAnchor(url.fragment as string), 0);
+        setTimeout(() => this.scrollContentToAnchor(url.fragment as string), 0);
+      } else {
+        this.scrollContentToTop();
       }
     }, 0);
   }
 
   scrollTo(id: string) {
-    // Update URL fragment for deep-linking, then scroll
-    this.router.navigate([], {
-      fragment: id,
-      relativeTo: this.activatedRoute,
-      queryParamsHandling: 'preserve'
-    });
-    // scroll after a tick to ensure any pending rendering completes
-    setTimeout(() => this.scroller.scrollToAnchor(id), 0);
+    // Update URL fragment without triggering navigation
+    const baseUrl = this.router.url.split('#')[0];
+    this.location.replaceState(`${baseUrl}#${id}`);
+    // scroll within the guide content container
+    setTimeout(() => this.scrollContentToAnchor(id), 0);
+  }
+
+  onTocClick(event: Event, id: string) {
+    event.preventDefault();
+    this.scrollTo(id);
+  }
+
+  private scrollContentToTop() {
+    const container = document.querySelector('.guide-content') as HTMLElement | null;
+    if (container) {
+      container.scrollTo({ top: 0 });
+    }
+  }
+
+  private scrollContentToAnchor(id: string) {
+    const container = document.querySelector('.guide-content') as HTMLElement | null;
+    const target = document.getElementById(id);
+    if (!container || !target) { return; }
+    const top = target.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop - 8;
+    container.scrollTo({ top, behavior: 'smooth' });
   }
 
   private updateToc() {

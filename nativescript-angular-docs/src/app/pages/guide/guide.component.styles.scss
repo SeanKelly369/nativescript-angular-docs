@@ -68,6 +68,8 @@
 .guide-content {
     flex: 1;
     min-width: 0;
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
 }
 
 .guide-overview {

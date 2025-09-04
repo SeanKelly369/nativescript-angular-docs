@@ -115,7 +115,7 @@
           <h4>On this page</h4>
           <ul>
             <li *ngFor="let item of tocItems" [class.level-2]="item.level === 2" [class.level-3]="item.level === 3" [class.level-4]="item.level === 4">
-              <a [routerLink]="[]" [fragment]="item.id" (click)="scrollTo(item.id)">{{ item.text }}</a>
+              <a href="#" (click)="onTocClick($event, item.id)">{{ item.text }}</a>
             </li>
           </ul>
         </nav>
