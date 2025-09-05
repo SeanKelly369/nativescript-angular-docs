@@ -279,6 +279,19 @@
     }
 }
 
+.guide-content {
+  overflow-y: auto; /* ensure this is the scroll container */
+  /* position: relative;  // optional, nice to have */
+}
+
+/* If you have a sticky header, help native scrollIntoView cases too */
+.guide-content h2,
+.guide-content h3,
+.guide-content h4 {
+  scroll-margin-top: var(--toc-offset, 56px); /* match header height if any */
+}
+
+
 @media (max-width: 768px) {
     .guide-container {
         flex-direction: column;

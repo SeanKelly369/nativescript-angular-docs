@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { CommonModule, ViewportScroller, Location } from '@angular/common';
 import { RouterLink, RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { GuideService } from '../../services/guide-service/guide-service';
@@ -16,6 +16,9 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 })
 export class GuideComponent {
+
+  @ViewChild('content') contentRef?: ElementRef<HTMLElement>;
+
   showOverview = true;
   prev: any = null;
   next: any = null;
@@ -52,8 +55,8 @@ export class GuideComponent {
           if (url.fragment) {
             setTimeout(() => this.scrollContentToAnchor(url.fragment as string), 0);
           }
+          this.changeDetectorRef.markForCheck()
         }, 50);
-        this.changeDetectorRef.markForCheck()
     });
   }
 
@@ -70,6 +73,11 @@ export class GuideComponent {
     }, 0);
   }
 
+  onTocClick(event: Event, id: string) {
+    event.preventDefault();
+    this.scrollTo(id);
+  }
+
   scrollTo(id: string) {
     // Update URL fragment without triggering navigation
     const baseUrl = this.router.url.split('#')[0];
@@ -78,55 +86,80 @@ export class GuideComponent {
     setTimeout(() => this.scrollContentToAnchor(id), 0);
   }
 
-  onTocClick(event: Event, id: string) {
-    event.preventDefault();
-    this.scrollTo(id);
+  private get container(): HTMLElement | null {
+    return this.contentRef?.nativeElement ?? document.querySelector('.guide-content');
   }
 
   private scrollContentToTop() {
-    const container = document.querySelector('.guide-content') as HTMLElement | null;
+    const container = this.container;
     if (container) {
       container.scrollTo({ top: 0 });
     }
   }
 
   private scrollContentToAnchor(id: string) {
-    const container = document.querySelector('.guide-content') as HTMLElement | null;
-    const target = document.getElementById(id);
-    if (!container || !target) { return; }
-    const top = target.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop - 8;
-    container.scrollTo({ top, behavior: 'smooth' });
+    const c = this.container;
+    if (!c) return;
+
+    // Prefer finding inside the container; fall back to document
+    const safeId = (window as any).CSS?.escape ? (window as any).CSS.escape(id) : id.replace(/[^a-zA-Z0-9\-_:.]/g, '');
+    const target = c.querySelector<HTMLElement>(`#${safeId}`) || document.getElementById(id);
+    if (!target) return;
+
+    // If you have a sticky header, measure it here
+    const headerOffset = this.getStickyOffset();
+
+    // Rect-based offset relative to the container + scrollTop
+    const top =
+      target.getBoundingClientRect().top -
+      c.getBoundingClientRect().top +
+      c.scrollTop -
+      headerOffset -
+      8; // small breathing room
+
+    const finalTop = Math.max(0, Math.round(top));
+
+    // Cancel in-flight smooth: jump first, then smooth next frame
+    c.scrollTo({ top: finalTop });
+    requestAnimationFrame(() => c.scrollTo({ top: finalTop, behavior: 'smooth' }));
+  }
+
+    private getStickyOffset(): number {
+    // If you have a sticky header outside or inside the container, include its height.
+    // Example (outside): const hdr = document.querySelector('.app-header') as HTMLElement | null;
+    // Example (inside container): const hdr = this.container?.querySelector('.in-content-sticky') as HTMLElement | null;
+    const hdr = document.querySelector('.app-header') as HTMLElement | null;
+    return hdr?.offsetHeight ?? 0;
   }
 
   private updateToc() {
-    const contentElement = document.querySelector('.guide-content');
-    if (!contentElement) {
+    const c = this.container;
+    if (!c) {
       this.tocItems = [];
       this.changeDetectorRef.markForCheck();
       return;
     }
 
-    const headings = Array.from(contentElement.querySelectorAll('h2, h3, h4')) as HTMLElement[];
+    const headings = Array.from(c.querySelectorAll<HTMLElement>('h2, h3, h4'));
     const items: { id: string; text: string; level: number }[] = [];
 
-    for (const heading of headings) {
-      const text = (heading.textContent || '').trim();
-      if (!text) { continue; }
-      let id = heading.getAttribute('id') || '';
-      if (!id) {
-        id = this.slugify(text);
-        // ensure uniqueness
-        let uniqueId = id;
-        let counter = 1;
-        while (document.getElementById(uniqueId)) {
-          uniqueId = `${id}-${counter++}`;
+    for (const h of headings) {
+      const text = (h.textContent || '').trim();
+      if (!text) continue;
+
+      // assign/ensure unique id within the container
+      if (!h.id) {
+        const base = this.slugify(text);
+        let candidate = base;
+        let i = 1;
+        while (c.querySelector(`#${candidate}`)) {
+          candidate = `${base}-${i++}`;
         }
-        id = uniqueId;
-        heading.setAttribute('id', id);
+        h.id = candidate;
       }
 
-      const level = heading.tagName === 'H2' ? 2 : heading.tagName === 'H3' ? 3 : 4;
-      items.push({ id, text, level });
+      const level = h.tagName === 'H2' ? 2 : h.tagName === 'H3' ? 3 : 4;
+      items.push({ id: h.id, text, level });
     }
 
     this.tocItems = items;
