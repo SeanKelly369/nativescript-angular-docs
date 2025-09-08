@@ -68,6 +68,8 @@
 .guide-content {
     flex: 1;
     min-width: 0;
+    max-height: calc(100vh - 2rem);
+    overflow: auto;
 }
 
 .guide-overview {
@@ -221,6 +223,76 @@
     margin-left: auto;
 }
 
+.guide-right-toc {
+    width: 18rem;
+    flex-shrink: 0;
+    position: sticky;
+    top: 1rem;
+    align-self: flex-start;
+}
+
+.toc-nav {
+    background: #f8fafc;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+}
+
+.toc-nav h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.toc-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-nav li {
+    margin: 0.125rem 0;
+}
+
+.toc-nav li.level-3 a {
+    padding-left: 1rem;
+}
+
+.toc-nav li.level-4 a {
+    padding-left: 1.75rem;
+}
+
+.toc-nav a {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    color: #475569;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        background: #e2e8f0;
+        color: #0066cc;
+    }
+}
+
+.guide-content {
+  overflow-y: auto; /* ensure this is the scroll container */
+  /* position: relative;  // optional, nice to have */
+}
+
+/* If you have a sticky header, help native scrollIntoView cases too */
+.guide-content h2,
+.guide-content h3,
+.guide-content h4 {
+  scroll-margin-top: var(--toc-offset, 56px); /* match header height if any */
+}
+
+
 @media (max-width: 768px) {
     .guide-container {
         flex-direction: column;
@@ -245,5 +317,11 @@
 
     .guide-overview h1 {
         font-size: 2rem;
+    }
+
+    .guide-right-toc {
+        width: 100%;
+        position: static;
+        margin-top: 1rem;
     }
 }

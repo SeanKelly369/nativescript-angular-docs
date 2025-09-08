@@ -37,7 +37,7 @@
       </aside>
       
       <!-- Main Content -->
-      <main class="guide-content">
+      <main class="guide-content" #content>
         <div class="guide-overview" *ngIf="showOverview">
           <h1>NativeScript-Angular Guide</h1>
           <p class="lead">
@@ -90,7 +90,7 @@
         </div>
         
         <!-- Routed Content -->
-        <router-outlet></router-outlet>
+        <router-outlet (activate)="onActivate()"></router-outlet>
 
         <!-- Prev / Next Nav -->
         <div class="docs-navigation">
@@ -108,4 +108,21 @@
           </div>
         </div>
       </main>
+
+      <!-- Right TOC Sidebar -->
+      <aside class="guide-right-toc">
+        <nav class="toc-nav" *ngIf="tocItems.length">
+          <h4>On this page</h4>
+          <ul>
+            <li *ngFor="let item of tocItems"
+                [class.level-2]="item.level === 2"
+                [class.level-3]="item.level === 3"
+                [class.level-4]="item.level === 4">
+              <a role="button" (click)="onTocClick($event, item.id)">
+                {{ item.text }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
     </div>
