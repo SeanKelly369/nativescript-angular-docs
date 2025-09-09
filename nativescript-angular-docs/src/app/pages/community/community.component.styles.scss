@@ -1,7 +1,7 @@
-@import './../../../styles_colours.scss';
+@use './../../../styles_colours.scss' as *;
 
 .community-container {
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
@@ -20,7 +20,7 @@ h1 {
 
 .hero-intro {
   font-size: 1.25rem;
-  color: #64748b;
+  color: $paynes_grey;
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -34,7 +34,7 @@ h1 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .community-grid {
@@ -44,11 +44,11 @@ h1 {
 }
 
 .community-card {
-  background: white;
+  background: $white;
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
+  border: 1px solid $off_white_2;
   text-align: center;
   transition: all 0.2s ease;
 
@@ -67,11 +67,11 @@ h1 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .community-card p {
-  color: #64748b;
+  color: $paynes_grey;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -84,8 +84,8 @@ h1 {
 }
 
 .stat {
-  background: #f1f5f9;
-  color: #475569;
+  background: $off_white;
+  color: $paynes_grey;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.875rem;
@@ -103,11 +103,11 @@ h1 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .contribute-text p {
-  color: #64748b;
+  color: $paynes_grey;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -123,11 +123,11 @@ h1 {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .contribution-item p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 0.875rem;
   line-height: 1.5;
   margin: 0;
@@ -140,7 +140,7 @@ h1 {
 }
 
 .contribute-stats {
-  background: #f8fafc;
+  background: $off_white;
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -149,7 +149,7 @@ h1 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #c6c6c6;
+  color: $grey_25;
   text-align: center;
 }
 
@@ -162,20 +162,20 @@ h1 {
 .stat-item {
   text-align: center;
   padding: 1rem;
-  background: white;
+  background: $white;
   border-radius: 0.5rem;
 }
 
 .stat-number {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #0066cc;
+  color: $blue;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
   font-size: 0.875rem;
-  color: #64748b;
+  color: $paynes_grey;
 }
 
 .resources-grid {
@@ -185,14 +185,14 @@ h1 {
 }
 
 .resource-card {
-  background: white;
+  background: $white;
   border-radius: 0.75rem;
   padding: 2rem;
-  border: 1px solid #e2e8f0;
+  border: 1px solid $off_white_2;
   transition: all 0.2s ease;
 
   &:hover {
-    border-color: #0066cc;
+    border-color: $blue;
     box-shadow: 0 4px 6px rgba(0, 102, 204, 0.1);
   }
 }
@@ -206,17 +206,17 @@ h1 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .resource-card p {
-  color: #64748b;
+  color: $paynes_grey;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
 
 .resource-link {
-  color: #0066cc;
+  color: $blue;
   text-decoration: none;
   font-weight: 500;
 
@@ -226,7 +226,7 @@ h1 {
 }
 
 .showcase-content p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 1.125rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -242,7 +242,7 @@ h1 {
 .showcase-item {
   text-align: center;
   padding: 1.5rem;
-  background: #f8fafc;
+  background: $off_white;
   border-radius: 0.75rem;
 }
 
@@ -250,11 +250,11 @@ h1 {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .showcase-item p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 0.875rem;
   margin: 0;
 }
@@ -289,11 +289,11 @@ h1 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .events-text p {
-  color: #64748b;
+  color: $paynes_grey;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -308,17 +308,17 @@ h1 {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .event-type p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 0.875rem;
   margin: 0;
 }
 
 .events-calendar {
-  background: #f8fafc;
+  background: $off_black;
   padding: 2rem;
   border-radius: 1rem;
 }
@@ -327,7 +327,7 @@ h1 {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #c6c6c6;
+  color: $grey_25;
   text-align: center;
 }
 
@@ -336,12 +336,12 @@ h1 {
 }
 
 .calendar-placeholder p {
-  color: #64748b;
+  color: $paynes_grey;
   margin-bottom: 1.5rem;
 }
 
 .guidelines-content p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 1.125rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -357,7 +357,7 @@ h1 {
 .guideline-item {
   text-align: center;
   padding: 1.5rem;
-  background: #f8fafc;
+  background: $off_white;
   border-radius: 0.75rem;
 }
 
@@ -365,11 +365,11 @@ h1 {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .guideline-item p {
-  color: #64748b;
+  color: $paynes_grey;
   font-size: 0.875rem;
   margin: 0;
 }
@@ -384,7 +384,7 @@ h1 {
 
 .cta-section {
   text-align: center;
-  background: #f8fafc;
+  background: $off_white;
   padding: 4rem 2rem;
   border-radius: 1rem;
   margin-top: 4rem;
@@ -394,14 +394,14 @@ h1 {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #c6c6c6;
+  color: $grey_25;
 }
 
 .cta-section p {
   font-size: 1.125rem;
-  color: #64748b;
+  color: $paynes_grey;
   margin-bottom: 2rem;
-  max-width: 600px;
+  max-width: 37.5rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -429,7 +429,7 @@ h1 {
   color: $off_white;
 
   &:hover {
-    background: #0052a3;
+    background: $blue;
     transform: translateY(-1px);
   }
 }

@@ -1,7 +1,7 @@
-@import './styles_colours.scss';
+@use './styles_colours' as *;
 
 .language-css, .language-scss {
-    color: rgb(13, 95, 158);
+    color: $blue;
 }
 
 html, body {
@@ -16,7 +16,7 @@ html {
 }
 
 .content-wrapper {
-    background: rgb(255, 255, 255);
+    background: $white;
     border-radius: 0.5rem;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     height: calc(100vh - 2rem);
@@ -28,8 +28,8 @@ html {
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        color: #333;
-        border-bottom: 2px solid #e2e8f0;
+        color: $black_75;
+        border-bottom: 2px solid $off_white;
         padding-bottom: 0.5rem;
     }
 
@@ -44,11 +44,11 @@ html {
         font-size: 1.5rem;
         font-weight: 600;
         margin: 1.5rem 0 0.75rem 0;
-        color: $h3_colour;
+        color: $black_80;
     }
 
     h4 {
-        color: $h4_colour;
+        color: $black_80;
     }
 
     p {
