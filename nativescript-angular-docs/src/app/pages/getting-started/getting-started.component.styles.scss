@@ -1,25 +1,27 @@
-.gs-layout { display: grid; grid-template-columns: 260px 1fr; gap: 2rem; }
-.gs-nav.card { padding: 1rem; border-radius: 12px; background: #fff1; }
-.gs-nav a { display:block; padding:.5rem .75rem; border-radius:8px; text-decoration:none; }
-.gs-nav a.active { font-weight:600; background:#fff2; }
+@use './../../../styles_colours' as *;
+
+.gs-layout { display: grid; grid-template-columns: 16.25rem 1fr; gap: 2rem; }
+.gs-nav.card { padding: 1rem; border-radius: 0.75rem; background: $translucent_black_10; }
+.gs-nav a { display:block; padding:.5rem .75rem; border-radius: 0.5rem; text-decoration:none; }
+.gs-nav a.active { font-weight:600; background:$translucent_black_20; }
 .gs-content { min-height: 60vh; }
 
 .docs-container {
     display: flex;
     gap: 2rem;
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
 
 .docs-sidebar {
-    width: 250px;
+    width: 15.625rem;
     flex-shrink: 0;
 }
 
 .sidebar-nav {
     position: sticky;
-    background: #f8fafc;
+    background: $off_white_2;
     border-radius: 0.5rem;
     padding: 1.5rem;
 }
@@ -28,7 +30,7 @@
     margin: 0 0 1rem 0;
     font-size: 1.125rem;
     font-weight: 600;
-    color: #333;
+    color: $black_75;
 }
 
 .sidebar-nav ul {
@@ -44,14 +46,14 @@
 .sidebar-nav a {
     display: block;
     padding: 0.5rem 0.75rem;
-    color: #64748b;
+    color: $paynes_grey;
     text-decoration: none;
     border-radius: 0.25rem;
     transition: all 0.2s ease;
     
     &:hover {
-    background: #e2e8f0;
-    color: #419bf6;
+    background: $off_white_2;
+    color: $sky_blue;
     }
 }
 
@@ -61,17 +63,17 @@
 }
 
 .content-wrapper {
-    background: rgb(37, 45, 56);
+    background: $dark_blue;
     border-radius: 0.5rem;
     padding: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px $translucent_black_10;
     
     :global(h1) {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #333;
-    border-bottom: 2px solid #e2e8f0;
+    color: $black_75;
+    border-bottom: 2px solid $off_white_2;
     padding-bottom: 0.5rem;
     }
     
@@ -79,20 +81,20 @@
     font-size: 2rem;
     font-weight: 600;
     margin: 2rem 0 1rem 0;
-    color: #333;
+    color: $black_75;
     }
     
     :global(h3) {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 1.5rem 0 0.75rem 0;
-    color: #333;
+    color: $black_75;
     }
     
     :global(p) {
     line-height: 1.7;
     margin-bottom: 1rem;
-    color: #4a5568;
+    color: $black_70;
     }
     
     :global(ul, ol) {
@@ -103,21 +105,21 @@
     :global(li) {
     margin-bottom: 0.5rem;
     line-height: 1.6;
-    color: #4a5568;
+    color: $black_70;
     }
     
     :global(code) {
-    background: #f1f5f9;
+    background: $off_white_2;
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.875em;
-    color: #e53e3e;
+    color: $red;
     }
     
     :global(pre) {
-    background: #1e293b;
-    color: #e2e8f0;
+    background: $dark_blue;
+    color: $off_white_2;
     padding: 1.5rem;
     border-radius: 0.5rem;
     overflow-x: auto;
@@ -131,15 +133,15 @@
     }
     
     :global(blockquote) {
-    border-left: 4px solid #419df9;
+    border-left: 4px solid $blue;
     padding-left: 1rem;
     margin: 1rem 0;
     font-style: italic;
-    color: #64748b;
+    color: $paynes_grey;
     }
     
     :global(a) {
-    color: #3f9bf6;
+    color: $sky_blue;
     text-decoration: none;
     
     &:hover {
@@ -153,7 +155,7 @@
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid $off_white_2;
 }
 
 .nav-link {
@@ -163,23 +165,23 @@
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid $off_white_2;
     
     &:hover {
-    border-color: #4fa7ff;
-    box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
+    border-color: $sky_blue;
+    box-shadow: 0 2px 4px $translucent_black_10;
     }
 }
 
 .nav-direction {
     font-size: 0.875rem;
-    color: #64748b;
+    color: $paynes_grey;
     margin-bottom: 0.25rem;
 }
 
 .nav-title {
     font-weight: 600;
-    color: #333;
+    color: $black_75;
 }
 
 .nav-previous {

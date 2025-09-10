@@ -7,7 +7,6 @@ import { marked } from 'marked';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './prerequisites.html',
-  styleUrl: './prerequisites.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PrerequisitesComponent implements OnInit {

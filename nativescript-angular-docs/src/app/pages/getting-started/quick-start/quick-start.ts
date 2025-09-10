@@ -7,7 +7,6 @@ import { marked } from 'marked';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './quick-start.html',
-  styleUrl: './quick-start.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuickStartComponent implements OnInit {
