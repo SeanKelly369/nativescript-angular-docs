@@ -6,13 +6,13 @@
       padding: 4rem 1rem;
       display: flex;
       align-items: center;
-      min-height: 500px;
+      min-height: 31.25rem;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
     .hero-content {
-      max-width: 1200px;
+      max-width: 75rem;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -37,6 +37,7 @@
       line-height: 1.6;
       margin-bottom: 2rem;
       opacity: 0.9;
+      padding-right: 0.3rem;
     }
 
     .hero-actions {
@@ -88,7 +89,7 @@
       background: $black_75;
       border-radius: 1.5rem;
       padding: 1.25rem;
-      box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.3);
+      box-shadow: 0 1.25rem 2.5rem $translucent_black_30;
     }
 
     .phone-screen {
@@ -126,7 +127,7 @@
       background: $white;
       padding: 0.75rem;
       border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px $translucent_black_10;
       font-size: 0.875rem;
       color: $black_80;
       width: 87%;
@@ -170,7 +171,7 @@
       background: $white;
       padding: 2rem;
       border-radius: 1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px $translucent_black_10;
       text-align: center;
       transition: transform 0.2s ease;
       
@@ -240,7 +241,7 @@
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
       font-family: monospace;
-      color: #0f172a;
+      color: $very_dark_blue;
     }
 
     .code-comparison {
@@ -258,7 +259,7 @@
 
     .code-sharing-section {
       padding: 4rem 1rem;
-      background: #f8fafc;
+      background: $off_white;
     }
 
     .sharing-content {
@@ -272,13 +273,13 @@
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: #333;
+      color: $black_75;
     }
 
     .sharing-text p {
       font-size: 1.125rem;
       line-height: 1.6;
-      color: #64748b;
+      color: $paynes_grey;
       margin-bottom: 2rem;
     }
 
@@ -290,20 +291,20 @@
 
     .feature-list li {
       padding: 0.5rem 0;
-      color: #64748b;
+      color: $paynes_grey;
       font-size: 1.125rem;
     }
 
     .architecture-diagram {
-      background: white;
+      background: $white;
       border-radius: 1rem;
       padding: 2rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px $translucent_black_10;
     }
 
     .shared-layer {
-      background: #667eea;
-      color: white;
+      background: $indigo;
+      color: $white;
       padding: 1.5rem;
       border-radius: 0.5rem;
       margin-bottom: 1rem;
@@ -322,7 +323,7 @@
     }
 
     .platform-layer {
-      background: #f1f5f9;
+      background: $off_white;
       padding: 1.5rem;
       border-radius: 0.5rem;
       text-align: center;
@@ -331,11 +332,11 @@
     .platform-layer h4 {
       margin-bottom: 1rem;
       font-weight: 600;
-      color: #333;
+      color: $black_75;
     }
 
     .layer-item {
-      background: rgba(255, 255, 255, 0.2);
+      background: $translucent_black_20;
       padding: 0.5rem;
       margin: 0.25rem 0;
       border-radius: 0.25rem;
@@ -343,8 +344,8 @@
     }
 
     .platform-layer .layer-item {
-      background: white;
-      color: #64748b;
+      background: $white;
+      color: $paynes_grey;
     }
 
     .getting-started-preview {
@@ -352,27 +353,27 @@
     }
 
     .code-example {
-      background: #1e293b;
+      background: $dark_blue;
       border-radius: 1rem;
       overflow: hidden;
       margin-bottom: 2rem;
     }
 
     .code-header {
-      background: #334155;
+      background: $dark_blue;
       padding: 1rem;
-      border-bottom: 1px solid #475569;
+      border-bottom: 1px solid $paynes_grey;
     }
 
     .code-title {
-      color: #e2e8f0;
+      color: $off_white_2;
       font-weight: 500;
     }
 
     .code-block {
       padding: 2rem;
       margin: 0;
-      color: #094595;
+      color: $deep_cobalt_blue;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 0.875rem;
       line-height: 1.6;
@@ -380,9 +381,9 @@
     }
 
     .code-block-dark-bg {
-            padding: 2rem;
+      padding: 2rem;
       margin: 0;
-      color: #cdcdcd;
+      color: $grey_20;
       font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
       font-size: 0.875rem;
       line-height: 1.6;
@@ -396,22 +397,22 @@
     .cta-section p {
       font-size: 1.125rem;
       margin-bottom: 1rem;
-      color: #c7cdd6;
+      color: $washed_out_blue;
     }
 
     .community-section {
       padding: 4rem 1rem;
-      background: white;
+      background: $white;
     }
 
     .community-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
       gap: 2rem;
     }
 
     .community-card {
-      background: #f8fafc;
+      background: $off_white;
       padding: 2rem;
       border-radius: 1rem;
       text-align: center;
@@ -431,11 +432,11 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: #333;
+      color: $black_75;
     }
 
     .community-card p {
-      color: #64748b;
+      color: $paynes_grey;
       line-height: 1.6;
       margin-bottom: 2rem;
     }
@@ -460,8 +461,8 @@
       }
       
       .phone-mockup {
-        width: 150px;
-        height: 300px;
+        width: 9.375rem;
+        height: 18.75rem;
       }
 
       .code-comparison {
