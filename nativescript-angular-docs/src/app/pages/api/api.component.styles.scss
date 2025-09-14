@@ -1,7 +1,7 @@
 @use './../../../styles_colours' as *;
 
 .api-container {
-    max-width: 1200px;
+    max-width: 75rem;
     margin: 0 auto;
     padding: 2rem 1rem;
 }
@@ -10,34 +10,34 @@ h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #b8b8b8;
+    color: $grey_25;
 }
 
 .intro {
     font-size: 1.125rem;
-    color: #64748b;
+    color: $paynes_grey;
     margin-bottom: 3rem;
 }
 
 .api-sections {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     gap: 2rem;
 }
 
 .api-section {
-    background: white;
+    background: $white;
     border-radius: 0.5rem;
     padding: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px $translucent_black_10;
+    border: 1px solid $off_white_2;
 }
 
 .api-section h2 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: #333;
+    color: $black_75;
 }
 
 .api-section ul {
@@ -51,7 +51,7 @@ h1 {
 }
 
 .api-section a {
-    color: #0066cc;
+    color: $blue;
     text-decoration: none;
     
     &:hover {

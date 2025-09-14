@@ -1,3 +1,5 @@
+@use './../../../styles_colours' as *;
+
 .guide-container {
     display: flex;
     gap: 1.2rem;
@@ -20,7 +22,7 @@
 .sidebar-nav {
   position: sticky;
   overflow: auto;
-  background: #f8fafc;
+  background: $off_white;
   border-radius: 0.5rem;
   padding: 0.75rem;
 }
@@ -29,14 +31,14 @@
     margin: 0 0 1rem 0;
     font-size: 1.125rem;
     font-weight: 600;
-    color: #333;
+    color: $black_75;
 }
 
 .sidebar-nav h4 {
     margin: 2rem 0 1rem 0;
     font-size: 1rem;
     font-weight: 600;
-    color: #64748b;
+    color: $paynes_grey;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -54,14 +56,14 @@
 .sidebar-nav a {
     display: block;
     padding: 0.5rem 0.75rem;
-    color: #64748b;
+    color: $paynes_grey;
     text-decoration: none;
     border-radius: 0.25rem;
     transition: all 0.2s ease;
 
     &:hover, &.active {
-        background: #e2e8f0;
-        color: #0066cc;
+        background: $off_white_2;
+        color: $blue;
     }
 }
 
@@ -73,40 +75,40 @@
 }
 
 .guide-overview {
-    background: white;
+    background: $white;
     padding: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px $translucent_black_10;
 }
 
 .guide-overview h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #333;
+    color: $black_75;
 }
 
 .lead {
     font-size: 1.25rem;
-    color: #64748b;
+    color: $paynes_grey;
     margin-bottom: 3rem;
     line-height: 1.6;
 }
 
 .overview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
 }
 
 .overview-card {
-    border: 1px solid #e2e8f0;
+    border: 1px solid $off_white_2;
     border-radius: 0.5rem;
     padding: 1.5rem;
     transition: all 0.2s ease;
 
     &:hover {
-        border-color: #0066cc;
+        border-color: $blue;
         box-shadow: 0 4px 6px rgba(0, 102, 204, 0.1);
         transform: translateY(-2px);
     }
@@ -116,17 +118,17 @@
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 0.75rem;
-    color: #333;
+    color: $black_75;
 }
 
 .overview-card p {
-    color: #64748b;
+    color: $paynes_grey;
     line-height: 1.6;
     margin-bottom: 1rem;
 }
 
 .card-link {
-    color: #0066cc;
+    color: $blue;
     text-decoration: none;
     font-weight: 500;
 
@@ -136,8 +138,8 @@
 }
 
 .getting-started-cta {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, $indigo 0%, $purple 100%);
+    color: $white;
     padding: 2rem;
     border-radius: 1rem;
     text-align: center;
@@ -166,11 +168,11 @@
 }
 
 .btn-primary {
-    background: #ffd700;
-    color: #333;
+    background: $yellow;
+    color: $black_75;
 
     &:hover {
-        background: #ffed4e;
+        background: $yellow;
         transform: translateY(-2px);
     }
 }
@@ -180,7 +182,7 @@
     justify-content: space-between;
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid $off_white_2;
 }
 
 .nav-previous {
@@ -194,25 +196,25 @@
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid #e2e8f0;
+    border: 1px solid $off_white_2;
     min-width: 11rem;
-    background-color: white;
+    background-color: $white;
 
     &:hover {
-    border-color: #4fa7ff;
+    border-color: $sky_blue;
     box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
     }
 }
 
 .nav-direction {
     font-size: 0.875rem;
-    color: #64748b;
+    color: $paynes_grey;
     margin-bottom: 0.25rem;
 }
 
 .nav-title {
     font-weight: 600;
-    color: #333;
+    color: $black_75;
 }
 
 .nav-previous {
@@ -232,10 +234,10 @@
 }
 
 .toc-nav {
-    background: #f8fafc;
+    background: $off_white;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid $off_white_2;
     cursor: pointer;
 }
 
@@ -243,7 +245,7 @@
     margin: 0 0 0.75rem 0;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #64748b;
+    color: $paynes_grey;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -269,20 +271,19 @@
 .toc-nav a {
     display: block;
     padding: 0.35rem 0.5rem;
-    color: #475569;
+    color: $paynes_grey;
     text-decoration: none;
     border-radius: 0.25rem;
     transition: background 0.2s ease, color 0.2s ease;
 
     &:hover {
-        background: #e2e8f0;
-        color: #0066cc;
+        background: $off_white_2;
+        color: $blue;
     }
 }
 
 .guide-content {
-  overflow-y: auto; /* ensure this is the scroll container */
-  /* position: relative;  // optional, nice to have */
+  overflow-y: auto;
 }
 
 /* If you have a sticky header, help native scrollIntoView cases too */
