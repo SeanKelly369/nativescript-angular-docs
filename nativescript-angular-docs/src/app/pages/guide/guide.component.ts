@@ -83,7 +83,7 @@ export class GuideComponent {
     const baseUrl = this.router.url.split('#')[0];
     this.location.replaceState(`${baseUrl}#${id}`);
     // scroll within the guide content container
-    setTimeout(() => this.scrollContentToAnchor(id), 0);
+    setTimeout(() => this.scrollContentToAnchor(id), 120);
   }
 
   private get container(): HTMLElement | null {
@@ -97,32 +97,39 @@ export class GuideComponent {
     }
   }
 
-  private scrollContentToAnchor(id: string) {
-    const c = this.container;
-    if (!c) return;
+private scrollContentToAnchor(id: string) {
+  const c = this.container;
+  if (!c) return;
 
-    // Prefer finding inside the container; fall back to document
-    const safeId = (window as any).CSS?.escape ? (window as any).CSS.escape(id) : id.replace(/[^a-zA-Z0-9\-_:.]/g, '');
-    const target = c.querySelector<HTMLElement>(`#${safeId}`) || document.getElementById(id);
-    if (!target) return;
+  const safeId = (window as any).CSS?.escape
+    ? (window as any).CSS.escape(id)
+    : id.replace(/[^a-zA-Z0-9\-_:.]/g, '');
+  const target = c.querySelector<HTMLElement>(`#${safeId}`) || document.getElementById(id);
+  if (!target) return;
 
-    // If you have a sticky header, measure it here
-    const headerOffset = this.getStickyOffset();
+  const headerOffset = this.getStickyOffset();
 
-    // Rect-based offset relative to the container + scrollTop
-    const top =
-      target.getBoundingClientRect().top -
-      c.getBoundingClientRect().top +
-      c.scrollTop -
-      headerOffset -
-      8; // small breathing room
+  // Calculate absolute offset inside container
+  const top =
+    target.offsetTop -  // offsetTop is relative to the scroll container
+    (c.offsetTop || 0) +
+    c.scrollTop -
+    headerOffset -
+    8;
 
-    const finalTop = Math.max(0, Math.round(top));
+  const finalTop = Math.max(0, Math.round(top));
 
-    // Cancel in-flight smooth: jump first, then smooth next frame
-    c.scrollTo({ top: finalTop });
-    requestAnimationFrame(() => c.scrollTo({ top: finalTop, behavior: 'smooth' }));
-  }
+  // First force the exact pixel offset
+  c.scrollTop = finalTop;
+
+  // If you want smooth, you can still animate, then force a correction
+  requestAnimationFrame(() => {
+    c.scrollTo({ top: finalTop, behavior: 'smooth' });
+    // after smooth finishes, hard-set again to avoid rounding drift
+    setTimeout(() => (c.scrollTop = finalTop), 500);
+  });
+}
+
 
     private getStickyOffset(): number {
     // If you have a sticky header outside or inside the container, include its height.

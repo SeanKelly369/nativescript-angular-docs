@@ -1,104 +1,165 @@
 @use './styles_colours' as *;
 
+/* =========================
+   THEME TOKENS
+   ========================= */
+
+/* Base transitions so switches feel smooth */
+:root {
+  --transition-theme: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+
+  /* handy rgb base for translucent shadows */
+  --black-rgb: 0, 0, 0;
+  --shadow-10: rgba(var(--black-rgb), 0.10);
+  --shadow-30: rgba(var(--black-rgb), 0.30);
+}
+
+/* Light (default) */
+:root,
+:root[data-theme="light"] {
+  /* semantic tokens */
+  --bg: #f5f7fb;                 /* soft app background */
+  --surface: #ffffff;             /* card/background */
+  --surface-alt: #f9fcfe;         /* $off_white */
+  --text: #282828;                /* $black_80 */
+  --text-strong: #333333;         /* $black_75 */
+  --muted: #64748b;               /* $paynes_grey */
+  --border: #e7ebf1;              /* $off_white_2 */
+  --link: #0066cc;                /* $blue */
+  --li: #02bebe;                  /* $cyan */
+  --code-fg: #e53e3e;             /* $red */
+  --code-bg: #f9fcfe;             /* $off_white */
+  --pre-bg: #1e293b;              /* dark prism bg for contrast */
+  --pre-fg: #f9fcfe;              /* $off_white */
+}
+
+/* Dark */
+:root[data-theme="dark"] {
+  --bg: #0f172a;                  /* $very_dark_blue */
+  --surface: #0f172a;             /* same as bg for flat dark */
+  --surface-alt: #1e293b;         /* $dark_blue */
+  --text: #e7ebf1;                /* $off_white_2 */
+  --text-strong: #ffffff;
+  --muted: #94a3b8;               /* $pale_blue */
+  --border: #1f2a3a;              /* custom subtle border */
+  --link: #419bf6;                /* $sky_blue */
+  --li: #02bebe;                  /* $cyan still pops */
+  --code-fg: #e53e3e;             /* $red */
+  --code-bg: #1e293b;             /* $dark_blue */
+  --pre-bg: #0f172a;              /* $very_dark_blue */
+  --pre-fg: #f9fcfe;              /* $off_white */
+}
+
+/* =========================
+   GLOBALS
+   ========================= */
+
 .language-css, .language-scss {
-    color: $blue;
+  color: var(--link);
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
-    overscroll-behavior: none;
-    height: 100%;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  transition: var(--transition-theme);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
+/* =========================
+   CONTENT WRAPPER
+   ========================= */
+
 .content-wrapper {
-    background: $white;
+  background: var(--surface);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px var(--shadow-10);
+  height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  transition: var(--transition-theme);
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-strong);
+    border-bottom: 2px solid var(--surface-alt);
+    padding-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-weight: 600;
+    margin: 2rem 0 1rem 0;
+    color: var(--text-strong);
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.5rem 0 0.75rem 0;
+    color: var(--text-strong);
+  }
+
+  h4 {
+    color: var(--text-strong);
+  }
+
+  p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul, ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: var(--li);
+  }
+
+  code {
+    background: var(--code-bg);
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.25rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.875em;
+    color: var(--code-fg);
+  }
+
+  pre {
+    background: var(--pre-bg);
+    color: var(--pre-fg);
+    padding: 1.5rem;
     border-radius: 0.5rem;
-    box-shadow: 0 1px 3px $translucent_black_10;
-    height: calc(100vh - 2rem);
-    overflow-y: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-
-    h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: $black_75;
-        border-bottom: 2px solid $off_white;
-        padding-bottom: 0.5rem;
-    }
-
-    h2 {
-        font-weight: 600;
-        margin: 2rem 0 1rem 0;
-        color: $black_80;
-        font-size: 1.8rem;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin: 1.5rem 0 0.75rem 0;
-        color: $black_80;
-    }
-
-    h4 {
-        color: $black_80;
-    }
-
-    p {
-        line-height: 1.7;
-        margin-bottom: 1rem;
-        color: $black_80;
-    }
-
-    ul, ol {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-    }
-
-    li {
-        margin-bottom: 0.5rem;
-        line-height: 1.6;
-        color: $cyan;
-
-    }
+    overflow-x: auto;
+    margin: 1rem 0;
 
     code {
-        background: $off_white;
-        padding: 0.125rem 0.25rem;
-        border-radius: 0.25rem;
-        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-        font-size: 0.875em;
-        color: $red;
+      background: none;
+      padding: 0;
+      color: inherit;
     }
+  }
 
-    pre {
-        background: $off_black;
-        color: $off_white;
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        overflow-x: auto;
-        margin: 1rem 0;
+  a {
+    color: var(--link);
+    text-decoration: none;
 
-        code {
-            background: none;
-            padding: 0;
-            color: inherit;
-        }
+    &:hover {
+      text-decoration: underline;
     }
-
-    a {
-        color: $blue;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
+  }
 }
