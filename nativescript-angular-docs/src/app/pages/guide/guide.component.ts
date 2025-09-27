@@ -4,6 +4,7 @@ import { RouterLink, RouterOutlet, Router, NavigationEnd } from '@angular/router
 import { GuideService } from '../../services/guide-service/guide-service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TocService } from '../../services/toc.service';
 
 @Component({
   selector: 'app-guide',
@@ -22,7 +23,8 @@ export class GuideComponent {
   showOverview = true;
   prev: any = null;
   next: any = null;
-  tocItems: { id: string; text: string; level: number }[] = [];
+  readonly tocItems$ = inject(TocService).items$;
+  readonly toc = inject(TocService);
 
   private readonly router = inject(Router);
   private readonly scroller = inject(ViewportScroller);
@@ -76,6 +78,7 @@ export class GuideComponent {
   onTocClick(event: Event, id: string) {
     event.preventDefault();
     this.scrollTo(id);
+    this.changeDetectorRef.detectChanges();
   }
 
   scrollTo(id: string) {
@@ -142,7 +145,7 @@ private scrollContentToAnchor(id: string) {
   private updateToc() {
     const c = this.container;
     if (!c) {
-      this.tocItems = [];
+      this.toc.clear();
       this.changeDetectorRef.markForCheck();
       return;
     }
@@ -169,7 +172,7 @@ private scrollContentToAnchor(id: string) {
       items.push({ id: h.id, text, level });
     }
 
-    this.tocItems = items;
+    this.toc.set(items);
     this.changeDetectorRef.markForCheck();
   }
 

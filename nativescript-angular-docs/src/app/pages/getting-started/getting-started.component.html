@@ -13,9 +13,6 @@
   </div>
 
   <main class="docs-content">
-    <!-- Put outlet FIRST so child content is not affected by any parent HTML -->
-    <router-outlet></router-outlet>
-
     <div class="docs-navigation">
       <div class="nav-previous">
         <a routerLink="/" class="nav-link">
@@ -30,5 +27,8 @@
         </a>
       </div>
     </div>
+    <!-- Put outlet FIRST so child content is not affected by any parent HTML -->
+    <router-outlet></router-outlet>
+
   </main>
 </div>

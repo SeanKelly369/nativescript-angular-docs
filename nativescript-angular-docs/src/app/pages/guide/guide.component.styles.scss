@@ -180,13 +180,14 @@
 .docs-navigation {
     display: flex;
     justify-content: space-between;
-    margin-top: 3rem;
-    padding-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
     border-top: 1px solid $off_white_2;
 }
 
 .nav-previous {
-    margin-right: auto;
+    margin-right: 0.1rem;
 }
 
 .nav-link {
@@ -217,20 +218,13 @@
     color: $black_75;
 }
 
-.nav-previous {
-    margin-right: auto;
-}
-
-.nav-next {
-    margin-left: auto;
-}
-
 .guide-right-toc {
-    width: 18rem;
+    width: 16rem;
     flex-shrink: 0;
     position: sticky;
     top: 1rem;
     align-self: flex-start;
+    margin-right: 1rem;
 }
 
 .toc-nav {
@@ -283,7 +277,7 @@
 }
 
 .guide-content {
-  overflow-y: auto;
+  overflow-y:hidden;
 }
 
 /* If you have a sticky header, help native scrollIntoView cases too */
