@@ -76,12 +76,20 @@ html {
    CONTENT WRAPPER
    ========================= */
 
+.guide-content {
+  overflow: auto;
+  overscroll-behavior: contain; /* prevent bubbling to body */
+  scroll-behavior: smooth;      /* nice default */
+}
+
 .content-wrapper {
   background: var(--surface);
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px var(--shadow-10);
   height: calc(100vh - 2rem);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
   padding-left: 1rem;
   padding-right: 1rem;
   transition: var(--transition-theme);

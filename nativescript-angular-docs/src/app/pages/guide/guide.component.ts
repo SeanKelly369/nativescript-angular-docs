@@ -89,10 +89,6 @@ export class GuideComponent {
     setTimeout(() => this.scrollContentToAnchor(id), 120);
   }
 
-  private get container(): HTMLElement | null {
-    return this.contentRef?.nativeElement ?? document.querySelector('.guide-content');
-  }
-
   private scrollContentToTop() {
     const container = this.container;
     if (container) {
@@ -104,77 +100,71 @@ private scrollContentToAnchor(id: string) {
   const c = this.container;
   if (!c) return;
 
-  const safeId = (window as any).CSS?.escape
-    ? (window as any).CSS.escape(id)
-    : id.replace(/[^a-zA-Z0-9\-_:.]/g, '');
-  const target = c.querySelector<HTMLElement>(`#${safeId}`) || document.getElementById(id);
+  const esc = (s: string) => (window as any).CSS?.escape ? (window as any).CSS.escape(s) : s;
+  const target = c.querySelector<HTMLElement>(`#${esc(id)}`);
   if (!target) return;
 
-  const headerOffset = this.getStickyOffset();
+  // 1) Scroll the pane so the heading is at the top of the pane
+  target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
 
-  // Calculate absolute offset inside container
-  const top =
-    target.offsetTop -  // offsetTop is relative to the scroll container
-    (c.offsetTop || 0) +
-    c.scrollTop -
-    headerOffset -
-    8;
-
-  const finalTop = Math.max(0, Math.round(top));
-
-  // First force the exact pixel offset
-  c.scrollTop = finalTop;
-
-  // If you want smooth, you can still animate, then force a correction
+  // 2) If you have a fixed app header overlapping the pane, nudge by the overlap only
   requestAnimationFrame(() => {
-    c.scrollTo({ top: finalTop, behavior: 'smooth' });
-    // after smooth finishes, hard-set again to avoid rounding drift
-    setTimeout(() => (c.scrollTop = finalTop), 500);
+    const cRect = c.getBoundingClientRect();
+    const hdr = document.querySelector('.app-header') as HTMLElement | null;
+    const hRect = hdr?.getBoundingClientRect();
+    const overlap = hRect && hRect.bottom > cRect.top ? (hRect.bottom - cRect.top) : 0;
+    if (overlap) c.scrollTop = Math.max(0, c.scrollTop - overlap);
   });
 }
 
 
-    private getStickyOffset(): number {
-    // If you have a sticky header outside or inside the container, include its height.
-    // Example (outside): const hdr = document.querySelector('.app-header') as HTMLElement | null;
-    // Example (inside container): const hdr = this.container?.querySelector('.in-content-sticky') as HTMLElement | null;
-    const hdr = document.querySelector('.app-header') as HTMLElement | null;
-    return hdr?.offsetHeight ?? 0;
-  }
+private get container(): HTMLElement | null {
+  return this.contentRef?.nativeElement
+      ?? document.querySelector<HTMLElement>('.content-wrapper')
+      ?? document.querySelector<HTMLElement>('.guide-content');
+}
 
-  private updateToc() {
-    const c = this.container;
-    if (!c) {
-      this.toc.clear();
-      this.changeDetectorRef.markForCheck();
-      return;
-    }
-
-    const headings = Array.from(c.querySelectorAll<HTMLElement>('h2, h3, h4'));
-    const items: { id: string; text: string; level: number }[] = [];
-
-    for (const h of headings) {
-      const text = (h.textContent || '').trim();
-      if (!text) continue;
-
-      // assign/ensure unique id within the container
-      if (!h.id) {
-        const base = this.slugify(text);
-        let candidate = base;
-        let i = 1;
-        while (c.querySelector(`#${candidate}`)) {
-          candidate = `${base}-${i++}`;
-        }
-        h.id = candidate;
-      }
-
-      const level = h.tagName === 'H2' ? 2 : h.tagName === 'H3' ? 3 : 4;
-      items.push({ id: h.id, text, level });
-    }
-
-    this.toc.set(items);
+private updateToc() {
+  const c = this.container;
+  if (!c) {
+    this.toc.clear();
     this.changeDetectorRef.markForCheck();
+    return;
   }
+
+  // pick headings that are actually in the article
+  const headings = Array.from(c.querySelectorAll<HTMLElement>('h2, h3, h4'));
+
+  const items: { id: string; text: string; level: number }[] = [];
+  const used = new Set<string>();
+
+  for (const h of headings) {
+    // Get clean text (ignore anchor icons inserted by some MD renderers)
+    const text = (h.innerText || h.textContent || '').trim();
+    if (!text) continue;
+
+    // Always (re)assign our own deterministic id so TOC == DOM
+    const base = this.slugify(text);
+    let id = base;
+    let i = 1;
+
+    // use CSS.escape if available to query safely
+    const q = (s: string) => (window as any).CSS?.escape ? (window as any).CSS.escape(s) : s;
+
+    while (used.has(id) || c.querySelector(`#${q(id)}`)) {
+      id = `${base}-${i++}`;
+    }
+    h.id = id;
+    used.add(id);
+
+    const level = h.tagName === 'H2' ? 2 : h.tagName === 'H3' ? 3 : 4;
+    items.push({ id, text, level });
+  }
+
+  this.toc.set(items);
+  this.changeDetectorRef.markForCheck();
+}
+
 
   private slugify(text: string): string {
     return text
