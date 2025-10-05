@@ -8,12 +8,12 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
   color: $black_75;
-  background-color: $black;
+  background-color: $white;
 }
 
 // Header and Navigation
 .header {
-  background: $brick_red;
+  background: $white;
   border-bottom: 1px solid $off_white_2;
   position: sticky;
   top: 0;
@@ -205,8 +205,8 @@
   }
   
   .header {
-    background: $dark_blue;
-    border-bottom-color: $dark_blue;
+    background: $black;
+    border-bottom-color: $black;
   }
   
   .brand-link, .brand-text {
@@ -215,6 +215,7 @@
   
   .nav-link {
     color: $pale_blue;
+    background-color: $black;
     
     &:hover, &.active {
       color: $sky_blue;

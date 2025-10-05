@@ -322,3 +322,18 @@
         margin-top: 1rem;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    .sidebar-nav {
+        background-color: $black;
+    }
+
+    .toc-nav {
+        background-color: $black;
+        border: none;
+    }
+
+    .nav-link {
+        background-color: $black;
+    }
+}

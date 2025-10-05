@@ -171,3 +171,29 @@ html {
     }
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  .content-wrapper {
+    background-color: $black;
+
+    h1 {
+      color: $off_white;
+
+    }
+
+    h2, p, h3 {
+      color: $neon-cyan;
+    }
+
+    pre {
+      background-color: $cyan-bg;
+    }
+
+    code {
+      background: none;
+      color: $neon-cyan-code;
+    }
+  }
+
+
+}

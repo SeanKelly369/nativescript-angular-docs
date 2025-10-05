@@ -21,9 +21,10 @@
 
 .sidebar-nav {
     position: sticky;
-    background: $off_white_2;
+    background: $off_white;
     border-radius: 0.5rem;
     padding: 1.5rem;
+    border: 1px solid $off_white_2;
 }
 
 .sidebar-nav h3 {
@@ -123,4 +124,17 @@
     flex-direction: column;
     gap: 1rem;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    .nav-previous {
+        background-color: $black;
+    }
+
+    .sidebar-nav a {
+    &:hover {
+        background: $very_dark_blue;
+        color: $neon-white;
+    }
+}
 }
