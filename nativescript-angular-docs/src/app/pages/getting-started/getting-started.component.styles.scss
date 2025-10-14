@@ -132,9 +132,10 @@
     }
 
     .sidebar-nav a {
-    &:hover {
-        background: $very_dark_blue;
-        color: $neon-white;
+        color: $grey_mid;
+        &:hover {
+            background: $very_dark_blue;
+            color: $neon-white;
+        }
     }
-}
 }

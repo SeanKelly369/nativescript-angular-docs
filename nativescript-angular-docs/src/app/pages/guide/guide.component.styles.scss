@@ -328,6 +328,14 @@
         background-color: $black;
     }
 
+    .sidebar-nav a {
+        color: $grey_mid;
+        &:hover {
+            background: $very_dark_blue;
+            color: $neon-white;
+        }
+    }
+
     .toc-nav {
         background-color: $black;
         border: none;
