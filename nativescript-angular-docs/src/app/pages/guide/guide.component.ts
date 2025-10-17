@@ -5,6 +5,8 @@ import { GuideService } from '../../services/guide-service/guide-service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TocService } from '../../services/toc.service';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-guide',
@@ -27,7 +29,8 @@ export class GuideComponent {
   readonly toc = inject(TocService);
 
   private readonly router = inject(Router);
-  private readonly scroller = inject(ViewportScroller);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
   private readonly location = inject(Location);
   private readonly guideService = inject(GuideService);
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
@@ -63,7 +66,8 @@ export class GuideComponent {
   }
 
   onActivate() {
-    // Called when a child route is activated; rebuild TOC after content renders
+    if (!this.isBrowser) return;
+
     setTimeout(() => {
       this.updateToc();
       const url = this.router.parseUrl(this.router.url);
@@ -82,14 +86,14 @@ export class GuideComponent {
   }
 
   scrollTo(id: string) {
-    // Update URL fragment without triggering navigation
     const baseUrl = this.router.url.split('#')[0];
     this.location.replaceState(`${baseUrl}#${id}`);
-    // scroll within the guide content container
+    if (!this.isBrowser) return;
     setTimeout(() => this.scrollContentToAnchor(id), 120);
   }
 
   private scrollContentToTop() {
+    if (!this.isBrowser) return;
     const container = this.container;
     if (container) {
       container.scrollTo({ top: 0 });
@@ -97,17 +101,18 @@ export class GuideComponent {
   }
 
 private scrollContentToAnchor(id: string) {
+  if (!this.isBrowser) return;
   const c = this.container;
   if (!c) return;
 
-  const esc = (s: string) => (window as any).CSS?.escape ? (window as any).CSS.escape(s) : s;
+  const esc = (s: string) =>
+    (globalThis as any).CSS?.escape ? (globalThis as any).CSS.escape(s) : s;
+
   const target = c.querySelector<HTMLElement>(`#${esc(id)}`);
   if (!target) return;
 
-  // 1) Scroll the pane so the heading is at the top of the pane
   target.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'smooth' });
 
-  // 2) If you have a fixed app header overlapping the pane, nudge by the overlap only
   requestAnimationFrame(() => {
     const cRect = c.getBoundingClientRect();
     const hdr = document.querySelector('.app-header') as HTMLElement | null;
@@ -119,12 +124,19 @@ private scrollContentToAnchor(id: string) {
 
 
 private get container(): HTMLElement | null {
+  if (!this.isBrowser) return null;
   return this.contentRef?.nativeElement
       ?? document.querySelector<HTMLElement>('.content-wrapper')
       ?? document.querySelector<HTMLElement>('.guide-content');
 }
 
 private updateToc() {
+  if (!this.isBrowser) {
+    this.toc.clear();
+    this.changeDetectorRef.markForCheck();
+    return;
+  }
+
   const c = this.container;
   if (!c) {
     this.toc.clear();
@@ -132,23 +144,22 @@ private updateToc() {
     return;
   }
 
-  // pick headings that are actually in the article
   const headings = Array.from(c.querySelectorAll<HTMLElement>('h2, h3, h4'));
-
   const items: { id: string; text: string; level: number }[] = [];
   const used = new Set<string>();
 
+  const esc = (s: string) => {
+    (globalThis as any).CSS?.escape ? (globalThis as any).CSS.escape(s) : s;
+  }
+
   for (const h of headings) {
-    // Get clean text (ignore anchor icons inserted by some MD renderers)
     const text = (h.innerText || h.textContent || '').trim();
     if (!text) continue;
 
-    // Always (re)assign our own deterministic id so TOC == DOM
     const base = this.slugify(text);
     let id = base;
     let i = 1;
 
-    // use CSS.escape if available to query safely
     const q = (s: string) => (window as any).CSS?.escape ? (window as any).CSS.escape(s) : s;
 
     while (used.has(id) || c.querySelector(`#${q(id)}`)) {
