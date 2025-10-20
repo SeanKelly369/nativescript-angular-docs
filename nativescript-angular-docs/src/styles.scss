@@ -6,6 +6,10 @@
 
 /* Base transitions so switches feel smooth */
 :root {
+  --rem-base: 16;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size-adjust: from-font;
+
   --transition-theme: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
 
   /* handy rgb base for translucent shadows */
@@ -13,6 +17,8 @@
   --shadow-10: rgba(var(--black-rgb), 0.10);
   --shadow-30: rgba(var(--black-rgb), 0.30);
 }
+
+html { font-size: calc(var(--rem-base) * 1px); }
 
 /* Light (default) */
 :root,

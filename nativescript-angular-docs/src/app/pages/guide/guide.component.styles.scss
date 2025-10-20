@@ -197,12 +197,12 @@
     border-radius: 0.5rem;
     text-decoration: none;
     transition: all 0.2s ease;
-    border: 1px solid $off_white_2;
+    border: 1px solid $cyan;
     min-width: 11rem;
     background-color: $white;
 
     &:hover {
-    border-color: $sky_blue;
+    border-color: $neon-white;
     box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
     }
 }
@@ -329,7 +329,7 @@
     }
 
     .sidebar-nav a {
-        color: $grey_mid;
+        color: $grey_10;
         &:hover {
             background: $very_dark_blue;
             color: $neon-white;
@@ -344,4 +344,26 @@
     .nav-link {
         background-color: $black;
     }
+
+    .nav-title {
+        color: $neon-white;
+    }
+
+    .nav-direction {
+        color: $white;
+    }
+
+    .toc-nav a {
+        color: $grey_10;
+
+        &:hover {
+            background: $very_dark_blue;
+            color: $neon-white;
+        }
+    }
+
+    .toc-nav h4 {
+        color: $side-menu-h4;
+    }
+
 }

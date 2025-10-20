@@ -81,7 +81,7 @@
     background-color: $white;
     
     &:hover {
-    border-color: $sky_blue;
+    border-color: $neon-cyan;
     box-shadow: 0 2px 4px $translucent_black_10;
     }
 }
@@ -127,7 +127,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    .nav-previous {
+    .sidebar-nav {
         background-color: $black;
     }
 
