@@ -1,0 +1,19 @@
+<div class="inline-flex intems-center gap-2">
+    <button
+        type="button"
+        class="px-3 py-1 rounded-lg border"
+        (click)="toggle()"
+        [attr.aria-pressed]="isDark()"
+        [title]="isDark() ? 'Switch to light' : 'Switch to dark'">
+        {{ isDark() ? 'Dark ●' : 'Light ○' }}
+    </button>
+
+    <button
+        type="button"
+        class="px-3 py-1 rounded-lg border opacity-80"
+        (click)="followSystem()"
+        title="Follow system theme">
+        System
+    </button>
+    <span class="text-xs opacity-70">Theme: {{ current() }}</span>
+</div>

@@ -1,48 +1,78 @@
 import { isPlatformBrowser } from "@angular/common";
-import { DOCUMENT, inject, Injectable, PLATFORM_ID } from "@angular/core";
+import { computed, DOCUMENT, effect, inject, Injectable, PLATFORM_ID, signal } from "@angular/core";
+import { toObservable } from "@angular/core/rxjs-interop";
 
 type Theme = 'light' | 'dark';
 const STORAGE_KEY = 'ns-ng-theme';
+const PREFERS_DARK = '(prefers-color-scheme: dark)';
 
 @Injectable({ providedIn: 'root'})
 export class ThemeService {
-    private doc = inject(DOCUMENT);
-    private platformId = inject(PLATFORM_ID);
+    private readonly doc = inject(DOCUMENT);
+    private readonly platformId = inject(PLATFORM_ID);
+    private readonly isBrowser = isPlatformBrowser(this.platformId);
 
-    private get isBrowser(): boolean {
-        return isPlatformBrowser(this.platformId);
-    }
+    private readonly override = signal<Theme | null>(null);
+    private readonly systemPrefersDark = signal<boolean>(false);
 
-    private get storage(): Storage | null {
-        if (!this.isBrowser) return null;
-        try {
-            return window.localStorage;
-        } catch {
-            return null;
+
+    readonly theme = computed<Theme>(() => (this.override() ?? (this.systemPrefersDark() ? 'dark' : 'light'))
+    );
+
+    readonly isDark = computed<boolean>( () => this.theme() === 'dark');
+    readonly theme$ = toObservable(this.theme);
+
+    private mql: MediaQueryList | null = null;
+
+    constructor() {
+        if (!this.isBrowser) return;
+
+        const stored = this.safeStorageGet(STORAGE_KEY) as Theme | null;
+        if (stored === 'light' || stored === 'dark') {
+            this.override.set(stored);
         }
-    }
 
-    get current(): Theme {
-        if(!this.isBrowser) return 'dark';
+        this.mql = this.doc.defaultView?.matchMedia?.(PREFERS_DARK) ?? null;
+        if(this.mql) {
+            this.systemPrefersDark.set(this.mql.matches);
 
-        const saved = (localStorage.getItem(STORAGE_KEY) as Theme | null);
-        if (saved) return saved;
+            this.mql.addEventListener?.('change', (e: MediaQueryListEvent) => {
+                this.systemPrefersDark.set(e.matches);
+            });
+        }
 
-        // Fall back to OS preference
-        const prefersDark = this.doc.defaultView?.matchMedia?.('(prefers-color-scheme: dark)')?.matches;
-        return prefersDark ? 'dark' : 'light';
+        effect(() => {
+            const theme = this.theme();
+            const shouldPersist = this.override() !== null;
+            this.apply(theme, shouldPersist);
+        });
     }
 
     init(): void {
-        this.apply(this.current, false);
+
+    }
+
+    setTheme(theme: Theme): void {
+        this.override.set(theme);
     }
 
     toggle(): void {
-        const next: Theme = this.current === 'dark' ? 'light' : 'dark';
-        this.apply(next, true);
+        this.setTheme(this.theme() === 'dark' ? 'light' : 'dark' )
     }
 
-    apply(theme: Theme, persist = true ): void {
+    followSystem(): void {
+        this.override.set(null);
+    }
+
+    current(): Theme {
+        return this.theme();
+    }
+
+    isDarkMode(): boolean {
+        return this.isDark();
+    }
+
+    private apply(theme: Theme, persist = true ): void {
         const root = this.doc.documentElement;
         root.setAttribute('data-theme', theme);
 
@@ -52,7 +82,12 @@ export class ThemeService {
         }
     }
 
-    isDark(): boolean {
-        return this.current === 'dark';
+    private get storage(): Storage | null {
+        if (!this.isBrowser) return null;
+        try { return this.doc.defaultView?.localStorage ?? null; } catch { return null }
+    }
+
+    private safeStorageGet(key: string): string | null {
+        try { return this.storage?.getItem(key) ?? null; } catch { return null; }
     }
 }
