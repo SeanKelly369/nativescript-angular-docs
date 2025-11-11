@@ -30,14 +30,14 @@ h1 {
     border-radius: 0.5rem;
     padding: 2rem;
     box-shadow: 0 1px 3px $translucent_black_10;
-    border: 1px solid $off_white_2;
+    border: 1px solid var(--border);
 }
 
 .api-section h2 {
     font-size: 1.25rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: $black_75;
+    color: var(--surface-alt);
 }
 
 .api-section ul {
@@ -51,7 +51,7 @@ h1 {
 }
 
 .api-section a {
-    color: $blue;
+    color: var(--link);
     text-decoration: none;
     
     &:hover {

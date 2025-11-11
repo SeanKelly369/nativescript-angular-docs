@@ -10,7 +10,10 @@
   font-family: 'Inter', system-ui, sans-serif;
   font-size-adjust: from-font;
 
-  --transition-theme: color 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+  --transition-theme: color 150ms ease,
+                      background-color 150ms ease,
+                      border-color 150ms ease,
+                      box-shadow 150ms ease;
 
   /* handy rgb base for translucent shadows */
   --black-rgb: 0, 0, 0;
@@ -18,53 +21,89 @@
   --shadow-30: rgba(var(--black-rgb), 0.30);
 }
 
-html { font-size: calc(var(--rem-base) * 1px); }
+html {
+  font-size: calc(var(--rem-base) * 1px);
+  scroll-behavior: smooth;
+}
 
 /* Light (default) */
 :root,
 :root[data-theme="light"] {
   /* semantic tokens */
-  --bg: #f5f7fb;                 /* soft app background */
-  --surface: #ffffff;             /* card/background */
-  --surface-alt: #f9fcfe;         /* $off_white */
-  --text: #282828;                /* $black_80 */
-  --text-strong: #333333;         /* $black_75 */
-  --muted: #64748b;               /* $paynes_grey */
-  --border: #e7ebf1;              /* $off_white_2 */
-  --link: #0066cc;                /* $blue */
-  --li: #02bebe;                  /* $cyan */
-  --code-fg: #e53e3e;             /* $red */
-  --code-bg: #f9fcfe;             /* $off_white */
-  --pre-bg: #1e293b;              /* dark prism bg for contrast */
-  --pre-fg: #f9fcfe;              /* $off_white */
+  --bg:          #{$off_white_2};  // soft app background
+  --surface:     #{$white};        // card/background
+  --surface-alt: #{$off_white};    // off white
+
+  --text:        #{$black_80};
+  --text-feature-card: #{$black_75};
+  --text-grey-bg: #{$black_75};
+  --text-strong: #{$black_75};
+  --muted:       #{$paynes_grey};
+  --yellow:      #{$yellow-dark};
+
+  --border:      #{$off_white_2};  // or $washed_out_blue
+  --link:        #{$blue};
+  --li:          #{$cyan};
+
+  --code-fg:     #{$red};
+  --code-bg:     #{$off_white};
+
+  --pre-bg:      #{$dark_blue};
+  --pre-fg:      #{$off_white};
+
+  /* content accents */
+  --heading-accent:   var(--text-strong); // h2/h3
+  --content-text:     var(--text);        // p
+
+  --code-inline-fg:   var(--code-fg);
+  --code-inline-bg:   var(--code-bg);
+  --pre-custom-bg:    var(--pre-bg);      // pre bg
 }
 
 /* Dark */
 :root[data-theme="dark"] {
-  --bg: #0f172a;                  /* $very_dark_blue */
-  --surface: #0f172a;             /* same as bg for flat dark */
-  --surface-alt: #1e293b;         /* $dark_blue */
-  --text: #e7ebf1;                /* $off_white_2 */
-  --text-strong: #ffffff;
-  --muted: #94a3b8;               /* $pale_blue */
-  --border: #1f2a3a;              /* custom subtle border */
-  --link: #419bf6;                /* $sky_blue */
-  --li: #02bebe;                  /* $cyan still pops */
-  --code-fg: #e53e3e;             /* $red */
-  --code-bg: #1e293b;             /* $dark_blue */
-  --pre-bg: #0f172a;              /* $very_dark_blue */
-  --pre-fg: #f9fcfe;              /* $off_white */
+  /* semantic tokens */
+  --bg:          #{$very_dark_blue};
+  --surface:     #{$very_dark_blue};
+  --surface-alt: #{$dark_blue};
+
+  --text:        #{$off_white_2};
+  --text-feature-card: #{$black_75};
+  --text-strong: #{$white};
+  --text-strong-white-bg: #{$black_75};
+  --text-grey-bg: #{$black_75};
+  --muted:       #{$pale_blue};
+  --yellow:      #{$yellow};
+
+  --border:      #{$off_black};
+  --link:        #{$sky_blue};
+  --li:          #{$cyan};
+
+  --code-fg:     #{$red};
+  --code-bg:     #{$dark_blue};
+
+  --pre-bg:      #{$very_dark_blue};
+  --pre-fg:      #{$off_white};
+
+  /* neon-style accents (what you had in @media prefers-color-scheme: dark) */
+  --heading-accent:   #{$neon-cyan};      // h2/h3
+  --content-text:     #{$neon-cyan};      // p
+  --code-inline-fg:   #{$neon-cyan-code};
+  --code-inline-bg:   transparent;
+  --pre-custom-bg:    #{$cyan-bg};
 }
 
 /* =========================
    GLOBALS
    ========================= */
 
-.language-css, .language-scss {
+.language-css,
+.language-scss {
   color: var(--link);
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
@@ -72,10 +111,6 @@ html, body {
   background: var(--bg);
   color: var(--text);
   transition: var(--transition-theme);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* =========================
@@ -112,7 +147,7 @@ html {
   h2 {
     font-weight: 600;
     margin: 2rem 0 1rem 0;
-    color: var(--text-strong);
+    color: var(--heading-accent);   // changes per theme
     font-size: 1.8rem;
   }
 
@@ -120,7 +155,7 @@ html {
     font-size: 1.5rem;
     font-weight: 600;
     margin: 1.5rem 0 0.75rem 0;
-    color: var(--text-strong);
+    color: var(--heading-accent);
   }
 
   h4 {
@@ -130,10 +165,11 @@ html {
   p {
     line-height: 1.7;
     margin-bottom: 1rem;
-    color: var(--text);
+    color: var(--content-text);     // neon in dark, normal in light
   }
 
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 1rem;
     padding-left: 1.5rem;
   }
@@ -145,16 +181,16 @@ html {
   }
 
   code {
-    background: var(--code-bg);
+    background: var(--code-inline-bg); // theme-aware inline code
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
     font-size: 0.875em;
-    color: var(--code-fg);
+    color: var(--code-inline-fg);
   }
 
   pre {
-    background: var(--pre-bg);
+    background: var(--pre-custom-bg);  // cyan-bg in dark, dark_blue in light
     color: var(--pre-fg);
     padding: 1.5rem;
     border-radius: 0.5rem;
@@ -176,30 +212,4 @@ html {
       text-decoration: underline;
     }
   }
-}
-
-@media (prefers-color-scheme: dark) {
-  .content-wrapper {
-    background-color: $black;
-
-    h1 {
-      color: $off_white;
-
-    }
-
-    h2, p, h3 {
-      color: $neon-cyan;
-    }
-
-    pre {
-      background-color: $cyan-bg;
-    }
-
-    code {
-      background: none;
-      color: $neon-cyan-code;
-    }
-  }
-
-
 }

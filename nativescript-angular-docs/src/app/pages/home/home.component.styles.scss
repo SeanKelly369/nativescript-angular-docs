@@ -58,7 +58,7 @@
 
     .btn-primary {
       background: $yellow;
-      color: $black_75;
+      color: $white;
       
       &:hover {
         background: $yellow;
@@ -73,7 +73,7 @@
       
       &:hover {
         background: $white;
-        color: $black_75;
+        color: var(--surface-alt);
       }
     }
 
@@ -81,12 +81,13 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-right: 0.625rem;
     }
 
     .phone-mockup {
       width: 12.5rem;
       height: 25rem;
-      background: $black_75;
+      background: var(--surface-alt);
       border-radius: 1.5rem;
       padding: 1.25rem;
       box-shadow: 0 1.25rem 2.5rem $translucent_black_30;
@@ -95,7 +96,7 @@
     .phone-screen {
       width: 100%;
       height: 100%;
-      background: $off_white;
+      background: var(--surface);
       border-radius: 1rem;
       overflow: hidden;
     }
@@ -107,7 +108,7 @@
     }
 
     .app-header {
-      background: $blue;
+      background: var(--link);
       color: $white;
       padding: 1rem;
       text-align: center;
@@ -129,14 +130,14 @@
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px $translucent_black_10;
       font-size: 0.875rem;
-      color: $black_80;
+      color: var(--text);
       width: 87%;
       cursor: default;
     }
 
     .features {
       padding: 4rem 1rem;
-      background: $off_white;
+      background: var(--surface);
     }
 
     .container {
@@ -149,8 +150,10 @@
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 3rem;
-      color: $black_75;
+      color: var(--text-strong);
     }
+
+
 
     .section-title-light {
       text-align: center;
@@ -190,12 +193,12 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $black_75;
+      color: var(--text-feature-card);
       cursor: default;
     }
 
     .feature-card p {
-      color: $paynes_grey;
+      color: var(--muted);
       line-height: 1.6;
       cursor: default;
     }
@@ -215,7 +218,7 @@
     .comparison-card {
       padding: 2rem;
       border-radius: 1rem;
-      border: 1px solid $off_white_2;
+      border: 1px solid var(--border);
       transition: border-color 0.2s ease;
       
       &:hover {
@@ -228,20 +231,20 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $black_75;
+      color: var(--surface-alt);
     }
 
     .comparison-card p {
-      color: $paynes_grey;
+      color: var(--muted);
       line-height: 1.6;
     }
 
     .comparison-card code {
-      background: $off_white;
+      background: var(--surface);
       padding: 0.25rem 0.5rem;
       border-radius: 0.25rem;
       font-family: monospace;
-      color: $very_dark_blue;
+      color: var(--text);
     }
 
     .code-comparison {
@@ -254,12 +257,12 @@
       font-size: 1.125rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $black_75;
+      color: var(--text-feature-card);
     }
 
     .code-sharing-section {
       padding: 4rem 1rem;
-      background: $off_white;
+      background: var(--surface);
     }
 
     .sharing-content {
@@ -273,13 +276,13 @@
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $black_75;
+      color: var(--text-feature-card);
     }
 
     .sharing-text p {
       font-size: 1.125rem;
       line-height: 1.6;
-      color: $paynes_grey;
+      color: var(--muted);
       margin-bottom: 2rem;
     }
 
@@ -291,7 +294,7 @@
 
     .feature-list li {
       padding: 0.5rem 0;
-      color: $paynes_grey;
+      color: var(--muted);
       font-size: 1.125rem;
     }
 
@@ -323,7 +326,7 @@
     }
 
     .platform-layer {
-      background: $off_white;
+      background: var(--surface);
       padding: 1.5rem;
       border-radius: 0.5rem;
       text-align: center;
@@ -332,7 +335,7 @@
     .platform-layer h4 {
       margin-bottom: 1rem;
       font-weight: 600;
-      color: $black_75;
+      color: var(--surface-alt);
     }
 
     .layer-item {
@@ -345,7 +348,7 @@
 
     .platform-layer .layer-item {
       background: $white;
-      color: $paynes_grey;
+      color: var(--muted);
     }
 
     .getting-started-preview {
@@ -362,11 +365,11 @@
     .code-header {
       background: $dark_blue;
       padding: 1rem;
-      border-bottom: 1px solid $paynes_grey;
+      border-bottom: 1px solid var(--muted);
     }
 
     .code-title {
-      color: $off_white_2;
+      color: var(--border);
       font-weight: 500;
     }
 
@@ -394,6 +397,11 @@
       text-align: center;
     }
 
+    .ready-text {
+      color: var(--text-feature-card) !important;
+
+    }
+
     .cta-section p {
       font-size: 1.125rem;
       margin-bottom: 1rem;
@@ -412,7 +420,7 @@
     }
 
     .community-card {
-      background: $off_white;
+      background: var(--surface);
       padding: 2rem;
       border-radius: 1rem;
       text-align: center;
@@ -432,11 +440,11 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: $black_75;
+      color: var(--text-feature-card);
     }
 
     .community-card p {
-      color: $paynes_grey;
+      color: var(--muted);
       line-height: 1.6;
       margin-bottom: 2rem;
     }

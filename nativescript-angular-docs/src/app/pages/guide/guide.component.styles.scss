@@ -1,285 +1,286 @@
 @use './../../../styles_colours' as *;
 
 .guide-container {
-    display: flex;
-    gap: 1.2rem;
-    max-width: 100rem;
-    margin: 0 auto;
-    align-items: flex-start;
-    justify-content: start;
+  display: flex;
+  gap: 1.2rem;
+  max-width: 100rem;
+  margin: 0 auto;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .guide-sidebar {
-    border-radius: 0.5rem;
-    width: 18rem;
-    flex-shrink: 0;
-    overflow-y: auto;
-    height: calc(104.5vh);
-    margin-top: 0;
-    margin-bottom: 1.5rem;
+  border-radius: 0.5rem;
+  width: 18rem;
+  flex-shrink: 0;
+  overflow-y: auto;
+  height: calc(104.5vh);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
 .sidebar-nav {
   position: sticky;
   overflow: auto;
-  background: $off_white;
+  background: var(--surface);
   border-radius: 0.5rem;
   padding: 0.75rem;
 }
 
 .sidebar-nav h3 {
-    margin: 0 0 1rem 0;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: $black_75;
+  margin: 0 0 1rem 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-strong);
 }
 
 .sidebar-nav h4 {
-    margin: 2rem 0 1rem 0;
-    font-size: 1rem;
-    font-weight: 600;
-    color: $paynes_grey;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  margin: 2rem 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .sidebar-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar-nav li {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-nav a {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: $paynes_grey;
-    text-decoration: none;
-    border-radius: 0.25rem;
-    transition: all 0.2s ease;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
 
-    &:hover, &.active {
-        background: $off_white_2;
-        color: $blue;
-    }
+  &:hover,
+  &.active {
+    background: var(--border);
+    color: var(--link);
+  }
 }
 
 .guide-content {
-    flex: 1;
-    min-width: 0;
-    max-height: calc(100vh - 2rem);
-    overflow: auto;
+  flex: 1;
+  min-width: 0;
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
 }
 
 .guide-overview {
-    background: $white;
-    padding: 2rem;
-    box-shadow: 0 1px 3px $translucent_black_10;
+  background: var(--surface);                // was $white
+  padding: 2rem;
+  box-shadow: 0 1px 3px var(--shadow-10);    // was $translucent_black_10
 }
 
 .guide-overview h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: $black_75;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--text-strong);                 // was var(--surface-alt)
 }
 
 .lead {
-    font-size: 1.25rem;
-    color: $paynes_grey;
-    margin-bottom: 3rem;
-    line-height: 1.6;
+  font-size: 1.25rem;
+  color: var(--muted);
+  margin-bottom: 3rem;
+  line-height: 1.6;
 }
 
 .overview-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .overview-card {
-    border: 1px solid $off_white_2;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    transition: all 0.2s ease;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
 
-    &:hover {
-        border-color: $blue;
-        box-shadow: 0 4px 6px rgba(0, 102, 204, 0.1);
-        transform: translateY(-2px);
-    }
+  &:hover {
+    border-color: var(--link);
+    box-shadow: 0 4px 6px var(--shadow-10);  // neutral shadow
+    transform: translateY(-2px);
+  }
 }
 
 .overview-card h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: $black_75;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-strong);                 // was var(--surface-alt)
 }
 
 .overview-card p {
-    color: $paynes_grey;
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .card-link {
-    color: $blue;
-    text-decoration: none;
-    font-weight: 500;
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 500;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .getting-started-cta {
-    background: linear-gradient(135deg, $indigo 0%, $purple 100%);
-    color: $white;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
+  background: linear-gradient(135deg, $indigo 0%, $purple 100%);
+  color: $white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
 }
 
 .getting-started-cta h2 {
-    font-size: 1.875rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  font-size: 1.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 .getting-started-cta p {
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
 }
 
 .btn {
-    display: inline-block;
-    padding: 0.875rem 2rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
+  display: inline-block;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
 }
 
 .btn-primary {
-    background: $yellow;
-    color: $black_75;
+  background: $yellow;                       // brand accent stays SCSS
+  color: var(--surface-alt);
 
-    &:hover {
-        background: $yellow;
-        transform: translateY(-2px);
-    }
+  &:hover {
+    background: $yellow;
+    transform: translateY(-2px);
+  }
 }
 
 .docs-navigation {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid $off_white_2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
 }
 
 .nav-previous {
-    margin-right: 0.1rem;
+  margin-right: 0.1rem;
 }
 
 .nav-link {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border: 1px solid $cyan;
-    min-width: 11rem;
-    background-color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid var(--li);              // accent border
+  min-width: 11rem;
+  background-color: var(--surface);         // was $white
 
-    &:hover {
-    border-color: $neon-white;
-    box-shadow: 0 2px 4px rgba(0, 102, 204, 0.1);
-    }
+  &:hover {
+    border-color: var(--link);              // was $neon-white
+    box-shadow: 0 2px 4px var(--shadow-10); // was rgba(0, 102, 204, 0.1)
+  }
 }
 
 .nav-direction {
-    font-size: 0.875rem;
-    color: $paynes_grey;
-    margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  color: var(--muted);                       // was var(--muted) / $white in dark
+  margin-bottom: 0.25rem;
 }
 
 .nav-title {
-    font-weight: 600;
-    color: $black_75;
+  font-weight: 600;
+  color: var(--text-strong);                 // was var(--surface-alt) / $neon-white
 }
 
 .guide-right-toc {
-    width: 16rem;
-    flex-shrink: 0;
-    position: sticky;
-    top: 1rem;
-    align-self: flex-start;
-    margin-right: 1rem;
-    overflow-y: auto;
-    max-height: calc(100vh - 2rem);
+  width: 16rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+  margin-right: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 2rem);
 }
 
 .toc-nav {
-    background: $off_white;
-    border-radius: 0.5rem;
-    padding: 0.75rem;
-    border: 1px solid $off_white_2;
-    cursor: pointer;
+  background: var(--surface);
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
 }
 
 .toc-nav h4 {
-    margin: 0 0 0.75rem 0;
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: $paynes_grey;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--muted);                       // replaces $side-menu-h4 in dark
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .toc-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .toc-nav li {
-    margin: 0.125rem 0;
+  margin: 0.125rem 0;
 }
 
 .toc-nav li.level-3 a {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
 .toc-nav li.level-4 a {
-    padding-left: 1.75rem;
+  padding-left: 1.75rem;
 }
 
 .toc-nav a {
-    display: block;
-    padding: 0.35rem 0.5rem;
-    color: $paynes_grey;
-    text-decoration: none;
-    border-radius: 0.25rem;
-    transition: background 0.2s ease, color 0.2s ease;
+  display: block;
+  padding: 0.35rem 0.5rem;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: 0.25rem;
+  transition: background 0.2s ease, color 0.2s ease;
 
-    &:hover {
-        background: $off_white_2;
-        color: $blue;
-    }
+  &:hover {
+    background: var(--border);
+    color: var(--link);
+  }
 }
 
 .guide-content {
-  overflow-y:hidden;
+  overflow-y: hidden;
 }
 
 /* If you have a sticky header, help native scrollIntoView cases too */
@@ -289,81 +290,37 @@
   scroll-margin-top: var(--toc-offset, 56px); /* match header height if any */
 }
 
-
 @media (max-width: 768px) {
-    .guide-container {
-        flex-direction: column;
-        padding: 1rem;
-    }
+  .guide-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
 
-    .guide-sidebar {
-        width: 100%;
-    }
+  .guide-sidebar {
+    width: 100%;
+  }
 
-    .sidebar-nav {
-        position: static;
-    }
+  .sidebar-nav {
+    position: static;
+  }
 
-    .overview-grid {
-        grid-template-columns: 1fr;
-    }
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .guide-overview {
-        padding: 1.5rem;
-    }
+  .guide-overview {
+    padding: 1.5rem;
+  }
 
-    .guide-overview h1 {
-        font-size: 2rem;
-    }
+  .guide-overview h1 {
+    font-size: 2rem;
+  }
 
-    .guide-right-toc {
-        width: 100%;
-        position: static;
-        margin-top: 1rem;
-    }
+  .guide-right-toc {
+    width: 100%;
+    position: static;
+    margin-top: 1rem;
+  }
 }
 
-@media (prefers-color-scheme: dark) {
-    .sidebar-nav {
-        background-color: $black;
-    }
-
-    .sidebar-nav a {
-        color: $grey_10;
-        &:hover {
-            background: $very_dark_blue;
-            color: $neon-white;
-        }
-    }
-
-    .toc-nav {
-        background-color: $black;
-        border: none;
-    }
-
-    .nav-link {
-        background-color: $black;
-    }
-
-    .nav-title {
-        color: $neon-white;
-    }
-
-    .nav-direction {
-        color: $white;
-    }
-
-    .toc-nav a {
-        color: $grey_10;
-
-        &:hover {
-            background: $very_dark_blue;
-            color: $neon-white;
-        }
-    }
-
-    .toc-nav h4 {
-        color: $side-menu-h4;
-    }
-
-}
+/* Dark-mode media query removed – handled via :root[data-theme="dark"] tokens */

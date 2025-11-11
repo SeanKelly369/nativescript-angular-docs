@@ -1,19 +1,30 @@
-<div class="inline-flex intems-center gap-2">
-    <button
-        type="button"
-        class="px-3 py-1 rounded-lg border"
-        (click)="toggle()"
-        [attr.aria-pressed]="isDark()"
-        [title]="isDark() ? 'Switch to light' : 'Switch to dark'">
-        {{ isDark() ? 'Dark ●' : 'Light ○' }}
-    </button>
+<div class="theme-toggle-wrapper">
+  <button
+    type="button"
+    class="theme-toggle"
+    [class.theme-toggle--dark]="isDark()"
+    (click)="toggle()"
+    role="switch"
+    [attr.aria-checked]="isDark()"
+    [attr.aria-label]="isDark() ? 'Switch to light theme' : 'Switch to dark theme'">
 
-    <button
-        type="button"
-        class="px-3 py-1 rounded-lg border opacity-80"
-        (click)="followSystem()"
-        title="Follow system theme">
-        System
-    </button>
-    <span class="text-xs opacity-70">Theme: {{ current() }}</span>
+    <span class="theme-toggle__track">
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+            <svg viewBox="7 2 14 15" class="moon-icon">
+                <path d="M20 12.79A9 10 8 0 1 9.21 3 7 7 0 0 0 21 12.69z" />
+            </svg>
+        </span>
+      <span class="theme-toggle__thumb"></span>
+    </span>
+  </button>
+
+  <button
+    type="button"
+    class="theme-toggle__system"
+    (click)="followSystem()"
+    title="Follow system theme">
+    System
+  </button>
 </div>

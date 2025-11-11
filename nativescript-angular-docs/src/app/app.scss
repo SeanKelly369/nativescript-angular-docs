@@ -7,18 +7,18 @@
   flex-direction: column;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: $black_75;
-  background-color: $white;
+  color: var(--text);          // was var(--surface-alt)
+  background-color: var(--bg); // was $white
 }
 
 // Header and Navigation
 .header {
-  background: $white;
-  border-bottom: 1px solid $off_white_2;
+  background: var(--surface);          // was $white
+  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 1px 3px $translucent_black_10;
+  box-shadow: 0 1px 3px var(--shadow-10); // was $translucent_black_10
 }
 
 .navbar {
@@ -40,12 +40,12 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: $black_75;
+  color: var(--text-strong);   // was var(--surface-alt)
   font-weight: 600;
   font-size: 1.25rem;
   
   &:hover {
-    color: $blue;
+    color: var(--link);
   }
 }
 
@@ -65,7 +65,7 @@
 }
 
 .brand-text {
-  color: $black_75;
+  color: var(--text-strong);   // was var(--surface-alt)
 }
 
 .nav-links {
@@ -80,7 +80,7 @@
 
 .nav-link {
   text-decoration: none;
-  color: $paynes_grey;
+  color: var(--muted);         // light: paynes grey, dark: pale blue
   font-weight: 500;
   padding: 0.5rem 0;
   border-bottom: 2px solid transparent;
@@ -88,13 +88,13 @@
   cursor: pointer;
 
   &:hover {
-    color: $blue;
-    border-bottom-color: $blue;
+    color: var(--link);
+    border-bottom-color: var(--link);
   }
   
   &.active {
-    color: $blue;
-    border-bottom-color: $blue;
+    color: var(--link);
+    border-bottom-color: var(--link);
   }
 }
 
@@ -105,11 +105,11 @@
 }
 
 .github-link {
-  color: $paynes_grey;
+  color: var(--muted);         // light & dark via tokens
   transition: color 0.2s ease;
   
   &:hover {
-    color: $black_75;
+    color: var(--text-strong); // was var(--surface-alt)
   }
 }
 
@@ -124,8 +124,8 @@
 
 // Footer
 .footer {
-  background: $off_white;
-  border-top: 1px solid $off_white_2;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
   margin-top: auto;
 }
 
@@ -138,7 +138,6 @@
   gap: 2rem;
   align-items: center;
   justify-content: space-around;
-
 }
 
 .footer-section {
@@ -146,7 +145,7 @@
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1rem;
-    color: $grey_25;
+    color: var(--text-strong); // was $grey_25
   }
   
   ul {
@@ -160,13 +159,13 @@
   }
   
   a {
-    color: $paynes_grey;
+    color: var(--muted);
     text-decoration: none;
     font-size: 0.875rem;
     transition: color 0.2s ease;
     
     &:hover {
-      color: $blue;
+      color: var(--link);
     }
   }
 }
@@ -175,12 +174,12 @@
   max-width: 75rem;
   margin: 0 auto;
   padding: 1rem;
-  border-top: 1px solid $off_white_2;
+  border-top: 1px solid var(--border);
   text-align: center;
   
   p {
     margin: 0;
-    color: $paynes_grey;
+    color: var(--muted);
     font-size: 0.875rem;
   }
 }
@@ -202,67 +201,7 @@
   }
 }
 
-// Dark mode support
-@media (prefers-color-scheme: dark) {
-  .app-container {
-    background: $very_dark_blue;
-    color: $off_white_2;
-  }
-  
-  .header {
-    background: $black;
-    border-bottom-color: $black;
-  }
-  
-  .brand-link, .brand-text {
-    color: $off_white_2;
-  }
-  
-  .nav-link {
-    color: $pale_blue;
-    background-color: $black;
-    
-    &:hover, &.active {
-      color: $sky_blue;
-      border-bottom-color: $sky_blue;
-    }
-  }
-  
-  .github-link {
-    color: $pale_blue;
-    
-    &:hover {
-      color: $very_dark_blue;
-    }
-  }
-  
-  .footer {
-    background: $very_dark_blue;
-    border-top-color: $dark_blue;
-  }
-  
-  .footer-section {
-    h4 {
-      color: $very_dark_blue;
-    }
-    
-    a {
-      color: $pale_blue;
-      
-      &:hover {
-        color: $sky_blue;
-      }
-    }
-  }
-  
-  .footer-bottom {
-    border-top-color: $dark_blue;
-    
-    p {
-      color: $pale_blue;
-    }
-  }
-}
+// Dark mode block removed – handled by :root[data-theme="dark"]
 
 .github-link:hover img {
   filter: brightness(1.65);
