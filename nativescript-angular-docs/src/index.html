@@ -1,8 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <title>NativescriptAngularDocs</title>
+    <script>
+    (function () {
+      var STORAGE_KEY = 'ns-ng-theme';
+      var PREFERS_DARK = '(prefers-color-scheme: dark)';
+
+      try {
+        var stored = localStorage.getItem(STORAGE_KEY); // 'light' | 'dark' | null
+        var mql = window.matchMedia ? window.matchMedia(PREFERS_DARK) : null;
+        var systemDark = mql ? mql.matches : false;
+
+        var theme;
+        if (stored === 'light' || stored === 'dark') {
+          theme = stored;
+        } else {
+          // follow system when no override stored
+          theme = systemDark ? 'dark' : 'light';
+        }
+
+        var root = document.documentElement;
+        root.setAttribute('data-theme', theme);
+        root.style.colorScheme = theme;
+      } catch (e) {
+        // If anything blows up, just fall back to CSS defaults
+      }
+    })();
+  </script>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">

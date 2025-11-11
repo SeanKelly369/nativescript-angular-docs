@@ -2,20 +2,17 @@
   <button
     type="button"
     class="theme-toggle"
-    [class.theme-toggle--dark]="isDark()"
     (click)="toggle()"
     role="switch"
     [attr.aria-checked]="isDark()"
     [attr.aria-label]="isDark() ? 'Switch to light theme' : 'Switch to dark theme'">
-
     <span class="theme-toggle__track">
-        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
-
-        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
-            <svg viewBox="7 2 14 15" class="moon-icon">
-                <path d="M20 12.79A9 10 8 0 1 9.21 3 7 7 0 0 0 21 12.69z" />
-            </svg>
-        </span>
+      <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+      <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" class="moon-icon">
+          <path d="M21 12.79A9 9 0 0 1 11.21 3 7 7 0 1 0 21 12.79z" />
+        </svg>
+      </span>
       <span class="theme-toggle__thumb"></span>
     </span>
   </button>

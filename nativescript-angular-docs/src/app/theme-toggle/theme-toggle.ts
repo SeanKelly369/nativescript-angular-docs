@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, ViewEncapsulation } from '@angular/core';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { ThemeService } from '../services/theme.service';
   imports: [AsyncPipe],
   templateUrl: './theme-toggle.html',
   styleUrl: './theme-toggle.scss',
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeToggle {

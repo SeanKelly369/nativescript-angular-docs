@@ -22,7 +22,7 @@ export class ThemeService {
     readonly isDark = computed<boolean>( () => this.theme() === 'dark');
     readonly theme$ = toObservable(this.theme);
 
-    private mql: MediaQueryList | null = null;
+    private readonly mql: MediaQueryList | null = null;
 
     constructor() {
         if (!this.isBrowser) return;
@@ -48,9 +48,6 @@ export class ThemeService {
         });
     }
 
-    init(): void {
-
-    }
 
     setTheme(theme: Theme): void {
         this.override.set(theme);
