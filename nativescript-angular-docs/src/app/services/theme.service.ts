@@ -48,6 +48,9 @@ export class ThemeService {
         });
     }
 
+    init(): void {
+
+    }
 
     setTheme(theme: Theme): void {
         this.override.set(theme);
