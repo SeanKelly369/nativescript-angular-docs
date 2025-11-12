@@ -130,7 +130,7 @@
       border-radius: 0.5rem;
       box-shadow: 0 2px 4px $translucent_black_10;
       font-size: 0.875rem;
-      color: var(--text);
+      color: var(--text-phone);
       width: 87%;
       cursor: default;
     }
@@ -160,7 +160,7 @@
       font-size: 2.5rem;
       font-weight: 700;
       margin-bottom: 3rem;
-      color: $grey_25;
+      color: var(--text-strong);
     }
 
 
@@ -276,7 +276,7 @@
       font-size: 2rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--text-feature-card);
+      color: var(--text-strong);
     }
 
     .sharing-text p {
@@ -335,7 +335,7 @@
     .platform-layer h4 {
       margin-bottom: 1rem;
       font-weight: 600;
-      color: var(--surface-alt);
+      color: var(--text-strong);
     }
 
     .layer-item {
@@ -369,7 +369,7 @@
     }
 
     .code-title {
-      color: var(--border);
+      color: var(--text-invert);
       font-weight: 500;
     }
 
@@ -398,7 +398,7 @@
     }
 
     .ready-text {
-      color: var(--text-feature-card) !important;
+      color: var(--text-phone) !important;
 
     }
 
@@ -447,6 +447,10 @@
       color: var(--muted);
       line-height: 1.6;
       margin-bottom: 2rem;
+    }
+
+    .black-text {
+      color: $black_75;
     }
 
     @media (max-width: 768px) {
