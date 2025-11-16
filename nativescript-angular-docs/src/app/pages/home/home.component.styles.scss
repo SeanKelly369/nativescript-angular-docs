@@ -68,12 +68,12 @@
 
     .btn-secondary {
       background: transparent;
-      color: $white;
-      border-color: $white;
+      color: var(--white);
+      border-color: var(--white);
       
       &:hover {
-        background: $white;
-        color: var(--surface-alt);
+        background: var(--white);
+        color: var(--black);
       }
     }
 
@@ -395,6 +395,7 @@
 
     .cta-section {
       text-align: center;
+      color: var(--text-invert) !important;
     }
 
     .ready-text {
@@ -405,7 +406,7 @@
     .cta-section p {
       font-size: 1.125rem;
       margin-bottom: 1rem;
-      color: $washed_out_blue;
+      color: var(--text-invert) !important;
     }
 
     .community-section {
@@ -440,7 +441,7 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--text-feature-card);
+      color: var(--text-invert);
     }
 
     .community-card p {
