@@ -29,10 +29,9 @@ html {
 /* Light (default) */
 :root,
 :root[data-theme="light"] {
-  /* semantic tokens */
-  --bg:                #{$off_white_2};  // soft app background
-  --surface:           #{$white};        // card/background
-  --surface-alt:       #{$off_white};    // off white
+  --bg:                #{$off_white_2};
+  --surface:           #{$white};
+  --surface-alt:       #{$off_white};
 
   --text:              #{$black_80};
   --text-phone:        #{$black_80};
@@ -45,7 +44,7 @@ html {
 
   --white:             #{$off_white};
 
-  --border:            #{$off_white_2};  // or $washed_out_blue
+  --border:            #{$off_white_2};
   --black:             #{$black_75};
   --link:              #{$sky-blue};
   --heading-bg:        #{$blue};
@@ -58,17 +57,16 @@ html {
   --pre-fg:            #{$off_white};
 
   /* content accents */
-  --heading-accent:   var(--text-strong); // h2/h3
-  --content-text:     var(--text);        // p
+  --heading-accent:   var(--text-strong);
+  --content-text:     var(--text);
 
   --code-inline-fg:   var(--code-fg);
   --code-inline-bg:   var(--code-bg);
-  --pre-custom-bg:    var(--pre-bg);      // pre bg
+  --pre-custom-bg:    var(--pre-bg);
 }
 
 /* Dark */
 :root[data-theme="dark"] {
-  /* semantic tokens */
   --bg:                   #{$very_dark_blue};
   --surface:              #{$very_dark_blue};
   --surface-alt:          #{$dark_blue};
@@ -94,8 +92,8 @@ html {
   --pre-fg:               #{$off_white};
 
   /* neon-style accents (what you had in @media prefers-color-scheme: dark) */
-  --heading-accent:   #{$neon-cyan};      // h2/h3
-  --content-text:     #{$neon-cyan};      // p
+  --heading-accent:   #{$neon-cyan};
+  --content-text:     #{$neon-cyan};
   --code-inline-fg:   #{$neon-cyan-code};
   --code-inline-bg:   transparent;
   --pre-custom-bg:    #{$cyan-bg};
@@ -127,8 +125,8 @@ body {
 
 .guide-content {
   overflow: auto;
-  overscroll-behavior: contain; /* prevent bubbling to body */
-  scroll-behavior: smooth;      /* nice default */
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
 }
 
 .content-wrapper {
@@ -155,7 +153,7 @@ body {
   h2 {
     font-weight: 600;
     margin: 2rem 0 1rem 0;
-    color: var(--heading-accent);   // changes per theme
+    color: var(--heading-accent);
     font-size: 1.8rem;
   }
 
@@ -173,7 +171,7 @@ body {
   p {
     line-height: 1.7;
     margin-bottom: 1rem;
-    color: var(--content-text);     // neon in dark, normal in light
+    color: var(--content-text);
   }
 
   ul,
@@ -189,7 +187,7 @@ body {
   }
 
   code {
-    background: var(--code-inline-bg); // theme-aware inline code
+    background: var(--code-inline-bg);
     padding: 0.125rem 0.25rem;
     border-radius: 0.25rem;
     font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
@@ -198,7 +196,7 @@ body {
   }
 
   pre {
-    background: var(--pre-custom-bg);  // cyan-bg in dark, dark_blue in light
+    background: var(--pre-custom-bg);
     color: var(--pre-fg);
     padding: 1.5rem;
     border-radius: 0.5rem;

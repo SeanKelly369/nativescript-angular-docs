@@ -64,7 +64,7 @@
   &:hover,
   &.active {
     background: var(--border);
-    color: var(--link);
+    color: var(--content-text);
   }
 }
 
@@ -73,19 +73,20 @@
   min-width: 0;
   max-height: calc(100vh - 2rem);
   overflow: auto;
+  overflow-y: hidden;
 }
 
 .guide-overview {
-  background: var(--surface);                // was $white
+  background: var(--surface);
   padding: 2rem;
-  box-shadow: 0 1px 3px var(--shadow-10);    // was $translucent_black_10
+  box-shadow: 0 1px 3px var(--shadow-10);
 }
 
 .guide-overview h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: var(--text-strong);                 // was var(--surface-alt)
+  color: var(--text-strong);
 }
 
 .lead {
@@ -110,7 +111,7 @@
 
   &:hover {
     border-color: var(--link);
-    box-shadow: 0 4px 6px var(--shadow-10);  // neutral shadow
+    box-shadow: 0 4px 6px var(--shadow-10);
     transform: translateY(-2px);
   }
 }
@@ -119,7 +120,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
-  color: var(--text-strong);                 // was var(--surface-alt)
+  color: var(--text-strong);
 }
 
 .overview-card p {
@@ -169,7 +170,7 @@
 }
 
 .btn-primary {
-  background: $yellow;                       // brand accent stays SCSS
+  background: $yellow;
   color: var(--surface-alt);
 
   &:hover {
@@ -198,25 +199,25 @@
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
-  border: 1px solid var(--li);              // accent border
+  border: 1px solid var(--li);
   min-width: 11rem;
-  background-color: var(--surface);         // was $white
+  background-color: var(--surface);
 
   &:hover {
-    border-color: var(--link);              // was $neon-white
-    box-shadow: 0 2px 4px var(--shadow-10); // was rgba(0, 102, 204, 0.1)
+    border-color: var(--link);
+    box-shadow: 0 2px 4px var(--shadow-10);
   }
 }
 
 .nav-direction {
   font-size: 0.875rem;
-  color: var(--muted);                       // was var(--muted) / $white in dark
+  color: var(--muted);
   margin-bottom: 0.25rem;
 }
 
 .nav-title {
   font-weight: 600;
-  color: var(--text-strong);                 // was var(--surface-alt) / $neon-white
+  color: var(--text-strong);
 }
 
 .guide-right-toc {
@@ -242,7 +243,7 @@
   margin: 0 0 0.75rem 0;
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--muted);                       // replaces $side-menu-h4 in dark
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -275,19 +276,15 @@
 
   &:hover {
     background: var(--border);
-    color: var(--link);
+    color: var(--content-text);
   }
-}
-
-.guide-content {
-  overflow-y: hidden;
 }
 
 /* If you have a sticky header, help native scrollIntoView cases too */
 .guide-content h2,
 .guide-content h3,
 .guide-content h4 {
-  scroll-margin-top: var(--toc-offset, 56px); /* match header height if any */
+  scroll-margin-top: var(--toc-offset, 56px);
 }
 
 @media (max-width: 768px) {
@@ -322,5 +319,3 @@
     margin-top: 1rem;
   }
 }
-
-/* Dark-mode media query removed – handled via :root[data-theme="dark"] tokens */

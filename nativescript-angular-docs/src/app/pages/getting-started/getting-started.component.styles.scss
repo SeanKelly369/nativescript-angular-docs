@@ -55,7 +55,7 @@
   margin: 0 0 1rem 0;
   font-size: 1.125rem;
   font-weight: 600;
-  color: var(--text-strong); // was var(--surface-alt)
+  color: var(--text-strong);
 }
 
 .sidebar-nav ul {
@@ -71,14 +71,14 @@
 .sidebar-nav a {
   display: block;
   padding: 0.5rem 0.75rem;
-  color: var(--muted);              // was $paynes_grey
+  color: var(--muted);
   text-decoration: none;
   border-radius: 0.25rem;
   transition: all 0.2s ease;
     
   &:hover {
-    background: var(--surface-alt); // was var(--border)
-    color: var(--link);             // was $sky_blue
+    background: var(--surface-alt);
+    color: var(--content-text);
   }
 }
 
@@ -102,23 +102,23 @@
   text-decoration: none;
   transition: all 0.2s ease;
   border: 1px solid var(--border);
-  background-color: var(--surface);      // was $white
+  background-color: var(--surface);
     
   &:hover {
-    border-color: var(--li);             // was $neon-cyan
-    box-shadow: 0 2px 4px var(--shadow-10); // was $translucent_black_10
+    border-color: var(--li);
+    box-shadow: 0 2px 4px var(--shadow-10);
   }
 }
 
 .nav-direction {
   font-size: 0.875rem;
-  color: var(--muted);                   // was $paynes_grey
+  color: var(--muted);
   margin-bottom: 0.25rem;
 }
 
 .nav-title {
   font-weight: 600;
-  color: var(--text-strong);             // was var(--surface-alt)
+  color: var(--text-strong);
 }
 
 .nav-previous {
@@ -149,5 +149,3 @@
     gap: 1rem;
   }
 }
-
-/* dark-mode block removed – handled by :root[data-theme="dark"] */
