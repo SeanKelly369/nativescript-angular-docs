@@ -46,6 +46,7 @@ body.app-ready .app-container {
 .nav-brand {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .brand-link {
@@ -64,12 +65,14 @@ body.app-ready .app-container {
 .angular-logo {
   position: relative;
   top: 2px;
+  min-width: 2.3rem;
 }
 
 .logo {
   height: 2rem;
   width: auto;
   margin-right: 0.75rem;
+  min-width: 2.3rem;
 }
 
 .logo-nativescript {
