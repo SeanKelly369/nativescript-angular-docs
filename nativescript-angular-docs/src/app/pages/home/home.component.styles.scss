@@ -57,7 +57,7 @@
     }
 
     .btn-primary {
-      background: $yellow;
+      background: $navy;
       color: $white;
       
       &:hover {
@@ -108,7 +108,7 @@
     }
 
     .app-header {
-      background: var(--link);
+      background: var(--heading-bg);
       color: $white;
       padding: 1rem;
       text-align: center;

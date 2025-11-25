@@ -47,7 +47,8 @@ html {
 
   --border:            #{$off_white_2};  // or $washed_out_blue
   --black:             #{$black_75};
-  --link:              #{$blue};
+  --link:              #{$sky-blue};
+  --heading-bg:        #{$blue};
   --li:                #{$cyan};
 
   --code-fg:           #{$red};
@@ -83,7 +84,7 @@ html {
   --yellow:               #{$yellow};
 
   --border:               #{$off_black};
-  --link:                 #{$sky_blue};
+  --link:                 #{$navy};
   --li:                   #{$cyan};
 
   --code-fg:              #{$red};

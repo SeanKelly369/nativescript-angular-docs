@@ -12,7 +12,17 @@ import { ThemeToggle } from './theme-toggle/theme-toggle';
 export class App {
   protected readonly title = signal('nativescript-angular-docs');
 
-  constructor(private theme: ThemeService) {
+  protected readonly mobileMenuOpen = signal(false);
+
+  constructor(private readonly theme: ThemeService) {
     this.theme.init();
+  }
+
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen.update(open => !open);
+  }
+
+  closeMobileMenu(): void {
+    this.mobileMenuOpen.set(false);
   }
 }
