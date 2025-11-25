@@ -100,12 +100,12 @@ body.app-ready .app-container {
   cursor: pointer;
 
   &:hover {
-    color: var(--link);
+    color: var(--text-content);
     border-bottom-color: var(--link);
   }
   
   &.active {
-    color: var(--link);
+    color: var(--text-content);
     border-bottom-color: var(--link);
   }
 }
