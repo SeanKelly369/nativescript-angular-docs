@@ -59,7 +59,7 @@
 
 /* explicit LIGHT state */
 html[data-theme="light"] .theme-toggle__icon--sun {
-  color: #ffd700;       /* or #{$yellow} if you @use your palette here */
+  color: #ffd700;
   opacity: 1;
 }
 
@@ -88,7 +88,6 @@ html[data-theme="dark"] .theme-toggle__thumb {
   background: var(--surface);
   box-shadow: 0 1px 3px var(--shadow-10);
   transition: transform 0.18s ease;
-  /* no transform here – it’s applied by the html[data-theme] rules above */
 }
 
 /* "System" button */
