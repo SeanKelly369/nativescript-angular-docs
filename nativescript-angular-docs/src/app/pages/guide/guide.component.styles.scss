@@ -179,9 +179,7 @@
 .docs-navigation {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
   margin-bottom: 1rem;
-  padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
 
@@ -192,7 +190,7 @@
 .nav-link {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.3rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -282,6 +280,112 @@
 .guide-content h3,
 .guide-content h4 {
   scroll-margin-top: var(--toc-offset, 56px);
+}
+
+.toc-mobile {
+  display: none; // only shown under the mobile breakpoint
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 0.75rem;
+  z-index: 20;
+}
+
+.toc-mobile__trigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-strong);
+  cursor: pointer;
+}
+
+.toc-mobile__chevron {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.toc-mobile__menu {
+  margin-top: 0.25rem;
+  background: var(--surface);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 10px var(--shadow-10);
+  padding: 0.25rem 0;
+}
+
+.toc-mobile__trigger--open .toc-mobile__chevron {
+  transform: rotate(180deg);
+}
+
+.toc-mobile__item {
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--muted);
+
+  &:hover {
+    background: var(--border);
+    color: var(--content-text);
+  }
+
+  &.level-2 {
+    padding-left: 1.25rem;
+  }
+
+  &.level-3 {
+    padding-left: 1.75rem;
+  }
+
+  &.level-4 {
+    padding-left: 2.25rem;
+  }
+}
+
+.toc-mobile__item--top {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+@media (max-width: 1224px) {
+  .guide-container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  /* hide left & right sidebars */
+  .guide-sidebar,
+  .guide-right-toc {
+    display: none;
+  }
+
+  /* show dropdown instead */
+  .toc-mobile {
+    display: block;
+  }
+
+  .guide-overview {
+    padding: 1.5rem;
+  }
+
+  .guide-overview h1 {
+    font-size: 2rem;
+  }
+
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {

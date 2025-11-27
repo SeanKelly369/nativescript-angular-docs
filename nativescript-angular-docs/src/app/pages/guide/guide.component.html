@@ -59,6 +59,42 @@
           }
         </div>
 
+        <!-- ✅ Mobile TOC dropdown -->
+        <div class="toc-mobile" *ngIf="tocItems$ | async as items">
+          <button
+            type="button"
+            class="toc-mobile__trigger"
+            [class.toc-mobile__trigger--open]="isMobileTocOpen"
+            (click)="toggleMobileToc()"
+            [attr.aria-expanded]="isMobileTocOpen"
+          >
+            <span>On this page</span>
+            <span class="toc-mobile__chevron">▾</span>
+          </button>
+
+          <div class="toc-mobile__menu" *ngIf="isMobileTocOpen">
+            <button
+              type="button"
+              class="toc-mobile__item toc-mobile__item--top"
+              (click)="scrollToTop(); closeMobileToc()"
+            >
+              Return to top
+            </button>
+
+            <button
+              type="button"
+              class="toc-mobile__item"
+              *ngFor="let item of items"
+              [class.level-2]="item.level === 2"
+              [class.level-3]="item.level === 3"
+              [class.level-4]="item.level === 4"
+              (click)="onMobileTocClick($event, item.id)"
+            >
+              {{ item.text }}
+            </button>
+          </div>
+        </div>
+
         <div class="guide-overview" *ngIf="showOverview">
           <h1>NativeScript-Angular Guide</h1>
           <p class="lead">

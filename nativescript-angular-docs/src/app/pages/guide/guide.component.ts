@@ -25,8 +25,11 @@ export class GuideComponent {
   showOverview = true;
   prev: any = null;
   next: any = null;
+
   readonly tocItems$ = inject(TocService).items$;
   readonly toc = inject(TocService);
+
+  isMobileTocOpen: boolean = false;
 
   private readonly router = inject(Router);
   private readonly platformId = inject(PLATFORM_ID);
@@ -48,15 +51,12 @@ export class GuideComponent {
         this.next = next;
         this.showOverview = this.router.url === '/guide';
 
-        // scroll behaviour
         const url = this.router.parseUrl(event.urlAfterRedirects);
         if (!url.fragment) {
           this.scrollContentToTop();
         }
-        // rebuild table of contents after navigation (allow content to render)
         setTimeout(() => {
           this.updateToc();
-          // if there is a fragment, scroll to it within content container after TOC IDs are ensured
           if (url.fragment) {
             setTimeout(() => this.scrollContentToAnchor(url.fragment as string), 0);
           }
@@ -91,6 +91,28 @@ export class GuideComponent {
     if (!this.isBrowser) return;
     setTimeout(() => this.scrollContentToAnchor(id), 120);
   }
+
+  toggleMobileToc(): void {
+    this.isMobileTocOpen = !this.isMobileTocOpen;
+    this.changeDetectorRef.markForCheck();
+  }
+
+  closeMobileToc(): void {
+    if (!this.isMobileTocOpen) return;
+    this.isMobileTocOpen = false;
+    this.changeDetectorRef.markForCheck();
+  }
+
+  scrollToTop(): void {
+    this.scrollContentToTop();
+    this.changeDetectorRef.markForCheck();
+  }
+
+  onMobileTocClick(event: Event, id: string): void {
+    this.onTocClick(event, id);
+    this.closeMobileToc();
+  }
+
 
   private scrollContentToTop() {
     if (!this.isBrowser) return;
@@ -147,10 +169,6 @@ private updateToc() {
   const headings = Array.from(c.querySelectorAll<HTMLElement>('h2, h3, h4'));
   const items: { id: string; text: string; level: number }[] = [];
   const used = new Set<string>();
-
-  const esc = (s: string) => {
-    (globalThis as any).CSS?.escape ? (globalThis as any).CSS.escape(s) : s;
-  }
 
   for (const h of headings) {
     const text = (h.innerText || h.textContent || '').trim();
