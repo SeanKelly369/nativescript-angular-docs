@@ -21,6 +21,7 @@ body.app-ready .app-container {
   line-height: 1.6;
   color: var(--text);
   background-color: var(--bg);
+  overflow-y: hidden;
 }
 
 // Header and Navigation
@@ -81,16 +82,13 @@ body.app-ready .app-container {
 
 .brand-text {
   color: var(--text-strong);
+  display: block;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
 }
 
 .nav-link {
@@ -103,12 +101,12 @@ body.app-ready .app-container {
   cursor: pointer;
 
   &:hover {
-    color: var(--text-content);
+    color: var(-content-text);
     border-bottom-color: var(--link);
   }
   
   &.active {
-    color: var(--text-content);
+    color: var(-content-text);
     border-bottom-color: var(--link);
   }
 }
@@ -196,6 +194,12 @@ body.app-ready .app-container {
     margin: 0;
     color: var(--muted);
     font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 1077px) {
+  .brand-text {
+    display: none;
   }
 }
 
