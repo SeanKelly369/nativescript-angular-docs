@@ -90,14 +90,13 @@
 .docs-navigation {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
   border-top: 1px solid var(--border);
 }
 
 .nav-link {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 0.3rem 1rem;
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;

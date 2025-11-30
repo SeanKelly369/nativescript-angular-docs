@@ -1,7 +1,7 @@
 <div class="app-container">
   <!-- Header -->
   <header class="header">
-    <nav class="navbar">
+    <nav class="navbar" [class.navbar--open]="mobileMenuOpen()">
       <div class="nav-brand">
         <a href="/home" routerLinkActive="active" class="brand-link">
           <div class="angular-logo">
@@ -13,21 +13,40 @@
           <img src="/assets/nativescript.svg" alt="NativeScript" class="logo logo-nativescript">
           <span class="brand-text">NativeScript Angular</span>
         </a>
-
       </div>
 
-      <div class="nav-links">
-        <a href="/home" routerLinkActive="active" class="nav-link">Home</a>
-        <a href="/getting-started" routerLinkActive="active" class="nav-link">Getting Started</a>
-        <a href="/guide" routerLinkActive="active" class="nav-link">Guide</a>
-        <a href="https://stackblitz.com/edit/nativescript-stackblitz-templates-e8ms9tfw?file=package.json&title=NativeScript%20Starter%20Angular" routerLinkActive="active" target="_blank" class="nav-link">Playground</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
 
-        <a href="/community" routerLinkActive="active" class="nav-link">NativeScript Docs</a>
+      <div class="nav-main">
+        <div class="nav-links">
+        <a href="/home" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Home</a>
+        <a href="/getting-started" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Getting Started</a>
+          <a href="/guide" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Guide</a>
+        <a
+          href="https://stackblitz.com/edit/nativescript-stackblitz-templates-e8ms9tfw?file=package.json&title=NativeScript%20Starter%20Angular"
+          target="_blank"
+          class="nav-link"
+          (click)="closeMobileMenu()"
+        >
+          Playground
+        </a>
+        <a href="/community" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">NativeScript Docs</a>
+        </div>
       </div>
 
       <app-theme-toggle></app-theme-toggle>
 
-<div class="nav-actions">
+      <div class="nav-actions">
   <a href="https://github.com/NativeScript/nativescript-angular"
      target="_blank"
      class="github-link"
