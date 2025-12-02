@@ -234,6 +234,10 @@ body.app-ready .app-container {
   }
 }
 
+  .navbar-toggler {
+    display: none;
+  }
+
 @media (max-width: 1077px) {
 
   .navbar {
@@ -274,6 +278,50 @@ body.app-ready .app-container {
   .nav-toggle {
     display: inline-flex;
     margin-left: auto;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    position: relative;
+    padding-right: 2rem;
+  }
+
+  .hamburger-menu input {
+    display: none;
+  }
+
+  .hamburger-menu span {
+    display: block;
+    width: 1.7rem;
+    height: 0.14rem;
+    margin: 0.22rem 0;
+    background: var(--text-strong);
+    border-radius: 1px;
+    transition: 0.45s cubic-bezier(.4,0,.2,1);
+    position: relative;
+  }
+
+  .hamburger-menu input:checked ~ span:nth-child(2) {
+    transform: translateY(0.55rem) rotate(45deg);
+  }
+
+  .hamburger-menu input:checked ~ span:nth-child(3) {
+    width: 0;
+    transform: scaleX(1.0);
+  }
+
+  .hamburger-menu input:checked ~ span:nth-child(4) {
+    transform: translateY(-0.55rem) rotate(-45deg);
   }
 
   .nav-main {

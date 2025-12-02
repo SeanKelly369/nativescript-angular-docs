@@ -1,4 +1,19 @@
 <div class="docs-container">
+
+  <div
+    class="docs-menu-toggle"
+    [attr.aria-expanded]="sidebarOpen()"
+    aria-control="docs-sidebar"
+  >
+    <span class="hamburger" (click)="toggleSidebar()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </span>
+    <span class="docs-menu-toggle__label">Menu</span>
+
+  </div>
+
   <div class="docs-sidebar">
     <nav class="sidebar-nav">
       <h3>Getting Started</h3>

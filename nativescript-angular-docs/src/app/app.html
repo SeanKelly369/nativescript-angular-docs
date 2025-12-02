@@ -1,8 +1,18 @@
 <div class="app-container">
   <!-- Header -->
   <header class="header">
-    <nav class="navbar" [class.navbar--open]="mobileMenuOpen()">
+    <nav class="navbar" [class.navbar--open]="isMobileMenuOpen()">
       <div class="nav-brand">
+
+       <div class="navbar-toggler">
+          <label class="hamburger-menu" (click)="$event.stopPropagation()">
+            <input type="checkbox" [checked]="isMobileMenuOpen" (change)="isMobileMenuOpen(); toggleMobileMenu()" />
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
         <a href="/home" routerLinkActive="active" class="brand-link">
           <div class="angular-logo">
             <svg _ngcontent-ng-c586675657="" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 223 236" width="28" class="angular-logo"><g _ngcontent-ng-c586675657="" clip-path="url(#a)">
@@ -15,17 +25,6 @@
         </a>
       </div>
 
-      <button
-        type="button"
-        class="nav-toggle"
-        (click)="toggleMobileMenu()"
-        [attr.aria-expanded]="mobileMenuOpen()"
-        aria-label="Toggle navigation menu"
-      >
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-        <span class="nav-toggle__bar"></span>
-      </button>
 
       <div class="nav-main">
         <div class="nav-links">
@@ -100,7 +99,7 @@
           <li><a href="/api">API Reference</a></li>
         </ul>
       </div>
-      
+
       <div class="footer-section">
         <h4>Community</h4>
         <ul>
