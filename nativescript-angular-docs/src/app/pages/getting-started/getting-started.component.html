@@ -1,31 +1,80 @@
-<div class="docs-container">
+<div class="docs-container"
+  [class.docs-container--sidebar-open]="sidebarOpen()"
+>
 
-  <div
-    class="docs-menu-toggle"
-    [attr.aria-expanded]="sidebarOpen()"
-    aria-control="docs-sidebar"
+<!-- Toggle Button -->
+<button
+  type="button"
+  class="docs-menu-toggle"
+  (click)="toggleSidebar()"
+  aria-controls="docs-sidebar"
+  aria-label="Toggle docs navigation"
+>
+  <span class="hamburger" (click)="sidebarOpen()">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </span>
+    <span class="docs-menu-toggle__label">Getting Started</span>
+</button>
+
+  <!-- Sidebar -->
+  <aside
+    id="docs-sidebar"
+    class="docs-sidebar"
+    [class.docs-sidebar--open]="sidebarOpen()"
   >
-    <span class="hamburger" (click)="toggleSidebar()">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </span>
-    <span class="docs-menu-toggle__label">Menu</span>
-
-  </div>
-
-  <div class="docs-sidebar">
     <nav class="sidebar-nav">
       <h3>Getting Started</h3>
       <ul>
-        <li><a routerLink="/getting-started/overview" routerLinkActive="active">Overview</a></li>
-        <li><a routerLink="/getting-started/prerequisites" routerLinkActive="active">Prerequisites</a></li>
-        <li><a routerLink="/getting-started/quick-start" routerLinkActive="active">Quick Start</a></li>
-        <li><a routerLink="/getting-started/environment-setup" routerLinkActive="active">Environment Setup</a></li>
+        <li>
+          <a
+            routerLink="/getting-started/overview"
+            routerLinkActive="active"
+            (click)="closeSidebar()"
+          >
+            Overview
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/getting-started/prerequisites"
+            routerLinkActive="active"
+            (click)="closeSidebar()"
+          >
+            Prerequisites
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/getting-started/quick-start"
+            routerLinkActive="active"
+            (click)="closeSidebar()"
+          >
+            Quick Start
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/getting-started/environment-setup"
+            routerLinkActive="active"
+            (click)="closeSidebar()"
+          >
+            Environment Setup
+          </a>
+        </li>
       </ul>
     </nav>
+  </aside>
+
+  <!-- Backdrop -->
+  <div
+    class="docs-sidebar-backdrop"
+    *ngIf="sidebarOpen()"
+    (click)="closeSidebar()">
   </div>
 
+  <!-- Main Content -->
   <main class="docs-content">
     <div class="docs-navigation">
       <div class="nav-previous">
