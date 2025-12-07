@@ -72,14 +72,14 @@
 .sidebar-nav a {
   display: block;
   padding: 0.5rem 0.75rem;
-  color: var(--muted);
+  color: var(--sidebar-text);
   text-decoration: none;
   border-radius: 0.25rem;
   transition: all 0.2s ease;
     
   &:hover {
-    background: var(--surface-alt);
-    color: var(--content-text);
+    background: var(--sidebar-text-hover-bg);
+    color: var(--sidebar-text-hover);
   }
 }
 
@@ -101,12 +101,12 @@
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
-  border: 1px solid var(--border);
+  border: 1px solid var(--li);
   background-color: var(--surface);
     
   &:hover {
     border-color: var(--li);
-    box-shadow: 0 2px 4px var(--shadow-10);
+    box-shadow: 0 3px 4px var(--li);
   }
 }
 

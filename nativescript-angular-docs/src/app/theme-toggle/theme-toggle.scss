@@ -25,7 +25,7 @@
   width: 44px;
   height: 24px;
   border-radius: 999px;
-  background: var(--surface-alt);
+  background: var(--li);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -54,7 +54,7 @@
 /* base colour for both */
 .theme-toggle__icon--sun,
 .theme-toggle__icon--moon {
-  color: var(--muted);
+  color: var(--white) !important;
 }
 
 /* explicit LIGHT state */
