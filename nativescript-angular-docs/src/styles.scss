@@ -4,7 +4,6 @@
    THEME TOKENS
    ========================= */
 
-/* Base transitions so switches feel smooth */
 :root {
   --rem-base: 16;
   font-family: 'Inter', system-ui, sans-serif;
@@ -15,10 +14,26 @@
                       border-color 150ms ease,
                       box-shadow 150ms ease;
 
-  /* handy rgb base for translucent shadows */
   --black-rgb: 0, 0, 0;
   --shadow-10: rgba(var(--black-rgb), 0.10);
   --shadow-30: rgba(var(--black-rgb), 0.30);
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--li);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $neon-cyan;
+  }
 }
 
 html {
@@ -50,6 +65,10 @@ html {
   --heading-bg:        #{$blue};
   --li:                #{$cyan};
 
+  --sidebar-text:      #{$off_black};
+  --sidebar-text-hover:      #{$white};
+  --sidebar-text-hover-bg: #{$cyan};
+
   --code-fg:           #{$red};
   --code-bg:           #{$off_white};
 
@@ -69,7 +88,7 @@ html {
 :root[data-theme="dark"] {
   --bg:                   #{$very_dark_blue};
   --surface:              #{$very_dark_blue};
-  --surface-alt:          #{$dark_blue};
+  --surface-alt:          #{$neon-cyan};
 
   --text:                 #{$off_white_2};
   --text-phone:           #{$black_80};
@@ -81,6 +100,10 @@ html {
   --muted:                #{$pale_blue};
   --yellow:               #{$yellow};
 
+  --sidebar-text:      #{$off_white};
+  --sidebar-text-hover:      #{$white};
+  --sidebar-text-hover-bg: #{$cyan};
+
   --border:               #{$off_black};
   --link:                 #{$navy};
   --li:                   #{$cyan};
@@ -91,7 +114,6 @@ html {
   --pre-bg:               #{$very_dark_blue};
   --pre-fg:               #{$off_white};
 
-  /* neon-style accents (what you had in @media prefers-color-scheme: dark) */
   --heading-accent:   #{$neon-cyan};
   --content-text:     #{$neon-cyan};
   --code-inline-fg:   #{$neon-cyan-code};
@@ -219,5 +241,22 @@ body {
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.4rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--li);
+    border-radius: 999px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $neon-cyan;
   }
 }
