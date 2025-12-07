@@ -47,6 +47,7 @@ html {
   --bg:                #{$off_white_2};
   --surface:           #{$white};
   --surface-alt:       #{$off_white};
+  --phone-outer:       #{$off_white};
 
   --text:              #{$black_80};
   --text-phone:        #{$black_80};
@@ -58,6 +59,7 @@ html {
   --yellow:            #{$yellow-dark};
 
   --white:             #{$off_white};
+  --black: #{$off_black};
 
   --border:            #{$off_white_2};
   --black:             #{$black_75};
@@ -86,39 +88,42 @@ html {
 
 /* Dark */
 :root[data-theme="dark"] {
-  --bg:                   #{$very_dark_blue};
-  --surface:              #{$very_dark_blue};
-  --surface-alt:          #{$neon-cyan};
+  --bg:                    #{$very_dark_blue};
+  --surface:               #{$very_dark_blue};
+  --surface-alt:           #{$neon-cyan};
+  --phone-outer:           #{$black};
 
-  --text:                 #{$off_white_2};
-  --text-phone:           #{$black_80};
-  --text-invert:          #{off_white};
-  --text-feature-card:    #{$black_75};
-  --text-strong:          #{$white};
-  --text-strong-white-bg: #{$black_75};
-  --text-grey-bg:         #{$black_75};
-  --muted:                #{$pale_blue};
-  --yellow:               #{$yellow};
+  --text:                  #{$off_white_2};
+  --text-phone:            #{$black_80};
+  --text-invert:           #{off_white};
+  --text-feature-card:     #{$black_75};
+  --text-strong:           #{$white};
+  --text-strong-white-bg:  #{$black_75};
+  --text-grey-bg:          #{$black_75};
+  --muted:                 #{$pale_blue};
+  --yellow:                #{$yellow};
 
-  --sidebar-text:      #{$off_white};
-  --sidebar-text-hover:      #{$white};
+  --black:                 #{$off_black};
+
+  --sidebar-text:          #{$off_white};
+  --sidebar-text-hover:    #{$white};
   --sidebar-text-hover-bg: #{$cyan};
 
-  --border:               #{$off_black};
-  --link:                 #{$navy};
-  --li:                   #{$cyan};
+  --border:                #{$off_black};
+  --link:                  #{$navy};
+  --li:                    #{$cyan};
 
-  --code-fg:              #{$red};
-  --code-bg:              #{$dark_blue};
+  --code-fg:               #{$red};
+  --code-bg:               #{$dark_blue};
 
-  --pre-bg:               #{$very_dark_blue};
-  --pre-fg:               #{$off_white};
+  --pre-bg:                #{$very_dark_blue};
+  --pre-fg:                #{$off_white};
 
-  --heading-accent:   #{$neon-cyan};
-  --content-text:     #{$neon-cyan};
-  --code-inline-fg:   #{$neon-cyan-code};
-  --code-inline-bg:   transparent;
-  --pre-custom-bg:    #{$cyan-bg};
+  --heading-accent:        #{$neon-cyan};
+  --content-text:          #{$neon-cyan};
+  --code-inline-fg:        #{$neon-cyan-code};
+  --code-inline-bg:        transparent;
+  --pre-custom-bg:         #{$cyan-bg};
 }
 
 /* =========================

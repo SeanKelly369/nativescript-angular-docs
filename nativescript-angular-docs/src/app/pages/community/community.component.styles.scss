@@ -435,7 +435,7 @@ h1 {
 }
 
 .btn-secondary {
-  background: transparent;
+  background: var(--surface-alt);
   color: var(--link);
   border: 2px solid var(--link);
 

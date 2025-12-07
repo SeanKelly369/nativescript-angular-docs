@@ -57,18 +57,18 @@
     }
 
     .btn-primary {
-      background: $navy;
+      background: $cyan;
       color: $white;
       
       &:hover {
-        background: $yellow;
+        background: $neon-cyan;
         transform: translateY(-2px);
       }
     }
 
     .btn-secondary {
-      background: transparent;
-      color: var(--white);
+      background: var(--white);
+      color: var(--black);
       border-color: var(--white);
       
       &:hover {
@@ -87,7 +87,7 @@
     .phone-mockup {
       width: 12.5rem;
       height: 25rem;
-      background: var(--surface-alt);
+      background: var(--phone-outer);
       border-radius: 1.5rem;
       padding: 1.25rem;
       box-shadow: 0 1.25rem 2.5rem $translucent_black_30;
@@ -222,7 +222,7 @@
       transition: border-color 0.2s ease;
       
       &:hover {
-        border-color: $indigo;
+        border-color: $cyan;
       }
       cursor: default;
     }
@@ -231,7 +231,7 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
-      color: var(--surface-alt);
+      color: var(--black);
     }
 
     .comparison-card p {

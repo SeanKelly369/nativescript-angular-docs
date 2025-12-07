@@ -101,12 +101,12 @@
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.2s ease;
-  border: 1px solid var(--border);
+  border: 1px solid var(--li);
   background-color: var(--surface);
     
   &:hover {
     border-color: var(--li);
-    box-shadow: 0 2px 4px var(--shadow-10);
+    box-shadow: 0 3px 4px var(--li);
   }
 }
 
