@@ -6,7 +6,7 @@
 
        <div class="navbar-toggler">
           <label class="hamburger-menu" (click)="$event.stopPropagation()">
-            <input type="checkbox" [checked]="isMobileMenuOpen" (change)="isMobileMenuOpen(); toggleMobileMenu()" />
+            <input type="checkbox" [checked]="isMobileMenuOpen()" (change)="isMobileMenuOpen(); toggleMobileMenu()" />
             <span></span>
             <span></span>
             <span></span>
