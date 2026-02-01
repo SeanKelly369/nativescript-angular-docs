@@ -73,14 +73,21 @@ body.app-ready .app-container {
 }
 
 .logo {
-  height: 2.5rem;
+  height: 2.5rem !important;
   width: auto;
   margin-right: 0.75rem;
   min-width: 2.3rem;
 }
 
 .logo-nativescript {
+  height: 2.5rem !important;
   margin-left: 0.625rem;
+}
+
+.logo,
+.logo.logo-nativescript {
+  height: 2.5rem !important;
+  width: auto;
 }
 
 .brand-text {
