@@ -116,64 +116,80 @@
 }
 
   .hero-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 0.625rem;
+    display: relative;
+    width: min(32.5rem, 42vw);
+    height: 22.5rem;
+    margin-left: auto;
+    filter: saturate(0.95);
   }
 
-  .phone-mockup {
-    position: relative;
-    z-index: 1;
-    width: 12.5rem;
-    height: 25rem;
-    background: var(--phone-outer);
-    border-radius: 1.5rem;
-    padding: 1.25rem;
-    box-shadow: 0 1.25rem 2.5rem $translucent_black_30;
+  .glow {
+    position: absolute;
+    inset: auto;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 999px;
+    filter: blur(2.25rem);
+    opacity: 0.55;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  .phone-screen {
-    width: 100%;
-    height: 100%;
-    background: var(--surface);
-    border-radius: 1rem;
-    overflow: hidden;
-  }
+  .glow--pink { right: 2.5rem; top: 2.5rem; background: rgba(255, 0, 153, 0.28); }
+  .glow--blue { right: 7rem; top: 8rem; background: rgba(0, 140, 255, 0.22); }
 
-  .app-preview {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+  // .phone-mockup {
+  //   position: relative;
+  //   z-index: 1;
+  //   width: 12.5rem;
+  //   height: 25rem;
+  //   background: var(--phone-outer);
+  //   border-radius: 1.5rem;
+  //   padding: 1.25rem;
+  //   box-shadow: 0 1.25rem 2.5rem $translucent_black_30;
+  // }
 
-  .app-header {
-    background: var(--heading-bg);
-    color: $white;
-    padding: 1rem;
-    text-align: center;
-    font-weight: 600;
-  }
+  // .phone-screen {
+  //   width: 100%;
+  //   height: 100%;
+  //   background: var(--surface);
+  //   border-radius: 1rem;
+  //   overflow: hidden;
+  // }
 
-  .app-content {
-    flex: 1;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    cursor: default;
-  }
+  // .app-preview {
+  //   height: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  // }
 
-  .feature-item {
-    background: $white;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    box-shadow: 0 2px 4px $translucent_black_10;
-    font-size: 0.875rem;
-    color: var(--text-phone);
-    width: 87%;
-    cursor: default;
-  }
+  // .app-header {
+  //   background: var(--heading-bg);
+  //   color: $white;
+  //   padding: 1rem;
+  //   text-align: center;
+  //   font-weight: 600;
+  // }
+
+  // .app-content {
+  //   flex: 1;
+  //   padding: 1rem;
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: 0.75rem;
+  //   cursor: default;
+  // }
+
+  // .feature-item {
+  //   background: $white;
+  //   padding: 0.75rem;
+  //   border-radius: 0.5rem;
+  //   box-shadow: 0 2px 4px $translucent_black_10;
+  //   font-size: 0.875rem;
+  //   color: var(--text-phone);
+  //   width: 87%;
+  //   cursor: default;
+  // }
 
   .features {
     padding: 4rem 1rem;
