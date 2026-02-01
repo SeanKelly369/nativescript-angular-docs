@@ -59,11 +59,11 @@ html {
   --yellow:            #{$yellow-dark};
 
   --white:             #{$off_white};
-  --black: #{$off_black};
+  --black:             #{$off_black};
 
   --border:            #{$off_white_2};
   --black:             #{$black_75};
-  --link:              #{$sky-blue};
+  --link:              #{$sky_blue};
   --heading-bg:        #{$blue};
   --li:                #{$cyan};
 
@@ -84,6 +84,34 @@ html {
   --code-inline-fg:   var(--code-fg);
   --code-inline-bg:   var(--code-bg);
   --pre-custom-bg:    var(--pre-bg);
+
+  --hero-bg:
+    radial-gradient(60rem 40rem at 86% 28%,
+      rgba(102, 102, 204, 0.22),
+      rgba(102, 102, 204, 0) 62%
+    ),
+    radial-gradient(42rem 28rem at 94% 18%,
+      rgba(2, 190, 190, 0.14),
+      rgba(2, 190, 190, 0) 60%
+    ),
+    radial-gradient(55rem 35rem at 12% 86%,
+      rgba(65, 155, 246, 0.16),
+      rgba(65, 155, 246, 0) 58%
+    ),
+    linear-gradient(120deg,
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.00) 40%
+    ),
+    linear-gradient(135deg,
+      #f7fbff 0%,
+      #eef4ff 45%,
+      #f2f7ff 75%,
+      #ffffff 100%
+    );
+
+  --hero-text: #{$off_black};
+  --hero-highlight: #{$cyan};
+  --hero-subtle-grid-opacity: 0.05;
 }
 
 /* Dark */
@@ -95,7 +123,7 @@ html {
 
   --text:                  #{$off_white_2};
   --text-phone:            #{$black_80};
-  --text-invert:           #{off_white};
+  --text-invert:           #{$off_white};
   --text-feature-card:     #{$black_75};
   --text-strong:           #{$white};
   --text-strong-white-bg:  #{$black_75};
@@ -124,6 +152,35 @@ html {
   --code-inline-fg:        #{$neon-cyan-code};
   --code-inline-bg:        transparent;
   --pre-custom-bg:         #{$cyan-bg};
+
+
+  --hero-bg:
+    radial-gradient(60rem 40rem at 86% 28%,
+      rgba(163, 51, 255, 0.55),
+      rgba(182, 92, 255, 0) 62%
+    ),
+    radial-gradient(42rem 28rem at 94% 18%,
+      rgba(255, 62, 165, 0.22),
+      rgba(255, 62, 165, 0) 60%
+    ),
+    radial-gradient(55rem 35rem at 12% 86%,
+      rgba(20, 214, 197, 0.18),
+      rgba(20, 214, 197, 0) 58%
+    ),
+    linear-gradient(120deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.00) 40%
+    ),
+    linear-gradient(135deg,
+      #0f172a 0%,
+      #1b1d3f 44%,
+      #2b1652 74%,
+      #0b0a18 100%
+    );
+
+  --hero-text: #{$white};
+  --hero-highlight: #{$neon-cyan};
+  --hero-subtle-grid-opacity: 0.06;
 }
 
 /* =========================
