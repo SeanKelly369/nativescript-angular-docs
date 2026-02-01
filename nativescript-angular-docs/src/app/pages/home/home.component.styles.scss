@@ -116,7 +116,7 @@
 }
 
   .hero-visual {
-    display: relative;
+    position: relative;
     width: min(32.5rem, 42vw);
     height: 22.5rem;
     margin-left: auto;
@@ -197,43 +197,135 @@
   opacity: 0.9;
 }
 
+.frag--search {
+  right: 9.5rem;
+  top: 10.5rem;
+  width: 16.5rem;
+  transform: rotate(-2deg);
+  opacity: 0.95;
+}
+
+.frag--segmented {
+  right: 2.75rem;
+  top: 16.5rem;
+  width: 14rem;
+  transform: rotate(1.5deg);
+}
+
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.search__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.12);
+}
+
+.search__text {
+  color: rgba(15, 23, 42, 0.55);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.search__mic {
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(0, 140, 255, 0.18);
+}
+
+.segmented {
+  position: relative;
+  height: 2.25rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0.25rem;
+  overflow: hidden;
+}
+
+.segmented__pill {
+  position: absolute;
+  left: 0.25rem;
+  top: 0.25rem;
+  width: calc(50% - 0.25rem);
+  height: calc(100% - 0.5rem);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+}
+
+.segmented__label {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.segmented__label--active {
+  color: rgba(15, 23, 42, 0.90);
+}
+
 /* Card fragment inner content */
 .frag__card {
   display: grid;
-  gap: 8px;
+  gap: 0.5rem;
 }
 .frag__cardTitle {
   font-weight: 800;
-  font-size: 18px;
+  font-size: 1.125rem;
   letter-spacing: -0.02em;
   color: #0f172a;
 }
-.frag__muted { color: rgba(15, 23, 42, 0.6); font-size: 13px; }
-.frag__text  { color: rgba(15, 23, 42, 0.8); font-size: 14px; line-height: 1.35; }
+.frag__muted {
+  color: rgba(15, 23, 42, 0.6);
+  font-size: 0.8125rem;
+}
+.frag__text  {
+  color: rgba(15, 23, 42, 0.8);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
 
 .btn-pill {
-  margin-top: 6px;
+  margin-top: 0.375rem;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 38px;
+  height: 2.375rem;
   border-radius: 999px;
-  padding: 0 16px;
+  padding: 0 1rem;
   font-weight: 700;
   color: #fff;
   background: linear-gradient(90deg, #1b74ff, #0a58ca);
 }
 
 /* Simple icon placeholders (replace with SVGs) */
-.icon { width: 18px; height: 18px; border-radius: 5px; display: inline-block; }
+.icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.3125rem;
+  display: inline-block;
+}
+
 .icon--bell { background: rgba(255, 165, 0, 0.25); }
 .icon--sun  { background: rgba(255, 200, 0, 0.25); }
 
 /* Toggle */
 .toggle {
   margin-left: auto;
-  width: 46px;
-  height: 26px;
+  width: 2.875rem;
+  height: 1.625rem;
   border-radius: 999px;
   background: rgba(16, 185, 129, 0.35);
   border: 1px solid rgba(16, 185, 129, 0.25);
@@ -241,10 +333,10 @@
 }
 .toggle__knob {
   position: absolute;
-  top: 3px;
-  left: 23px;
-  width: 20px;
-  height: 20px;
+  top: 0.1875rem;
+  left: 1.4375rem;
+  width: 1.25rem;
+  height: 1.25rem;
   border-radius: 999px;
   background: #fff;
   box-shadow: 0 6px 14px rgba(0,0,0,0.16);
@@ -254,7 +346,7 @@
 .slider {
   position: relative;
   flex: 1;
-  height: 18px;
+  height: 1.125rem;
   display: flex;
   align-items: center;
 }
@@ -294,6 +386,25 @@
   @keyframes float2 { 0%,100% { transform: translateY(0) rotate(1deg); }   50% { transform: translateY(5px) rotate(1deg); } }
   @keyframes float3 { 0%,100% { transform: translateY(0) rotate(-1deg); }  50% { transform: translateY(-4px) rotate(-1deg); } }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .frag--search    { animation: float4 11s ease-in-out infinite; }
+  .frag--segmented { animation: float5 13s ease-in-out infinite; }
+
+  @keyframes float4 {
+    0%,100% { transform: translateY(0) rotate(-2deg); }
+    50%     { transform: translateY(4px) rotate(-2deg); }
+  }
+
+  @keyframes float5 {
+    0%,100% { transform: translateY(0) rotate(1.5deg); }
+    50%     { transform: translateY(-5px) rotate(1.5deg); }
+  }
+}
+
+.frag { z-index: 2; }
+.frag--tabs { z-index: 1; opacity: 0.9; } // background-ish
+.frag--card { z-index: 3; }               // hero fragment on top
 
   .features {
     padding: 4rem 1rem;
