@@ -1,7 +1,7 @@
 # NativeScript-Angular Documentation
 ![Angular](https://img.shields.io/badge/Angular-20%2B-dd0031?logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?logo=typescript&logoColor=white)
-![License](https://img.shields.io/github/license/SeanKelly369/nativescript-angular-docs/blob/main/LICENCE)
+![License](https://img.shields.io/github/license/SeanKelly369/nativescript-angular-docs)
 
 This is the source for the **NativeScript-Angular documentation website**, an Angular-powered site inspired by the NativeScript Vue documentation.
 
