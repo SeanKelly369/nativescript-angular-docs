@@ -74,7 +74,7 @@ export class ThemeService {
 
     private apply(theme: Theme, persist = true ): void {
         const root = this.doc.documentElement;
-        root.setAttribute('data-theme', theme);
+        root.dataset['theme'] = theme;
 
         root.style.colorScheme = theme;
         if (persist) {

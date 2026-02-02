@@ -34,7 +34,7 @@
         <div class="frag frag--card">
           <div class="frag__card">
             <div class="frag__cardTitle">Welcome!</div>
-              <div class="frag__muted">April 24, 2024</div>
+              <div class="frag__muted">{{today | date: 'MMMM dd yyyy'}}</div>
               <div class="frag__text">Build cross-platform apps with Angular and NativeScript.</div>
               <div class="btn-pill">Get Started</div>
           </div>
@@ -61,7 +61,7 @@
         </div>
 
         <!-- search bar -->
-        <div class="frag flag--search">
+        <div class="frag frag--search">
           <div class="search">
             <span class="search__icon" aria-hidden="true"></span>
             <span class="search__text">Search</span>
