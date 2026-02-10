@@ -1,14 +1,35 @@
 /* overall doc typography */
 .content-wrapper {
-  --panel: #7b4ea3;
-  --accent: #f3a23a;
-  --ink: #1f2430;
+  /* pull from global theme */
+  --doc-bg: var(--surface);
+  --doc-ink: var(--text);
+  --doc-muted: var(--muted);
+
+  /* accents aligned to site */
+  --doc-panel: var(--purple-primary, #7b4ea3);
+  --doc-accent: var(--yellow, #f3a23a);
+
+  /* code aligned to site */
+  --doc-code-inline-fg: var(--code-inline-fg, var(--doc-ink));
+  --doc-code-inline-bg: var(--code-inline-bg, rgba(255,255,255,.06));
+
+  --doc-pre-bg: var(--pre-custom-bg, var(--pre-bg));
+  --doc-pre-fg: var(--pre-fg, var(--doc-ink));
+
+  /* viz card surfaces */
+  --viz-card-bg: color-mix(in srgb, var(--doc-panel) 10%, var(--doc-bg));
+  --viz-card-border: color-mix(in srgb, var(--doc-panel) 28%, transparent);
+
+  /* viz title chip */
+  --viz-chip-bg: color-mix(in srgb, var(--doc-accent) 18%, transparent);
+  --viz-chip-border: color-mix(in srgb, var(--doc-accent) 45%, transparent);
+
+  color: var(--doc-ink);
 
   max-width: 980px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
 
-  color: var(--ink);
   line-height: 1.6;
 }
 
@@ -53,22 +74,33 @@
 .content-wrapper :not(pre) > code {
   padding: 0.12rem 0.35rem;
   border-radius: 0.5rem;
-  background: rgba(31, 36, 48, 0.06);
-  border: 1px solid rgba(31, 36, 48, 0.10);
+  color: var(--doc-code-inline-fg);
+  background: var(--doc-code-inline-bg);
+  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
 }
 
 /* fenced code blocks */
 .content-wrapper pre {
-  background: rgba(31, 36, 48, 0.04);
-  border: 1px solid rgba(31, 36, 48, 0.12);
-  border-radius: 14px;
+  background: var(--doc-pre-bg);
+  color: var(--doc-pre-fg);
+  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
+  border-radius: 0.925rem;
   padding: 0.9rem 1rem;
   overflow: auto;
   margin: 0.75rem 0 1.25rem;
 }
 
+.content-wrapper pre,
 .content-wrapper pre code {
-  background: transparent;
+  color: var(--doc-pre-fg) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  white-space: pre !important;
+}
+
+.content-wrapper pre code {
+  color: var(--doc-ink);
   border: 0 !important;
   padding: 0 !important;
 }
@@ -95,11 +127,11 @@
 .viz-card {
   margin: 0;
   padding: 0.85rem;
-  border-radius: 14px;
+  border-radius: 0.925rem;
 
-  background: rgba(123, 78, 163, 0.06);
-  border: 1px solid rgba(123, 78, 163, 0.18);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+  background: var(--viz-card-bg);
+  border: 1px solid var(--viz-card-border);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.04);
 
   display: flex;
   flex-direction: column;
@@ -113,12 +145,12 @@
 
   font-weight: 800;
   font-size: 0.95rem;
-  color: var(--ink);
+  color: var(--doc-ink);
 
   padding: .35rem .6rem;
-  border-radius: 10px;
-  background: rgba(243, 162, 58, 0.14);
-  border: 1px solid rgba(243, 162, 58, 0.35);
+  border-radius: 0.625rem;
+  background: var(--viz-chip-bg);
+  border: 1px solid var(--viz-chip-border);
 }
 
 .viz {

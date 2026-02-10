@@ -184,24 +184,24 @@ For simple lists, **ListView is still the cleanest option**.
   <figure class="viz-card">
     <figcaption class="viz-title">ListView = container + recycled item views</figcaption>
     <svg class="viz" viewBox="0 0 760 242" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ListView container and items">
-      <rect x="20" y="20" width="360" height="222" rx="20" fill="rgba(123, 78, 163, 0.18)" stroke="rgba(123, 78, 163, 0.55)" stroke-width="2"/>
+      <rect x="20" y="20" width="360" height="222" rx="20" fill="rgba(123, 78, 163, 0.18)" stroke="rgba(123, 78, 163, 1)" stroke-width="2"/>
       <text x="40" y="55" font-size="20" font-weight="800" fill="#3b2454" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">container</text>
 
-      <rect x="55" y="70" width="290" height="146" rx="16" fill="rgba(15, 23, 42, 0.08)" stroke="rgba(15, 23, 42, 0.25)" stroke-width="1"/>
+      <rect x="55" y="70" width="290" height="146" rx="16" fill="rgba(15, 23, 42, 0.08)" stroke="rgba(15, 23, 42, 1)" stroke-width="1"/>
       <text x="70" y="97" font-size="16" font-weight="700" fill="#1f2430" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">viewport (on screen)</text>
 
-      <rect x="70" y="110" width="260" height="26" rx="10" fill="rgba(243, 162, 58, 0.85)" stroke="rgba(0,0,0,0.12)"/>
-      <rect x="70" y="143" width="260" height="26" rx="10" fill="rgba(243, 162, 58, 0.85)" stroke="rgba(0,0,0,0.12)"/>
-      <rect x="70" y="176" width="200" height="26" rx="10" fill="rgba(243, 162, 58, 0.85)" stroke="rgba(0,0,0,0.12)"/>
+      <rect x="70" y="110" width="260" height="26" rx="10" fill="rgba(224, 187, 253, 0.85)" stroke="rgba(0,0,0,0.12)"/>
+      <rect x="70" y="143" width="260" height="26" rx="10" fill="rgba(224, 187, 253, 0.85)" stroke="rgba(0,0,0,0.12)"/>
+      <rect x="70" y="176" width="200" height="26" rx="10" fill="rgba(224, 187, 253, 0.85)" stroke="rgba(0,0,0,0.12)"/>
 
-      <rect x="420" y="20" width="320" height="200" rx="20" fill="rgba(243, 162, 58, 0.12)" stroke="rgba(243, 162, 58, 0.55)" stroke-width="2"/>
+      <rect x="420" y="20" width="320" height="200" rx="20" fill="rgba(243, 162, 58)" stroke="rgba(255, 255, 255, 0.55)" stroke-width="2"/>
       <text x="440" y="55" font-size="20" font-weight="800" fill="#5a3b12" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">items (data)</text>
 
       <g opacity="0.9">
-        <rect x="440" y="80" width="280" height="18" rx="9" fill="rgba(123, 78, 163, 0.35)"/>
-        <rect x="440" y="105" width="260" height="18" rx="9" fill="rgba(123, 78, 163, 0.25)"/>
+        <rect x="440" y="80" width="280" height="18" rx="9" fill="rgb(175, 111, 230, 0.85)"/>
+        <rect x="440" y="105" width="260" height="18" rx="9" fill="rgb(175, 111, 230)"/>
         <rect x="440" y="130" width="280" height="18" rx="9" fill="rgba(123, 78, 163, 0.35)"/>
-        <rect x="440" y="155" width="240" height="18" rx="9" fill="rgba(123, 78, 163, 0.25)"/>
+        <rect x="440" y="155" width="240" height="18" rx="9" fill="rgb(175, 111, 230)"/>
         <rect x="440" y="180" width="280" height="18" rx="9" fill="rgba(123, 78, 163, 0.35)"/>
       </g>
 
@@ -213,22 +213,22 @@ For simple lists, **ListView is still the cleanest option**.
 
   <figure class="viz-card">
     <figcaption class="viz-title">Virtualization (only a few views exist)</figcaption>
-    <svg class="viz" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Virtualization and recycling">
-      <rect x="20" y="20" width="560" height="340" rx="20" fill="rgba(123, 78, 163, 0.10)" stroke="rgba(123, 78, 163, 0.35)" stroke-width="2"/>
-      <text x="40" y="55" font-size="20" font-weight="800" fill="#3b2454" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">scrollable list</text>
+    <svg class="viz" viewBox="0 0 760 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Virtualization and recycling">
+      <rect x="20" y="20" width="560" height="220" rx="20" fill="rgba(123, 78, 163, 0.10)" stroke="rgba(167, 103, 223, 0.97)" stroke-width="2"/>
+      <text x="40" y="55" font-size="20" font-weight="600" fill="#3b2454" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">scrollable list</text>
 
-      <g opacity="0.35">
-        <rect x="50" y="75" width="500" height="22" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
-        <rect x="50" y="105" width="500" height="22" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
-        <rect x="50" y="135" width="500" height="22" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
-        <rect x="50" y="165" width="500" height="22" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
+      <g opacity="0.85">
+        <rect x="50" y="80" width="500" height="22" rx="10" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="110" width="500" height="22" rx="10" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="140" width="500" height="22" rx="10" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="170" width="500" height="22" rx="10" fill="rgb(255, 255, 255)"/>
       </g>
 
       <rect x="40" y="70" width="520" height="140" rx="18" fill="rgba(15, 23, 42, 0.06)" stroke="rgba(15, 23, 42, 0.28)" stroke-width="1"/>
       <text x="55" y="122" font-size="16" font-weight="800" fill="#1f2430" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">only these rows are rendered</text>
 
-      <rect x="60" y="135" width="480" height="26" rx="11" fill="rgba(243, 162, 58, 0.95)" />
-      <rect x="60" y="165" width="420" height="26" rx="11" fill="rgba(243, 162, 58, 0.95)" />
+      <rect x="55" y="142" width="490" height="18" rx="11" fill="rgba(243, 162, 58, 0.95)" />
+      <rect x="55" y="171" width="490" height="18" rx="11" fill="rgba(243, 162, 58, 0.95)" />
 
       <rect x="600" y="20" width="140" height="200" rx="20" fill="rgba(15, 23, 42, 0.06)" stroke="rgba(15, 23, 42, 0.18)" stroke-width="1"/>
       <text x="618" y="55" font-size="18" font-weight="900" fill="#1f2430" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">recycle</text>
@@ -238,8 +238,7 @@ For simple lists, **ListView is still the cleanest option**.
 
       <rect x="620" y="165" width="100" height="26" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
       <rect x="620" y="80" width="100" height="26" rx="10" fill="rgba(243, 162, 58, 0.9)"/>
-      <text x="610" y="210" font-size="13" font-weight="800" fill="#5b6477"
-      font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">same views, new data</text>
+      <text x="610" y="210" font-size="13" font-weight="800" fill="#5b6477" font-family="ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">same views, new data</text>
     </svg>
   </figure>
 
