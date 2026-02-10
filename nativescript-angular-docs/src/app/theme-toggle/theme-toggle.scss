@@ -85,7 +85,7 @@ html[data-theme="dark"] .theme-toggle__thumb {
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  background: var(--surface);
+  background: var(--black);
   box-shadow: 0 1px 3px var(--shadow-10);
   transition: transform 0.18s ease;
 }
@@ -94,7 +94,7 @@ html[data-theme="dark"] .theme-toggle__thumb {
 .theme-toggle__system {
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--black);
   color: var(--muted);
   font-size: 0.8rem;
   padding: 0.25rem 0.7rem;
@@ -104,8 +104,8 @@ html[data-theme="dark"] .theme-toggle__thumb {
               border-color 0.15s ease;
 
   &:hover {
-    background: var(--surface-alt);
-    color: var(--text-strong);
+    background: var(--purple-primary);
+    color: var(--white);
     border-color: var(--link);
   }
 }

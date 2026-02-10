@@ -64,6 +64,7 @@ html {
   --border:                #{$off_white_2};
   --black:                 #{$black_75};
   --link:                  #{$sky_blue};
+  --underline:             #{$angular-brand-purple-light-colour-primary};
   --heading-bg:            #{$blue};
   --li:                    #{$cyan};
 
@@ -87,6 +88,9 @@ html {
   --code-inline-fg:   var(--code-fg);
   --code-inline-bg:   var(--code-bg);
   --pre-custom-bg:    var(--pre-bg);
+
+  --purple-primary: #{$angular-brand-purple-colour-primary};
+  --purple-primary-highlight: #{$angular-brand-purple-colour-secondary};
 
   --hero-bg:
     radial-gradient(60rem 40rem at 86% 28%,
@@ -142,6 +146,7 @@ html {
 
   --border:                #{$off_black};
   --link:                  #{$navy};
+  --underline:             #{$angular-brand-purple-colour-primary};
   --li:                    #{$cyan};
 
   --scrollbar:             #{$angular-brand-purple-colour-primary};
