@@ -425,11 +425,11 @@ h1 {
 }
 
 .btn-primary {
-  background: var(--link);
+  background: var(--purple-primary);
   color: var(--surface);
 
   &:hover {
-    background: var(--link);
+    background: var(--purple-primary-highlight);
     transform: translateY(-1px);
   }
 }

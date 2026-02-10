@@ -33,13 +33,13 @@
 
 .guide-sidebar::-webkit-scrollbar-thumb,
 .guide-right-toc::-webkit-scrollbar-thumb {
-  background: var(--li);
+  background: var(--scrollbar);
   border-radius: 999px;
 }
 
 .guide-sidebar::-webkit-scrollbar-thumb:hover,
 .guide-right-toc::-webkit-scrollbar-thumb:hover {
-  background:$neon-cyan;
+  background: var(--scrollbar-hover);
 }
 
 .sidebar-nav {

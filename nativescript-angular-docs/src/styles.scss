@@ -27,12 +27,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--li);
+    background: var(--scrollbar);
     border-radius: 999px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $neon-cyan;
+    background: var(--scrollbar-hover);
   }
 }
 
@@ -44,38 +44,41 @@ html {
 /* Light (default) */
 :root,
 :root[data-theme="light"] {
-  --bg:                #{$off_white_2};
-  --surface:           #{$white};
-  --surface-alt:       #{$off_white};
-  --phone-outer:       #{$off_white};
+  --bg:                    #{$off_white_2};
+  --surface:               #{$white};
+  --surface-alt:           #{$off_white};
+  --phone-outer:           #{$off_white};
 
-  --text:              #{$black_80};
-  --text-phone:        #{$black_80};
-  --text-invert:       #{$black_80};
-  --text-feature-card: #{$black_75};
-  --text-grey-bg:      #{$black_75};
-  --text-strong:       #{$black_75};
-  --muted:             #{$paynes_grey};
-  --yellow:            #{$yellow-dark};
+  --text:                  #{$black_80};
+  --text-phone:            #{$black_80};
+  --text-invert:           #{$black_80};
+  --text-feature-card:     #{$black_75};
+  --text-grey-bg:          #{$black_75};
+  --text-strong:           #{$black_75};
+  --muted:                 #{$paynes_grey};
+  --yellow:                #{$yellow-dark};
 
-  --white:             #{$off_white};
-  --black:             #{$off_black};
+  --white:                 #{$off_white};
+  --black:                 #{$off_black};
 
-  --border:            #{$off_white_2};
-  --black:             #{$black_75};
-  --link:              #{$sky_blue};
-  --heading-bg:        #{$blue};
-  --li:                #{$cyan};
+  --border:                #{$off_white_2};
+  --black:                 #{$black_75};
+  --link:                  #{$sky_blue};
+  --heading-bg:            #{$blue};
+  --li:                    #{$cyan};
 
-  --sidebar-text:      #{$off_black};
-  --sidebar-text-hover:      #{$white};
-  --sidebar-text-hover-bg: #{$cyan};
+  --scrollbar:             #{$angular-brand-purple-colour-primary};
+  --scrollbar-hover:       #{$angular-brand-purple-light-colour-primary};
 
-  --code-fg:           #{$red};
-  --code-bg:           #{$off_white};
+  --sidebar-text:          #{$off_black};
+  --sidebar-text-hover:    #{$white};
+  --sidebar-text-hover-bg: #{$angular-brand-purple-colour-primary};
 
-  --pre-bg:            #{$dark_blue};
-  --pre-fg:            #{$off_white};
+  --code-fg:               #{$red};
+  --code-bg:               #{$off_white};
+
+  --pre-bg:                #{$dark_blue};
+  --pre-fg:                #{$off_white};
 
   /* content accents */
   --heading-accent:   var(--text-strong);
@@ -110,7 +113,7 @@ html {
     );
 
   --hero-text: #{$off_black};
-  --hero-highlight: #{$cyan};
+  --hero-highlight: #{$angular-brand-purple-colour-primary};
   --hero-subtle-grid-opacity: 0.05;
 }
 
@@ -135,11 +138,14 @@ html {
 
   --sidebar-text:          #{$off_white};
   --sidebar-text-hover:    #{$white};
-  --sidebar-text-hover-bg: #{$cyan};
+  --sidebar-text-hover-bg: #{$angular-brand-purple-colour-primary};
 
   --border:                #{$off_black};
   --link:                  #{$navy};
   --li:                    #{$cyan};
+
+  --scrollbar:             #{$angular-brand-purple-colour-primary};
+  --scrollbar-hover:       #{$angular-brand-purple-light-colour-primary};
 
   --code-fg:               #{$red};
   --code-bg:               #{$dark_blue};
@@ -152,6 +158,9 @@ html {
   --code-inline-fg:        #{$neon-cyan-code};
   --code-inline-bg:        transparent;
   --pre-custom-bg:         #{$cyan-bg};
+
+  --purple-primary: #{$angular-brand-purple-colour-primary};
+  --purple-primary-highlight: #{$angular-brand-purple-colour-secondary};
 
 
   --hero-bg:
@@ -314,11 +323,11 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--li);
+    background: var(--scrollbar);
     border-radius: 999px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $neon-cyan;
+    background: var(--scrollbar-hover);
   }
 }
