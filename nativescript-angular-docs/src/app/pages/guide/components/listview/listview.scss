@@ -1,5 +1,4 @@
-/* listview.scss */
-
+/* overall doc typography */
 .content-wrapper {
   --panel: #7b4ea3;
   --accent: #f3a23a;
@@ -8,37 +7,118 @@
   max-width: 980px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
+
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.content-wrapper pre,
+.content-wrapper pre code {
+  color: #1f2430 !important;      /* <— this usually fixes the “blank box” */
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  white-space: pre !important;
+}
+
+.content-wrapper h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.content-wrapper h2 {
+  font-size: 1.35rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.content-wrapper h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.content-wrapper p {
+  margin: 0.75rem 0;
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.content-wrapper li {
+  margin: 0.25rem 0;
+}
+
+.content-wrapper :not(pre) > code {
+  padding: 0.12rem 0.35rem;
+  border-radius: 0.5rem;
+  background: rgba(31, 36, 48, 0.06);
+  border: 1px solid rgba(31, 36, 48, 0.10);
+}
+
+/* fenced code blocks */
+.content-wrapper pre {
+  background: rgba(31, 36, 48, 0.04);
+  border: 1px solid rgba(31, 36, 48, 0.12);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.content-wrapper pre code {
+  background: transparent;
+  border: 0 !important;
+  padding: 0 !important;
 }
 
 .viz-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  width: 100%;
   margin: 1rem 0 1.25rem;
 }
 
+/* Best version (modern browsers): style the PRE that contains TS */
+.content-wrapper pre:has(> code.language-ts),
+.content-wrapper pre:has(> code.language-typescript) {
+  background: rgba(59, 130, 246, 0.06); /* soft blue tint */
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
 @media (min-width: 900px) {
-  .viz-grid { grid-template-columns: 1fr 1fr; }
+  .viz-grid { grid-template-columns: 1fr; }
 }
 
 .viz-card {
   margin: 0;
-  padding: 1rem;
-  border-radius: 16px;
-  background: rgba(123, 78, 163, 0.08);
-  border: 2px solid rgba(123, 78, 163, 0.18);
-  box-shadow: 0 10px 18px rgba(0,0,0,0.05);
+  padding: 0.85rem;
+  border-radius: 14px;
+
+  background: rgba(123, 78, 163, 0.06);
+  border: 1px solid rgba(123, 78, 163, 0.18);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .viz-title {
-  font-weight: 850;
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+
+  font-weight: 800;
+  font-size: 0.95rem;
   color: var(--ink);
-  margin-bottom: .75rem;
-  display: inline-block;
+
   padding: .35rem .6rem;
-  border-radius: 12px;
-  background: rgba(243, 162, 58, 0.18);
-  border: 2px solid rgba(243, 162, 58, 0.45);
+  border-radius: 10px;
+  background: rgba(243, 162, 58, 0.14);
+  border: 1px solid rgba(243, 162, 58, 0.35);
 }
 
 .viz {

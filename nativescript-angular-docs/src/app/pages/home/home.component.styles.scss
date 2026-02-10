@@ -74,7 +74,7 @@
 }
 
 .highlight {
-  color: $angular-logo-colour;
+  color: $angular-brand-colour-primary;
   text-shadow: 0 0.925rem 2.5rem rgba(0, 255, 227, 0.15);
 }
 
@@ -96,11 +96,11 @@
 }
 
 .btn-primary {
-  background: $cyan;
+  background: var(--purple-primary);
   color: $white;
 
   &:hover {
-    background: $neon-cyan;
+    background: var(--purple-primary-highlight);
     transform: translateY(-2px);
   }
 }
