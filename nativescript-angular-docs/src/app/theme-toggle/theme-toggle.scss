@@ -65,6 +65,7 @@ html[data-theme="light"] .theme-toggle__icon--sun {
 
 html[data-theme="light"] .theme-toggle__thumb {
   transform: translateX(0);
+  background: var(--white);
 }
 
 /* explicit DARK state */
@@ -75,6 +76,7 @@ html[data-theme="dark"] .theme-toggle__icon--moon {
 
 html[data-theme="dark"] .theme-toggle__thumb {
   transform: translateX(20px);
+  background: var(--black);
 }
 
 /* thumb base */
@@ -85,7 +87,6 @@ html[data-theme="dark"] .theme-toggle__thumb {
   width: 18px;
   height: 18px;
   border-radius: 999px;
-  background: var(--black);
   box-shadow: 0 1px 3px var(--shadow-10);
   transition: transform 0.18s ease;
 }
@@ -94,8 +95,8 @@ html[data-theme="dark"] .theme-toggle__thumb {
 .theme-toggle__system {
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: var(--black);
-  color: var(--muted);
+  background: var(--purple-primary);
+  color: var(--white);
   font-size: 0.8rem;
   padding: 0.25rem 0.7rem;
   cursor: pointer;
@@ -104,7 +105,7 @@ html[data-theme="dark"] .theme-toggle__thumb {
               border-color 0.15s ease;
 
   &:hover {
-    background: var(--purple-primary);
+    background: var(--purple-primary-highlight);
     color: var(--white);
     border-color: var(--link);
   }
