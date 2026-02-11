@@ -208,8 +208,8 @@ For simple lists, **ListView is still the cleanest option**.
         <rect x="440" y="180" width="280" height="18" rx="4" fill="rgba(123, 78, 163, 0.35)"/>
       </g>
 
-      <path d="M360 120 C 390 110, 400 110, 420 120" fill="none" stroke="rgba(31,36,48, 0.65)" stroke-width="6" stroke-linecap="round" transform="rotate(-2 422 120)"/>
-      <path d="M410 112 L 422 120 L 410 128" fill="none" stroke="rgba(31,36,48, 0.65)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(15 422 120)"/>
+      <path d="M360 120 C 390 110, 400 110, 420 120" fill="none" stroke="rgb(123, 78, 163)"" stroke-width="6" stroke-linecap="round" transform="rotate(-2 422 120)"/>
+      <path d="M410 112 L 422 120 L 410 128" fill="none" stroke="rgb(123, 78, 163)"" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(15 422 120)"/>
       <text x="355" y="145" font-size="15" font-weight="800" fill="#1f2430" font-family="${uiFont}">bind visible rows</text>
     </svg>
   </figure>
@@ -241,12 +241,39 @@ For simple lists, **ListView is still the cleanest option**.
       <rect x="570" y="20" width="185" height="200" rx="5" fill="rgba(15, 23, 42, 0.06)" stroke="rgba(15, 23, 42, 0.18)" stroke-width="1"/>
       <text x="618" y="55" font-size="18" font-weight="900" fill="#1f2430" font-family="${uiFont}">recycle</text>
 
-      <path d="M650 110 C 632 105, 625 140, 650 145" fill="none" stroke="rgba(123, 78, 163, 0.75)" stroke-width="2" stroke-linecap="round"/>
-      <path d="M650 145 C 670 150, 675 115, 650 110" fill="none" stroke="rgba(123, 78, 163, 0.75)" stroke-width="2" stroke-linecap="round"/>
-
       <rect x="620" y="165" width="100" height="26" rx="5" fill="rgba(243, 162, 58, 0.9)"/>
       <rect x="620" y="80" width="100" height="26" rx="5" fill="rgba(243, 162, 58, 0.9)"/>
       <text x="610" y="210" font-size="13" font-weight="800" fill="#5b6477" font-family="${uiFont}">same views, new data</text>
+
+      <path
+        d="M650 108 A22 22 0 1 1 649.9 108"
+        fill="none"
+        stroke="rgb(123, 78, 163)"
+        stroke-width="6"
+        stroke-linecap="round"
+        marker-end="url(#arrowHead)"
+      />
+
+      <!-- optional second arrow somewhere else on the loop -->
+      <path
+        d="M650 152 A22 22 0 1 1 650.1 152"
+        fill="none"
+        stroke="rgb(123, 78, 163)"
+        stroke-width="6"
+        stroke-linecap="round"
+        marker-end="url(#arrowHead)"
+      />
+
+      <defs>
+        <marker id="arrowHead"
+          viewBox="0 0 10 10"
+          refX="5.8" refY="5"
+          markerWidth="5.2" markerHeight="5.2"
+          orient="auto"
+          markerUnits="strokeWidth">
+          <path d="M 2 1 L 9 5 L 2 9 z" fill="rgba(123, 78, 163, 1)"/>
+        </marker>
+      </defs>
     </svg>
   </figure>
 
