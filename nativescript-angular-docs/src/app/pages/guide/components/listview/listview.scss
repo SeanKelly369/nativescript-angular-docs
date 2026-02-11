@@ -1,0 +1,161 @@
+/* overall doc typography */
+.content-wrapper {
+  /* pull from global theme */
+  --doc-bg: var(--surface);
+  --doc-ink: var(--text);
+  --doc-muted: var(--muted);
+
+  /* accents aligned to site */
+  --doc-panel: var(--purple-primary, #7b4ea3);
+  --doc-accent: var(--yellow, #f3a23a);
+
+  /* code aligned to site */
+  --doc-code-inline-fg: var(--code-inline-fg, var(--doc-ink));
+  --doc-code-inline-bg: var(--code-inline-bg, rgba(255,255,255,.06));
+
+  --doc-pre-bg: var(--pre-custom-bg, var(--pre-bg));
+  --doc-pre-fg: var(--pre-fg, var(--doc-ink));
+
+  /* viz card surfaces */
+  --viz-card-bg: white;
+  --viz-card-border: color-mix(in srgb, var(--doc-panel) 28%, transparent);
+
+  /* viz title chip */
+  --viz-chip-bg: color-mix(in srgb, var(--doc-accent) 18%, transparent);
+  --viz-chip-border: color-mix(in srgb, var(--doc-accent) 45%, transparent);
+
+  color: var(--doc-ink);
+
+  max-width: 61.25rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+
+  line-height: 1.6;
+}
+
+.content-wrapper pre,
+.content-wrapper pre code {
+  color: #1f2430 !important;      /* <— this usually fixes the “blank box” */
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  white-space: pre !important;
+}
+
+.content-wrapper h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+.content-wrapper h2 {
+  font-size: 1.35rem;
+  margin: 2rem 0 0.75rem;
+}
+
+.content-wrapper h3 {
+  font-size: 1.05rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.content-wrapper p {
+  margin: 0.75rem 0;
+}
+
+.content-wrapper ul,
+.content-wrapper ol {
+  margin: 0.75rem 0 0.75rem 1.25rem;
+}
+
+.content-wrapper li {
+  margin: 0.25rem 0;
+}
+
+.content-wrapper :not(pre) > code {
+  padding: 0.12rem 0.35rem;
+  border-radius: 0.5rem;
+  color: var(--doc-code-inline-fg);
+  background: var(--doc-code-inline-bg);
+  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
+}
+
+/* fenced code blocks */
+.content-wrapper pre {
+  background: var(--doc-pre-bg);
+  color: var(--doc-pre-fg);
+  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
+  border-radius: 0.925rem;
+  padding: 0.9rem 1rem;
+  overflow: auto;
+  margin: 0.75rem 0 1.25rem;
+}
+
+.content-wrapper pre,
+.content-wrapper pre code {
+  color: var(--doc-pre-fg) !important;
+  font-size: 0.92rem !important;
+  line-height: 1.5 !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  white-space: pre !important;
+}
+
+.content-wrapper pre code {
+  color: var(--doc-ink);
+  border: 0 !important;
+  padding: 0 !important;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+  margin: 1rem 0 1.25rem;
+}
+
+/* Best version (modern browsers): style the PRE that contains TS */
+.content-wrapper pre:has(> code.language-ts),
+.content-wrapper pre:has(> code.language-typescript) {
+  background: rgba(59, 130, 246, 0.06); /* soft blue tint */
+  border-color: rgba(59, 130, 246, 0.22);
+}
+
+@media (min-width: 56.25rem) {
+  .viz-grid {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.viz-card {
+  margin: 0;
+  padding: 0.85rem;
+  border-radius: 0.925rem;
+  background: var(--viz-card-bg);
+  border: 1px solid var(--viz-card-border);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.viz-title {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: rgb(32, 32, 32);
+
+  padding: .35rem .6rem;
+  border-radius: 0.625rem;
+  background: var(--viz-chip-bg);
+  border: 1px solid var(--viz-chip-border);
+}
+
+.viz {
+  width: 100%;
+  height: auto;
+  display: block;
+}
