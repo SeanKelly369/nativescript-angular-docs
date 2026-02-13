@@ -118,7 +118,7 @@ body.app-ready .app-container {
 
   &:hover {
     color: var(-content-text);
-    border-bottom-color: var(--link);
+    border-bottom-color: $angular-brand-purple-colour-secondary;
   }
   
   &.active {

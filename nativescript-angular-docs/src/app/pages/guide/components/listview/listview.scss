@@ -33,15 +33,6 @@
   line-height: 1.6;
 }
 
-.content-wrapper pre,
-.content-wrapper pre code {
-  color: #1f2430 !important;      /* <— this usually fixes the “blank box” */
-  font-size: 0.92rem !important;
-  line-height: 1.5 !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  white-space: pre !important;
-}
-
 .content-wrapper h1 {
   font-size: 2rem;
   margin: 0 0 1rem;
@@ -97,12 +88,8 @@
   line-height: 1.5 !important;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
   white-space: pre !important;
-}
-
-.content-wrapper pre code {
-  color: var(--doc-ink);
   border: 0 !important;
-  padding: 0 !important;
+  padding: 1rem !important;
 }
 
 .viz-grid {
@@ -116,8 +103,8 @@
 /* Best version (modern browsers): style the PRE that contains TS */
 .content-wrapper pre:has(> code.language-ts),
 .content-wrapper pre:has(> code.language-typescript) {
-  background: rgba(59, 130, 246, 0.06); /* soft blue tint */
-  border-color: rgba(59, 130, 246, 0.22);
+  background: color-mix(in srgb, var(--pre-custom-bg) 92%, rgb(59 130 246 / 35%));
+  border-color: rgb(59 130 246 / 35%);
 }
 
 @media (min-width: 56.25rem) {

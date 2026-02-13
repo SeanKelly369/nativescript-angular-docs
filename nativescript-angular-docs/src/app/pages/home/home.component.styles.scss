@@ -573,7 +573,7 @@
 }
 
 .shared-layer {
-  background: $indigo;
+  background: $angular-brand-purple-light-colour-primary;
   color: $white;
   padding: 1.5rem;
   border-radius: 0.5rem;
@@ -593,7 +593,7 @@
 }
 
 .platform-layer {
-  background: var(--surface);
+  background: var(--muted);
   padding: 1.5rem;
   border-radius: 0.5rem;
   text-align: center;
