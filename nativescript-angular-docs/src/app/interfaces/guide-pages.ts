@@ -5,7 +5,6 @@ export interface GuidePage {
 
 export const GUIDE_PAGES: GuidePage[] = [
   { title: "Introduction", route: "/guide/introduction" },
-  { title: "Overview", route: "/guide" },
   { title: "Project Structure", route: "/guide/project-structure" },
   { title: "UI Components", route: "/guide/components" },
   { title: "Navigation", route: "/guide/navigation" },
