@@ -3,8 +3,14 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     loadComponent: () =>
       import('./pages/home/home.component').then(m => m.HomeComponent),
+  },
+  {
+    path: 'home',
+    redirectTo: '',
+    pathMatch: 'full',
   },
   {
     path: 'getting-started',
@@ -32,5 +38,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/community/community.component').then(m => m.CommunityComponent),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: '**',
+    redirectTo: ''
+  },
 ];

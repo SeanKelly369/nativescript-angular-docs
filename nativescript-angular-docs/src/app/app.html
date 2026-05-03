@@ -4,46 +4,94 @@
     <nav class="navbar" [class.navbar--open]="isMobileMenuOpen()">
       <div class="nav-brand">
 
-       <div class="navbar-toggler">
+        <div class="navbar-toggler">
           <label class="hamburger-menu" (click)="$event.stopPropagation()">
-            <input type="checkbox" [checked]="isMobileMenuOpen()" (change)="isMobileMenuOpen(); toggleMobileMenu()" />
+            <input
+              type="checkbox"
+              [checked]="isMobileMenuOpen()"
+              (change)="toggleMobileMenu()"
+            />
             <span></span>
             <span></span>
             <span></span>
           </label>
         </div>
 
-        <a href="/home" routerLinkActive="active" class="brand-link">
-          <img src="/assets/NativeScript_Angular_Logo.svg" alt="NativeScript Angular logo" class="logo logo-nativescript">
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="brand-link"
+          (click)="closeMobileMenu()"
+        >
+          <img
+            src="/assets/NativeScript_Angular_Logo.svg"
+            alt="NativeScript Angular logo"
+            class="logo logo-nativescript"
+          >
           <span class="brand-text">NativeScript Angular</span>
         </a>
       </div>
 
-
       <div class="nav-main">
         <div class="nav-links">
-        <a href="/home" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Home</a>
-        <a href="/getting-started" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Getting Started</a>
-          <a href="/guide" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">Guide</a>
-        <a
-          href="https://stackblitz.com/edit/nativescript-stackblitz-templates-e8ms9tfw?file=package.json&title=NativeScript%20Starter%20Angular"
-          target="_blank"
-          class="nav-link"
-          (click)="closeMobileMenu()"
-        >
-          Playground
-        </a>
-        <a href="/community" routerLinkActive="active" class="nav-link" (click)="closeMobileMenu()">NativeScript Docs</a>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+            (click)="closeMobileMenu()"
+          >
+            Home
+          </a>
+
+          <a
+            routerLink="/getting-started"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="closeMobileMenu()"
+          >
+            Getting Started
+          </a>
+
+          <a
+            routerLink="/guide"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="closeMobileMenu()"
+          >
+            Guide
+          </a>
+
+          <a
+            href="https://stackblitz.com/edit/nativescript-stackblitz-templates-e8ms9tfw?file=package.json&title=NativeScript%20Starter%20Angular"
+            target="_blank"
+            class="nav-link"
+            (click)="closeMobileMenu()"
+          >
+            Playground
+          </a>
+
+          <a
+            routerLink="/community"
+            routerLinkActive="active"
+            class="nav-link"
+            (click)="closeMobileMenu()"
+          >
+            NativeScript Docs
+          </a>
         </div>
       </div>
 
       <app-theme-toggle></app-theme-toggle>
 
       <div class="nav-actions">
-        <a href="https://github.com/NativeScript/nativescript-angular"
+        <a
+          href="https://github.com/NativeScript/nativescript-angular"
           target="_blank"
           class="github-link"
-          aria-label="NativeScript GitHub repository">
+          aria-label="NativeScript GitHub repository"
+        >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0c-6.626 0-12 5.373-12 12
                     0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234
@@ -66,11 +114,14 @@
                     0-6.627-5.373-12-12-12z"/>
           </svg>
         </a>
-        <a href="https://discord.com/invite/RgmpGky9GR"
-            target="_blank"
-            class="github-link"
-            aria-label="NativeScript Discord group">
-            <img src="assets/discord_logo.svg" width="20" height="20" alt="Discord logo"/>
+
+        <a
+          href="https://discord.com/invite/RgmpGky9GR"
+          target="_blank"
+          class="github-link"
+          aria-label="NativeScript Discord group"
+        >
+          <img src="assets/discord_logo.svg" width="20" height="20" alt="Discord logo"/>
         </a>
       </div>
     </nav>
@@ -87,10 +138,10 @@
       <div class="footer-section">
         <h4>Framework</h4>
         <ul>
-          <li><a href="/getting-started">Getting Started</a></li>
-          <li><a href="/guide">Guide</a></li>
-          <li><a href="/examples">Examples</a></li>
-          <li><a href="/api">API Reference</a></li>
+          <li><a routerLink="/getting-started">Getting Started</a></li>
+          <li><a routerLink="/guide">Guide</a></li>
+          <li><a routerLink="/examples">Examples</a></li>
+          <li><a routerLink="/api">API Reference</a></li>
         </ul>
       </div>
 
@@ -100,7 +151,7 @@
           <li><a href="https://github.com/NativeScript/nativescript-angular" target="_blank">GitHub</a></li>
           <li><a href="https://discord.com/invite/RgmpGky9GR" target="_blank">Discord</a></li>
           <li><a href="https://stackoverflow.com/questions/tagged/nativescript-angular" target="_blank">Stack Overflow</a></li>
-          <li><a href="/community">Community Resources</a></li>
+          <li><a routerLink="/community">Community Resources</a></li>
         </ul>
       </div>
 
@@ -114,7 +165,7 @@
         </ul>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <p>&copy; 2025 NativeScript-Angular Documentation. Licensed under MIT.</p>
     </div>

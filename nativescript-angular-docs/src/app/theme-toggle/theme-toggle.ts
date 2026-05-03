@@ -8,7 +8,7 @@ import { ThemeService } from '../services/theme.service';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ThemeToggle {
+export class ThemeToggleComponent {
   private readonly theme = inject(ThemeService);
   isDark = computed(() => this.theme.isDark());
   current = computed(() => this.theme.current());

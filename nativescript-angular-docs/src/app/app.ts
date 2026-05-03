@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
-import { ThemeToggle } from './theme-toggle/theme-toggle';
+import { ThemeToggleComponent } from './theme-toggle/theme-toggle';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ThemeToggle],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, ThemeToggleComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
