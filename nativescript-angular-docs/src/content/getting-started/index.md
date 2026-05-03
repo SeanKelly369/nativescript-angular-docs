@@ -19,7 +19,7 @@ NativeScript-Angular is a framework that allows you to build native mobile appli
 
 Before getting started with NativeScript-Angular, make sure you have:
 
-- Node.js (v16 or later)
+- Node.js (v20 or later LTS)
 - npm or yarn package manager
 - Basic knowledge of Angular and TypeScript
 - Development environment set up for iOS and/or Android

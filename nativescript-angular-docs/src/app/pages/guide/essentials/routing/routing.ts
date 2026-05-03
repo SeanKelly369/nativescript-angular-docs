@@ -15,7 +15,7 @@ export class RoutingComponent implements OnInit {
   constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
-    const markdownContent = `# Performance in NativeScript-Angular
+    const markdownContent = `# Routing in NativeScript-Angular
 
   Practical tips to keep your apps **fast and smooth**, especially on lower-spec devices.
 

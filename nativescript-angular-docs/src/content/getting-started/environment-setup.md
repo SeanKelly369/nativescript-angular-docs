@@ -21,13 +21,13 @@ Setting up your development environment for NativeScript-Angular development.
 ## Required Software
 
 ### 1. Node.js
-Install Node.js version 16 or later:
+Install Node.js version 12 or later (LTS recommended):
 
 ```bash
 # Using nvm (recommended)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-nvm install 18
-nvm use 18
+nvm install 20
+nvm use 20
 
 # Or download from nodejs.org
 ```

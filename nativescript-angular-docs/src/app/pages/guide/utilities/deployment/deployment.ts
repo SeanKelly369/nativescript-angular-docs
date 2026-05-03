@@ -166,7 +166,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: npm ci
-      - run: npm i -g nativescript
+      - run: npm i -g nativescript/cli
       - run: ns doctor
       - run: |
           ns build android --release --aab
