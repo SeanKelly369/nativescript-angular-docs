@@ -17,158 +17,107 @@ export class RoutingComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Routing in NativeScript-Angular
 
-  Practical tips to keep your apps **fast and smooth**, especially on lower-spec devices.
+Mobile routing in NativeScript is powered by Angular Router, with native page navigation on iOS and Android.
 
-  ---
+---
 
-  ## 1) Keep Change Detection Cheap
+## 1) Define Routes
 
-  Use **OnPush** and push data immutably.
+\`\`\`ts
+// app.routes.ts
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './details/details.component';
 
-  \`\`\`ts
-  @Component({
-    changeDetection: ChangeDetectionStrategy.OnPush
-  })
-  export class MyCmp {
-    constructor(private cdr: ChangeDetectorRef) {}
-    // call when async work finishes
-    refresh() { this.cdr.markForCheck(); }
-  }
-  \`\`\`
+export const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'details/:id', component: DetailsComponent }
+];
+\`\`\`
 
-  For lists, always provide **trackBy**:
+---
 
-  \`\`\`ts
-  trackById = (_: number, x: { id: number }) => x.id;
-  \`\`\`
+## 2) Provide NativeScript Router
 
-  ---
+\`\`\`ts
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideNativeScriptRouter } from '@nativescript/angular';
+import { routes } from './app.routes';
 
-  ## 2) Use the Right List & Virtualization
+export const appConfig: ApplicationConfig = {
+  providers: [provideNativeScriptRouter(routes)]
+};
+\`\`\`
 
-  - Prefer **\`CollectionView\`** (or **\`ListView\`**) for large data.
-  - Keep item templates **flat** (e.g., a \`GridLayout\` with a few cells).
-  - Fix **row/item height** where possible (\`rowHeight\`) to reduce layout churn.
+---
 
-  \`\`\`html
-  <CollectionView
-    [items]="items"
-    [rowHeight]="56">
-    <ng-template let-item let-i="index">
-      <GridLayout columns="*, auto">
-        <Label col="0" [text]="item.name"></Label>
-        <Label col="1" [text]="i"></Label>
-      </GridLayout>
-    </ng-template>
-  </CollectionView>
-  \`\`\`
+## 3) Add \`page-router-outlet\`
 
-  ---
+\`\`\`html
+<!-- app.html -->
+<page-router-outlet></page-router-outlet>
+\`\`\`
 
-  ## 3) Minimize Layout/Measure Work
+This outlet manages a native back stack and platform transitions.
 
-  - Keep view hierarchies shallow.
-  - Pre-size images (\`width\`/\`height\`) to avoid repeated measure.
-  - Avoid toggling lots of \`visibility\`; swap templates or bind to \`opacity\` when appropriate.
+---
 
-  ---
+## 4) Navigate Programmatically
 
-  ## 4) Zone Hygiene
+\`\`\`ts
+import { Component } from '@angular/core';
+import { RouterExtensions } from '@nativescript/angular';
 
-  Heavy timers or native callbacks can thrash Angular's zone.
+@Component({
+  selector: 'ns-home',
+  template: '<StackLayout class="page"><Button text="Open Details" (tap)="openDetails()"></Button></StackLayout>'
+})
+export class HomeComponent {
+  constructor(private readonly routerExtensions: RouterExtensions) {}
 
-  \`\`\`ts
-  import { NgZone, ChangeDetectorRef } from '@angular/core';
-
-  constructor(private zone: NgZone, private cdr: ChangeDetectorRef) {}
-
-  startPolling() {
-    this.zone.runOutsideAngular(() => {
-      const id = setInterval(() => {
-        // do work...
-        // only touch UI inside run()
-        this.zone.run(() => this.cdr.markForCheck());
-      }, 1000);
+  openDetails(): void {
+    this.routerExtensions.navigate(['/details', 42], {
+      transition: { name: 'slideLeft', duration: 250 }
     });
   }
-  \`\`\`
+}
+\`\`\`
 
-  ---
+---
 
-  ## 5) RxJS: Keep Subscriptions Lean
+## 5) Back Navigation
 
-  - Use the \`async\` pipe **or** \`takeUntilDestroyed\` to auto-unsubscribe.
-  - Debounce noisy streams (search, scroll).
+\`\`\`ts
+if (this.routerExtensions.canGoBack()) {
+  this.routerExtensions.back();
+}
+\`\`\`
 
-  \`\`\`ts
-  import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-  import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+Use \`clearHistory: true\` for auth flows when users should not return to previous screens.
 
-  this.search$.pipe(
-    debounceTime(150),
-    distinctUntilChanged(),
-    switchMap(q => this.api.search(q)),
-    takeUntilDestroyed()
-  ).subscribe(() => this.cdr.markForCheck());
-  \`\`\`
+---
 
-  ---
+## 6) Lazy Loading
 
-  ## 6) Work Off the Main Thread
+\`\`\`ts
+export const routes: Routes = [
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.routes').then(m => m.SETTINGS_ROUTES)
+  }
+];
+\`\`\`
 
-  Use **Web Workers** for CPU-heavy work (parsing, compression, big JSON).
+Lazy loading keeps startup fast by loading route bundles on demand.
 
-  \`\`\`ts
-  // main.ts
-  const worker = new Worker('./workers/heavy.worker');
-  worker.onmessage = ({ data }) => {
-    this.result = data;
-    this.cdr.markForCheck();
-  };
-  worker.postMessage({ payload });
-  \`\`\`
+---
 
-  \`\`\`ts
-  // heavy.worker.ts
-  onmessage = ({ data }) => {
-    const result = doExpensiveThing(data.payload);
-    postMessage(result);
-  };
-  \`\`\`
+## 7) Common Pitfalls
 
-  ---
-
-  ## 7) Images & Assets
-
-  - Use appropriately sized images; avoid multi-MB PNGs.
-  - Set \`stretch="aspectFit"\`/\`aspectFill\` and explicit \`width\`/\`height\`.
-  - Avoid re-binding \`src\` unnecessarily; rely on platform caching.
-
-  ---
-
-  ## 8) Diagnostics & Profiling
-
-  - Ship **production** builds.
-  - Use focused logging (\`@nativescript/core/trace\`) when needed.
-  - Quick timings:
-
-  \`\`\`ts
-  console.time('load-animals');
-  // ... load
-  console.timeEnd('load-animals');
-  \`\`\`
-
-  ---
-
-  ## 9) Quick Checklist
-
-  - [ ] \`OnPush\` where reasonable
-  - [ ] \`trackBy\` on lists
-  - [ ] Flat item templates with fixed heights
-  - [ ] Debounced streams; \`async\` pipe or \`takeUntilDestroyed\`
-  - [ ] Heavy work in Web Workers
-  - [ ] Images pre-sized and cached
-  - [ ] Production build for release
+- Keep route paths stable and avoid duplicate empty routes.
+- Use params/query params for navigation state, not global mutable objects.
+- Prefer \`RouterExtensions\` for native-style transitions and back-stack control.
 `;
 
     const html = await marked(markdownContent);
