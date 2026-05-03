@@ -12,7 +12,7 @@ export class PerformanceComponent implements OnInit {
   htmlContent!: SafeHtml;
 
   constructor(
-    private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef
+    private readonly sanitizer: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -40,6 +40,8 @@ export class PerformanceComponent implements OnInit {
 
   For lists, always provide **trackBy**:
 
+  For Angular template loops, always provide **trackBy** / **track**;
+
   \`\`\`ts
   trackById = (_: number, x: { id: number }) => x.id;
   \`\`\`
@@ -65,13 +67,28 @@ export class PerformanceComponent implements OnInit {
   </CollectionView>
   \`\`\`
 
+  Avoid putting lots of nested layouts inside each row. This gets expensive quickly when rows are recycled during scrolling.
+
+  Prefer this:
+
+  \`\`\`html
+  <GridLayout columns="*, auto">
+    <Label col="0" [text]="item.name"></Label>
+    <Label col="1" [text]="item.status"></Label>
+  </GridLayout>
+  \`\`\`
+
+  Instead of deeply nested \`StackLayout\`s inside every row.
+
   ---
 
   ## 3) Minimize Layout/Measure Work
 
-  - Keep view hierarchies shallow.
-  - Pre-size images (\`width\`/\`height\`) to avoid repeated measure.
-  - Avoid toggling lots of \`visibility\`; swap templates or bind to \`opacity\` when appropriate.
+  - Keep view hierarchies shallow, especially inside list rows.
+  - Prefer **\`GridLayout\`** for structured rows instead of many nested **\`StackLayout\`s.
+  - Pre-size images (**\`width\`**/**\`height\`**) to avoid repeated measure.
+  - Avoid heavy functions, getters, or pipes in templates.
+  - Avoid toggling lots of **\`visibility\`**; swap templates or bind to **\`opacity\`** when appropriate.
 
   ---
 
@@ -84,14 +101,25 @@ export class PerformanceComponent implements OnInit {
 
   constructor(private zone: NgZone, private cdr: ChangeDetectorRef) {}
 
+  private pollingId?: ReturnType<typeof setInterval>;
+
   startPolling() {
     this.zone.runOutsideAngular(() => {
-      const id = setInterval(() => {
-        // do work...
-        // only touch UI inside run()
-        this.zone.run(() => this.cdr.markForCheck());
+      this.pollingId = setInterval(() => {
+        // do work outside Angular...
+
+        // only touch Angular/UI state inside run()
+        this.zone.run(() => {
+          this.cdr.markForCheck();
+        });
       }, 1000);
     });
+  }
+
+  stopPolling() {
+    if (this.pollingId) {
+      clearInterval(this.pollingId);
+    }
   }
   \`\`\`
 
@@ -116,9 +144,9 @@ export class PerformanceComponent implements OnInit {
 
   ---
 
-  ## 6) Work Off the Main Thread
+  ## 6) Work Off the UI Thread
 
-  Use **Web Workers** for CPU-heavy work (parsing, compression, big JSON).
+  Use NativeScript workers for CPU-heavy work such as parsing, compression, image processing, large JSON transforms, or sync preparation.
 
   \`\`\`ts
   // main.ts
@@ -150,9 +178,10 @@ export class PerformanceComponent implements OnInit {
 
   ## 8) Diagnostics & Profiling
 
+  - Test on real lower-spec Android/iOS devices, not only emulators.
   - Ship **production** builds.
-  - Use focused logging (\`@nativescript/core/trace\`) when needed.
-  - Quick timings:
+  - Use focused logging (**\`@nativescript/core/trace\`**) when needed.
+  - Use quick timings around suspicious code paths:
 
   \`\`\`ts
   console.time('load-animals');
@@ -164,17 +193,20 @@ export class PerformanceComponent implements OnInit {
 
   ## 9) Quick Checklist
 
-  - [ ] \`OnPush\` where reasonable
-  - [ ] \`trackBy\` on lists
-  - [ ] Flat item templates with fixed heights
-  - [ ] Debounced streams; \`async\` pipe or \`takeUntilDestroyed\`
-  - [ ] Heavy work in Web Workers
+  - [ ] **\`OnPush\`** where reasonable
+  - [ ] **\`trackBy\`** / **\`track\`** for Angular template loops
+  - [ ] Flat **\`CollectionView\`** / **\`ListView\`** item templates
+  - [ ] Fixed row/item heights where possible
+  - [ ] Avoid heavy functions, getters, or pipes in templates
+  - [ ] Debounced streams; **\`async\`** pipe or **\`takeUntilDestroyed\`**
+  - [ ] Heavy work moved off the UI thread with NativeScript workers
   - [ ] Images pre-sized and cached
+  - [ ] Tested on real lower-spec devices
   - [ ] Production build for release
   `;
 
     const html = await marked(markdownContent);
-    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
+    this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }
