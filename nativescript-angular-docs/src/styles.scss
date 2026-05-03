@@ -117,9 +117,17 @@ html {
       #ffffff 100%
     );
 
+
   --hero-text: #{$off_black};
   --hero-highlight: #{$angular-brand-purple-colour-primary};
   --hero-subtle-grid-opacity: 0.05;
+
+    --table-bg:                 rgba(0, 0, 0, 0.015);
+  --table-border:             rgba(65, 155, 246, 0.22);
+  --table-header-bg:          rgba(65, 155, 246, 0.08);
+  --table-row-border:         rgba(0, 0, 0, 0.08);
+  --table-code-bg:            var(--code-inline-bg);
+  --table-code-fg:            var(--code-inline-fg);
 }
 
 /* Dark */
@@ -197,6 +205,13 @@ html {
   --hero-text: #{$white};
   --hero-highlight: #{$neon-cyan};
   --hero-subtle-grid-opacity: 0.06;
+
+  --table-bg:                 rgba(255, 255, 255, 0.025);
+  --table-border:             rgba(0, 255, 230, 0.22);
+  --table-header-bg:          rgba(0, 255, 230, 0.08);
+  --table-row-border:         rgba(255, 255, 255, 0.08);
+  --table-code-bg:            rgba(0, 255, 230, 0.10);
+  --table-code-fg:            #{$neon-cyan};
 }
 
 /* =========================
@@ -336,5 +351,56 @@ body {
 
   &::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-hover);
+  }
+
+
+  // Table
+    table {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--table-border);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    table-layout: fixed;
+    background: var(--table-bg);
+  }
+
+  thead {
+    background: var(--table-header-bg);
+  }
+
+  th,
+  td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.5;
+    border-bottom: 1px solid var(--table-row-border);
+  }
+
+  th {
+    color: var(--text-strong);
+    font-weight: 700;
+  }
+
+  td:first-child,
+  th:first-child {
+    width: 15rem;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  table code {
+    display: inline-block;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.35rem;
+    background: var(--table-code-bg);
+    color: var(--table-code-fg);
+    font-size: 0.92em;
+    white-space: nowrap;
   }
 }
