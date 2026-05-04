@@ -117,12 +117,12 @@ body.app-ready .app-container {
   cursor: pointer;
 
   &:hover {
-    color: var(-content-text);
+    color: var(--content-text);
     border-bottom-color: $angular-brand-purple-colour-secondary;
   }
   
   &.active {
-    color: var(-content-text);
+    color: var(--content-text);
     border-bottom-color: var(--link);
   }
 }

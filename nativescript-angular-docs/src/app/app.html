@@ -5,16 +5,18 @@
       <div class="nav-brand">
 
         <div class="navbar-toggler">
-          <label class="hamburger-menu" (click)="$event.stopPropagation()">
-            <input
-              type="checkbox"
-              [checked]="isMobileMenuOpen()"
-              (change)="toggleMobileMenu()"
-            />
+          <button
+              type="button"
+              class="hamburger-menu"
+              [attr.aria-expanded]="isMobileMenuOpen()"
+              aria-controls="main-nav"
+              aria-label="Toggle navigation menu"
+              (click)="toggleMobileMenu(); $event.stopPropagation()"
+            >
             <span></span>
             <span></span>
             <span></span>
-          </label>
+          </button>
         </div>
 
         <a
@@ -33,7 +35,7 @@
         </a>
       </div>
 
-      <div class="nav-main">
+      <div id="main-nav" class="nav-main">
         <div class="nav-links">
           <a
             routerLink="/"
@@ -66,6 +68,7 @@
           <a
             href="https://stackblitz.com/edit/nativescript-stackblitz-templates-e8ms9tfw?file=package.json&title=NativeScript%20Starter%20Angular"
             target="_blank"
+            rel="noopener noreferrer"
             class="nav-link"
             (click)="closeMobileMenu()"
           >
@@ -89,6 +92,7 @@
         <a
           href="https://github.com/NativeScript/nativescript-angular"
           target="_blank"
+          rel="noopener noreferrer"
           class="github-link"
           aria-label="NativeScript GitHub repository"
         >
@@ -118,6 +122,7 @@
         <a
           href="https://discord.com/invite/RgmpGky9GR"
           target="_blank"
+          rel="noopener noreferrer"
           class="github-link"
           aria-label="NativeScript Discord group"
         >
@@ -148,26 +153,34 @@
       <div class="footer-section">
         <h4>Community</h4>
         <ul>
-          <li><a href="https://github.com/NativeScript/nativescript-angular" target="_blank">GitHub</a></li>
-          <li><a href="https://discord.com/invite/RgmpGky9GR" target="_blank">Discord</a></li>
-          <li><a href="https://stackoverflow.com/questions/tagged/nativescript-angular" target="_blank">Stack Overflow</a></li>
-          <li><a routerLink="/community">Community Resources</a></li>
+          <li>
+            <a href="https://github.com/NativeScript/nativescript-angular" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </li>
+          <li>
+            <a href="https://discord.com/invite/RgmpGky9GR" target="_blank" rel="noopener noreferrer">Discord</a>
+          </li>
+          <li>
+            <a href="https://stackoverflow.com/questions/tagged/nativescript-angular" target="_blank" rel="noopener noreferrer">Stack Overflow</a>
+          </li>
+          <li>
+            <a routerLink="/community" target="_blank" rel="noopener noreferrer">Community Resources</a>
+          </li>
         </ul>
       </div>
 
       <div class="footer-section">
         <h4>Resources</h4>
         <ul>
-          <li><a href="https://docs.nativescript.org" target="_blank">NativeScript Docs</a></li>
-          <li><a href="https://market.nativescript.org" target="_blank">Marketplace</a></li>
-          <li><a href="https://blog.nativescript.org" target="_blank">Blog</a></li>
-          <li><a href="https://www.nativescript.org" target="_blank">NativeScript.org</a></li>
+          <li><a href="https://docs.nativescript.org" target="_blank" rel="noopener noreferrer">NativeScript Docs</a></li>
+          <li><a href="https://market.nativescript.org" target="_blank" rel="noopener noreferrer">Marketplace</a></li>
+          <li><a href="https://blog.nativescript.org" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li><a href="https://www.nativescript.org" target="_blank" rel="noopener noreferrer">NativeScript.org</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2025 NativeScript-Angular Documentation. Licensed under MIT.</p>
+      <p>&copy; 2026 NativeScript-Angular Documentation. Licensed under MIT.</p>
     </div>
   </footer>
 </div>
