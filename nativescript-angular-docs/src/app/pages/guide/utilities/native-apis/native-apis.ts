@@ -16,52 +16,156 @@ export class NativeApis implements OnInit {
   async ngOnInit(): Promise<void> {
   const markdownContent = `# Native APIs in NativeScript-Angular
 
-NativeScript lets you call **any iOS or Android API directly from TypeScript**—no bridges to write, no plugins required (though plugins are great when they exist).
+NativeScript gives you direct access to iOS and Android APIs from TypeScript.
+
+That means you can call native APIs when you need them, without waiting for a plugin. In Angular apps, the cleanest approach is usually to wrap native code inside services so your components stay simple, testable, and cross-platform.
+
+---
+
+## When Should You Use Native APIs?
+
+Use native APIs when:
+
+- A plugin does not exist for what you need.
+- You need a small platform-specific feature.
+- You are integrating with an Android or iOS SDK.
+- You need access to platform behaviour that NativeScript does not abstract.
+
+Prefer a plugin when:
+
+- Permissions are involved.
+- The feature has lots of lifecycle edge cases.
+- You need the same behaviour on both Android and iOS.
+- The API is complex, such as camera, geolocation, maps, barcode scanning, authentication, or payments.
+
+> Rule of thumb: use native APIs for small focused tasks; use plugins for full features.
 
 ---
 
 ## Platform Detection
 
+Use platform guards before touching Android-only or iOS-only APIs.
+
 \`\`\`ts
 import { isAndroid, isIOS } from '@nativescript/core';
 
-if (isAndroid) { /* Android-specific code */ }
-if (isIOS)     { /* iOS-specific   code */ }
+if (isAndroid) {
+  // Android-only code
+}
+
+if (isIOS) {
+  // iOS-only code
+}
 \`\`\`
+
+This matters because Android globals such as \\\`android\\\` do not exist on iOS, and iOS globals such as \\\`UIKit\\\` classes do not exist on Android.
 
 ---
 
-## Getting Platform Primitives
+## Getting Native Platform Objects
+
+Many native APIs need an Android \\\`Activity\\\`, Android \\\`Context\\\`, or iOS root view controller.
 
 \`\`\`ts
 import { Application, Utils } from '@nativescript/core';
 
-// Android Activity & Context
-const activity = Application.android.foregroundActivity || Application.android.startActivity;
-const ctx = Utils.android.getApplicationContext();
+// Android Activity
+const activity =
+  Application.android.foregroundActivity ||
+  Application.android.startActivity;
+
+// Android Context
+const context = Utils.android.getApplicationContext();
 
 // iOS Root View Controller
-const rootVC = Utils.ios.getRootViewController();
+const rootViewController = Utils.ios.getRootViewController();
 \`\`\`
+
+Keep this kind of setup close to the native code that needs it. Avoid scattering \\\`Activity\\\`, \\\`Context\\\`, or view controller logic across many components.
 
 ---
 
-## Quick UI Examples
+## A Better Angular Pattern
 
-### Android: Toast
+Instead of calling native APIs directly from a component, wrap them in a service.
+
 \`\`\`ts
-import { Utils, isAndroid } from '@nativescript/core';
+import { Injectable } from '@angular/core';
+import { Application, isAndroid, isIOS, Utils } from '@nativescript/core';
+
+@Injectable({ providedIn: 'root' })
+export class NativeAlertService {
+  show(message: string): void {
+    if (isAndroid) {
+      const context = Utils.android.getApplicationContext();
+
+      android.widget.Toast
+        .makeText(context, message, android.widget.Toast.LENGTH_SHORT)
+        .show();
+
+      return;
+    }
+
+    if (isIOS) {
+      const alert = UIAlertController.alertControllerWithTitleMessagePreferredStyle(
+        'Native iOS',
+        message,
+        UIAlertControllerStyle.Alert
+      );
+
+      const okAction = UIAlertAction.actionWithTitleStyleHandler(
+        'OK',
+        UIAlertActionStyle.Default,
+        null
+      );
+
+      alert.addAction(okAction);
+
+      const rootViewController = Utils.ios.getRootViewController();
+      rootViewController.presentViewControllerAnimatedCompletion(alert, true, null);
+    }
+  }
+}
+\`\`\`
+
+Then your component can stay clean:
+
+\`\`\`ts
+constructor(private readonly nativeAlert: NativeAlertService) {}
+
+showAlert(): void {
+  this.nativeAlert.show('Hello from native APIs');
+}
+\`\`\`
+
+This keeps platform-specific logic in one place and makes the component easier to test.
+
+---
+
+## Quick Android Example: Toast
+
+\`\`\`ts
+import { isAndroid, Utils } from '@nativescript/core';
 
 if (isAndroid) {
   android.widget.Toast
-    .makeText(Utils.android.getApplicationContext(), 'Hello from Toast', android.widget.Toast.LENGTH_SHORT)
+    .makeText(
+      Utils.android.getApplicationContext(),
+      'Hello from Android Toast',
+      android.widget.Toast.LENGTH_SHORT
+    )
     .show();
 }
 \`\`\`
 
-### iOS: UIAlertController
+A Toast is a good example of a small native API call. It is simple, platform-specific, and does not need a full plugin.
+
+---
+
+## Quick iOS Example: UIAlertController
+
 \`\`\`ts
-import { Utils, isIOS } from '@nativescript/core';
+import { isIOS, Utils } from '@nativescript/core';
 
 if (isIOS) {
   const alert = UIAlertController.alertControllerWithTitleMessagePreferredStyle(
@@ -69,141 +173,230 @@ if (isIOS) {
     'Hello from UIAlertController',
     UIAlertControllerStyle.Alert
   );
-  const ok = UIAlertAction.actionWithTitleStyleHandler('OK', UIAlertActionStyle.Default, null);
-  alert.addAction(ok);
 
-  const vc = Utils.ios.getRootViewController();
-  vc.presentViewControllerAnimatedCompletion(alert, true, null);
+  const okAction = UIAlertAction.actionWithTitleStyleHandler(
+    'OK',
+    UIAlertActionStyle.Default,
+    null
+  );
+
+  alert.addAction(okAction);
+
+  const rootViewController = Utils.ios.getRootViewController();
+  rootViewController.presentViewControllerAnimatedCompletion(alert, true, null);
 }
 \`\`\`
 
----
-
-## Intents (Android) & URL Schemes (iOS)
-
-### Share Text (Android)
-\`\`\`ts
-const intent = new android.content.Intent(android.content.Intent.ACTION_SEND);
-intent.setType('text/plain');
-intent.putExtra(android.content.Intent.EXTRA_TEXT, 'Shared from NativeScript');
-activity.startActivity(android.content.Intent.createChooser(intent, 'Share with'));
-\`\`\`
-
-### Open URL (iOS)
-\`\`\`ts
-const url = NSURL.URLWithString('https://nativescript.org');
-UIApplication.sharedApplication.openURL(url);
-\`\`\`
+For ordinary app dialogs, NativeScript's own dialog APIs are usually simpler. Use native dialogs when you specifically need platform-level behaviour.
 
 ---
 
-## Runtime Permissions (Android)
+## Opening URLs
+
+For most cases, use NativeScript's cross-platform helper:
+
+\`\`\`ts
+import { Utils } from '@nativescript/core';
+
+const opened = Utils.openUrl('https://nativescript.org');
+
+if (!opened) {
+  console.log('The URL could not be opened.');
+}
+\`\`\`
+
+Use direct Android intents or iOS URL APIs only when you need more control.
+
+---
+
+## Android Intent Example
 
 \`\`\`ts
 import { Application, isAndroid } from '@nativescript/core';
 
 if (isAndroid) {
-  const CAM = android.Manifest.permission.CAMERA;
-  const act = Application.android.foregroundActivity || Application.android.startActivity;
+  const activity =
+    Application.android.foregroundActivity ||
+    Application.android.startActivity;
 
-  const granted = androidx.core.content.ContextCompat.checkSelfPermission(act, CAM)
-                === android.content.pm.PackageManager.PERMISSION_GRANTED;
+  const intent = new android.content.Intent(android.content.Intent.ACTION_SEND);
 
-  if (!granted) {
-    androidx.core.app.ActivityCompat.requestPermissions(act, [CAM], 123);
-  }
+  intent.setType('text/plain');
+  intent.putExtra(android.content.Intent.EXTRA_TEXT, 'Shared from NativeScript');
+
+  const chooser = android.content.Intent.createChooser(intent, 'Share with');
+  activity.startActivity(chooser);
 }
 \`\`\`
 
-> Tip: prefer a plugin when available (geolocation, camera, etc.)—it will wrap permissions and edge cases for you.
+Android intents are useful for sharing content, opening other apps, launching system screens, or calling into Android platform features.
 
 ---
 
-## Extending Native Classes (Delegates / Listeners)
+## Android Runtime Permissions
 
-When you need callbacks from native APIs, extend native interfaces/classes.
-Use **\`@NativeClass()\`** so the runtime can generate metadata.
-
-### iOS Delegate
-\`\`\`ts
-import { NativeClass } from '@nativescript/core';
-
-@NativeClass()
-export class MyAlertDelegate extends NSObject implements UIAdaptivePresentationControllerDelegate {
-  public static ObjCProtocols = [UIAdaptivePresentationControllerDelegate];
-
-  // example optional method
-  presentationControllerDidDismiss(_controller: UIPresentationController) {
-    console.log('Dismissed!');
-  }
-}
-\`\`\`
-
-### Android Listener
-\`\`\`ts
-import { NativeClass } from '@nativescript/core';
-
-@NativeClass()
-export class MyClickListener extends java.lang.Object implements android.view.View.OnClickListener {
-  public onClick(v: android.view.View) {
-    console.log('Clicked native view id:', v.getId());
-  }
-}
-
-// usage
-const btn = new android.widget.Button(activity);
-btn.setOnClickListener(new MyClickListener());
-\`\`\`
-
----
-
-## Typings & Types
-
-- Many frameworks are **already typed** (AndroidX, UIKit, Foundation, etc.).
-- If TypeScript can’t infer something, fall back to a loose type:
+Some Android APIs require runtime permissions. Always check before requesting.
 
 \`\`\`ts
-declare const android: any;   // rarely needed, but handy for edge APIs
-declare const UIApplication: any;
-\`\`\`
-
----
-
-## Threads & UI Safety
-
-- **UI work must be on the main thread.**
-- Heavy work → Web Workers (see Performance page).
-
-\`\`\`ts
-import { Utils, isAndroid, isIOS } from '@nativescript/core';
+import { Application, isAndroid } from '@nativescript/core';
 
 if (isAndroid) {
-  Utils.android.runOnUiThread(() => { /* update Android UI */ });
-}
-if (isIOS) {
-  Utils.ios.dispatchToMainThread(() => { /* update iOS UI */ });
+  const cameraPermission = android.Manifest.permission.CAMERA;
+
+  const activity =
+    Application.android.foregroundActivity ||
+    Application.android.startActivity;
+
+  const hasPermission =
+    androidx.core.content.ContextCompat.checkSelfPermission(activity, cameraPermission) ===
+    android.content.pm.PackageManager.PERMISSION_GRANTED;
+
+  if (!hasPermission) {
+    androidx.core.app.ActivityCompat.requestPermissions(
+      activity,
+      [cameraPermission],
+      1001
+    );
+  }
 }
 \`\`\`
 
----
-
-## When to Use a Plugin
-
-- Repetitive boilerplate (permissions, lifecycle handling).
-- Complex APIs (camera, geolocation, barcode, auth).
-- Cross-platform parity matters.
-
-If a good plugin exists, **use it**. If not, you can always drop to native like above.
+For real camera, location, media, contacts, Bluetooth, or notification features, prefer a maintained plugin. Permissions are easy to request but harder to handle correctly across Android versions.
 
 ---
 
-### Checklist
+## Extending Native Classes
 
-- [ ] Guard code with \`isAndroid\` / \`isIOS\`.
-- [ ] Use Activity/Context (Android) or Root VC (iOS) when needed.
-- [ ] Request runtime permissions on Android.
-- [ ] Keep UI work on the main thread.
-- [ ] Prefer plugins for complex features; go native when you must.
+Sometimes native APIs expect a delegate, listener, callback, or subclass.
+
+When extending native classes in TypeScript, use \\\`@NativeClass()\\\`.
+
+---
+
+### iOS Delegate Example
+
+\`\`\`ts
+@NativeClass()
+export class MyPresentationDelegate
+  extends NSObject
+  implements UIAdaptivePresentationControllerDelegate {
+
+  static ObjCProtocols = [UIAdaptivePresentationControllerDelegate];
+
+  presentationControllerDidDismiss(controller: UIPresentationController): void {
+    console.log('iOS presentation dismissed');
+  }
+}
+\`\`\`
+
+The \\\`ObjCProtocols\\\` array tells NativeScript which Objective-C protocols this class conforms to.
+
+---
+
+### Android Listener Example
+
+\`\`\`ts
+@NativeClass()
+export class MyClickListener
+  extends java.lang.Object
+  implements android.view.View.OnClickListener {
+
+  onClick(view: android.view.View): void {
+    console.log('Clicked native view id:', view.getId());
+  }
+}
+\`\`\`
+
+Usage:
+
+\`\`\`ts
+const button = new android.widget.Button(activity);
+button.setText('Native Android Button');
+button.setOnClickListener(new MyClickListener());
+\`\`\`
+
+Use this pattern when a native API expects an interface implementation, listener, delegate, or subclass.
+
+---
+
+## Typings
+
+NativeScript provides TypeScript typings for many native APIs, including common Android and iOS frameworks.
+
+When TypeScript cannot find a native API, you have a few options:
+
+1. Check that the correct platform typings are installed.
+2. Generate typings for custom native code.
+3. Use a narrow \\\`declare const\\\` fallback only when needed.
+
+Example fallback:
+
+\`\`\`ts
+declare const com: any;
+\`\`\`
+
+Avoid declaring everything as \\\`any\\\` too early. You lose autocomplete, type safety, and useful compiler errors.
+
+---
+
+## Running Code on the Main Thread
+
+UI work must run on the main thread.
+
+\`\`\`ts
+import { Utils } from '@nativescript/core';
+
+Utils.executeOnMainThread(() => {
+  // Safe place for native UI updates
+});
+\`\`\`
+
+For heavy work, use Web Workers or move the work away from the UI path.
+
+---
+
+## Keep Native Code Isolated
+
+A good folder structure is:
+
+\`\`\`txt
+src/
+└── app/
+    └── services/
+        └── native/
+            ├── native-alert.service.ts
+            ├── native-share.service.ts
+            └── native-permissions.service.ts
+\`\`\`
+
+This keeps your Angular components focused on UI and application flow, while native services handle platform-specific behaviour.
+
+---
+
+## Common Mistakes
+
+| Mistake | Better Approach |
+| --- | --- |
+| Calling Android APIs without \\\`isAndroid\\\` | Guard Android code |
+| Calling iOS APIs without \\\`isIOS\\\` | Guard iOS code |
+| Putting native code directly in large components | Move it into services |
+| Using \\\`any\\\` everywhere | Use generated typings where possible |
+| Handling complex permissions manually | Prefer a maintained plugin |
+| Updating UI from background work | Use the main thread |
+
+---
+
+## Checklist
+
+- [ ] Guard platform code with \\\`isAndroid\\\` or \\\`isIOS\\\`.
+- [ ] Keep native API calls inside focused services.
+- [ ] Use Android \\\`Activity\\\` or \\\`Context\\\` only where needed.
+- [ ] Use the iOS root view controller only where needed.
+- [ ] Prefer \\\`Utils.openUrl()\\\` for simple URL opening.
+- [ ] Request Android runtime permissions before protected API calls.
+- [ ] Use \\\`@NativeClass()\\\` when extending native classes.
+- [ ] Keep UI updates on the main thread.
+- [ ] Prefer plugins for complex cross-platform features.
 `;
 
     const html = await marked(markdownContent);
