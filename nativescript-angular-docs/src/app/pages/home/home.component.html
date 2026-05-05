@@ -169,28 +169,76 @@
             </ul>
             <a routerLink="/guide/code-sharing" class="btn btn-primary">Learn Code Sharing</a>
           </div>
+
           <div class="sharing-visual">
-            <div class="architecture-diagram">
+            <div class="architecture-diagram" aria-label="Code sharing architecture diagram">
               <div class="shared-layer">
                 <h4>Shared Code</h4>
-                <div class="layer-item">Services</div>
-                <div class="layer-item">Models</div>
-                <div class="layer-item">Business Logic</div>
+
+                <div class="diagram-item shared-item">
+                  <span class="diagram-icon diagram-icon--services" aria-hidden="true"></span>
+                  <span>Services</span>
+                </div>
+
+                <div class="diagram-item shared-item">
+                  <span class="diagram-icon diagram-icon--models" aria-hidden="true"></span>
+                  <span>Models</span>
+                </div>
+
+                <div class="diagram-item shared-item">
+                  <span class="diagram-icon diagram-icon--logic" aria-hidden="true"></span>
+                  <span>Business Logic</span>
+                </div>
               </div>
+
+              <div class="diagram-connector" aria-hidden="true">
+                <span class="connector-line connector-line--vertical"></span>
+                <span class="connector-node connector-node--centre"></span>
+                <span class="connector-line connector-line--horizontal"></span>
+                <span class="connector-line connector-line--left"></span>
+                <span class="connector-line connector-line--right"></span>
+                <span class="connector-node connector-node--left"></span>
+                <span class="connector-node connector-node--right"></span>
+              </div>
+
               <div class="platform-layers">
                 <div class="platform-layer">
-                  <h4>Web</h4>
-                  <div class="layer-item">HTML Templates</div>
-                  <div class="layer-item">CSS Styles</div>
+                  <h4>
+                    <span class="diagram-icon diagram-icon--web" aria-hidden="true"></span>
+                    <span>Web</span>
+                  </h4>
+
+                  <div class="diagram-item platform-item">
+                    <span class="diagram-icon diagram-icon--template" aria-hidden="true"></span>
+                    <span>HTML Templates</span>
+                  </div>
+
+                  <div class="diagram-item platform-item">
+                    <span class="diagram-icon diagram-icon--styles" aria-hidden="true"></span>
+                    <span>CSS Styles</span>
+                  </div>
                 </div>
+
                 <div class="platform-layer">
-                  <h4>Mobile</h4>
-                  <div class="layer-item">XML Templates</div>
-                  <div class="layer-item">Native Styles</div>
+                  <h4>
+                    <span class="diagram-icon diagram-icon--mobile" aria-hidden="true"></span>
+                    <span>Mobile</span>
+                  </h4>
+
+                  <div class="diagram-item platform-item">
+                    <span class="diagram-icon diagram-icon--template" aria-hidden="true"></span>
+                    <span>XML Templates</span>
+                  </div>
+
+                  <div class="diagram-item platform-item">
+                    <span class="diagram-icon diagram-icon--styles" aria-hidden="true"></span>
+                    <span>Native Styles</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
