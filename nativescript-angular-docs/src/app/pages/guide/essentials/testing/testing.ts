@@ -15,34 +15,80 @@ export class TestingComponent implements OnInit {
   constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   async ngOnInit(): Promise<void> {
-    const markdownContent = `# Testing in NativeScript-Angular
+const markdownContent = `# Testing in NativeScript-Angular
 
-The goal is the same as web Angular: **fast, reliable unit tests** for services and component logic, plus **E2E** for real UI and navigation.
-You usually don't need a device for unit tests—treat components like normal Angular classes and **mock NativeScript specifics**.
+Testing a NativeScript-Angular app is mostly the same idea as testing a web Angular app: keep unit tests fast, mock external dependencies, and reserve full device testing for the flows that genuinely need a phone or emulator.
+
+The important difference is that NativeScript renders native UI. That means unit tests are best used for **services**, **component logic**, **navigation intent**, **data shaping**, and **state changes** — not pixel-perfect native rendering.
+
+---
+
+## What Should You Test?
+
+Good candidates for unit tests:
+
+- services
+- API calls
+- mapping and formatting logic
+- component methods
+- form validation
+- guards
+- route/navigation decisions
+- \`trackBy\` functions
+- polling and timer cleanup
+- error handling
+
+Use E2E or manual device testing for:
+
+- native layout rendering
+- gestures
+- scroll behaviour
+- animations
+- platform-specific UI behaviour
+- camera, files, geolocation, Bluetooth, and other native APIs
+
+> Rule of thumb: unit test the decision-making. Device test the native behaviour.
 
 ---
 
 ## Test Runners
 
-You can use **Jest** or **Jasmine/Karma**. Examples below work with either (minor matcher differences aside).
+NativeScript's CLI testing flow uses **Karma** and lets you choose a test framework such as **Jasmine**, **Mocha + Chai**, or **QUnit**.
 
-**Scripts (examples):**
-\`\`\`json
-// package.json (Jest)
-{ "scripts": { "test": "jest", "test:watch": "jest --watch" } }
-// or (Karma)
-{ "scripts": { "test": "ng test" } }
+For a new or existing NativeScript project, initialise testing with:
+
+\`\`\`bash
+ns test init
 \`\`\`
+
+Then run tests on a device or emulator:
+
+\`\`\`bash
+ns test android
+ns test ios --emulator
+\`\`\`
+
+You can also watch for changes:
+
+\`\`\`bash
+ns test android --watch
+ns test ios --emulator --watch
+\`\`\`
+
+For pure TypeScript logic, some teams also use Jest separately, but the standard NativeScript CLI testing path is Karma-based.
 
 ---
 
-## 1) Service Tests (HttpClient)
+## 1) Service Tests
 
-Use Angular's **HttpClientTestingModule** + **HttpTestingController**.
+Services are usually the easiest and most valuable things to test. They often contain API calls, mapping logic, storage access, and business rules.
+
+For Angular HTTP services, use \`provideHttpClient()\`, \`provideHttpClientTesting()\`, and \`HttpTestingController\`.
 
 \`\`\`ts
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting, HttpTestingController } from '@angular/common/http/testing';
 import { AnimalsService } from './animals.service';
 
 describe('AnimalsService', () => {
@@ -51,9 +97,13 @@ describe('AnimalsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [AnimalsService],
+      providers: [
+        AnimalsService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+      ],
     });
+
     service = TestBed.inject(AnimalsService);
     http = TestBed.inject(HttpTestingController);
   });
@@ -62,66 +112,112 @@ describe('AnimalsService', () => {
 
   it('loads animals', () => {
     let result: any[] | undefined;
-    service.getAnimals().subscribe(r => (result = r));
+
+    service.getAnimals().subscribe(response => {
+      result = response;
+    });
 
     const req = http.expectOne('/api/animals');
-    req.flush([{ id: 1 }, { id: 2 }]);
+
+    expect(req.request.method).toBe('GET');
+
+    req.flush([
+      { id: 1, name: 'Cow' },
+      { id: 2, name: 'Calf' },
+    ]);
 
     expect(result?.length).toBe(2);
   });
 });
 \`\`\`
 
+The test checks three useful things:
+
+- the service calls the expected URL
+- it uses the expected HTTP method
+- it handles the mocked response correctly
+
 ---
 
-## 2) Component Class Tests (ignore native tags)
+## 2) Standalone Component Tests
 
-When testing components that use NativeScript tags (\`<Label>\`, \`<Button>\`, \`<GridLayout>\`), ignore unknown elements with **NO_ERRORS_SCHEMA** and test the **class logic**.
+For modern Angular standalone components, place the component in \`imports\`, not \`declarations\`.
+
+When your component template contains NativeScript elements such as \`<GridLayout>\`, \`<StackLayout>\`, \`<Label>\`, or \`<Button>\`, use \`NO_ERRORS_SCHEMA\` to ignore unknown native tags in the unit test.
 
 \`\`\`ts
-import { TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import { LoggingService } from '../services/logging.service';
 
 describe('HomeComponent', () => {
-  const loggingMock = { log: jasmine.createSpy('log') };
+  const loggingMock = {
+    log: jasmine.createSpy('log'),
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      providers: [{ provide: LoggingService, useValue: loggingMock }],
-      schemas: [NO_ERRORS_SCHEMA], // ignore NativeScript elements
-    }).compileComponents();
+      imports: [HomeComponent],
+      providers: [
+        { provide: LoggingService, useValue: loggingMock },
+      ],
+      schemas: [NO_ERRORS_SCHEMA],
+    });
   });
 
-  it('logs on action', () => {
+  it('logs when the action runs', () => {
     const fixture = TestBed.createComponent(HomeComponent);
-    const cmp = fixture.componentInstance;
+    const component = fixture.componentInstance;
 
-    cmp.doLog(); // call the method bound to (tap)
+    component.doLog();
+
     expect(loggingMock.log).toHaveBeenCalledWith('Button tapped in NativeScript!');
   });
 });
 \`\`\`
 
-> Tip: You can still query by selectors via \`fixture.debugElement\`, but for NativeScript tags it's often simpler to call the component method directly.
+This keeps the test focused on the component behaviour instead of trying to recreate a native screen.
 
 ---
 
-## 3) Routing Tests (RouterExtensions)
+## 3) Testing Template-Driven Behaviour
 
-Mock **RouterExtensions** to verify navigation without real pages.
+You can still test simple template interactions when it makes sense. For NativeScript components, however, avoid over-testing the native tags themselves.
+
+Prefer testing that a method updates component state correctly:
 
 \`\`\`ts
-import { TestBed } from '@angular/core/testing';
+it('toggles edit mode', () => {
+  const fixture = TestBed.createComponent(HomeComponent);
+  const component = fixture.componentInstance;
+
+  expect(component.isEditing).toBeFalse();
+
+  component.toggleEditMode();
+
+  expect(component.isEditing).toBeTrue();
+});
+\`\`\`
+
+This is usually more stable than trying to test every native UI detail.
+
+---
+
+## 4) Routing Tests with RouterExtensions
+
+NativeScript-Angular apps often use \`RouterExtensions\` for mobile-style navigation. Mock it instead of navigating to real pages.
+
+\`\`\`ts
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { RouterExtensions } from '@nativescript/angular';
 import { HomeComponent } from './home.component';
 
 class RouterExtensionsStub {
-  navigate = jasmine.createSpy('navigate');
+  navigate = jasmine.createSpy('navigate').and.resolveTo(true);
   back = jasmine.createSpy('back');
+  canGoBack = jasmine.createSpy('canGoBack').and.returnValue(true);
 }
 
 describe('HomeComponent navigation', () => {
@@ -129,80 +225,197 @@ describe('HomeComponent navigation', () => {
 
   beforeEach(() => {
     router = new RouterExtensionsStub();
+
     TestBed.configureTestingModule({
-      declarations: [HomeComponent],
-      providers: [{ provide: RouterExtensions, useValue: router }],
+      imports: [HomeComponent],
+      providers: [
+        { provide: RouterExtensions, useValue: router },
+      ],
       schemas: [NO_ERRORS_SCHEMA],
-    }).compileComponents();
+    });
   });
 
-  it('navigates to details with id', () => {
+  it('navigates to the details page', () => {
     const fixture = TestBed.createComponent(HomeComponent);
-    const cmp = fixture.componentInstance;
+    const component = fixture.componentInstance;
 
-    cmp.goToDetails();
-    expect(router.navigate).toHaveBeenCalledWith(['/details', 42], { transition: { name: 'slideLeft' } });
+    component.goToDetails(42);
+
+    expect(router.navigate).toHaveBeenCalledWith(
+      ['/details', 42],
+      { transition: { name: 'slideLeft' } }
+    );
+  });
+
+  it('goes back when possible', () => {
+    const fixture = TestBed.createComponent(HomeComponent);
+    const component = fixture.componentInstance;
+
+    component.goBack();
+
+    expect(router.canGoBack).toHaveBeenCalled();
+    expect(router.back).toHaveBeenCalled();
   });
 });
 \`\`\`
 
+This verifies the navigation intent without depending on real native pages.
+
 ---
 
-## 4) Async & Timers
+## 5) Mock NativeScript APIs
 
-For polling/timeouts, use **fakeAsync** + **tick** (Jasmine/Karma) or **jest.useFakeTimers()** (Jest).
+Avoid calling NativeScript platform APIs directly from every component. Wrap them in services where possible, then mock those services in tests.
+
+Good candidates for wrappers include:
+
+- \`ApplicationSettings\`
+- \`Device\`
+- \`Connectivity\`
+- dialogs
+- geolocation
+- file-system APIs
+- camera APIs
+
+Example wrapper:
+
+\`\`\`ts
+export abstract class DialogService {
+  abstract alert(message: string): Promise<void>;
+}
+\`\`\`
+
+Example test mock:
+
+\`\`\`ts
+const dialogMock = {
+  alert: jasmine.createSpy('alert').and.resolveTo(),
+};
+
+TestBed.configureTestingModule({
+  providers: [
+    { provide: DialogService, useValue: dialogMock },
+  ],
+});
+\`\`\`
+
+This makes your app easier to test and keeps native platform code away from your business logic.
+
+---
+
+## 6) Async, Timers, and Polling
+
+For polling, delays, and timeouts, use \`fakeAsync\` and \`tick\`.
 
 \`\`\`ts
 import { fakeAsync, tick } from '@angular/core/testing';
 
 it('polls every second', fakeAsync(() => {
-  cmp.startPolling(); // sets setInterval
+  component.startPolling();
+
   tick(1000);
-  // expect updates...
+
+  expect(component.pollCount).toBe(1);
 }));
 \`\`\`
 
-\`\`\`ts
-// Jest equivalent
-jest.useFakeTimers();
-cmp.startPolling();
-jest.advanceTimersByTime(1000);
-\`\`\`
-
----
-
-## 5) Lists (CollectionView/ListView)
-
-Unit tests shouldn't try to validate **native UI rendering**.
-Instead test the **data shaping** logic and \`trackBy\` functions:
+If the component starts timers, subscriptions, or native listeners, also test that they are cleaned up.
 
 \`\`\`ts
-it('trackBy returns stable id', () => {
-  expect(cmp.trackById(0, { id: 7 })).toBe(7);
+it('stops polling on destroy', () => {
+  spyOn(window, 'clearInterval');
+
+  component.startPolling();
+  component.ngOnDestroy();
+
+  expect(window.clearInterval).toHaveBeenCalled();
 });
 \`\`\`
 
-For real UI behavior (scroll, selection), rely on **E2E**.
+This matters more on mobile because leaked timers and listeners can quickly affect performance.
 
 ---
 
-## 6) E2E (Device UI)
+## 7) Lists: CollectionView and ListView
 
-For device-level UI and navigation, use an automation tool (e.g., Appium) to drive the app on iOS/Android.
-Keep E2E focused on **critical flows** (launch → login → key screen → back navigation).
+Do not unit test native list rendering. Instead, test the data logic that feeds the list.
+
+Good things to unit test:
+
+- filtering
+- sorting
+- grouping
+- selected item state
+- empty state logic
+- \`trackBy\` functions
+
+\`\`\`ts
+it('trackById returns a stable id', () => {
+  expect(component.trackById(0, { id: 7 })).toBe(7);
+});
+\`\`\`
+
+For real scrolling, selection, and performance behaviour, use device testing or E2E.
+
+---
+
+## 8) E2E Testing
+
+Use E2E tests for the flows that must work on a real device or emulator.
+
+Good E2E flows:
+
+- app launches successfully
+- login works
+- main navigation works
+- a key form can be completed
+- data can be saved
+- back navigation behaves correctly
+- logout works
+
+NativeScript projects can use tools such as **Maestro**, **Detox**, or **Appium** for device-level testing.
+
+Keep E2E small. A few reliable E2E tests are better than a huge slow suite that everyone ignores.
+
+---
+
+## What Not To Unit Test
+
+Avoid unit testing:
+
+- exact native layout positions
+- platform scroll physics
+- animation smoothness
+- native rendering accuracy
+- real camera behaviour
+- real GPS behaviour
+- real file picker behaviour
+
+Those belong in E2E tests, manual testing, or platform-specific integration tests.
+
+Unit tests should answer:
+
+> Did my code make the right decision?
+
+Device tests should answer:
+
+> Does it behave correctly on the phone?
 
 ---
 
 ## Cheatsheet
 
-- Use **HttpClientTestingModule** for HTTP.
-- Add **NO_ERRORS_SCHEMA** to ignore NativeScript tags in unit tests.
-- **Mock RouterExtensions** to test navigation.
-- Prefer testing **logic**, not native rendering.
-- For timers/async → **fakeAsync/tick** or **Jest fake timers**.
-- Use E2E only for end-to-end flows.
+- Use unit tests for services, component logic, guards, state, and data shaping.
+- Use \`provideHttpClient()\` and \`provideHttpClientTesting()\` for HTTP tests.
+- Use \`imports: [Component]\` for standalone component tests.
+- Add \`NO_ERRORS_SCHEMA\` when NativeScript tags are not relevant to the test.
+- Mock \`RouterExtensions\` instead of navigating to real pages.
+- Wrap native APIs in services and mock those services.
+- Test cleanup for timers, subscriptions, and listeners.
+- Do not unit test native rendering details.
+- Use E2E for launch, login, navigation, save flows, and platform behaviour.
 
-That’s the bulk of what you need to test NativeScript-Angular effectively.
+Good NativeScript-Angular tests are boring in the best way: fast, focused, and mostly concerned with whether your code made the right decision.
 `;
     const html = await marked(markdownContent);
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
