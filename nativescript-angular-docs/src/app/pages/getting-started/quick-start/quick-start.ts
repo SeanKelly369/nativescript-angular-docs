@@ -1,179 +1,274 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 import { marked } from 'marked';
 
-@Component({
-  selector: 'app-quick-start',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './quick-start.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class QuickStartComponent implements OnInit {
-  htmlContent = '';
-
-  constructor(private readonly cdr: ChangeDetectorRef) {}
-
-  async ngOnInit(): Promise<void> {
-    const md = `
+const QUICK_START_MD = `
 # Quick Start
 
-Spin up a NativeScript + Angular app in minutes.
+Create and run a NativeScript + Angular app in a few minutes.
+
+This guide assumes your machine already has the required tools installed. If not, start with **Prerequisites** and **Environment Setup** first.
 
 ---
 
-## 1) Install CLI
+## 1) Check your setup
+
+Before creating a project, run:
 
 \`\`\`bash
-npm i -g @nativescript/cli
+ns doctor
+\`\`\`
+
+If you only want to check the CLI version:
+
+\`\`\`bash
 ns --version
 \`\`\`
 
-> If anything looks off later, run \`ns doctor\`.
+If \`ns doctor\` reports problems, fix those before continuing.
 
 ---
 
-## 2) Create a project
+## 2) Create a NativeScript Angular app
+
+Create a new Angular-based NativeScript project:
 
 \`\`\`bash
 ns create my-app --ng
 cd my-app
 \`\`\`
 
-Project essentials:
-- \`src/app\` — your Angular code
-- \`App_Resources\` — iOS/Android assets
-- \`nativescript.config.ts\` — app id, Android/iOS settings
+The CLI creates the app folder, adds the starter project files, and installs the required dependencies.
 
 ---
 
-## 3) Run on device or emulator
+## 3) Run the app
 
-**iOS (macOS):**
-\`\`\`bash
-ns run ios
-\`\`\`
+Run on Android:
 
-**Android:**
 \`\`\`bash
 ns run android
 \`\`\`
 
-Hot reload is on by default—edit and save to see changes.
+Run on iOS:
+
+\`\`\`bash
+ns run ios
+\`\`\`
+
+> iOS local builds require macOS and Xcode.
+
+NativeScript watches your files while the app is running. When you edit and save, the CLI synchronizes changes to the selected device or emulator.
 
 ---
 
-## 4) Make a simple screen
+## 4) Know the important files
 
-Create a component (inline example):
+A new project contains several important files and folders:
+
+\`\`\`text
+my-app/
+├── src/
+│   ├── app/
+│   ├── assets/
+│   ├── app.css
+│   └── main.ts
+├── App_Resources/
+│   ├── Android/
+│   └── iOS/
+├── nativescript.config.ts
+├── package.json
+└── tsconfig.json
+\`\`\`
+
+Key areas:
+
+- \`src/app\` — Angular components, routes, and app logic.
+- \`src/assets\` — images and other app assets.
+- \`src/app.css\` — global app styles.
+- \`App_Resources\` — native Android and iOS resources.
+- \`nativescript.config.ts\` — app id, app name, runtime options, and platform configuration.
+- \`package.json\` — dependencies, scripts, and project metadata.
+
+---
+
+## 5) Edit the first screen
+
+NativeScript Angular uses Angular components, but the template uses native mobile UI elements instead of browser HTML.
+
+Example component:
 
 \`\`\`ts
 // src/app/home.component.ts
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NativeScriptCommonModule } from '@nativescript/angular';
 
 @Component({
   selector: 'ns-home',
   standalone: true,
+  imports: [NativeScriptCommonModule],
+  schemas: [NO_ERRORS_SCHEMA],
   template: \`
     <ActionBar title="Quick Start"></ActionBar>
-    <StackLayout class="page">
-      <Label text="Welcome 👋" class="h1 text-center"></Label>
-      <Button text="Tap me" (tap)="count++"></Button>
-      <Label [text]="'Taps: ' + count" class="h2 text-center"></Label>
-    </StackLayout>
+
+    <GridLayout rows="auto, auto, auto" class="page" padding="24">
+      <Label
+        row="0"
+        text="Welcome 👋"
+        fontSize="28"
+        fontWeight="700"
+        textAlignment="center">
+      </Label>
+
+      <Button
+        row="1"
+        text="Tap me"
+        marginTop="24"
+        (tap)="increment()">
+      </Button>
+
+      <Label
+        row="2"
+        [text]="'Taps: ' + count"
+        marginTop="16"
+        fontSize="20"
+        textAlignment="center">
+      </Label>
+    </GridLayout>
   \`
 })
 export class HomeComponent {
   count = 0;
+
+  increment(): void {
+    this.count++;
+  }
 }
 \`\`\`
 
-Wire up routing:
+A few things to notice:
+
+- \`ActionBar\`, \`GridLayout\`, \`Label\`, and \`Button\` are native UI components.
+- The \`tap\` event is the NativeScript equivalent of a mobile tap gesture.
+- Angular binding syntax still works: \`[text]\`, \`(tap)\`, interpolation, services, routing, and dependency injection.
+
+---
+
+## 6) Add a route
+
+Create or update your routes file:
 
 \`\`\`ts
 // src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { provideNativeScriptRouter } from '@nativescript/angular';
 import { HomeComponent } from './home.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent }
+  {
+    path: '',
+    component: HomeComponent
+  }
 ];
-
-// main.ts (or app.config.ts) should call provideNativeScriptRouter(routes)
 \`\`\`
 
-Root template:
+Your app shell should contain a NativeScript router outlet:
 
 \`\`\`html
 <!-- src/app/app.component.html -->
 <page-router-outlet></page-router-outlet>
 \`\`\`
 
+NativeScript Angular uses \`page-router-outlet\` for mobile-style page navigation.
+
 ---
 
-## 5) Use a NativeScript plugin (example: Geolocation)
+## 7) Run on a specific device
+
+List connected devices:
 
 \`\`\`bash
-ns plugin add @nativescript/geolocation
+ns devices
 \`\`\`
 
-\`\`\`ts
-// src/app/geo.service.ts
-import { Injectable } from '@angular/core';
-import { isEnabled, enableLocationRequest, getCurrentLocation } from '@nativescript/geolocation';
+Run on a specific Android device or emulator:
 
-@Injectable({ providedIn: 'root' })
-export class GeoService {
-  async current() {
-    if (!(await isEnabled())) {
-      await enableLocationRequest(true);
-    }
-    return getCurrentLocation({ desiredAccuracy: 3, timeout: 8000 });
-  }
-}
+\`\`\`bash
+ns run android --device <device-id>
 \`\`\`
 
-Use it in \`HomeComponent\`:
+Run on a specific iOS device or simulator:
 
-\`\`\`ts
-// ...
-constructor(private geo: GeoService) {}
-async ngOnInit() {
-  const pos = await this.geo.current();
-  console.log('Lat/Lng:', pos?.latitude, pos?.longitude);
-}
+\`\`\`bash
+ns run ios --device <device-id>
 \`\`\`
 
 ---
 
-## 6) Debugging & common commands
+## 8) Useful commands
 
 \`\`\`bash
-# Health check
+# Check NativeScript environment
 ns doctor
 
-# Clean platforms / builds
-ns clean
+# List devices
+ns devices
 
-# Specific device
-ns run android --device <id>
-ns run ios --device <id>
+# Run the app
+ns run android
+ns run ios
 
-# Build only
+# Build without launching
 ns build android
 ns build ios
+
+# Clean generated native/build output
+ns clean
 \`\`\`
 
 ---
 
-## 7) Next steps
+## 9) Common first-run issues
+
+- Android emulator is not running.
+- Android device is connected but USB debugging is not enabled.
+- iOS simulator is missing or Xcode has not finished installing components.
+- \`ns doctor\` reports a missing SDK, JDK, Xcode, or CocoaPods issue.
+- Node version does not match the NativeScript version used by the project.
+- Android SDK or Java paths are incorrect.
+- The app fails after switching branches and needs a clean rebuild.
+
+When in doubt, try:
+
+\`\`\`bash
+ns doctor
+ns clean
+npm install
+\`\`\`
+
+Then run the app again.
+
+---
+
+## 10) Next steps
+
+Once the starter app runs successfully, move on to:
 
 - **[Environment Setup](/getting-started/environment-setup)**
-- Explore **UI components**, **navigation**, and **plugins**
-- Add CI/CD and release builds when you're ready
+- **[Project Structure](/guide/project-structure)**
+- **[Navigation](/guide/navigation)**
+- **[UI Components](/guide/ui-components)**
+- **[Plugins](/guide/plugins)**
 `;
-    this.htmlContent = await marked.parse(md);
-    this.cdr.markForCheck();
+
+@Component({
+  selector: 'app-quick-start',
+  standalone: true,
+  templateUrl: './quick-start.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class QuickStartComponent implements OnInit {
+  readonly htmlContent = signal('');
+
+  async ngOnInit(): Promise<void> {
+    this.htmlContent.set(await marked.parse(QUICK_START_MD));
   }
 }
