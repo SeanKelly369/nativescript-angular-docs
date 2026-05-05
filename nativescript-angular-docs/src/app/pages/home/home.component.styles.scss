@@ -48,7 +48,7 @@
 
   background-image:
     radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1px);
+    radial-gradient($translucent_black_20 1px, transparent 1px);
   background-size: 0.2rem 0.2rem;
   background-position: 0 0, 1px 1px;
 }
@@ -309,8 +309,8 @@
   border-radius: 999px;
   padding: 0 1rem;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(90deg, #1b74ff, #0a58ca);
+  color: $white;
+  background: linear-gradient(90deg, #0052cc, #003d99);
 }
 
 /* Simple icon placeholders (replace with SVGs) */
@@ -536,7 +536,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
 }
 
 .sharing-text h3 {
@@ -605,9 +604,9 @@
   background:
     linear-gradient(
       135deg,
-      #2563eb 0%,
-      #0ea5e9 52%,
-      #22d3ee 100%
+      #1e4bac 0%,
+      #1183b9 52%,
+      #17abc2 100%
     );
 
   color: $white;
@@ -638,7 +637,7 @@
 .shared-item {
   background: rgba(2, 6, 23, 0.42);
   color: $white;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid $translucent_black_20;
 
   &:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -659,7 +658,7 @@
 }
 
 .connector-line {
-  border-color: #2f8cff;
+  border-color: $diagram-connector-blue;
 }
 
 .connector-line--vertical {
@@ -667,21 +666,21 @@
   top: 0;
   height: 2.1rem;
   transform: translateX(-50%);
-  border-left: 3px dotted #2f8cff;
+  border-left: 3px dotted $diagram-connector-blue;
 }
 
 .connector-line--horizontal {
   left: 12%;
   right: 12%;
   top: 2.1rem;
-  border-top: 3px dotted #2f8cff;
+  border-top: 3px dotted $diagram-connector-blue;
 }
 
 .connector-line--left,
 .connector-line--right {
   top: 2.1rem;
   height: 1.45rem;
-  border-left: 3px dotted #2f8cff;
+  border-left: 3px dotted $diagram-connector-blue;
 }
 
 .connector-line--left {
@@ -696,7 +695,7 @@
   width: 0.75rem;
   height: 0.75rem;
   border-radius: 999px;
-  background: #2f8cff;
+  background: $diagram-connector-blue;
   box-shadow: 0 0 0 0.25rem rgba(47, 140, 255, 0.14);
 }
 
@@ -761,11 +760,11 @@
   flex: 0 0 auto;
   width: 1.35rem;
   height: 1.35rem;
-  color: #2f8cff;
+  color: $diagram-connector-blue;
 }
 
 .shared-item .diagram-icon {
-  color: #60a5fa;
+  color: $diagram-icon-blue-soft;
 }
 
 .diagram-icon::before,
