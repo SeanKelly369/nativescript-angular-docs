@@ -48,7 +48,7 @@
 
   background-image:
     radial-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
-    radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1px);
+    radial-gradient($translucent_black_20 1px, transparent 1px);
   background-size: 0.2rem 0.2rem;
   background-position: 0 0, 1px 1px;
 }
@@ -309,8 +309,8 @@
   border-radius: 999px;
   padding: 0 1rem;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(90deg, #1b74ff, #0a58ca);
+  color: $white;
+  background: linear-gradient(90deg, #0052cc, #003d99);
 }
 
 /* Simple icon placeholders (replace with SVGs) */
@@ -536,7 +536,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: center;
 }
 
 .sharing-text h3 {
@@ -565,44 +564,342 @@
   font-size: 1.125rem;
 }
 
+
+// Shared Code segment
+
+.sharing-visual {
+  display: flex;
+  justify-content: center;
+}
+
+
 .architecture-diagram {
-  background: $white;
-  border-radius: 1rem;
+  position: relative;
+  width: 100%;
+  max-width: 36rem;
   padding: 2rem;
-  box-shadow: 0 0.25rem 0.315rem $translucent_black_10;
+  border-radius: 1.25rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface) 92%, var(--text-strong) 8%),
+      color-mix(in srgb, var(--surface) 98%, var(--text-strong) 2%)
+    );
+
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+  box-shadow:
+    0 1rem 2.5rem rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .shared-layer {
-  background: $angular-brand-purple-light-colour-primary;
+  position: relative;
+  z-index: 2;
+  width: min(100%, 26rem);
+  margin: 0 auto;
+  padding: 1.25rem;
+  border-radius: 1rem;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1e4bac 0%,
+      #1183b9 52%,
+      #17abc2 100%
+    );
+
   color: $white;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
+  box-shadow:
+    0 1rem 2rem rgba(14, 165, 233, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
 .shared-layer h4 {
-  margin-bottom: 1rem;
-  font-weight: 600;
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $white;
+}
+
+.diagram-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 3rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.65rem;
+  font-weight: 700;
+}
+
+.shared-item {
+  background: rgba(2, 6, 23, 0.42);
+  color: $white;
+  border: 1px solid $translucent_black_20;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.diagram-connector {
+  position: relative;
+  width: min(100%, 26rem);
+  height: 4.5rem;
+  margin: 0 auto;
+}
+
+.connector-line,
+.connector-node {
+  position: absolute;
+  display: block;
+}
+
+.connector-line {
+  border-color: $diagram-connector-blue;
+}
+
+.connector-line--vertical {
+  left: 50%;
+  top: 0;
+  height: 2.1rem;
+  transform: translateX(-50%);
+  border-left: 3px dotted $diagram-connector-blue;
+}
+
+.connector-line--horizontal {
+  left: 12%;
+  right: 12%;
+  top: 2.1rem;
+  border-top: 3px dotted $diagram-connector-blue;
+}
+
+.connector-line--left,
+.connector-line--right {
+  top: 2.1rem;
+  height: 1.45rem;
+  border-left: 3px dotted $diagram-connector-blue;
+}
+
+.connector-line--left {
+  left: 12%;
+}
+
+.connector-line--right {
+  right: 12%;
+}
+
+.connector-node {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: $diagram-connector-blue;
+  box-shadow: 0 0 0 0.25rem rgba(47, 140, 255, 0.14);
+}
+
+.connector-node--centre {
+  left: 50%;
+  top: 1.75rem;
+  transform: translateX(-50%);
+}
+
+.connector-node--left {
+  left: 12%;
+  bottom: 0.35rem;
+  transform: translateX(-50%);
+}
+
+.connector-node--right {
+  right: 12%;
+  bottom: 0.35rem;
+  transform: translateX(50%);
+}
+
+.platform-layer {
+  padding: 1rem;
+  border-radius: 1rem;
+
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface) 84%, #2563eb 16%),
+      color-mix(in srgb, var(--surface) 94%, #2563eb 6%)
+    );
+
+  border: 1px solid color-mix(in srgb, var(--border) 76%, transparent);
+  box-shadow:
+    0 0.75rem 1.5rem rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.platform-layer h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-strong);
+}
+
+.platform-item {
+  min-height: 2.75rem;
+  background: color-mix(in srgb, var(--surface) 96%, #2563eb 4%);
+  color: var(--text-strong);
+  border: 1px solid color-mix(in srgb, var(--border) 78%, transparent);
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.diagram-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: $diagram-connector-blue;
+}
+
+.shared-item .diagram-icon {
+  color: $diagram-icon-blue-soft;
+}
+
+.diagram-icon::before,
+.diagram-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+/* Services: cog-style icon */
+.diagram-icon--services::before {
+  inset: 0.18rem;
+  border: 0.18rem solid currentColor;
+  border-radius: 999px;
+}
+
+.diagram-icon--services::after {
+  inset: 0;
+  border: 0.18rem dashed currentColor;
+  border-radius: 999px;
+}
+
+/* Models: cube-style icon */
+.diagram-icon--models::before {
+  inset: 0.15rem;
+  border: 0.18rem solid currentColor;
+  border-radius: 0.25rem;
+  transform: rotate(45deg);
+}
+
+.diagram-icon--models::after {
+  left: 50%;
+  top: 0.25rem;
+  height: 0.9rem;
+  border-left: 0.16rem solid currentColor;
+  transform: translateX(-50%);
+  opacity: 0.75;
+}
+
+/* Business logic: code brackets */
+.diagram-icon--logic::before {
+  left: 0.1rem;
+  top: 0.25rem;
+  width: 0.5rem;
+  height: 0.85rem;
+  border-left: 0.18rem solid currentColor;
+  border-bottom: 0.18rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+.diagram-icon--logic::after {
+  right: 0.1rem;
+  top: 0.25rem;
+  width: 0.5rem;
+  height: 0.85rem;
+  border-right: 0.18rem solid currentColor;
+  border-top: 0.18rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Web: globe */
+.diagram-icon--web::before {
+  inset: 0.05rem;
+  border: 0.18rem solid currentColor;
+  border-radius: 999px;
+}
+
+.diagram-icon--web::after {
+  left: 50%;
+  top: 0.05rem;
+  height: 1.25rem;
+  border-left: 0.14rem solid currentColor;
+  transform: translateX(-50%);
+  box-shadow:
+    -0.42rem 0 0 -0.35rem currentColor,
+    0.42rem 0 0 -0.35rem currentColor;
+}
+
+/* Mobile: phone */
+.diagram-icon--mobile::before {
+  inset: 0.05rem 0.28rem;
+  border: 0.18rem solid currentColor;
+  border-radius: 0.25rem;
+}
+
+.diagram-icon--mobile::after {
+  left: 50%;
+  bottom: 0.18rem;
+  width: 0.22rem;
+  height: 0.22rem;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translateX(-50%);
+}
+
+/* Template: document/code file */
+.diagram-icon--template::before {
+  inset: 0.08rem 0.18rem;
+  border: 0.16rem solid currentColor;
+  border-radius: 0.2rem;
+}
+
+.diagram-icon--template::after {
+  left: 0.42rem;
+  top: 0.48rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-left: 0.16rem solid currentColor;
+  border-bottom: 0.16rem solid currentColor;
+  transform: rotate(45deg);
+}
+
+/* Styles: palette */
+.diagram-icon--styles::before {
+  inset: 0.08rem;
+  border: 0.18rem solid currentColor;
+  border-radius: 55% 45% 60% 40%;
+}
+
+.diagram-icon--styles::after {
+  left: 0.45rem;
+  top: 0.35rem;
+  width: 0.24rem;
+  height: 0.24rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow:
+    0.42rem 0.08rem 0 currentColor,
+    0.16rem 0.5rem 0 currentColor;
 }
 
 .platform-layers {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.platform-layer {
-  background: var(--muted);
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  text-align: center;
-}
-
-.platform-layer h4 {
-  margin-bottom: 1rem;
-  font-weight: 600;
-  color: var(--text-strong);
+  gap: 1.25rem;
 }
 
 .layer-item {
