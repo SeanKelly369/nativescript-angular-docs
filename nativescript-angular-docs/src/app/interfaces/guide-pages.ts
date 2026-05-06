@@ -20,9 +20,16 @@ export const GUIDE_PAGES: GuidePage[] = [
   { title: "Deployment", route: "/guide/deployment" },
   { title: "Troubleshooting", route: "/guide/troubleshooting" },
   { title: "Overview", route: "/guide/nativescript-components" },
-  { title: "ListView", route: "/guide/listview" },
+  { title: "Basic UI Controls", route: "/guide/basic-ui-controls" },
+  { title: "Choose the Right Layout", route: "/guide/choose-the-right-layout" },
   { title: "ActionBar", route: "/guide/actionbar" },
   { title: "Tabs/Bottom Navigation", route: "/guide/tabs-bottom-navigation" },
+  { title: "StackLayout", route: "/guide/stack-layout" },
+  { title: "GridLayout", route: "/guide/grid-layout" },
+  { title: "FlexboxLayout", route: "/guide/flexbox-layout" },
+  { title: "ListView", route: "/guide/listview" },
+  { title: "ScrollView", route: "/guide/scrollview" },
+  { title: "CollectionView", route: "/guide/collectionview" },
 ];
 
 export const GETTING_STARTED_PAGES: GuidePage[] = [

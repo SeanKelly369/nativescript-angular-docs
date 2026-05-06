@@ -119,6 +119,12 @@ export const guideRoutes: Routes = [
             .then(m => m.Actionbar)
       },
       {
+        path: 'basic-ui-controls',
+        loadComponent: () =>
+          import('./components/basic-ui-controls/basic-ui-controls')
+            .then(m => m.BasicUiControls)
+      },
+      {
         path: '**',
         redirectTo: 'project-structure'
       }

@@ -6,7 +6,6 @@ import { marked } from 'marked';
   selector: 'app-actionbar',
   imports: [],
   templateUrl: './actionbar.html',
-  styleUrl: './actionbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Actionbar implements OnInit {
