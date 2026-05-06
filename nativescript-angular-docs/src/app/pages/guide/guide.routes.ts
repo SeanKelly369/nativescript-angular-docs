@@ -113,6 +113,12 @@ export const guideRoutes: Routes = [
             .then(m => m.Listview)
       },
       {
+        path: 'actionbar',
+        loadComponent: () =>
+          import('./components/actionbar/actionbar')
+            .then(m => m.Actionbar)
+      },
+      {
         path: '**',
         redirectTo: 'project-structure'
       }

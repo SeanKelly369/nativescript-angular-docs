@@ -19,8 +19,10 @@ export const GUIDE_PAGES: GuidePage[] = [
   { title: "Plugins", route: "/guide/plugins" },
   { title: "Deployment", route: "/guide/deployment" },
   { title: "Troubleshooting", route: "/guide/troubleshooting" },
-  { title: "NativeScript Components", route: "/guide/nativescript-components" },
-  { title: "ListView", route: "/guide/listview" }
+  { title: "Overview", route: "/guide/nativescript-components" },
+  { title: "ListView", route: "/guide/listview" },
+  { title: "ActionBar", route: "/guide/actionbar" },
+  { title: "Tabs/Bottom Navigation", route: "/guide/tabs-bottom-navigation" },
 ];
 
 export const GETTING_STARTED_PAGES: GuidePage[] = [

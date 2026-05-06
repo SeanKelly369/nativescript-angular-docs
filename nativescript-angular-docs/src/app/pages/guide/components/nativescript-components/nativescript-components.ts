@@ -16,7 +16,7 @@ export class NativescriptComponents implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `
-# NativeScript Components
+# NativeScript Components Overview
 
 NativeScript provides **native UI components** that map directly to native widgets on iOS and Android.
 This means you write a single codebase in TypeScript/Angular, and the framework renders native UI elements.
