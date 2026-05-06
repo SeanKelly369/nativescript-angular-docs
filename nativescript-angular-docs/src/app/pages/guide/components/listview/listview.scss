@@ -1,149 +1,93 @@
-/* overall doc typography */
-.content-wrapper {
-  /* pull from global theme */
-  --doc-bg: var(--surface);
-  --doc-ink: var(--text);
-  --doc-muted: var(--muted);
-
-  /* accents aligned to site */
-  --doc-panel: var(--purple-primary, #7b4ea3);
-  --doc-accent: var(--yellow, #f3a23a);
-
-  /* code aligned to site */
-  --doc-code-inline-fg: var(--code-inline-fg, var(--doc-ink));
-  --doc-code-inline-bg: var(--code-inline-bg, rgba(255,255,255,.06));
-
-  --doc-pre-bg: var(--pre-custom-bg, var(--pre-bg));
-  --doc-pre-fg: var(--pre-fg, var(--doc-ink));
-
-  /* viz card surfaces */
-  --viz-card-bg: white;
-  --viz-card-border: color-mix(in srgb, var(--doc-panel) 28%, transparent);
-
-  /* viz title chip */
-  --viz-chip-bg: color-mix(in srgb, var(--doc-accent) 18%, transparent);
-  --viz-chip-border: color-mix(in srgb, var(--doc-accent) 45%, transparent);
-
-  color: var(--doc-ink);
-
-  max-width: 61.25rem;
-  margin: 0 auto;
-  padding: 1.5rem 1.25rem 3rem;
-
-  line-height: 1.6;
+.listview-content {
+  max-width: 980px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2rem);
 }
 
-.content-wrapper h1 {
-  font-size: 2rem;
-  margin: 0 0 1rem;
-  letter-spacing: -0.02em;
+.listview-content h1 {
+  margin-bottom: 1rem;
 }
 
-.content-wrapper h2 {
-  font-size: 1.35rem;
-  margin: 2rem 0 0.75rem;
+.listview-content h2 {
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
 }
 
-.content-wrapper h3 {
-  font-size: 1.05rem;
-  margin: 1.25rem 0 0.5rem;
+.listview-content h3 {
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
 }
 
-.content-wrapper p {
-  margin: 0.75rem 0;
+.listview-content p,
+.listview-content li {
+  line-height: 1.7;
 }
 
-.content-wrapper ul,
-.content-wrapper ol {
-  margin: 0.75rem 0 0.75rem 1.25rem;
+.listview-content hr {
+  margin-block: 2rem;
+  border: 0;
+  border-top: 1px solid rgba(123, 78, 163, 0.18);
 }
 
-.content-wrapper li {
-  margin: 0.25rem 0;
-}
-
-.content-wrapper :not(pre) > code {
-  padding: 0.12rem 0.35rem;
-  border-radius: 0.5rem;
-  color: var(--doc-code-inline-fg);
-  background: var(--doc-code-inline-bg);
-  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
-}
-
-/* fenced code blocks */
-.content-wrapper pre {
-  background: var(--doc-pre-bg);
-  color: var(--doc-pre-fg);
-  border: 1px solid color-mix(in srgb, var(--doc-ink) 14%, transparent);
-  border-radius: 0.925rem;
-  padding: 0.9rem 1rem;
-  overflow: auto;
-  margin: 0.75rem 0 1.25rem;
-}
-
-.content-wrapper pre,
-.content-wrapper pre code {
-  color: var(--doc-pre-fg) !important;
-  font-size: 0.92rem !important;
-  line-height: 1.5 !important;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-  white-space: pre !important;
-  border: 0 !important;
-  padding: 1rem !important;
-  background: var(--doc-pre-bg);
+.listview-content pre {
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .viz-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  width: 100%;
-  margin: 1rem 0 1.25rem;
-}
-
-/* Best version (modern browsers): style the PRE that contains TS */
-.content-wrapper pre:has(> code.language-ts),
-.content-wrapper pre:has(> code.language-typescript) {
-  background: color-mix(in srgb, var(--pre-custom-bg) 92%, rgb(59 130 246 / 35%));
-  border-color: rgb(59 130 246 / 35%);
-}
-
-@media (min-width: 56.25rem) {
-  .viz-grid {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
+  margin-block: 1.5rem 2rem;
 }
 
 .viz-card {
+  min-width: 0;
   margin: 0;
-  padding: 0.85rem;
-  border-radius: 0.925rem;
-  background: var(--viz-card-bg);
-  border: 1px solid var(--viz-card-border);
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.04);
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid rgba(123, 78, 163, 0.16);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(252, 248, 255, 0.78));
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
 }
 
 .viz-title {
-  margin: 0;
-  display: inline-flex;
-  align-items: center;
-
-  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #2d2438;
   font-size: 0.95rem;
-  color: rgb(32, 32, 32);
-
-  padding: .35rem .6rem;
-  border-radius: 0.625rem;
-  background: var(--viz-chip-bg);
-  border: 1px solid var(--viz-chip-border);
+  font-weight: 800;
+  line-height: 1.35;
 }
 
 .viz {
-  width: 100%;
-  height: auto;
   display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 960px) {
+  .viz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .viz-card {
+    padding: 0.875rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .listview-content {
+    padding-inline: 1rem;
+  }
+
+  .viz-card {
+    border-radius: 0.875rem;
+  }
+
+  .viz-title {
+    font-size: 0.875rem;
+  }
 }

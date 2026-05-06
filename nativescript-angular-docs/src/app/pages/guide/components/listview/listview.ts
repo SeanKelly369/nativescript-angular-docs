@@ -7,7 +7,7 @@ import { marked } from 'marked';
   imports: [],
   templateUrl: './listview.html',
   styleUrl: './listview.scss',
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
 export class Listview implements OnInit {
@@ -21,21 +21,20 @@ export class Listview implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    // Optional: configure marked once
     marked.setOptions({
       gfm: true,
       breaks: false
     });
 
     const markdownContent = this.getMarkdown();
-
     const md = this.dedent(markdownContent);
-    const htmlFromMd = marked.parse(md) as string;
+    const htmlFromMd = await marked.parse(md);
 
-    const finalHtml =
-      `<div class="content-wrapper">` +
-        htmlFromMd.replace('{{LISTVIEW_VIZ}}', this.visualsHtml) +
-      `</div>`;
+    const finalHtml = `
+      <div class="listview-content content-wrapper">
+        ${htmlFromMd.replace('{{LISTVIEW_VIZ}}', this.visualsHtml)}
+      </div>
+    `;
 
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(finalHtml);
     this.changeDetectorRef.markForCheck();
@@ -194,22 +193,22 @@ For simple lists, **ListView is still the cleanest option**.
       <text x="70" y="97" font-size="14" font-weight="600" fill="#1f2430" font-family="${uiFont}">viewport (on screen)</text>
 
       <rect x="70" y="110" width="260" height="26" rx="5" fill="rgb(244, 231, 255)" stroke="rgba(0,0,0,0.12)"/>
-      <rect x="70" y="143" width="260" height="26" rx="5" fill="rgba(244, 231, 255)" stroke="rgba(0,0,0,0.12)"/>
-      <rect x="70" y="176" width="200" height="26" rx="5" fill="rgba(244, 231, 255)" stroke="rgba(0,0,0,0.12)"/>
+      <rect x="70" y="143" width="260" height="26" rx="5" fill="rgb(244, 231, 255)" stroke="rgba(0,0,0,0.12)"/>
+      <rect x="70" y="176" width="200" height="26" rx="5" fill="rgb(244, 231, 255)" stroke="rgba(0,0,0,0.12)"/>
 
-      <rect x="420" y="20" width="320" height="200" rx="5" fill="rgba(243, 162, 58)" stroke="rgba(255, 255, 255, 0.55)" stroke-width="1"/>
+      <rect x="420" y="20" width="320" height="200" rx="5" fill="rgb(243, 162, 58)" stroke="rgba(255, 255, 255, 0.55)" stroke-width="1"/>
       <text x="440" y="55" font-size="18" font-weight="800" fill="#5a3b12" font-family="${uiFont}">items (data)</text>
 
       <g opacity="0.9">
-        <rect x="440" y="80" width="280" height="18" rx="4" fill="rgb(175, 111, 230, 0.85)"/>
+        <rect x="440" y="80" width="280" height="18" rx="4" fill="rgba(175, 111, 230, 0.85)"/>
         <rect x="440" y="105" width="260" height="18" rx="4" fill="rgb(175, 111, 230)"/>
         <rect x="440" y="130" width="280" height="18" rx="4" fill="rgba(123, 78, 163, 0.35)"/>
         <rect x="440" y="155" width="240" height="18" rx="4" fill="rgb(175, 111, 230)"/>
         <rect x="440" y="180" width="280" height="18" rx="4" fill="rgba(123, 78, 163, 0.35)"/>
       </g>
 
-      <path d="M360 120 C 390 110, 400 110, 420 120" fill="none" stroke="rgb(123, 78, 163)"" stroke-width="6" stroke-linecap="round" transform="rotate(-2 422 120)"/>
-      <path d="M410 112 L 422 120 L 410 128" fill="none" stroke="rgb(123, 78, 163)"" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(15 422 120)"/>
+      <path d="M360 120 C 390 110, 400 110, 420 120" fill="none" stroke="rgb(123, 78, 163)" stroke-width="6" stroke-linecap="round" transform="rotate(-2 422 120)"/>
+      <path d="M410 112 L 422 120 L 410 128" fill="none" stroke="rgb(123, 78, 163)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" transform="rotate(15 422 120)"/>
       <text x="355" y="145" font-size="15" font-weight="800" fill="#1f2430" font-family="${uiFont}">bind visible rows</text>
     </svg>
   </figure>
@@ -224,14 +223,11 @@ For simple lists, **ListView is still the cleanest option**.
       <rect x="40" y="70" width="482" height="140" rx="8" fill="rgba(255, 205, 205, 0.08)" stroke="rgb(56, 0, 61)" stroke-width="1"/>
 
       <g opacity="0.85">
-      <rect x="50" y="80" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
-      <rect x="50" y="110" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
-      <rect x="50" y="140" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
-      <rect x="50" y="170" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="80" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="110" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="140" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
+        <rect x="50" y="170" width="462" height="22" rx="5" fill="rgb(255, 255, 255)"/>
       </g>
-
-      <!-- label background to avoid any “touching” -->
-      <rect x="70" y="118" width="250" height="22" rx="6" fill="rgba(255,255,255,0.9)"/>
 
       <rect x="55" y="142" width="450" height="18" rx="6" fill="rgba(255, 178, 77, 0.95)"/>
       <rect x="55" y="174" width="450" height="18" rx="6" fill="rgba(255, 178, 77, 0.95)"/>
@@ -254,7 +250,6 @@ For simple lists, **ListView is still the cleanest option**.
         marker-end="url(#arrowHead)"
       />
 
-      <!-- optional second arrow somewhere else on the loop -->
       <path
         d="M650 152 A22 22 0 1 1 650.1 152"
         fill="none"
@@ -288,10 +283,10 @@ For simple lists, **ListView is still the cleanest option**.
     while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
 
     const indents = lines
-      .filter(l => l.trim().length)
-      .map(l => (l.match(/^ */)?.[0].length ?? 0));
+      .filter(line => line.trim().length)
+      .map(line => line.match(/^ */)?.[0].length ?? 0);
 
     const minIndent = indents.length ? Math.min(...indents) : 0;
-    return lines.map(l => l.slice(minIndent)).join('\n');
+    return lines.map(line => line.slice(minIndent)).join('\n');
   }
 }

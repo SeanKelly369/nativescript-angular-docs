@@ -56,7 +56,8 @@ android {
 }
 \`\`\`
 
-### Dex/Multidex errors (e.g., *com.android.dex.DexArchiveMergerException*)
+### Dex/Multidex errors
+(e.g., *com.android.dex.DexArchiveMergerException*)
 Enable multidex:
 
 \`\`\`gradle
