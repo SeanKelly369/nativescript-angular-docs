@@ -40,12 +40,12 @@ export class Listview implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
-  private getMarkdown(): string {
-    return `
+private getMarkdown(): string {
+  return `
 # NativeScript \`ListView\`
 
-The **\`ListView\`** is a high-performance NativeScript component for displaying
-**simple, scrollable lists of data**.
+The **\`ListView\`** is a NativeScript component for displaying
+**simple, scrollable lists of data** efficiently.
 
 It is fast because it does **not create a view for every item**.
 Instead, it renders only what is visible on screen and **reuses item views**
@@ -123,6 +123,69 @@ Because views are reused:
 
 ---
 
+## Updating ListView Data
+
+A **\`ListView\`** can render a normal array, but if you mutate that array directly,
+the UI may not always know that something changed.
+
+For simple updates, prefer replacing the array reference:
+
+\`\`\`ts
+this.items = [...this.items, { name: 'Pear' }];
+\`\`\`
+
+If you need frequent insertions, removals, or updates, use an \`ObservableArray\`
+or call \`refresh()\` on the \`ListView\` after changing the data.
+
+\`\`\`ts
+import { ObservableArray } from '@nativescript/core';
+
+items = new ObservableArray([
+  { name: 'Apple' },
+  { name: 'Banana' },
+  { name: 'Orange' }
+]);
+\`\`\`
+
+This keeps the list and data source in sync more reliably.
+
+---
+
+## Common Recycling Gotchas
+
+Because **\`ListView\`** reuses row views, avoid treating a row as if it belongs
+permanently to one item.
+
+Avoid storing row-specific state directly on the native view:
+
+\`\`\`ts
+// Avoid this kind of pattern
+view.someCustomState = true;
+\`\`\`
+
+Instead, keep state in your data model:
+
+\`\`\`ts
+items = [
+  { name: 'Apple', selected: false },
+  { name: 'Banana', selected: true },
+  { name: 'Orange', selected: false }
+];
+\`\`\`
+
+Then bind the UI from that data:
+
+\`\`\`xml
+<Label
+  [text]="item.name"
+  [class.selected]="item.selected">
+</Label>
+\`\`\`
+
+The rule is simple: **the item owns the state, not the recycled row view**.
+
+---
+
 ## Multiple Item Templates
 
 Use \`itemTemplateSelector\` when items need different layouts.
@@ -156,12 +219,57 @@ templateSelector = (item: any) => item.type;
 
 ---
 
+## Advanced: itemLoading
+
+For most apps, templates are enough. But if you need low-level access to a row
+as it is created or reused, you can use \`itemLoading\`.
+
+\`\`\`xml
+<ListView
+  [items]="items"
+  (itemLoading)="onItemLoading($event)">
+
+  <ng-template let-item="item">
+    <Label [text]="item.name"></Label>
+  </ng-template>
+
+</ListView>
+\`\`\`
+
+### TypeScript
+
+\`\`\`ts
+import { ItemEventData } from '@nativescript/core';
+
+onItemLoading(event: ItemEventData): void {
+  console.log('Loading row:', event.index);
+}
+\`\`\`
+
+Use this sparingly. If normal Angular bindings can do the job, prefer bindings.
+
+---
+
 ## Key Properties
 
-- **\`items\`** – the array of data to render
+- **\`items\`** – the array or data source to render
 - **\`itemTap\`** – event fired when a row is tapped
+- **\`itemLoading\`** – event fired when a row view is created or reused
 - **\`itemTemplateSelector\`** – define multiple templates based on conditions
-- **\`separatorColor\`** – customize row separators (iOS only)
+- **\`separatorColor\`** – customize row separators on iOS
+
+---
+
+## Best Practices
+
+- Keep item templates simple
+- Avoid deeply nested layouts inside rows
+- Prefer \`GridLayout\` for structured row layouts
+- Keep row state in the data model
+- Replace the array reference when making simple updates
+- Use \`ObservableArray\` for frequent insertions, removals, or updates
+- Use \`itemLoading\` only when bindings are not enough
+- Use \`CollectionView\` when you need grids or more advanced layouts
 
 ---
 
@@ -174,7 +282,7 @@ Use **CollectionView** if you need:
 
 For simple lists, **ListView is still the cleanest option**.
 `;
-  }
+}
 
   private buildVisualsHtml(): string {
     const uiFont =
