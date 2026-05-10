@@ -12,7 +12,6 @@ export const GUIDE_SECTIONS: GuideSection[] = [
   {
     title: 'Core Guide',
     pages: [
-      { title: 'Introduction', route: '/guide/introduction' },
       { title: 'Project Structure', route: '/guide/project-structure' },
       { title: 'Code Sharing', route: '/guide/code-sharing' },
       { title: 'Data Binding', route: '/guide/data-binding' },
