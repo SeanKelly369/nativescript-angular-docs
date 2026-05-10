@@ -1,6 +1,16 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-routing',
@@ -12,10 +22,24 @@ import { marked } from 'marked';
 export class RoutingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
+
+  constructor(
+    private readonly sanitiser: DomSanitizer,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   async ngOnInit(): Promise<void> {
-    const markdownContent = `# Routing in NativeScript-Angular
+    const markdownContent = `
+# Routing in NativeScript-Angular
 
 Mobile routing in NativeScript is powered by Angular Router, with native page navigation on iOS and Android.
 
@@ -120,7 +144,8 @@ Lazy loading keeps startup fast by loading route bundles on demand.
 - Prefer \`RouterExtensions\` for native-style transitions and back-stack control.
 `;
 
-    const html = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
+
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }

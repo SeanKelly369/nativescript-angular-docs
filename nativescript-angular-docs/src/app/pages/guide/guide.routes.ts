@@ -107,10 +107,22 @@ export const guideRoutes: Routes = [
             .then(m => m.NativescriptComponents)
       },
       {
-        path: 'listview',
+        path: 'overview',
         loadComponent: () =>
-          import('./components/listview/listview')
-            .then(m => m.Listview)
+          import('./components/basic-ui-controls/basic-ui-controls')
+            .then(m => m.BasicUiControls)
+      },
+      {
+        path: 'basic-ui-controls',
+        loadComponent: () =>
+          import('./components/basic-ui-controls/basic-ui-controls')
+            .then(m => m.BasicUiControls)
+      },
+      {
+        path: 'choosing-the-right-layout',
+        loadComponent: () =>
+          import('./components/choosing-the-right-layout/choosing-the-right-layout')
+            .then(m => m.ChoosingTheRightLayout)
       },
       {
         path: 'actionbar',
@@ -119,10 +131,46 @@ export const guideRoutes: Routes = [
             .then(m => m.Actionbar)
       },
       {
-        path: 'basic-ui-controls',
+        path: 'tabs-bottom-navigation',
         loadComponent: () =>
-          import('./components/basic-ui-controls/basic-ui-controls')
-            .then(m => m.BasicUiControls)
+          import('./components/tabs-bottom-navigation/tabs-bottom-navigation')
+            .then(m => m.TabsBottomNav)
+      },
+      {
+        path: 'stack-layout',
+        loadComponent: () =>
+          import('./components/stacklayout/stacklayout')
+            .then(m => m.Stacklayout)
+      },
+      {
+        path: 'grid-layout',
+        loadComponent: () =>
+          import('./components/gridlayout/gridlayout')
+            .then(m => m.Gridlayout)
+      },
+      {
+        path: 'flexbox-layout',
+        loadComponent: () =>
+          import('./components/flexboxlayout/flexboxlayout')
+            .then(m => m.Flexboxlayout)
+      },
+      {
+        path: 'listview',
+        loadComponent: () =>
+          import('./components/listview/listview')
+            .then(m => m.Listview)
+      },
+      {
+        path: 'scrollview',
+        loadComponent: () =>
+          import('./components/scrollview/scrollview')
+            .then(m => m.Scrollview)
+      },
+      {
+        path: 'collectionview',
+        loadComponent: () =>
+          import('./components/collectionview/collectionview')
+            .then(m => m.Collectionview)
       },
       {
         path: '**',

@@ -1,6 +1,22 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import bash from 'highlight.js/lib/languages/bash';
+import css from 'highlight.js/lib/languages/css';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-basic-ui-controls',
@@ -9,20 +25,34 @@ import { marked } from 'marked';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BasicUiControls implements OnInit {
-htmlContent!: SafeHtml;
+  htmlContent!: SafeHtml;
+
+  private readonly markedParser = new Marked();
 
   constructor(
     private readonly sanitiser: DomSanitizer,
     private readonly changeDetectorReference: ChangeDetectorRef
-  ) {}
+  ) {
+    this.markedParser.use(
+      markedHighlight({
+        emptyLangClass: 'hljs',
+        langPrefix: 'hljs language-',
+        highlight(code: string, lang: string): string {
+          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+
+          return hljs.highlight(code, { language }).value;
+        }
+      }) as any
+    );
+  }
 
   async ngOnInit(): Promise<void> {
-const markdownContent = `
+    const markdownContent = `
 # Basic UI Controls
 
 NativeScript gives you access to real native UI controls on iOS and Android.
 
-When you use controls such as <code>Label</code>, <code>Button</code>, <code>TextField</code>, <code>Image</code>, or <code>Switch</code>, NativeScript renders native platform widgets rather than HTML elements inside a WebView.
+When you use controls such as **\`Label\`**, **\`Button\`**, **\`TextField\`**, **\`Image\`**, or **\`Switch\`**, NativeScript renders native platform widgets rather than HTML elements inside a WebView.
 
 This is one of the main reasons NativeScript apps can feel genuinely native.
 
@@ -32,21 +62,21 @@ This is one of the main reasons NativeScript apps can feel genuinely native.
 
 | Control | Purpose |
 |---|---|
-| <code>Label</code> | Displays text |
-| <code>Button</code> | Triggers an action |
-| <code>TextField</code> | Single-line text input |
-| <code>TextView</code> | Multi-line text input |
-| <code>Image</code> | Displays local or remote images |
-| <code>Switch</code> | Displays an on/off toggle |
-| <code>Slider</code> | Allows the user to select a numeric value |
-| <code>Progress</code> | Displays progress |
-| <code>ActivityIndicator</code> | Shows a loading spinner |
+| **\`Label\`** | Displays text |
+| **\`Button\`** | Triggers an action |
+| **\`TextField\`** | Single-line text input |
+| **\`TextView\`** | Multi-line text input |
+| **\`Image\`** | Displays local or remote images |
+| **\`Switch\`** | Displays an on/off toggle |
+| **\`Slider\`** | Allows the user to select a numeric value |
+| **\`Progress\`** | Displays progress |
+| **\`ActivityIndicator\`** | Shows a loading spinner |
 
 ---
 
 ## Label
 
-Use <code>Label</code> to display text.
+Use **\`Label\`** to display text.
 
 ~~~xml
 <Label text="Hello NativeScript"></Label>
@@ -60,7 +90,7 @@ You can also bind text from your Angular component.
 
 Example component property:
 
-~~~ts
+~~~typescript
 pageTitle = 'Basic UI Controls';
 ~~~
 
@@ -70,7 +100,7 @@ Labels are useful for titles, captions, descriptions, validation messages, and a
 
 ## Button
 
-Use <code>Button</code> when the user needs to trigger an action.
+Use **\`Button\`** when the user needs to trigger an action.
 
 ~~~xml
 <Button text="Save" (tap)="save()"></Button>
@@ -78,19 +108,19 @@ Use <code>Button</code> when the user needs to trigger an action.
 
 Example component method:
 
-~~~ts
+~~~typescript
 save(): void {
   console.log('Save tapped');
 }
 ~~~
 
-In NativeScript, the most common event for buttons is <code>tap</code>, not <code>click</code>.
+In NativeScript, the most common event for buttons is **\`tap\`**, not **\`click\`**.
 
 ---
 
 ## TextField
 
-Use <code>TextField</code> for single-line input.
+Use **\`TextField\`** for single-line input.
 
 ~~~xml
 <TextField
@@ -101,11 +131,11 @@ Use <code>TextField</code> for single-line input.
 
 Example component property:
 
-~~~ts
+~~~typescript
 name = '';
 ~~~
 
-A <code>TextField</code> is suitable for short values such as names, email addresses, search terms, IDs, and numbers.
+A **\`TextField\`** is suitable for short values such as names, email addresses, search terms, IDs, and numbers.
 
 You can also configure the keyboard type.
 
@@ -122,17 +152,17 @@ Common keyboard types include:
 
 | Keyboard Type | Use Case |
 |---|---|
-| <code>text</code> | Standard text input |
-| <code>number</code> | Numeric input |
-| <code>phone</code> | Phone number input |
-| <code>email</code> | Email input |
-| <code>url</code> | Website URLs |
+| **\`text\`** | Standard text input |
+| **\`number\`** | Numeric input |
+| **\`phone\`** | Phone number input |
+| **\`email\`** | Email input |
+| **\`url\`** | Website URLs |
 
 ---
 
 ## TextView
 
-Use <code>TextView</code> for multi-line input.
+Use **\`TextView\`** for multi-line input.
 
 ~~~xml
 <TextView
@@ -143,7 +173,7 @@ Use <code>TextView</code> for multi-line input.
 
 Example component property:
 
-~~~ts
+~~~typescript
 notes = '';
 ~~~
 
@@ -153,7 +183,7 @@ This is useful for comments, descriptions, messages, and longer pieces of user-e
 
 ## Image
 
-Use <code>Image</code> to display local or remote images.
+Use **\`Image\`** to display local or remote images.
 
 ~~~xml
 <Image src="~/assets/images/logo.png"></Image>
@@ -167,7 +197,7 @@ You can also bind the image source.
 
 Example component property:
 
-~~~ts
+~~~typescript
 imageUrl = '~/assets/images/logo.png';
 ~~~
 
@@ -183,7 +213,7 @@ For app assets, local images are usually better because they are faster, reliabl
 
 ## Switch
 
-Use <code>Switch</code> for a simple on/off value.
+Use **\`Switch\`** for a simple on/off value.
 
 ~~~xml
 <Switch
@@ -194,7 +224,7 @@ Use <code>Switch</code> for a simple on/off value.
 
 Example component code:
 
-~~~ts
+~~~typescript
 notificationsEnabled = false;
 
 onNotificationsChanged(event: any): void {
@@ -208,7 +238,7 @@ A switch is ideal for settings such as enabling notifications, dark mode, syncin
 
 ## Slider
 
-Use <code>Slider</code> when the user needs to choose a value from a range.
+Use **\`Slider\`** when the user needs to choose a value from a range.
 
 ~~~xml
 <Slider
@@ -221,7 +251,7 @@ Use <code>Slider</code> when the user needs to choose a value from a range.
 
 Example component code:
 
-~~~ts
+~~~typescript
 volume = 50;
 
 onVolumeChanged(event: any): void {
@@ -235,7 +265,7 @@ Sliders work well for values like volume, brightness, progress thresholds, and p
 
 ## Progress
 
-Use <code>Progress</code> to show how far through a task the app is.
+Use **\`Progress\`** to show how far through a task the app is.
 
 ~~~xml
 <Progress
@@ -246,7 +276,7 @@ Use <code>Progress</code> to show how far through a task the app is.
 
 Example component property:
 
-~~~ts
+~~~typescript
 syncProgress = 40;
 ~~~
 
@@ -256,7 +286,7 @@ This is useful for sync operations, uploads, downloads, or long-running tasks wh
 
 ## ActivityIndicator
 
-Use <code>ActivityIndicator</code> when the app is busy but you do not know the exact progress.
+Use **\`ActivityIndicator\`** when the app is busy but you do not know the exact progress.
 
 ~~~xml
 <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
@@ -264,7 +294,7 @@ Use <code>ActivityIndicator</code> when the app is busy but you do not know the 
 
 Example component property:
 
-~~~ts
+~~~typescript
 isLoading = true;
 ~~~
 
@@ -274,7 +304,7 @@ Use this for loading states such as fetching data, logging in, syncing, or waiti
 
 ## Combining Basic Controls
 
-Basic controls are usually combined inside layout components such as <code>StackLayout</code>, <code>GridLayout</code>, or <code>FlexboxLayout</code>.
+Basic controls are usually combined inside layout components such as **\`StackLayout\`**, **\`GridLayout\`**, or **\`FlexboxLayout\`**.
 
 ~~~xml
 <StackLayout class="form">
@@ -301,7 +331,7 @@ Basic controls are usually combined inside layout components such as <code>Stack
 
 Example component code:
 
-~~~ts
+~~~typescript
 email = '';
 password = '';
 
@@ -353,7 +383,7 @@ NativeScript Angular uses normal Angular binding syntax.
 
 Example component code:
 
-~~~ts
+~~~typescript
 title = 'Animal Details';
 buttonText = 'Save';
 canSave = true;
@@ -377,13 +407,13 @@ Controls that accept user input can use Angular two-way binding.
 
 Example component code:
 
-~~~ts
+~~~typescript
 username = '';
 isEnabled = false;
 rating = 5;
 ~~~
 
-To use <code>ngModel</code>, make sure the appropriate NativeScript Angular forms module is imported in your app or standalone component setup.
+To use **\`ngModel\`**, make sure the appropriate NativeScript Angular forms module is imported in your app or standalone component setup.
 
 ---
 
@@ -402,7 +432,7 @@ NativeScript controls expose native events.
 
 Example component code:
 
-~~~ts
+~~~typescript
 onTap(): void {
   console.log('Button tapped');
 }
@@ -412,18 +442,18 @@ onSearchChanged(event: any): void {
 }
 ~~~
 
-The most common event you will use is <code>tap</code>.
+The most common event you will use is **\`tap\`**.
 
 ---
 
 ## Best Practices
 
-- Use <code>Label</code> for read-only text.
-- Use <code>Button</code> for user actions.
-- Use <code>TextField</code> for short input.
-- Use <code>TextView</code> for longer input.
-- Use <code>ActivityIndicator</code> when the app is busy.
-- Use <code>Progress</code> when you know the progress value.
+- Use **\`Label\`** for read-only text.
+- Use **\`Button\`** for user actions.
+- Use **\`TextField\`** for short input.
+- Use **\`TextView\`** for longer input.
+- Use **\`ActivityIndicator\`** when the app is busy.
+- Use **\`Progress\`** when you know the progress value.
 - Prefer clear, native-feeling controls over overly complex custom UI.
 - Avoid deeply nesting layouts around simple controls.
 
@@ -434,9 +464,10 @@ The most common event you will use is <code>tap</code>.
 NativeScript basic UI controls look simple, but they are powerful because they map to native iOS and Android widgets.
 
 You write Angular templates, but the user interacts with real native controls.
-    `;
+`;
 
-    const html = await marked(markdownContent);
+    const html = await this.markedParser.parse(markdownContent);
+
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorReference.markForCheck();
   }

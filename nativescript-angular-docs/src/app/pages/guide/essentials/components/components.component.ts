@@ -1,7 +1,19 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { marked } from 'marked';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import css from 'highlight.js/lib/languages/css';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-components',
@@ -14,9 +26,23 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class ComponentsComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'typescript';
 
-  async ngOnInit() {
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
+
+  constructor(
+    private readonly sanitiser: DomSanitizer,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  async ngOnInit(): Promise<void> {
     const markdownContent = `# NativeScript-Angular UI Components
 
 NativeScript-Angular provides a rich set of native UI components that map directly to native iOS and Android controls, ensuring authentic platform look and feel.
@@ -615,7 +641,7 @@ Use layout containers effectively for different screen sizes:
 - **[Data Binding](/guide/data-binding)** - Understand Angular data binding in mobile context
 - **[Performance](/guide/performance)** - Optimize your app's performance`;
 
-    const html = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }

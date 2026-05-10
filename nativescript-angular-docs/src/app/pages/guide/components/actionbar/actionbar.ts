@@ -1,6 +1,19 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('css', scss);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-actionbar',
@@ -10,6 +23,25 @@ import { marked } from 'marked';
 })
 export class Actionbar implements OnInit {
   htmlContent!: SafeHtml;
+
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        if (!lang || !hljs.getLanguage(lang)) {
+          return hljs.highlight(code, {
+            language: 'typescript',
+            ignoreIllegals: true
+          }).value;
+        }
+
+        return hljs.highlight(code, {
+          language: lang,
+          ignoreIllegals: true
+        }).value;
+      }
+    })
+  );
 
   constructor(
     private readonly sanitiser: DomSanitizer,
@@ -24,21 +56,25 @@ The ActionBar is the native top bar used by a NativeScript page. It maps to nati
 
 It is one of the most common NativeScript components because almost every real mobile app needs some form of native header/navigation area.
 
+---
+
 ## Basic ActionBar
 
 The simplest ActionBar only needs a title.
 
-~~~xml
+\`\`\`xml
 <ActionBar title="Animals"></ActionBar>
-~~~
+\`\`\`
 
 This creates a native title bar at the top of the page.
 
+---
+
 ## ActionBar with a Back Button
 
-Use a NavigationButton when the page needs to return to the previous screen.
+Use a \`NavigationButton\` when the page needs to return to the previous screen.
 
-~~~xml
+\`\`\`xml
 <ActionBar title="Animal Details">
   <NavigationButton
     text="Back"
@@ -46,11 +82,11 @@ Use a NavigationButton when the page needs to return to the previous screen.
     (tap)="goBack()">
   </NavigationButton>
 </ActionBar>
-~~~
+\`\`\`
 
 In the component:
 
-~~~ts
+\`\`\`ts
 import { RouterExtensions } from '@nativescript/angular';
 
 constructor(private readonly routerExtensions: RouterExtensions) {}
@@ -58,13 +94,15 @@ constructor(private readonly routerExtensions: RouterExtensions) {}
 goBack(): void {
   this.routerExtensions.back();
 }
-~~~
+\`\`\`
+
+---
 
 ## ActionBar with Action Items
 
-ActionItems are buttons placed inside the ActionBar. They are useful for actions such as saving, editing, opening filters, or showing settings.
+\`ActionItem\` components are buttons placed inside the ActionBar. They are useful for actions such as saving, editing, opening filters, or showing settings.
 
-~~~xml
+\`\`\`xml
 <ActionBar title="Herd">
   <ActionItem
     text="Edit"
@@ -80,25 +118,27 @@ ActionItems are buttons placed inside the ActionBar. They are useful for actions
     (tap)="openFilters()">
   </ActionItem>
 </ActionBar>
-~~~
+\`\`\`
+
+---
 
 ## Platform-Specific Positioning
 
-NativeScript lets you control where ActionItems appear on each platform.
+NativeScript lets you control where \`ActionItem\` components appear on each platform.
 
-~~~xml
+\`\`\`xml
 <ActionItem
   text="Save"
   ios.position="right"
   android.position="actionBar"
   (tap)="save()">
 </ActionItem>
-~~~
+\`\`\`
 
 Common Android positions:
 
 | Position | Meaning |
-|---|---|
+| --- | --- |
 | actionBar | Always show in the ActionBar |
 | popup | Show in the overflow menu |
 | actionBarIfRoom | Show in the ActionBar if space is available |
@@ -106,15 +146,17 @@ Common Android positions:
 Common iOS positions:
 
 | Position | Meaning |
-|---|---|
+| --- | --- |
 | left | Show on the left side |
 | right | Show on the right side |
 
+---
+
 ## Using Icons
 
-ActionItems can use text, image resources, or font icons.
+\`ActionItem\` components can use text, image resources, or font icons.
 
-~~~xml
+\`\`\`xml
 <ActionBar title="Settings">
   <ActionItem
     icon="res://ic_settings"
@@ -123,24 +165,26 @@ ActionItems can use text, image resources, or font icons.
     (tap)="openSettings()">
   </ActionItem>
 </ActionBar>
-~~~
+\`\`\`
 
 For Android system icons:
 
-~~~xml
+\`\`\`xml
 <ActionItem
   android.systemIcon="ic_menu_search"
   android.position="actionBar"
   ios.position="right"
   (tap)="search()">
 </ActionItem>
-~~~
+\`\`\`
+
+---
 
 ## Custom Title View
 
 The ActionBar can also contain a custom title layout instead of plain text.
 
-~~~xml
+\`\`\`xml
 <ActionBar>
   <GridLayout columns="auto, *" class="actionbar-title">
     <Image
@@ -157,29 +201,33 @@ The ActionBar can also contain a custom title layout instead of plain text.
     </Label>
   </GridLayout>
 </ActionBar>
-~~~
+\`\`\`
 
 This is useful when you need a logo, icon, subtitle, or custom title styling.
 
+---
+
 ## Hiding the ActionBar
 
-Sometimes a page needs a fully custom header or no header at all. In that case, hide the ActionBar on the Page.
+Sometimes a page needs a fully custom header or no header at all. In that case, hide the ActionBar on the \`Page\`.
 
-~~~xml
+\`\`\`xml
 <Page actionBarHidden="true">
   <GridLayout>
     <!-- Custom page content -->
   </GridLayout>
 </Page>
-~~~
+\`\`\`
 
 Use this carefully. In most apps, keeping the native ActionBar gives a more familiar mobile experience.
 
+---
+
 ## Styling the ActionBar
 
-You can style the ActionBar with CSS.
+You can style the ActionBar with CSS or SCSS.
 
-~~~scss
+\`\`\`scss
 ActionBar {
   background-color: #1f2937;
   color: white;
@@ -194,13 +242,15 @@ ActionBar {
   font-weight: 700;
   color: white;
 }
-~~~
+\`\`\`
 
-You can also remove the bottom border/shadow by using flat.
+You can also remove the bottom border or shadow by using \`flat\`.
 
-~~~xml
+\`\`\`xml
 <ActionBar title="Animals" flat="true"></ActionBar>
-~~~
+\`\`\`
+
+---
 
 ## Best Practices
 
@@ -218,6 +268,8 @@ Good uses:
 
 Avoid putting too much into the ActionBar. If a screen has many actions, move secondary actions into the Android popup menu or into the page content.
 
+---
+
 ## Common Mistakes
 
 ### Adding too many ActionItems
@@ -226,20 +278,23 @@ The ActionBar has limited space, especially on smaller phones. Keep the most imp
 
 ### Expecting iOS and Android to behave exactly the same
 
-The ActionBar maps to native controls, so some behavior is platform-specific. Always test on both Android and iOS.
+The ActionBar maps to native controls, so some behaviour is platform-specific. Always test on both Android and iOS.
 
 ### Using a NavigationButton for custom left-side actions on iOS
 
-On iOS, the NavigationButton behaves like a native back button. If you need a custom left-side button, use an ActionItem with ios.position="left" instead.
+On iOS, the \`NavigationButton\` behaves like a native back button. If you need a custom left-side button, use an \`ActionItem\` with \`ios.position="left"\` instead.
+
+---
 
 ## Summary
 
 The ActionBar is the standard NativeScript component for native page headers. It gives you a title, navigation button, and page-level action buttons while still rendering as native UI on Android and iOS.
 
-For most pages, start with a simple title and only add ActionItems when the action is important enough to belong at the top of the screen.
+For most pages, start with a simple title and only add \`ActionItem\` components when the action is important enough to belong at the top of the screen.
 `;
 
-    const html = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
+
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorReference.markForCheck();
   }

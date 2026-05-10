@@ -406,3 +406,118 @@ body {
     white-space: nowrap;
   }
 }
+
+.content-wrapper pre {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 255, 229, 0.12);
+  background:
+    radial-gradient(circle at top left, rgba(0, 255, 229, 0.08), transparent 34rem),
+    #020d0b;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 229, 0.04),
+    0 1rem 2.5rem rgba(0, 0, 0, 0.28);
+}
+
+.content-wrapper pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  background: transparent;
+  color: #e8fff9;
+  font-family: 'JetBrains Mono', 'Fira Code', Monaco, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.75;
+}
+
+/* Base text */
+.hljs {
+  color: #e8fff9;
+  background: transparent;
+}
+
+/* Keywords: import, export, class, return, async */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #ba5fff;
+  font-weight: 700;
+}
+
+/* Class names / function names */
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: #00f5e0;
+  font-weight: 700;
+}
+
+/* Strings */
+.hljs-string,
+.hljs-regexp {
+  color: #9be870;
+}
+
+/* Numbers, booleans, literals */
+.hljs-number,
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet {
+  color: #ffb86c;
+}
+
+/* XML / HTML tag names */
+.hljs-name,
+.hljs-tag {
+  color: #c363ff;
+}
+
+/* Attributes: rowHeight, colWidth, class */
+.hljs-attr,
+.hljs-attribute {
+  color: #f6b26b;
+}
+
+/* Property names / object keys */
+.hljs-property {
+  color: #7ee7ff;
+}
+
+/* Built-ins / types */
+.hljs-built_in,
+.hljs-type {
+  color: #74d7ff;
+}
+
+/* Variables / params */
+.hljs-variable,
+.hljs-params {
+  color: #e8fff9;
+}
+
+/* Comments */
+.hljs-comment,
+.hljs-quote {
+  color: #728197;
+  font-style: italic;
+}
+
+/* Operators / punctuation */
+.hljs-operator,
+.hljs-punctuation {
+  color: #b9c7d9;
+}
+
+/* Deleted / inserted diff-style tokens */
+.hljs-deletion {
+  color: #ff6f91;
+}
+
+.hljs-addition {
+  color: #9be870;
+}
+
+.hljs-selector-class {
+  color: #e058ff;
+}

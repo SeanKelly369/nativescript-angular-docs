@@ -1,7 +1,15 @@
 import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { marked } from 'marked';
-import { SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import css from 'highlight.js/lib/languages/css';
+import scss from 'highlight.js/lib/languages/scss';
+
+hljs.registerLanguage('css', css);
+hljs.registerLanguage('scss', scss);
 
 @Component({
   selector: 'app-styling',
@@ -10,9 +18,21 @@ import { SafeHtml } from '@angular/platform-browser';
   templateUrl: './styling.component.html',
 })
 export class StylingComponent implements OnInit {
-  htmlContent: SafeHtml = '';
+  htmlContent!: SafeHtml;
 
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly sanitiser = inject(DomSanitizer);
+
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'css';
+
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Styling in NativeScript-Angular
@@ -71,7 +91,8 @@ $border-radius: 5;
 
 - [First App](/guide/first-app) - Build your first complete app`;
 
-    this.htmlContent = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
 }
