@@ -1,6 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import bash from 'highlight.js/lib/languages/bash';
+import typescript from 'highlight.js/lib/languages/typescript';
+
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-code-sharing',
@@ -12,7 +21,21 @@ import { marked } from 'marked';
 export class CodeSharingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'typescript';
+
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
+
+  constructor(
+    private readonly sanitiser: DomSanitizer,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Code Sharing in NativeScript-Angular
@@ -26,7 +49,7 @@ Instead of duplicating code, you reuse business logic, services, and even Angula
 
 A typical code-sharing project looks like this:
 
-\`\`\`
+\`\`\`bash
 apps/
   web/              # Angular web app
   mobile/           # NativeScript mobile app
@@ -75,9 +98,12 @@ export abstract class LoggerService {
 \`\`\`ts
 // logger.service.web.ts
 import { Injectable } from '@angular/core';
+
 @Injectable({ providedIn: 'root' })
 export class WebLoggerService {
-  log(msg: string) { console.log('[Web]', msg); }
+  log(msg: string): void {
+    console.log('[Web]', msg);
+  }
 }
 \`\`\`
 
@@ -85,9 +111,10 @@ export class WebLoggerService {
 // logger.service.tns.ts
 import { Injectable } from '@angular/core';
 import { isIOS } from '@nativescript/core/platform';
+
 @Injectable({ providedIn: 'root' })
 export class MobileLoggerService {
-  log(msg: string) {
+  log(msg: string): void {
     console.log(isIOS ? '[iOS]' : '[Android]', msg);
   }
 }
@@ -127,7 +154,7 @@ if (isAndroid) {
 That way your NativeScript-Angular app feels native, while your web Angular app feels web-first.
 `;
 
-    const html = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }

@@ -1,6 +1,17 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { marked } from 'marked';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-navigation',
@@ -10,9 +21,21 @@ import { marked } from 'marked';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationComponent implements OnInit {
-  htmlContent = '';
+  htmlContent!: SafeHtml;
 
   private readonly changeDetectorRef = inject(ChangeDetectorRef);
+  private readonly sanitiser = inject(DomSanitizer);
+
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : 'typescript';
+
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `# Navigation in NativeScript-Angular
@@ -1109,8 +1132,10 @@ Before shipping navigation code, check these points:
 - [Performance](/guide/performance) - Keep navigation smooth on lower-spec devices
 - [Testing](/guide/testing) - Test guards, route params, and modal results
 - [Examples](/examples) - Explore complete navigation examples`;
+    const html = await this.marked.parse(markdownContent);
+    this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
 
-    this.htmlContent = await marked(markdownContent);
+
     this.changeDetectorRef.markForCheck();
   }
 }

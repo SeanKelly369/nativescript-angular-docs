@@ -2,45 +2,25 @@
       <!-- Sidebar -->
       <aside class="guide-sidebar" aria-label="Guide sidebar">
         <nav class="sidebar-nav" aria-label="Guide navigation">
-          <ul>
-            <li><a routerLink="/guide/project-structure">Project Structure</a></li>
-            <li><a routerLink="/guide/components">UI Components</a></li>
-            <li><a routerLink="/guide/navigation">Navigation</a></li>
-            <li><a routerLink="/guide/styling">Styling</a></li>
-            <li><a routerLink="/guide/data-binding">Data Binding</a></li>
-            <li><a routerLink="/guide/services">Services</a></li>
-            <li><a routerLink="/guide/routing">Routing</a></li>
-            <li><a routerLink="/guide/code-sharing">Code Sharing</a></li>
-            <li><a routerLink="/guide/performance">Performance</a></li>
-            <li><a routerLink="/guide/testing">Testing</a></li>
-          </ul>
+          @for (section of guideSections; track section.title) {
+            <section class="sidebar-section">
+              <h4>{{ section.title }}</h4>
 
-          <hr>
-          
-          <h4>Utilities</h4>
-          <ul>
-            <li><a routerLink="/guide/native-apis">Native APIs</a></li>
-            <li><a routerLink="/guide/plugins">Plugins</a></li>
-            <li><a routerLink="/guide/deployment">Deployment</a></li>
-            <li><a routerLink="/guide/troubleshooting">Troubleshooting</a></li>
-          </ul>
-
-          <hr>
-
-          <h4>Components</h4>
-          <ul>
-            <li><a routerLink="/guide/nativescript-components">Overview</a></li>
-            <li><a routerLink="/guide/basic-ui-controls">Basic UI Controls</a></li>
-            <li><a routerLink="/guide/choose-the-right-layout">Choose the Right Layout</a></li>
-            <li><a routerLink="/guide/actionbar">ActionBar</a></li>
-            <li><a routerLink="/guide/tabs-bottom-navigation">Tabs/Bottom Navigation</a></li>
-            <li><a routerLink="/guide/stacklayout">StackLayout</a></li>
-            <li><a routerLink="/guide/gridlayout">GridLayout</a></li>
-            <li><a routerLink="/guide/flexboxlayout">FlexboxLayout</a></li>
-            <li><a routerLink="/guide/listview">ListView</a></li>
-            <li><a routerLink="/guide/scrollview">ScrollView</a></li>
-            <li><a routerLink="/guide/collectionview">CollectionView</a></li>
-          </ul>
+              <ul>
+                @for (page of section.pages; track page.route) {
+                  <li>
+                    <a
+                      [routerLink]="page.route"
+                      routerLinkActive="active"
+                      [routerLinkActiveOptions]="{ exact: true }"
+                    >
+                      {{ page.title }}
+                    </a>
+                  </li>
+                }
+              </ul>
+            </section>
+          }
         </nav>
       </aside>
       

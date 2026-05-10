@@ -1,6 +1,16 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-data-binding',
@@ -12,9 +22,22 @@ import { marked } from 'marked';
 export class DataBindingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
 
- async ngOnInit(): Promise<void> {
+  constructor(
+    private readonly sanitiser: DomSanitizer,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  async ngOnInit(): Promise<void> {
     const markdownContent = `
 # Data Binding in NativeScript-Angular
 
@@ -27,7 +50,7 @@ Angular binding works the same in NativeScript templates as on the web:
 - **Interpolation** – \`{{ value }}\` for text nodes
 - **Property binding** – \`[prop]="expr"\`
 - **Event binding** – \`(event)="handler($event)"\`
-- **Two-way binding** – \`\[(ngModel)\]="model"\`
+- **Two-way binding** – \`[(ngModel)]="model"\`
 
 > In NativeScript, bindings target **native view properties** like \`text\`, \`visibility\`, \`isEnabled\`, \`row\`, \`colSpan\`, etc.
 
@@ -43,13 +66,16 @@ Angular binding works the same in NativeScript templates as on the web:
 export class DemoComponent {
   name = 'Aodh';
   count = 0;
-  increment() { this.count++; }
+
+  increment(): void {
+    this.count++;
+  }
 }
 \`\`\`
 
 ## Two-Way Binding with \`ngModel\`
 
-Use \`\[(ngModel)\]\` for form-like controls. Import \`NativeScriptFormsModule\`.
+Use \`[(ngModel)]\` for form-like controls. Import \`NativeScriptFormsModule\`.
 
 \`\`\`html
 <TextField hint="Enter name" [(ngModel)]="name"></TextField>
@@ -60,6 +86,7 @@ Use \`\[(ngModel)\]\` for form-like controls. Import \`NativeScriptFormsModule\`
 
 \`\`\`html
 <ActivityIndicator [busy]="loading$ | async"></ActivityIndicator>
+
 <ListView [items]="animals$ | async">
   <ng-template let-animal="item">
     <Label [text]="animal.name"></Label>
@@ -81,9 +108,9 @@ Use \`\[(ngModel)\]\` for form-like controls. Import \`NativeScriptFormsModule\`
 - [Performance](/guide/performance)
 `;
 
-    const html = await marked(markdownContent);
+    const html = await this.marked.parse(markdownContent);
+
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
-
 }

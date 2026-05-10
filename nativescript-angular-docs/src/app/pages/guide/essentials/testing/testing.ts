@@ -1,6 +1,15 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import bash from 'highlight.js/lib/languages/bash';
+import typescript from 'highlight.js/lib/languages/typescript';
+
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-testing',
@@ -12,10 +21,24 @@ import { marked } from 'marked';
 export class TestingComponent implements OnInit {
   htmlContent!: SafeHtml;
 
-  constructor(private readonly sanitiser: DomSanitizer, private readonly changeDetectorRef: ChangeDetectorRef) {}
+  private readonly marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        const language = lang && hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+      }
+    })
+  );
+
+  constructor(
+    private readonly sanitiser: DomSanitizer,
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   async ngOnInit(): Promise<void> {
-const markdownContent = `# Testing in NativeScript-Angular
+    const markdownContent = `
+# Testing in NativeScript-Angular
 
 Testing a NativeScript-Angular app is mostly the same idea as testing a web Angular app: keep unit tests fast, mock external dependencies, and reserve full device testing for the flows that genuinely need a phone or emulator.
 
@@ -417,9 +440,10 @@ Device tests should answer:
 
 Good NativeScript-Angular tests are boring in the best way: fast, focused, and mostly concerned with whether your code made the right decision.
 `;
-    const html = await marked(markdownContent);
+
+    const html = await this.marked.parse(markdownContent);
+
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorRef.markForCheck();
   }
-
 }
