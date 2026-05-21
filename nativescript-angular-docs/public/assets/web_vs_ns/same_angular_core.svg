@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="7.7577305mm"
+   height="11.22887mm"
+   viewBox="0 0 7.7577305 11.22887"
+   version="1.1"
+   id="svg1"
+   xml:space="preserve"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+     id="defs1"><linearGradient
+       id="linearGradient94"><stop
+         style="stop-color:#4592fc;stop-opacity:1;"
+         offset="0"
+         id="stop94" /><stop
+         style="stop-color:#8e38fd;stop-opacity:1;"
+         offset="1"
+         id="stop95" /></linearGradient><linearGradient
+       xlink:href="#linearGradient94"
+       id="linearGradient75-5"
+       x1="81.752113"
+       y1="78.775299"
+       x2="90.334015"
+       y2="78.775299"
+       gradientUnits="userSpaceOnUse" /></defs><g
+     id="layer1"
+     transform="translate(522.45399,-458.49949)"><g
+       id="g36-3"
+       transform="matrix(1.040004,0,0,1.040004,-604.83142,379.06637)"
+       style="fill:url(#linearGradient75-5);stroke-width:1.0001;stroke-dasharray:none"><path
+         style="fill:#2c1ccf;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:0;paint-order:fill markers stroke"
+         d="m 86.630859,75.910156 c -0.09851,-0.03784 -0.240481,-0.0044 -0.308593,0.0957 l -2.019532,2.970703 c -0.117391,0.172559 0.02186,0.428293 0.230469,0.421875 l 1.197266,-0.03711 -0.414063,1.808594 c -0.02683,0.117281 0.04416,0.241725 0.138672,0.287109 0.09451,0.04538 0.235787,0.02395 0.310547,-0.07031 l 2.302734,-2.902344 c 0.128065,-0.161473 -0.0069,-0.42543 -0.21289,-0.417969 l -1.326172,0.04687 0.263672,-1.927734 c 0.01644,-0.119972 -0.0636,-0.237546 -0.16211,-0.275391 z m -0.3125,0.8125 -0.191406,1.390625 c -0.02926,0.213516 0.147911,0.408194 0.363281,0.400391 l 1.076172,-0.03711 -1.720703,2.169922 0.291016,-1.27539 c 0.04778,-0.208906 -0.123691,-0.416746 -0.337891,-0.410157 l -1.025391,0.03125 z"
+         id="path32-7"
+         transform="matrix(1.9332388,0,0,1.9332388,-83.685695,-70.345518)" /></g></g><style
+     type="text/css"
+     id="style1">
+	.st0{fill:#0F0F11;}
+</style></svg>
