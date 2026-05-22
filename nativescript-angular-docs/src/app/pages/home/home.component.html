@@ -136,42 +136,161 @@
       </div>
     </section>
 
-    <section class="comparison-section">
-      <div class="container">
-        <h2 class="section-title black-text">NativeScript-Angular vs Web Angular</h2>
-        <div class="comparison-grid">
-          <div class="comparison-card">
-            <h3>📱 Mobile-First Architecture</h3>
-            <p>Built specifically for mobile development with native navigation patterns, gestures, and platform-specific UI components.</p>
-          </div>
-          <div class="comparison-card">
-            <h3>🎯 Page-Router-Outlet</h3>
-            <p>Enhanced routing system with <code>page-router-outlet</code> that provides native mobile navigation and ActionBar support.</p>
-          </div>
-          <div class="comparison-card">
-            <h3>📦 Native Modules</h3>
-            <p>Direct access to device APIs like camera, GPS, contacts, and file system without plugins or bridges.</p>
+<section class="ns-angular-comparison">
+  <div class="container">
+    <header class="ns-angular-comparison__header">
+      <h2>
+        NativeScript for Angular  vs  <span>Web Angular</span>
+      </h2>
+      <p>Two powerful ways to build Angular apps.</p>
+    </header>
+
+    <div class="ns-angular-comparison__body">
+      <div class="ns-angular-comparison__column ns-angular-comparison__column--native">
+        <div class="ns-angular-comparison__column-header">
+          <img src="/assets/NativeScript_Angular_Logo.svg" alt="" aria-hidden="true">
+          <div>
+            <h3>NativeScript for Angular</h3>
+            <p>Build truly native mobile apps with Angular</p>
           </div>
         </div>
-        <div class="code-comparison">
-          <div class="comparison-item">
-            <h4>Web Angular</h4>
-            <pre class="code-block"><code>&lt;div class="container"&gt;
-  &lt;h1&gt;Hello World&lt;/h1&gt;
-  &lt;button (click)="onClick()"&gt;Click me&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+
+        <div class="ns-angular-comparison__cards">
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/mobile_first_architecture.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Mobile-First Architecture</h4>
+              <p>
+                Built specifically for mobile development with native navigation patterns,
+                gestures, and platform-specific UI components.
+              </p>
+            </div>
+          </article>
+
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/native_modules.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Native Modules</h4>
+              <p>
+                Direct access to device APIs like camera, GPS, contacts, and the file system
+                without plugins or bridges.
+              </p>
+            </div>
+          </article>
+
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/page_router_outlet.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Page-Router-Outlet</h4>
+              <p>
+                Enhanced routing with <code>page-router-outlet</code> that provides native
+                mobile navigation and ActionBar support.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="ns-angular-comparison__code-card">
+          <div class="ns-angular-comparison__code-label">
+            NativeScript for Angular
           </div>
-          <div class="comparison-item">
-            <h4>NativeScript-Angular</h4>
-            <pre class="code-block"><code>&lt;ActionBar title="My App"&gt;&lt;/ActionBar&gt;
+
+          <pre><code>&lt;ActionBar title="My App"&gt;&lt;/ActionBar&gt;
 &lt;StackLayout class="container"&gt;
   &lt;Label text="Hello World"&gt;&lt;/Label&gt;
   &lt;Button text="Click me" (tap)="onClick()"&gt;&lt;/Button&gt;
 &lt;/StackLayout&gt;</code></pre>
-          </div>
         </div>
       </div>
-    </section>
+
+      <div class="ns-angular-comparison__vs" aria-hidden="true">
+        VS
+      </div>
+
+      <div class="ns-angular-comparison__column ns-angular-comparison__column--web">
+        <div class="ns-angular-comparison__column-header">
+          <img src="/assets/web_vs_ns/angular_web.svg" alt="" aria-hidden="true">
+          <div>
+            <h3>Web Angular</h3>
+            <p>Build responsive web apps for any browser</p>
+          </div>
+        </div>
+
+        <div class="ns-angular-comparison__cards">
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/responsive_web_experience.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Responsive Web Experience</h4>
+              <p>
+                Build responsive web apps that work seamlessly across modern browsers
+                and devices.
+              </p>
+            </div>
+          </article>
+
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/angular_router.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Angular Router</h4>
+              <p>
+                Powerful routing with lazy loading, route guards, resolvers,
+                and advanced navigation capabilities.
+              </p>
+            </div>
+          </article>
+
+          <article class="ns-angular-comparison__card">
+            <img src="/assets/web_vs_ns/rich_ui_ecosystem.svg" alt="" aria-hidden="true">
+            <div>
+              <h4>Rich UI Ecosystem</h4>
+              <p>
+                Access to a vast ecosystem of web components, libraries, and tools
+                to build beautiful user interfaces.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="ns-angular-comparison__code-card ns-angular-comparison__code-card--web">
+          <div class="ns-angular-comparison__code-label">
+            Web Angular
+          </div>
+
+          <pre><code>&lt;div class="container"&gt;
+  &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;button (click)="onClick()"&gt;Click me&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-angular-comparison__footer">
+      <article>
+        <img src="/assets/web_vs_ns/same_angular_core.svg" alt="" aria-hidden="true">
+        <div>
+          <h4>Same Angular Core</h4>
+          <p>Same framework, same concepts, same productivity.</p>
+        </div>
+      </article>
+
+      <article>
+        <img src="/assets/web_vs_ns/shared_code_n_skills.svg" alt="" aria-hidden="true">
+        <div>
+          <h4>Shared Code & Skills</h4>
+          <p>Reuse knowledge, services, and development skills across platforms.</p>
+        </div>
+      </article>
+
+      <article>
+        <img src="/assets/web_vs_ns/ship_anywhere.svg" alt="" aria-hidden="true">
+        <div>
+          <h4>Ship Anywhere</h4>
+          <p>Target mobile, web, or both with a unified Angular experience.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
     <section class="code-sharing-section">
       <div class="container">
