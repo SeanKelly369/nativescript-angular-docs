@@ -292,118 +292,198 @@
   </div>
 </section>
 
-    <section class="code-sharing-section">
-      <div class="container">
-        <h2 class="section-title">Code Sharing Between Web & Mobile</h2>
-        <div class="sharing-content">
-          <div class="sharing-text">
-            <h3>Maximise Code Reuse</h3>
-            <p>Share business logic, services, and models between your web and mobile applications. NativeScript-Angular supports code sharing strategies that let you maintain a single codebase for multiple platforms.</p>
-            <ul class="feature-list">
-              <li>✅ Shared services and business logic</li>
-              <li>✅ Common data models and interfaces</li>
-              <li>✅ Reusable Angular modules</li>
-              <li>✅ Platform-specific UI implementations</li>
-            </ul>
-            <a routerLink="/guide/code-sharing" class="btn btn-primary">Learn Code Sharing</a>
-          </div>
+<section class="code-sharing-section">
+  <div class="container">
+    <h2 class="section-title">Code Sharing Between Web & Mobile</h2>
 
-          <div class="sharing-visual">
-            <div class="architecture-diagram" aria-label="Code sharing architecture diagram">
-              <div class="shared-layer">
-                <h4>Shared Code</h4>
+    <div class="sharing-content">
+      <div class="sharing-text">
+        <h3>Maximise Code Reuse</h3>
 
-                <div class="diagram-item shared-item">
-                  <span class="diagram-icon diagram-icon--services" aria-hidden="true"></span>
-                  <span>Services</span>
-                </div>
+        <p>
+          Share business logic, services, and models between your web and mobile applications.
+          NativeScript for Angular supports code sharing strategies that let you maintain a
+          single codebase for multiple platforms.
+        </p>
 
-                <div class="diagram-item shared-item">
-                  <span class="diagram-icon diagram-icon--models" aria-hidden="true"></span>
-                  <span>Models</span>
-                </div>
+        <ul class="feature-list" aria-label="Code sharing benefits">
+          <li>
+            <span class="feature-check" aria-hidden="true">✓</span>
+            <span>Shared services and business logic</span>
+          </li>
 
-                <div class="diagram-item shared-item">
-                  <span class="diagram-icon diagram-icon--logic" aria-hidden="true"></span>
-                  <span>Business Logic</span>
-                </div>
-              </div>
+          <li>
+            <span class="feature-check" aria-hidden="true">✓</span>
+            <span>Common data models and interfaces</span>
+          </li>
 
-              <div class="diagram-connector" aria-hidden="true">
-                <span class="connector-line connector-line--vertical"></span>
-                <span class="connector-node connector-node--centre"></span>
-                <span class="connector-line connector-line--horizontal"></span>
-                <span class="connector-line connector-line--left"></span>
-                <span class="connector-line connector-line--right"></span>
-                <span class="connector-node connector-node--left"></span>
-                <span class="connector-node connector-node--right"></span>
-              </div>
+          <li>
+            <span class="feature-check" aria-hidden="true">✓</span>
+            <span>Reusable Angular modules</span>
+          </li>
 
-              <div class="platform-layers">
-                <div class="platform-layer">
-                  <h4>
-                    <span class="diagram-icon diagram-icon--web" aria-hidden="true"></span>
-                    <span>Web</span>
-                  </h4>
+          <li>
+            <span class="feature-check" aria-hidden="true">✓</span>
+            <span>Platform-specific UI implementations</span>
+          </li>
+        </ul>
 
-                  <div class="diagram-item platform-item">
-                    <span class="diagram-icon diagram-icon--template" aria-hidden="true"></span>
-                    <span>HTML Templates</span>
-                  </div>
+        <a routerLink="/guide/code-sharing" class="btn btn-primary">
+          Learn Code Sharing
+        </a>
+      </div>
 
-                  <div class="diagram-item platform-item">
-                    <span class="diagram-icon diagram-icon--styles" aria-hidden="true"></span>
-                    <span>CSS Styles</span>
-                  </div>
-                </div>
+      <div class="sharing-visual">
+        <figure class="architecture-diagram" aria-label="Code sharing architecture diagram">
+          <div class="shared-layer">
+            <div class="diagram-heading">
+              <h4>Shared Code</h4>
+            </div>
 
-                <div class="platform-layer">
-                  <h4>
-                    <span class="diagram-icon diagram-icon--mobile" aria-hidden="true"></span>
-                    <span>Mobile</span>
-                  </h4>
+            <div class="diagram-item shared-item">
+              <img
+                src="assets/code_sharing/services.svg"
+                alt=""
+                class="diagram-icon"
+                aria-hidden="true"
+              />
 
-                  <div class="diagram-item platform-item">
-                    <span class="diagram-icon diagram-icon--template" aria-hidden="true"></span>
-                    <span>XML Templates</span>
-                  </div>
+              <span>Services</span>
+            </div>
 
-                  <div class="diagram-item platform-item">
-                    <span class="diagram-icon diagram-icon--styles" aria-hidden="true"></span>
-                    <span>Native Styles</span>
-                  </div>
-                </div>
-              </div>
+            <div class="diagram-item shared-item">
+              <img
+                src="assets/code_sharing/models.svg"
+                alt=""
+                class="diagram-icon"
+                aria-hidden="true"
+              />
+
+              <span>Models</span>
+            </div>
+
+            <div class="diagram-item shared-item">
+              <img
+                src="assets/code_sharing/business_logic.svg"
+                alt=""
+                class="diagram-icon"
+                aria-hidden="true"
+              />
+
+              <span>Business Logic</span>
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <section class="getting-started-preview">
-      <div class="container">
-        <h2 class="section-title-light">Quick Start</h2>
-        <div class="code-example">
-          <div class="code-header">
-            <span class="code-title">Create your first NativeScript-Angular app</span>
+          <div class="diagram-connector" aria-hidden="true">
+            <span class="connector-line connector-line--vertical"></span>
+            <span class="connector-node connector-node--centre"></span>
+            <span class="connector-line connector-line--horizontal"></span>
+            <span class="connector-line connector-line--left"></span>
+            <span class="connector-line connector-line--right"></span>
+            <span class="connector-node connector-node--left"></span>
+            <span class="connector-node connector-node--right"></span>
           </div>
-          <pre class="code-block-dark-bg"><code># Install NativeScript CLI
-npm install -g @nativescript/cli
 
-# Create a new Angular project
-ns create my-app --ng
+          <div class="platform-layers">
+            <div class="platform-layer">
+              <div class="platform-heading">
+                <img
+                  src="assets/code_sharing/web.svg"
+                  alt=""
+                  class="platform-heading-icon"
+                  aria-hidden="true"
+                />
 
-# Run on device/emulator
-cd my-app
-ns run ios     # or ns run android</code></pre>
-        </div>
-        <div class="cta-section">
-          <p class="ready-text">Ready to get started?</p>
-          <a routerLink="/getting-started" class="btn btn-primary">View Full Setup Guide</a>
-        </div>
+                <h4>Web</h4>
+              </div>
+
+              <div class="diagram-item platform-item">
+                <img
+                  src="assets/code_sharing/templates.svg"
+                  alt=""
+                  class="diagram-icon"
+                  aria-hidden="true"
+                />
+
+                <span>HTML Templates</span>
+              </div>
+
+              <div class="diagram-item platform-item">
+                <img
+                  src="assets/code_sharing/css_styles.svg"
+                  alt=""
+                  class="diagram-icon"
+                  aria-hidden="true"
+                />
+
+                <span>CSS Styles</span>
+              </div>
+            </div>
+
+            <div class="platform-layer">
+              <div class="platform-heading">
+                <img
+                  src="assets/code_sharing/mobile.svg"
+                  alt=""
+                  class="platform-heading-icon"
+                  aria-hidden="true"
+                />
+
+                <h4>Mobile</h4>
+              </div>
+
+              <div class="diagram-item platform-item">
+                <img
+                  src="assets/code_sharing/templates.svg"
+                  alt=""
+                  class="diagram-icon"
+                  aria-hidden="true"
+                />
+
+                <span>XML Templates</span>
+              </div>
+
+              <div class="diagram-item platform-item">
+                <img
+                  src="assets/code_sharing/css_styles.svg"
+                  alt=""
+                  class="diagram-icon"
+                  aria-hidden="true"
+                />
+
+                <span>Native Styles</span>
+              </div>
+            </div>
+          </div>
+        </figure>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<section class="getting-started-preview">
+  <div class="container">
+    <h2 class="section-title-light">Quick Start</h2>
+    <div class="code-example">
+      <div class="code-header">
+        <span class="code-title">Create your first NativeScript-Angular app</span>
+      </div>
+      <pre class="code-block-dark-bg"><code># Install NativeScript CLI
+  npm install -g @nativescript/cli
+
+  # Create a new Angular project
+  ns create my-app --ng
+
+  # Run on device/emulator
+  cd my-app
+  ns run ios     # or ns run android</code></pre>
+    </div>
+    <div class="cta-section">
+      <p class="ready-text">Ready to get started?</p>
+      <a routerLink="/getting-started" class="btn btn-primary">View Full Setup Guide</a>
+    </div>
+  </div>
+</section>
 
     <section class="community-section">
       <div class="container">

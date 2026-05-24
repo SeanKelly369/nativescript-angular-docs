@@ -1,21 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { CommonModule, ViewportScroller, Location } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, inject, ViewChild, PLATFORM_ID } from '@angular/core';
+import { CommonModule, Location, isPlatformBrowser } from '@angular/common';
 import { RouterLink, RouterOutlet, Router, NavigationEnd, RouterLinkActive } from '@angular/router';
 import { GuideService } from '../../services/guide-service/guide-service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TocService } from '../../services/toc.service';
-import { PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
 import { GUIDE_SECTIONS, GuideSection } from '../../interfaces/guide-pages';
 
 @Component({
   selector: 'app-guide',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet,     RouterLink,
-    RouterLinkActive],
-
-
+  imports: [CommonModule, RouterLink, RouterOutlet, RouterLinkActive],
   providers: [GuideService],
   templateUrl: 'guide.component.html',
   styleUrl: './guide.component.styles.scss',
