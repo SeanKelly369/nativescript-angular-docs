@@ -319,10 +319,12 @@
     </div>
   </section>
 
-  <section class="community-section" aria-labelledby="events-heading">
+  <section class="community-section events-section" aria-labelledby="events-heading">
     <div class="section-heading">
       <span class="section-kicker">Events</span>
+
       <h2 id="events-heading">Events & Meetups</h2>
+
       <p>
         Join NativeScript events, meetups, workshops, and online sessions to connect with
         other developers.
@@ -332,6 +334,7 @@
     <div class="events-content">
       <div class="events-text">
         <h3>Connect in Person & Online</h3>
+
         <p>
           Meet other developers, learn from experts, and stay up-to-date with the latest
           NativeScript developments.
@@ -339,26 +342,70 @@
 
         <div class="event-types">
           <article class="event-type">
-            <h4>🌍 Global Conferences</h4>
-            <p>Annual conferences with talks, workshops, and networking opportunities.</p>
+            <div class="event-type__icon">
+              <img
+                src="assets/events/global_conferences.svg"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div class="event-type__content">
+              <h4>Global Conferences</h4>
+              <p>Annual conferences with talks, workshops, and networking opportunities.</p>
+            </div>
           </article>
 
           <article class="event-type">
-            <h4>🏙️ Local Meetups</h4>
-            <p>Regular meetups in cities around the world.</p>
+            <div class="event-type__icon">
+              <img
+                src="assets/events/local_meetups.svg"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div class="event-type__content">
+              <h4>Local Meetups</h4>
+              <p>Regular meetups in cities around the world.</p>
+            </div>
           </article>
 
           <article class="event-type">
-            <h4>💻 Virtual Events</h4>
-            <p>Online workshops, webinars, and community calls.</p>
+            <div class="event-type__icon">
+              <img
+                src="assets/events/virtual_events.svg"
+                alt=""
+                loading="lazy"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div class="event-type__content">
+              <h4>Virtual Events</h4>
+              <p>Online workshops, webinars, and community calls.</p>
+            </div>
           </article>
         </div>
       </div>
 
-      <aside class="events-calendar">
+      <aside class="events-calendar" aria-label="Upcoming events">
+        <div class="events-calendar__icon">
+          <img
+            src="assets/events/calendar.svg"
+            alt=""
+            loading="lazy"
+            aria-hidden="true"
+          />
+        </div>
+
         <h4>Upcoming Events</h4>
+
         <div class="calendar-placeholder">
           <p>Check the community calendar for upcoming events and meetups in your area.</p>
+
           <a
             href="https://www.meetup.com/topics/nativescript/"
             target="_blank"
