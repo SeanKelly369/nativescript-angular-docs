@@ -586,7 +586,7 @@
   --code-share-button-shadow: 0 1rem 2rem rgba(91, 33, 232, 0.22);
   --code-share-button-shadow-hover: 0 1.25rem 2.5rem rgba(91, 33, 232, 0.28);
 
-  padding: 5rem 1rem;
+  padding: 2rem 1rem;
   background:
     radial-gradient(circle at 50% 0%, var(--code-share-accent-soft), transparent 32rem),
     var(--code-share-surface);
@@ -917,7 +917,7 @@
   --quick-start-ready-text: #475569;
   --quick-start-shadow: 0 1.5rem 4rem rgba(15, 23, 42, 0.08);
 
-  padding: 4rem 1rem;
+  padding: 4rem 1rem 1.8rem 1rem;
   background:
     radial-gradient(circle at 50% 0%, rgba(109, 69, 232, 0.08), transparent 32rem),
     var(--quick-start-surface);
@@ -1008,7 +1008,7 @@
   --community-accent-start: #3b82f6;
   --community-accent-end: #a855f7;
 
-  padding: 4rem 1rem;
+  padding: 2rem 1rem;
   background:
     radial-gradient(circle at 50% 0%, var(--community-bg-soft), transparent 32rem),
     var(--community-bg);
