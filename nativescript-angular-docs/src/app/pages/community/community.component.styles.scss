@@ -293,6 +293,7 @@ h1 {
   font-weight: 850;
   white-space: nowrap;
 }
+
 /* Contribute section */
 
 .contribute-content {
@@ -715,7 +716,11 @@ h1 {
 }
 
 .showcase-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+
   padding: 1.5rem;
   border: 1px solid var(--community-card-border);
   border-radius: 1rem;
@@ -733,17 +738,34 @@ h1 {
   }
 }
 
+.showcase-icon {
+  display: grid;
+  place-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-bottom: 1rem;
+}
+
+.showcase-icon img {
+  width: 3.25rem;
+  height: 3.25rem;
+  object-fit: contain;
+}
+
 .showcase-item h4 {
+  margin: 0 0 0.75rem;
+  color: var(--community-text);
   font-size: 1.125rem;
   font-weight: 850;
-  margin-bottom: 0.75rem;
-  color: var(--community-text);
+  line-height: 1.25;
 }
 
 .showcase-item p {
+  max-width: 17rem;
+  margin: 0;
   color: var(--community-muted);
   font-size: 0.875rem;
-  margin: 0;
+  line-height: 1.55;
 }
 
 .showcase-cta {
@@ -1234,6 +1256,7 @@ h1 {
     outline-offset: 0.25rem;
   }
 }
+
 .btn-primary {
   background: linear-gradient(135deg, var(--community-primary), var(--community-primary-hover));
   color: #ffffff;
@@ -1263,6 +1286,7 @@ h1 {
   padding: 0.8rem 1.55rem;
   font-size: 0.95rem;
 }
+
 /* Responsive */
 
 @media (max-width: 1120px) {
@@ -1292,7 +1316,6 @@ h1 {
 }
 
 @media (max-width: 48rem) {
-
   .btn {
     width: 85% !important;
   }
@@ -1323,6 +1346,16 @@ h1 {
     margin: 0 auto;
   }
 
+  .showcase-icon {
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .showcase-icon img {
+    width: 2.85rem;
+    height: 2.85rem;
+  }
 
   /* Help card stats */
 
