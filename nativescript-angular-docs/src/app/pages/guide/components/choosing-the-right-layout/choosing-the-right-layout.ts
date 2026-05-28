@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-choosing-the-right-layout',
-  imports: [],
   templateUrl: './choosing-the-right-layout.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

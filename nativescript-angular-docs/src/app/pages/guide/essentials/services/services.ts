@@ -13,7 +13,6 @@ hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-services',
-  imports: [],
   templateUrl: './services.html',
   styleUrl: './services.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -81,6 +80,7 @@ import { LoggingService } from './services/logging.service';
 
 @Component({
   selector: 'app-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: \`
     <Button text="Log Message" (tap)="doLog()"></Button>
   \`

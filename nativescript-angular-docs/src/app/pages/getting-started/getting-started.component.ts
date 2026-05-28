@@ -4,7 +4,6 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-getting-started',
-  standalone: true,
   imports: [RouterLink, RouterLinkActive, RouterOutlet, CommonModule],
   templateUrl: './getting-started.component.html',
   styleUrl: './getting-started.component.styles.scss',

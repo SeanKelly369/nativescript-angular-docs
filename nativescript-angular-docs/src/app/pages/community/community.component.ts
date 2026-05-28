@@ -5,7 +5,6 @@ import { CountUpDirective } from '../../directives/count-up';
 
 @Component({
   selector: 'app-community',
-  standalone: true,
   imports: [CommonModule, RouterLink, CountUpDirective],
   templateUrl: './community.component.html',
   styleUrls: ['./community.component.styles.scss'],

@@ -16,7 +16,6 @@ hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-troubleshooting',
-  imports: [],
   templateUrl: './troubleshooting.html',
   styleUrl: './troubleshooting.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

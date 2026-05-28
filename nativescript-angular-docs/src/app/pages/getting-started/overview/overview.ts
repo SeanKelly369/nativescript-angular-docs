@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-overview',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './overview.html',
   styleUrl: './overview.scss',

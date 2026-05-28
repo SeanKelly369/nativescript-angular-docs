@@ -18,7 +18,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-collectionview',
-  imports: [],
   templateUrl: './collectionview.html',
   styleUrl: './collectionview.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -91,7 +90,6 @@ import { CollectionViewModule } from '@nativescript-community/ui-collectionview/
 
 @Component({
   selector: 'app-animal-list',
-  standalone: true,
   imports: [CollectionViewModule],
   templateUrl: './animal-list.component.html',
   styleUrl: './animal-list.component.scss',

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Marked } from 'marked';
@@ -13,9 +13,9 @@ hljs.registerLanguage('scss', scss);
 
 @Component({
   selector: 'app-styling',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './styling.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StylingComponent implements OnInit {
   htmlContent!: SafeHtml;

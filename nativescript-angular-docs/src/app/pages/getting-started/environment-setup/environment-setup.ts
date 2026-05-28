@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-environment-setup',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './environment-setup.html',
   styleUrl: './environment-setup.scss',

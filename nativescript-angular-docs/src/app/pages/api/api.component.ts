@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-api',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './api.component.html',
-  styleUrl: './api.component.styles.scss'
+  styleUrl: './api.component.styles.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApiComponent {}

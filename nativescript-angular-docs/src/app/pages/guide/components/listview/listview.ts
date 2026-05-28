@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-listview',
-  imports: [],
   templateUrl: './listview.html',
   styleUrl: './listview.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

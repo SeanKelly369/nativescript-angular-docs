@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-gridlayout',
-  imports: [],
   templateUrl: './gridlayout.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

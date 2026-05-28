@@ -20,7 +20,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-flexboxlayout',
-  imports: [],
   templateUrl: './flexboxlayout.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

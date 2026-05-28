@@ -13,7 +13,6 @@ hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-testing',
-  imports: [],
   templateUrl: './testing.html',
   styleUrl: './testing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

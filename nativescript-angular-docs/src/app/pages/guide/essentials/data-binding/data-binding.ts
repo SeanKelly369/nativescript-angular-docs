@@ -14,7 +14,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-data-binding',
-  imports: [],
   templateUrl: './data-binding.html',
   styleUrl: './data-binding.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

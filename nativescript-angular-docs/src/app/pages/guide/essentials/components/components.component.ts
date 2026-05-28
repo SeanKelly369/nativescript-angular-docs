@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-components',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: 'components.component.html',
   styleUrl: './components.component.styles.scss',

@@ -16,7 +16,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-plugins',
-  imports: [],
   templateUrl: './plugins.html',
   styleUrl: './plugins.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

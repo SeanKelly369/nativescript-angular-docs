@@ -104,7 +104,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-new-page',
-  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [CommonModule],
   template: `
     <div class="page-container">

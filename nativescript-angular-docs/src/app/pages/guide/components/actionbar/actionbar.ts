@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-actionbar',
-  imports: [],
   templateUrl: './actionbar.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

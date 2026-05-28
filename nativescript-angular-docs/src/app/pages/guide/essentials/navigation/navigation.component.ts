@@ -15,7 +15,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-navigation',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: 'navigation.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -114,10 +113,10 @@ import {
 
 @Component({
   selector: 'ns-home',
-  standalone: true,
   templateUrl: 'home.html',
   imports: [NativeScriptCommonModule, NativeScriptRouterModule],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {}
 ~~~
@@ -156,9 +155,9 @@ import {
 
 @Component({
   selector: 'ns-app',
-  standalone: true,
   imports: [NativeScriptCommonModule, NativeScriptRouterModule],
   schemas: [NO_ERRORS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<page-router-outlet></page-router-outlet>'
 })
 export class AppComponent {}
@@ -182,9 +181,9 @@ import {
 
 @Component({
   selector: 'ns-home',
-  standalone: true,
   imports: [NativeScriptCommonModule, NativeScriptRouterModule],
   schemas: [NO_ERRORS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'home.html'
 })
 export class HomeComponent {
@@ -276,9 +275,9 @@ interface Item {
 
 @Component({
   selector: 'ns-item-list',
-  standalone: true,
   imports: [NativeScriptCommonModule],
   schemas: [NO_ERRORS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'item-list.html'
 })
 export class ItemListComponent {
@@ -368,9 +367,9 @@ interface Item {
 
 @Component({
   selector: 'ns-detail',
-  standalone: true,
   imports: [NativeScriptCommonModule],
   schemas: [NO_ERRORS_SCHEMA],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: 'detail.html'
 })
 export class DetailComponent implements OnInit {
@@ -582,8 +581,8 @@ import { ModalContentComponent } from './modal-content.component';
 
 @Component({
   selector: 'ns-modal-example',
-  standalone: true,
   imports: [NativeScriptCommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [NO_ERRORS_SCHEMA],
   templateUrl: 'modal-example.html'
 })
@@ -635,10 +634,10 @@ interface ModalData {
 
 @Component({
   selector: 'ns-modal-content',
-  standalone: true,
   imports: [NativeScriptCommonModule],
   schemas: [NO_ERRORS_SCHEMA],
-  templateUrl: 'modal-content.html'
+  templateUrl: 'modal-content.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalContentComponent {
   private readonly dialogRef = inject(DialogRef);
@@ -905,6 +904,7 @@ import { RouterExtensions } from '@nativescript/angular';
 
 @Component({
   selector: 'ns-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<page-router-outlet></page-router-outlet>'
 })
 export class AppComponent implements OnInit {

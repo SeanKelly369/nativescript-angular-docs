@@ -104,8 +104,8 @@ import { NativeScriptCommonModule } from '@nativescript/angular';
 
 @Component({
   selector: 'ns-home',
-  standalone: true,
   imports: [NativeScriptCommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [NO_ERRORS_SCHEMA],
   template: \`
     <ActionBar title="Quick Start"></ActionBar>
@@ -261,7 +261,6 @@ Once the starter app runs successfully, move on to:
 
 @Component({
   selector: 'app-quick-start',
-  standalone: true,
   templateUrl: './quick-start.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

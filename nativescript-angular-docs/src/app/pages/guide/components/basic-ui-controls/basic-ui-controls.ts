@@ -20,7 +20,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-basic-ui-controls',
-  imports: [],
   templateUrl: './basic-ui-controls.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

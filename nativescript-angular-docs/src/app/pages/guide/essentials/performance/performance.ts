@@ -14,7 +14,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-performance',
-  imports: [],
   templateUrl: './performance.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

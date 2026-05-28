@@ -3,8 +3,6 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-first-app',
-  standalone: true,
-  imports: [],
   templateUrl: 'first-app.component.html',
   styleUrl: './first-app.component.styles.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

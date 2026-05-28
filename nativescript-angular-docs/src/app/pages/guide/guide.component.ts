@@ -9,7 +9,6 @@ import { GUIDE_SECTIONS, GuideSection } from '../../interfaces/guide-pages';
 
 @Component({
   selector: 'app-guide',
-  standalone: true,
   imports: [CommonModule, RouterLink, RouterOutlet, RouterLinkActive],
   providers: [GuideService],
   templateUrl: 'guide.component.html',

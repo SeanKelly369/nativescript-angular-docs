@@ -19,7 +19,6 @@ hljs.registerLanguage('yaml', yaml);
 
 @Component({
   selector: 'app-deployment',
-  imports: [],
   templateUrl: './deployment.html',
   styleUrl: './deployment.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { ThemeToggleComponent } from './theme-toggle/theme-toggle';
@@ -7,7 +7,8 @@ import { ThemeToggleComponent } from './theme-toggle/theme-toggle';
   selector: 'app-root',
   imports: [RouterOutlet, RouterLink, RouterLinkActive, ThemeToggleComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
   protected readonly title = signal('nativescript-angular-docs');

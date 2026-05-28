@@ -4,7 +4,6 @@ import { marked } from 'marked';
 
 @Component({
   selector: 'app-project-structure',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: 'project-structure.component.html',
   styleUrl: './project-structure.component.styles.scss',

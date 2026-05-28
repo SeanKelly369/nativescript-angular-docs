@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-stacklayout',
-  imports: [],
   templateUrl: './stacklayout.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

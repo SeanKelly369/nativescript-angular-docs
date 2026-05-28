@@ -13,7 +13,6 @@ hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-code-sharing',
-  imports: [],
   templateUrl: './code-sharing.html',
   styleUrl: './code-sharing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-scrollview',
-  imports: [],
   templateUrl: './scrollview.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -154,7 +153,8 @@ import { ScrollView } from '@nativescript/core';
 
 @Component({
   selector: 'app-example',
-  templateUrl: './example.html'
+  templateUrl: './example.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleComponent {
   @ViewChild('scrollView', { static: false })

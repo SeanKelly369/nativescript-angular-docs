@@ -14,7 +14,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-nativescript-components',
-  imports: [],
   templateUrl: './nativescript-components.html',
   styleUrl: './nativescript-components.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -11,7 +11,6 @@ hljs.registerLanguage('ts', typescript);
 
 @Component({
   selector: 'app-native-apis',
-  imports: [],
   templateUrl: './native-apis.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

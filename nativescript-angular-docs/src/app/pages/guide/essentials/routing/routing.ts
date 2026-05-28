@@ -14,7 +14,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-routing',
-  imports: [],
   templateUrl: './routing.html',
   styleUrl: './routing.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -95,6 +94,7 @@ import { RouterExtensions } from '@nativescript/angular';
 
 @Component({
   selector: 'ns-home',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: '<StackLayout class="page"><Button text="Open Details" (tap)="openDetails()"></Button></StackLayout>'
 })
 export class HomeComponent {

@@ -252,7 +252,6 @@ If \`ns doctor\` reports issues, fix them before creating or running a project.
 
 @Component({
   selector: 'app-prerequisites',
-  standalone: true,
   templateUrl: './prerequisites.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })

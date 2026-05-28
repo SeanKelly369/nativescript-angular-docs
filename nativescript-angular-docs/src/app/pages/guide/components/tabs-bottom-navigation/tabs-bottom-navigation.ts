@@ -17,7 +17,6 @@ hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-tabs-bottom-navigation',
-  imports: [],
   templateUrl: './tabs-bottom-navigation.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
