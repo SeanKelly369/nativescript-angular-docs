@@ -1,19 +1,14 @@
-import { APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling } from '@angular/router';
+import { ApplicationConfig, inject, provideAppInitializer, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter, withEnabledBlockingInitialNavigation, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-
 import { routes } from './app.routes';
 import { ThemeService } from './services/theme.service';
 
-function initTheme(theme: ThemeService) {
-  return () => theme.init();
-}
-
 export const appConfig: ApplicationConfig = {
   providers: [
-        { provide: APP_INITIALIZER, useFactory: initTheme, deps: [ThemeService], multi: true }
-,
+    provideAppInitializer(() => inject(ThemeService).init()),
+
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(
       routes,
@@ -21,9 +16,13 @@ export const appConfig: ApplicationConfig = {
       withInMemoryScrolling({
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
+      }),
+      withViewTransitions({
+        skipInitialTransition: true,
       })
     ),
+
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch())
-  ]
+    provideHttpClient(withFetch()),
+  ],
 };
