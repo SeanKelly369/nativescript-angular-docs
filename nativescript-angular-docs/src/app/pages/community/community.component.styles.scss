@@ -1291,7 +1291,11 @@ h1 {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
+
+  .btn {
+    width: 85% !important;
+  }
 
   .community-container {
     padding: 1rem;
