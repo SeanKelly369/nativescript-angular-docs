@@ -1752,11 +1752,12 @@
   .ns-angular-comparison__card {
     min-height: auto;
     padding: 1rem;
-    width: 72%;
+    width: 75%;
   }
 
   .ns-angular-comparison__code-card {
     min-height: auto;
+    width: 83.5%;
 
     pre {
       padding: 1rem;
@@ -1967,7 +1968,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 40rem) {
   .ns-angular-comparison {
     padding: 3.5rem 1rem;
   }
@@ -1991,6 +1992,7 @@
   .ns-angular-comparison__column-header {
     justify-content: center;
     text-align: center;
+    width: 82%;
   }
 
   .ns-angular-comparison__code-label {
