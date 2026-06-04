@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title>Shared Services icon</title>
+  <desc>Blue and purple line icon for shared services.</desc>
+  <defs>
+    <linearGradient id="g" x1="10" y1="10" x2="86" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2f9bff"/>
+      <stop offset="1" stop-color="#7a5cff"/>
+    </linearGradient>
+    <linearGradient id="soft" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eaf5ff"/>
+      <stop offset="1" stop-color="#eee9ff"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="25" y="18" width="46" height="60" rx="9"/>
+    <path d="M36 32h24M36 44h24M36 56h16"/>
+    <circle cx="17" cy="34" r="5"/>
+    <circle cx="17" cy="62" r="5"/>
+    <circle cx="79" cy="34" r="5"/>
+    <circle cx="79" cy="62" r="5"/>
+    <path d="M22 34h13M22 62h13M61 34h13M61 62h13"/>
+  </g>
+</svg>

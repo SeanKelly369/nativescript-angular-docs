@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   fill="none"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="camera-media.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.8886217"
+     inkscape:cx="98.749261"
+     inkscape:cy="116.75181"
+     inkscape:window-width="1624"
+     inkscape:window-height="898"
+     inkscape:window-x="0"
+     inkscape:window-y="356"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg4" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="cameraMediaGradient"
+       x1="40"
+       y1="34"
+       x2="216"
+       y2="222"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1372226,0,0,1.1372226,-17.56448,-24.387815)">
+      <stop
+         stop-color="#3F8CFF"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#6B5CFF"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <!-- Camera body -->
+  <path
+     id="path2"
+     style="fill:url(#cameraMediaGradient);stroke-width:1.13722;stroke-linecap:round;stroke-linejoin:round"
+     d="m 102.9811,28.55078 a 6.1984822,6.1984822 0 0 0 -5.543955,3.424995 L 84.365749,58.118565 H 44.982756 c -22.735529,0 -41.4508711,18.715341 -41.4508711,41.450875 v 86.4289 c 0,22.73554 18.7153421,41.45088 41.4508711,41.45088 H 211.01724 c 22.73554,0 41.45088,-18.71534 41.45088,-41.45088 v -86.4289 c 0,-22.735534 -18.71534,-41.450875 -41.45088,-41.450875 h -39.38299 l -13.0714,-26.14279 A 6.1984822,6.1984822 0 0 0 153.0189,28.55078 Z m 3.83147,12.393949 h 42.37486 l 13.0714,26.14279 a 6.1984822,6.1984822 0 0 0 5.54396,3.424995 h 43.21445 c 15.93003,0 29.05692,13.126889 29.05692,29.056926 v 86.4289 c 0,15.93004 -13.12689,29.05692 -29.05692,29.05692 H 44.982756 c -15.930033,0 -29.056923,-13.12688 -29.056923,-29.05692 v -86.4289 c 0,-15.930037 13.12689,-29.056926 29.056923,-29.056926 h 43.214456 a 6.1984822,6.1984822 0 0 0 5.54396,-3.424995 z M 128,86.717934 c -31.534032,0 -57.203181,25.669156 -57.203181,57.203186 0,31.53403 25.669149,57.20318 57.203181,57.20318 31.53403,0 57.20318,-25.66915 57.20318,-57.20318 0,-31.53403 -25.66915,-57.203186 -57.20318,-57.203186 z m 65.9589,9.155526 a 5.9704182,5.9704182 0 0 0 -5.97041,5.97042 5.9704182,5.9704182 0 0 0 5.97041,5.97042 h 20.47001 a 5.9704182,5.9704182 0 0 0 5.97042,-5.97042 5.9704182,5.9704182 0 0 0 -5.97042,-5.97042 z M 128,96.49982 c 26.24847,0 47.42129,21.17283 47.42129,47.4213 0,26.24847 -21.17282,47.42128 -47.42129,47.42128 -26.24847,0 -47.421291,-21.17281 -47.421291,-47.42128 0,-26.24847 21.172821,-47.4213 47.421291,-47.4213 z m -12.08744,17.90904 a 4.5493449,4.5493449 0 0 0 -1.51036,0.5264 4.5493449,4.5493449 0 0 0 -2.32332,3.96696 V 168.94 a 4.5493449,4.5493449 0 0 0 6.92107,3.88256 l 40.94001,-25.0189 a 4.5493449,4.5493449 0 0 0 0,-7.7651 l -40.94001,-25.01888 a 4.5493449,4.5493449 0 0 0 -3.08739,-0.61082 z m 5.2641,12.60495 27.66649,16.90731 -27.66649,16.90729 z" />
+  <!-- Lens -->
+  <!-- Media/play symbol -->
+  <!-- Small flash/button -->
+</svg>
