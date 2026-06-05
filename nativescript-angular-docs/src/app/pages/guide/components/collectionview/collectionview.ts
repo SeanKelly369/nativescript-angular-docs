@@ -11,6 +11,7 @@ import xml from 'highlight.js/lib/languages/xml';
 
 hljs.registerLanguage('bash', bash);
 hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('css', scss);
 hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('ts', typescript);
 hljs.registerLanguage('xml', xml);
@@ -25,24 +26,34 @@ hljs.registerLanguage('html', xml);
 export class Collectionview implements OnInit {
   htmlContent!: SafeHtml;
 
-  private readonly markedParser = new Marked();
+  private readonly marked = new Marked(
+    {
+      gfm: true,
+      breaks: false
+    },
+    markedHighlight({
+      emptyLangClass: 'hljs',
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        if (!lang || !hljs.getLanguage(lang)) {
+          return hljs.highlight(code, {
+            language: 'typescript',
+            ignoreIllegals: true
+          }).value;
+        }
+
+        return hljs.highlight(code, {
+          language: lang,
+          ignoreIllegals: true
+        }).value;
+      }
+    })
+  );
 
   constructor(
     private readonly sanitiser: DomSanitizer,
     private readonly changeDetectorReference: ChangeDetectorRef
-  ) {
-    this.markedParser.use(
-      markedHighlight({
-        emptyLangClass: 'hljs',
-        langPrefix: 'hljs language-',
-        highlight(code: string, lang: string): string {
-          const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-
-          return hljs.highlight(code, { language }).value;
-        }
-      }) as any
-    );
-  }
+  ) {}
 
   async ngOnInit(): Promise<void> {
     const markdownContent = `
@@ -335,7 +346,7 @@ For a tiny static layout with only two or three rows, a normal **\`GridLayout\`*
 Use **\`@nativescript-community/ui-collectionview\`** for NativeScript Angular lists that need to feel native and stay fast. It is especially useful when standard list approaches become sluggish, because it is designed around native scrolling, view recycling, and efficient repeated templates.
 `;
 
-    const html = await this.markedParser.parse(markdownContent);
+    const html = await this.marked.parse(markdownContent);
 
     this.htmlContent = this.sanitiser.bypassSecurityTrustHtml(html);
     this.changeDetectorReference.markForCheck();

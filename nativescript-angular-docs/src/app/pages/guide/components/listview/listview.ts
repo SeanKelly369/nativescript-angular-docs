@@ -1,6 +1,19 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { marked } from 'marked';
+import { Marked } from 'marked';
+import { markedHighlight } from 'marked-highlight';
+
+import hljs from 'highlight.js/lib/core';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
+
+hljs.registerLanguage('scss', scss);
+hljs.registerLanguage('css', scss);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('ts', typescript);
+hljs.registerLanguage('xml', xml);
+hljs.registerLanguage('html', xml);
 
 @Component({
   selector: 'app-listview',
@@ -14,20 +27,38 @@ export class Listview implements OnInit {
 
   private readonly visualsHtml = this.buildVisualsHtml();
 
+  private readonly marked = new Marked(
+    {
+      gfm: true,
+      breaks: false
+    },
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang) {
+        if (!lang || !hljs.getLanguage(lang)) {
+          return hljs.highlight(code, {
+            language: 'typescript',
+            ignoreIllegals: true
+          }).value;
+        }
+
+        return hljs.highlight(code, {
+          language: lang,
+          ignoreIllegals: true
+        }).value;
+      }
+    })
+  );
+
   constructor(
     private readonly sanitiser: DomSanitizer,
     private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   async ngOnInit(): Promise<void> {
-    marked.setOptions({
-      gfm: true,
-      breaks: false
-    });
-
     const markdownContent = this.getMarkdown();
     const md = this.dedent(markdownContent);
-    const htmlFromMd = await marked.parse(md);
+    const htmlFromMd = await this.marked.parse(md);
 
     const finalHtml = `
       <div class="listview-content content-wrapper">
@@ -39,8 +70,8 @@ export class Listview implements OnInit {
     this.changeDetectorRef.markForCheck();
   }
 
-private getMarkdown(): string {
-  return `
+  private getMarkdown(): string {
+    return `
 # NativeScript \`ListView\`
 
 The **\`ListView\`** is a NativeScript component for displaying
@@ -281,7 +312,7 @@ Use **CollectionView** if you need:
 
 For simple lists, **ListView is still the cleanest option**.
 `;
-}
+  }
 
   private buildVisualsHtml(): string {
     const uiFont =
