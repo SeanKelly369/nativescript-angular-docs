@@ -1,25 +1,241 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
-  <title>Blank Angular App icon</title>
-  <desc>Blue and purple line icon for blank angular app.</desc>
-  <defs>
-    <linearGradient id="g" x1="10" y1="10" x2="86" y2="86" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2f9bff"/>
-      <stop offset="1" stop-color="#7a5cff"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   fill="none"
+   version="1.1"
+   id="svg10"
+   sodipodi:docname="blank-angular-app.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview10"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.4626263"
+     inkscape:cx="184.35602"
+     inkscape:cy="119.1817"
+     inkscape:window-width="1640"
+     inkscape:window-height="946"
+     inkscape:window-x="2112"
+     inkscape:window-y="108"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg10" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="blankAppGradient"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#3F8CFF"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#6B5CFF"
+         id="stop2" />
     </linearGradient>
-    <linearGradient id="soft" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#eaf5ff"/>
-      <stop offset="1" stop-color="#eee9ff"/>
+    <linearGradient
+       id="blankAppSoftFill"
+       x1="54"
+       y1="58"
+       x2="198"
+       y2="204"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-22.836382)">
+      <stop
+         stop-color="#3F8CFF"
+         stop-opacity="0.10"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#6B5CFF"
+         stop-opacity="0.14"
+         id="stop4" />
     </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient10"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="translate(12.113566,13.25)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient12"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-5.675266,-7.78115)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient13"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-31.926333)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient14"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient19"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient20"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-22.836382)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient21"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-22.836382)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient22"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-22.836382)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#blankAppGradient"
+       id="linearGradient23"
+       gradientUnits="userSpaceOnUse"
+       x1="38"
+       y1="36"
+       x2="220"
+       y2="220"
+       gradientTransform="matrix(1.1362439,0,0,1.1362439,-19.439232,-22.836382)" />
   </defs>
-  <g fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="27" y="15" width="42" height="64" rx="8"/>
-    <path d="M39 15h18"/>
-    <path d="M39 34h18"/>
-    <path d="M39 48h18"/>
-    <path d="M39 62h18"/>
-    <path d="M32 34l4 4 7-8"/>
-    <path d="M32 48l4 4 7-8"/>
-    <rect x="32" y="60" width="9" height="9" rx="1"/>
-    <path d="M69 49l9 9-18 18H49v-11l20-20z"/>
+  <!-- App/browser shell -->
+  <g
+     id="rect4"
+     transform="matrix(1.136244,0,0,1.136244,-19.439232,-22.836382)">
+    <path
+       style="fill:#ffffff"
+       d="m 70,42 h 116 c 15.512,0 28,12.488 28,28 v 116 c 0,15.512 -12.488,28 -28,28 H 70 C 54.488,214 42,201.512 42,186 V 70 C 42,54.488 54.488,42 70,42 Z"
+       id="path15" />
+    <path
+       id="path16"
+       style="fill:url(#linearGradient19)"
+       d="M 70,37.75 C 52.207013,37.75 37.75,52.207013 37.75,70 v 116 c 0,17.79299 14.457013,32.25 32.25,32.25 h 116 c 17.79299,0 32.25,-14.45701 32.25,-32.25 V 70 C 218.25,52.207013 203.79299,37.75 186,37.75 Z m 0,8.5 h 116 c 13.23101,0 23.75,10.518987 23.75,23.75 v 8.076172 A 4,4 0 0 0 209,78 H 47 a 4,4 0 0 0 -0.75,0.201172 V 70 C 46.25,56.768987 56.768987,46.25 70,46.25 Z M 46.25,85.798828 A 4,4 0 0 0 47,86 h 162 a 4,4 0 0 0 0.75,-0.201172 V 186 c 0,13.23101 -10.51899,23.75 -23.75,23.75 H 70 C 56.768987,209.75 46.25,199.23101 46.25,186 Z" />
   </g>
+  <!-- Header divider -->
+  <!-- Header dots -->
+  <circle
+     cx="62.370331"
+     cy="47.610744"
+     r="6.249342"
+     fill="url(#blankAppGradient)"
+     id="circle4"
+     style="fill:url(#linearGradient20);stroke-width:1.13624" />
+  <circle
+     cx="85.095222"
+     cy="47.610744"
+     r="6.249342"
+     fill="url(#blankAppGradient)"
+     id="circle5"
+     style="fill:url(#linearGradient21);stroke-width:1.13624" />
+  <circle
+     cx="107.8201"
+     cy="47.610744"
+     r="6.249342"
+     fill="url(#blankAppGradient)"
+     id="circle6"
+     style="fill:url(#linearGradient22);stroke-width:1.13624" />
+  <!-- Empty starter component/card -->
+  <rect
+     x="62.370331"
+     y="93.060509"
+     width="127.25932"
+     height="90.899513"
+     rx="20.452393"
+     fill="url(#blankAppSoftFill)"
+     stroke="url(#blankAppGradient)"
+     stroke-width="8.52183"
+     id="rect6"
+     style="fill:url(#blankAppSoftFill);stroke:url(#linearGradient23)" />
+  <!-- Angular-style shield -->
+  <g
+     id="path6"
+     transform="matrix(1.136244,0,0,1.136244,-19.439232,-27.381358)">
+    <path
+       style="fill:#ffffff;stroke-linejoin:round"
+       d="m 128,116 25,10 -4,36 -21,14 -21,-14 -4,-36 z"
+       id="path13" />
+    <path
+       style="fill:url(#linearGradient14);stroke-linejoin:round"
+       d="m 126.79297,112.98242 -25,10 a 3.250325,3.250325 0 0 0 -2.023439,3.37696 l 3.999999,35.99999 a 3.250325,3.250325 0 0 0 1.42774,2.34571 l 21,14 a 3.250325,3.250325 0 0 0 3.60546,0 l 21,-14 a 3.250325,3.250325 0 0 0 1.42774,-2.34571 l 4,-35.99999 a 3.250325,3.250325 0 0 0 -2.02344,-3.37696 l -25,-10 a 3.250325,3.250325 0 0 0 -2.41406,0 z M 128,119.5 149.49609,128.09961 145.9375,160.13672 128,172.09375 110.0625,160.13672 106.50391,128.09961 Z"
+       id="path14" />
+  </g>
+  <!-- Clean Angular-style A -->
+  <path
+     id="path7"
+     style="fill:url(#linearGradient13);stroke-width:1.13624;stroke-linecap:round;stroke-linejoin:round"
+     d="m 126,114.36508 a 3.6931622,3.6931622 0 0 0 -3.42871,2.3213 l -13.63492,34.08733 a 3.6927929,3.6927929 0 0 0 2.05722,4.80018 3.6927929,3.6927929 0 0 0 4.80019,-2.05723 l 4.18546,-10.46143 h 12.04152 l 4.18546,10.46143 a 3.6927929,3.6927929 0 0 0 4.80019,2.05723 3.6927929,3.6927929 0 0 0 2.05723,-4.80018 L 129.42871,116.68638 A 3.6931622,3.6931622 0 0 0 126,114.36508 Z M 126,128 l 3.29554,8.23777 h -6.59109 z" />
+  <!-- New/blank app plus cue -->
+  <g
+     id="circle8"
+     transform="matrix(1.136244,0,0,1.136244,-19.439232,-22.836382)">
+    <path
+       style="fill:#ffffff"
+       d="m 231.11357,201.25 a 23,23 0 0 1 -23,23 23,23 0 0 1 -23,-23 23,23 0 0 1 23,-23 23,23 0 0 1 23,23 z"
+       id="path17" />
+    <path
+       style="fill:url(#linearGradient10)"
+       d="m 208.11328,174.25 c -14.86431,0 -27,12.13569 -27,27 0,14.86431 12.13569,27 27,27 14.86431,0 27,-12.13569 27,-27 0,-14.86431 -12.13569,-27 -27,-27 z m 0,8 c 10.54079,0 19,8.45921 19,19 0,10.54079 -8.45921,19 -19,19 -10.54079,0 -19,-8.45921 -19,-19 0,-10.54079 8.45921,-19 19,-19 z"
+       id="path18" />
+  </g>
+  <path
+     id="path9"
+     style="fill:url(#linearGradient12);stroke-width:1.13624;stroke-linecap:round"
+     d="m 217.02823,188.22093 a 3.9768539,3.9768539 0 0 0 -3.97686,3.97686 v 9.65807 h -9.65807 a 3.9768539,3.9768539 0 0 0 -3.97686,3.97686 3.9768539,3.9768539 0 0 0 3.97686,3.97685 h 9.65807 v 9.65808 a 3.9768539,3.9768539 0 0 0 3.97686,3.97685 3.9768539,3.9768539 0 0 0 3.97685,-3.97685 v -9.65808 h 9.65808 a 3.9768539,3.9768539 0 0 0 3.97685,-3.97685 3.9768539,3.9768539 0 0 0 -3.97685,-3.97686 h -9.65808 v -9.65807 a 3.9768539,3.9768539 0 0 0 -3.97685,-3.97686 z" />
 </svg>

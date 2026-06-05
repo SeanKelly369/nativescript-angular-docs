@@ -1,23 +1,394 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
-  <title>Drawer Navigation icon</title>
-  <desc>Blue and purple line icon for drawer navigation.</desc>
-  <defs>
-    <linearGradient id="g" x1="10" y1="10" x2="86" y2="86" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#2f9bff"/>
-      <stop offset="1" stop-color="#7a5cff"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 256 256"
+   fill="none"
+   version="1.1"
+   id="svg12"
+   sodipodi:docname="drawer-navigation.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview12"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="3.8674033"
+     inkscape:cx="142.21429"
+     inkscape:cy="118.81357"
+     inkscape:window-width="2512"
+     inkscape:window-height="1320"
+     inkscape:window-x="1740"
+     inkscape:window-y="36"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg12" />
+  <defs
+     id="defs4">
+    <linearGradient
+       id="drawerGradient"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#3F8CFF"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#6B5CFF"
+         id="stop2" />
     </linearGradient>
-    <linearGradient id="soft" x1="0" y1="0" x2="96" y2="96" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#eaf5ff"/>
-      <stop offset="1" stop-color="#eee9ff"/>
+    <linearGradient
+       id="drawerSoftFill"
+       x1="42"
+       y1="58"
+       x2="206"
+       y2="198"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#3F8CFF"
+         stop-opacity="0.1"
+         id="stop3" />
+      <stop
+         offset="1"
+         stop-color="#6B5CFF"
+         stop-opacity="0.14"
+         id="stop4" />
     </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient23"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient25"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient26"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient27"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerSoftFill"
+       id="linearGradient28"
+       gradientUnits="userSpaceOnUse"
+       x1="42"
+       y1="58"
+       x2="206"
+       y2="198" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient29"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerSoftFill"
+       id="linearGradient30"
+       gradientUnits="userSpaceOnUse"
+       x1="42"
+       y1="58"
+       x2="206"
+       y2="198" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient31"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient32"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient33"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient34"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient35"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient36"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerSoftFill"
+       id="linearGradient37"
+       gradientUnits="userSpaceOnUse"
+       x1="42"
+       y1="58"
+       x2="206"
+       y2="198"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient38"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient39"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient40"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient41"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#drawerGradient"
+       id="linearGradient42"
+       gradientUnits="userSpaceOnUse"
+       x1="34"
+       y1="38"
+       x2="222"
+       y2="218"
+       gradientTransform="matrix(1.1968795,0,0,1.1968795,-20.413053,-23.474396)" />
   </defs>
-  <g fill="none" stroke="url(#g)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="34" y="12" width="48" height="72" rx="9"/>
-    <path d="M34 27h48"/>
-    <path d="M45 22h1M58 22h1M71 22h1"/>
-    <rect x="45" y="40" width="26" height="22" rx="3"/>
-    <path d="M54 49h27M68 36h13v13"/>
-    <path d="M68 49l13-13"/>
-    <path d="M14 30h16M14 44h16M14 58h16"/>
+  <!-- Main app shell -->
+  <g
+     id="rect4"
+     transform="matrix(1.1968795,0,0,1.1968795,-20.413054,-23.474396)">
+    <path
+       style="fill:#ffffff"
+       d="m 86,42 h 104 c 15.512,0 28,12.488 28,28 v 116 c 0,15.512 -12.488,28 -28,28 H 86 C 70.488,214 58,201.512 58,186 V 70 C 58,54.488 70.488,42 86,42 Z"
+       id="path13" />
+    <path
+       id="path14"
+       style="fill:url(#linearGradient23)"
+       d="m 86.000151,37.749426 c -17.792987,0 -32.249895,14.456907 -32.249895,32.249894 v 116.00136 c 0,17.79299 14.456908,32.24989 32.249895,32.24989 H 189.99992 c 17.79299,0 32.24989,-14.4569 32.24989,-32.24989 V 69.99932 c 0,-17.792987 -14.4569,-32.249894 -32.24989,-32.249894 z m 0,8.501128 H 189.99992 c 13.23101,0 23.75052,10.517753 23.75052,23.748766 v 8.001062 h -77.75067 a 4.0000003,4.0000003 0 0 0 -4.00053,3.998776 4.0000003,4.0000003 0 0 0 4.00053,4.000531 h 77.75067 V 186.00068 c 0,13.23101 -10.51951,23.74877 -23.75052,23.74877 H 86.000151 c -13.231013,0 -23.750521,-10.51776 -23.750521,-23.74877 V 69.99932 c 0,-13.231013 10.519508,-23.748766 23.750521,-23.748766 z" />
   </g>
+  <!-- Header line only visible on the right side -->
+  <!-- Header dots -->
+  <circle
+     cx="166.30017"
+     cy="53.125893"
+     r="6.5828376"
+     fill="url(#drawerGradient)"
+     id="circle4"
+     style="fill:url(#linearGradient25);stroke-width:1.19688" />
+  <circle
+     cx="190.23773"
+     cy="53.125893"
+     r="6.5828376"
+     fill="url(#drawerGradient)"
+     id="circle5"
+     style="fill:url(#linearGradient26);stroke-width:1.19688" />
+  <circle
+     cx="214.17532"
+     cy="53.125893"
+     r="6.5828376"
+     fill="url(#drawerGradient)"
+     id="circle6"
+     style="fill:url(#linearGradient27);stroke-width:1.19688" />
+  <!-- Main content, kept clear of drawer overlap -->
+  <g
+     id="rect6"
+     transform="matrix(1.1968795,0,0,1.1968795,-20.413054,-23.474396)">
+    <path
+       style="fill:url(#linearGradient28)"
+       d="m 163,108 h 20 c 4.986,0 9,4.014 9,9 0,4.986 -4.014,9 -9,9 h -20 c -4.986,0 -9,-4.014 -9,-9 0,-4.986 4.014,-9 9,-9 z"
+       id="path21" />
+    <path
+       style="fill:url(#linearGradient29)"
+       d="m 163,105 c -6.59611,0 -12,5.40389 -12,12 0,6.59611 5.40389,12 12,12 h 20 c 6.59611,0 12,-5.40389 12,-12 0,-6.59611 -5.40389,-12 -12,-12 z m 0,6 h 20 c 3.37589,0 6,2.62411 6,6 0,3.37589 -2.62411,6 -6,6 h -20 c -3.37589,0 -6,-2.62411 -6,-6 0,-3.37589 2.62411,-6 6,-6 z"
+       id="path22" />
+  </g>
+  <g
+     id="rect7"
+     transform="matrix(1.1968795,0,0,1.1968795,-20.413054,-23.474396)">
+    <path
+       style="fill:url(#linearGradient30)"
+       d="m 163,140 h 28 c 4.986,0 9,4.014 9,9 0,4.986 -4.014,9 -9,9 h -28 c -4.986,0 -9,-4.014 -9,-9 0,-4.986 4.014,-9 9,-9 z"
+       id="path19" />
+    <path
+       style="fill:url(#linearGradient31)"
+       d="m 163,137 c -6.59611,0 -12,5.40389 -12,12 0,6.59611 5.40389,12 12,12 h 28 c 6.59611,0 12,-5.40389 12,-12 0,-6.59611 -5.40389,-12 -12,-12 z m 0,6 h 28 c 3.37589,0 6,2.62411 6,6 0,3.37589 -2.62411,6 -6,6 h -28 c -3.37589,0 -6,-2.62411 -6,-6 0,-3.37589 2.62411,-6 6,-6 z"
+       id="path20" />
+  </g>
+  <path
+     style="opacity:0.85;fill:url(#linearGradient32);stroke-width:1.19688;stroke-linecap:round"
+     d="m 166.30015,187.77484 a 4.1890783,4.1890783 0 0 0 -4.18908,4.18907 4.1890783,4.1890783 0 0 0 4.18908,4.18909 h 45.48143 a 4.1890783,4.1890783 0 0 0 4.18907,-4.18909 4.1890783,4.1890783 0 0 0 -4.18907,-4.18907 z"
+     id="path7" />
+  <!-- Drawer panel drawn last so it masks the app underneath -->
+  <g
+     id="rect8"
+     transform="matrix(1.1968795,0,0,1.1968795,-20.413054,-23.474396)">
+    <path
+       style="fill:#ffffff"
+       d="m 54,74 h 64 c 13.296,0 24,10.704 24,24 v 78 c 0,13.296 -10.704,24 -24,24 H 54 C 40.704,200 30,189.296 30,176 V 98 C 30,84.704 40.704,74 54,74 Z"
+       id="path17" />
+    <path
+       style="fill:url(#linearGradient33)"
+       d="M 54,69.75 C 38.423013,69.75 25.75,82.423013 25.75,98 v 78 c 0,15.57699 12.673013,28.25 28.25,28.25 h 64 c 15.57699,0 28.25,-12.67301 28.25,-28.25 V 98 C 146.25,82.423013 133.57699,69.75 118,69.75 Z m 0,8.5 h 64 c 11.01501,0 19.75,8.734987 19.75,19.75 v 78 c 0,11.01501 -8.73499,19.75 -19.75,19.75 H 54 C 42.984987,195.75 34.25,187.01501 34.25,176 V 98 C 34.25,86.984987 42.984987,78.25 54,78.25 Z"
+       id="path18" />
+  </g>
+  <!-- Drawer profile/header -->
+  <g
+     id="circle8"
+     transform="matrix(1.1968795,0,0,1.1968795,-20.413054,-23.474396)">
+    <path
+       style="fill:#ffffff"
+       d="M 69,104 A 11,11 0 0 1 58,115 11,11 0 0 1 47,104 11,11 0 0 1 58,93 11,11 0 0 1 69,104 Z"
+       id="path15" />
+    <path
+       style="fill:url(#linearGradient34)"
+       d="m 58,89.5 c -7.966673,0 -14.5,6.533327 -14.5,14.5 0,7.96667 6.533327,14.5 14.5,14.5 7.966673,0 14.5,-6.53333 14.5,-14.5 0,-7.966673 -6.533327,-14.5 -14.5,-14.5 z m 0,7 c 4.183592,0 7.5,3.316408 7.5,7.5 0,4.18359 -3.316408,7.5 -7.5,7.5 -4.183592,0 -7.5,-3.31641 -7.5,-7.5 0,-4.183592 3.316408,-7.5 7.5,-7.5 z"
+       id="path16" />
+  </g>
+  <path
+     style="fill:url(#linearGradient35);stroke-width:1.19688;stroke-linecap:round"
+     d="m 75.337308,92.024477 a 4.1890783,4.1890783 0 0 0 -4.189079,4.189079 4.1890783,4.1890783 0 0 0 4.189079,4.189074 h 40.693912 a 4.1890783,4.1890783 0 0 0 4.18907,-4.189074 4.1890783,4.1890783 0 0 0 -4.18907,-4.189079 z"
+     id="path8" />
+  <path
+     style="opacity:0.7;fill:url(#linearGradient36);stroke-width:1.19688;stroke-linecap:round"
+     d="m 75.337308,108.78079 a 4.1890783,4.1890783 0 0 0 -4.189079,4.18908 4.1890783,4.1890783 0 0 0 4.189079,4.18907 h 26.331352 a 4.1890783,4.1890783 0 0 0 4.18908,-4.18907 4.1890783,4.1890783 0 0 0 -4.18908,-4.18908 z"
+     id="path9" />
+  <!-- Active drawer item -->
+  <rect
+     x="34.643402"
+     y="134.5137"
+     width="93.356598"
+     height="31.118868"
+     rx="15.559435"
+     fill="url(#drawerSoftFill)"
+     id="rect9"
+     style="fill:url(#linearGradient37);stroke-width:1.19688" />
+  <circle
+     cx="51.399719"
+     cy="150.07315"
+     r="6.5828376"
+     fill="url(#drawerGradient)"
+     id="circle9"
+     style="fill:url(#linearGradient38);stroke-width:1.19688" />
+  <path
+     style="fill:url(#linearGradient39);stroke-width:1.19688;stroke-linecap:round"
+     d="m 70.54979,145.88405 a 4.1890783,4.1890783 0 0 0 -4.189079,4.18908 4.1890783,4.1890783 0 0 0 4.189079,4.18909 h 43.08767 a 4.1890783,4.1890783 0 0 0 4.18907,-4.18909 4.1890783,4.1890783 0 0 0 -4.18907,-4.18908 z"
+     id="path10" />
+  <!-- Secondary drawer item -->
+  <circle
+     cx="51.399719"
+     cy="184.78264"
+     r="5.9843974"
+     fill="url(#drawerGradient)"
+     opacity="0.8"
+     id="circle10"
+     style="fill:url(#linearGradient40);stroke-width:1.19688" />
+  <path
+     style="opacity:0.8;fill:url(#linearGradient41);stroke-width:1.19688;stroke-linecap:round"
+     d="m 70.54979,180.59357 a 4.1890783,4.1890783 0 0 0 -4.189079,4.18907 4.1890783,4.1890783 0 0 0 4.189079,4.18906 h 33.51263 a 4.1890783,4.1890783 0 0 0 4.18908,-4.18906 4.1890783,4.1890783 0 0 0 -4.18908,-4.18907 z"
+     id="path11" />
+  <!-- Clean drawer edge / slide hint -->
+  <path
+     d="M 149.54384,98.607314 V 182.38888"
+     stroke="url(#drawerGradient)"
+     stroke-width="8.37817"
+     stroke-linecap="round"
+     opacity="0.75"
+     id="path12"
+     style="stroke:url(#linearGradient42)" />
 </svg>
