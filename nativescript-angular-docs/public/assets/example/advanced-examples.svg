@@ -22,15 +22,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="1.5137579"
-     inkscape:cx="118.24876"
-     inkscape:cy="125.51545"
-     inkscape:window-width="1544"
+     inkscape:zoom="7.284667"
+     inkscape:cx="167.88688"
+     inkscape:cy="158.82675"
+     inkscape:window-width="1552"
      inkscape:window-height="851"
      inkscape:window-x="1902"
-     inkscape:window-y="76"
+     inkscape:window-y="48"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g11" />
+     inkscape:current-layer="circle9" />
   <defs
      id="defs2">
     <linearGradient
@@ -454,13 +454,18 @@
        y2="154.23891"
        id="line8"
        style="stroke:url(#linearGradient27);stroke-width:5.96339;stroke-dasharray:none" />
-    <circle
-       cx="168.55103"
-       cy="154.23891"
-       r="7.1560636"
-       fill="#ffffff"
+    <g
        id="circle8"
-       style="stroke:url(#linearGradient28);stroke-width:5.96339;stroke-dasharray:none" />
+       style="stroke-width:0.30000031;stroke-dasharray:none">
+      <path
+         style="fill:#ffffff;stroke-width:0.30000031;stroke-dasharray:none"
+         d="m 175.70709,154.23891 a 7.1560636,7.1560636 0 0 1 -7.15606,7.15606 7.1560636,7.1560636 0 0 1 -7.15607,-7.15606 7.1560636,7.1560636 0 0 1 7.15607,-7.15607 7.1560636,7.1560636 0 0 1 7.15606,7.15607 z"
+         id="path35" />
+      <path
+         style="fill:url(#linearGradient28);stroke-width:0.30000031;stroke-dasharray:none"
+         d="m 168.55078,144.58203 c -5.30328,0 -9.65625,4.35297 -9.65625,9.65625 0,5.30329 4.35297,9.65625 9.65625,9.65625 5.30329,0 9.65625,-4.35296 9.65625,-9.65625 0,-5.30328 -4.35296,-9.65625 -9.65625,-9.65625 z m 0,5 c 2.60109,0 4.65625,2.05517 4.65625,4.65625 0,2.60109 -2.05516,4.65625 -4.65625,4.65625 -2.60108,0 -4.65625,-2.05516 -4.65625,-4.65625 0,-2.60108 2.05517,-4.65625 4.65625,-4.65625 z"
+         id="path36" />
+    </g>
     <line
        x1="135.15605"
        y1="175.70709"
@@ -468,13 +473,18 @@
        y2="175.70709"
        id="line9"
        style="stroke:url(#linearGradient29);stroke-width:5.96339;stroke-dasharray:none" />
-    <circle
-       cx="151.85353"
-       cy="175.70709"
-       r="7.1560636"
-       fill="#ffffff"
+    <g
        id="circle9"
-       style="stroke:url(#linearGradient30);stroke-width:5.96339;stroke-dasharray:none" />
+       style="stroke-width:0;stroke-dasharray:none">
+      <path
+         style="fill:#ffffff;stroke-width:0;stroke-dasharray:none"
+         d="m 159.00959,175.70709 a 7.1560636,7.1560636 0 0 1 -7.15606,7.15607 7.1560636,7.1560636 0 0 1 -7.15606,-7.15607 7.1560636,7.1560636 0 0 1 7.15606,-7.15606 7.1560636,7.1560636 0 0 1 7.15606,7.15606 z"
+         id="path33" />
+      <path
+         style="fill:url(#linearGradient30);stroke-width:0;stroke-dasharray:none"
+         d="m 151.85352,166.05078 c -5.30329,0 -9.65625,4.35297 -9.65625,9.65625 0,5.30329 4.35296,9.65625 9.65625,9.65625 5.30328,0 9.65625,-4.35296 9.65625,-9.65625 0,-5.30328 -4.35297,-9.65625 -9.65625,-9.65625 z m 0,5 c 2.60108,0 4.65625,2.05517 4.65625,4.65625 0,2.60109 -2.05517,4.65625 -4.65625,4.65625 -2.60109,0 -4.65625,-2.05516 -4.65625,-4.65625 0,-2.60108 2.05516,-4.65625 4.65625,-4.65625 z"
+         id="path34" />
+    </g>
     <!-- Workflow nodes -->
     <rect
        x="50.475979"

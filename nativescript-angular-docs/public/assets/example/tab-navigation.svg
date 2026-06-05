@@ -23,12 +23,12 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="2.0255955"
-     inkscape:cx="283.12661"
+     inkscape:cx="283.37346"
      inkscape:cy="202.90329"
      inkscape:window-width="2352"
      inkscape:window-height="1355"
      inkscape:window-x="1738"
-     inkscape:window-y="34"
+     inkscape:window-y="30"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg14" />
   <defs
@@ -237,7 +237,7 @@
      stroke="url(#tabNavigationGradient)"
      stroke-width="12.9638"
      id="rect4"
-     style="stroke:url(#linearGradient35)" />
+     style="stroke:url(#linearGradient35);fill:none" />
   <!-- Window controls -->
   <circle
      cx="143.52615"
@@ -284,7 +284,7 @@
      stroke-linecap="round"
      stroke-linejoin="round"
      id="path8"
-     style="stroke:url(#linearGradient37);stroke-width:7.56222;stroke-dasharray:none" />
+     style="stroke:url(#linearGradient37);stroke-width:7.56222;stroke-dasharray:none;fill:none" />
   <!-- Inactive tab 2 -->
   <path
      d="M 184.03808,102.07238 V 91.269204 c 0,-10.803176 8.64254,-19.445717 19.44572,-19.445717 h 12.96381 c 8.64254,0 15.12444,6.481905 15.12444,15.124447 v 15.124446"
@@ -294,7 +294,7 @@
      stroke-linecap="round"
      stroke-linejoin="round"
      id="path9"
-     style="stroke:url(#linearGradient38);stroke-width:7.56222;stroke-dasharray:none" />
+     style="stroke:url(#linearGradient38);stroke-width:7.56222;stroke-dasharray:none;fill:none" />
   <!-- Active tab handle -->
   <path
      style="fill:url(#linearGradient39);stroke-width:1.08032;stroke-linecap:round"
@@ -319,10 +319,6 @@
      d="m 71.144881,137.19747 a 4.8614294,4.8614294 0 0 0 -4.86143,4.86143 4.8614294,4.8614294 0 0 0 4.86143,4.86143 h 99.389229 a 4.8614294,4.8614294 0 0 0 4.86143,-4.86143 4.8614294,4.8614294 0 0 0 -4.86143,-4.86143 z"
      id="path11" />
   <path
-     style="fill:#ffffff;stroke-width:1.08032"
-     d="m 205.64443,209.94262 a 12.963812,12.963812 0 0 1 -12.96381,12.96381 12.963812,12.963812 0 0 1 -12.96381,-12.96381 12.963812,12.963812 0 0 1 12.96381,-12.96381 12.963812,12.963812 0 0 1 12.96381,12.96381 z"
-     id="path32" />
-  <path
      style="opacity:0.85;fill:url(#linearGradient21);stroke-width:1.08032;stroke-linecap:round"
      d="m 71.144881,156.64319 a 4.8614294,4.8614294 0 0 0 -4.86143,4.86142 4.8614294,4.8614294 0 0 0 4.86143,4.86143 h 60.497789 a 4.8614294,4.8614294 0 0 0 4.86143,-4.86143 4.8614294,4.8614294 0 0 0 -4.86143,-4.86142 z"
      id="path12" />
@@ -330,10 +326,6 @@
   <g
      id="circle12"
      transform="matrix(1.0803176,0,0,1.0803176,-10.419101,-12.441289)">
-    <path
-       style="fill:#ffffff"
-       d="m 80,205.85049 a 12,12 0 0 1 -12,12 12,12 0 0 1 -12,-12 12,12 0 0 1 12,-12 12,12 0 0 1 12,12 z"
-       id="path34" />
     <path
        id="path35"
        style="fill:url(#linearGradient22)"

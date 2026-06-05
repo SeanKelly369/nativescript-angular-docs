@@ -393,6 +393,199 @@
   }
 }
 
+.examples-feature-section {
+  padding: 5rem 0;
+}
+
+.examples-section-header {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.examples-section-description {
+  margin: 0.75rem auto 0;
+  line-height: 1.7;
+}
+
+.examples-page .feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.examples-page .feature-card p {
+  flex: 1;
+}
+
+.examples-page .feature-icon img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+/* Dark mode */
+:host-context(html[data-theme='dark']),
+:host-context(body[data-theme='dark']),
+:host-context([data-theme='dark']) {
+  .examples-page {
+    color: #e5e7eb;
+  }
+
+  .examples-hero {
+    color: #f8fafc;
+    background:
+      radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 32%),
+      radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.18), transparent 34%),
+      linear-gradient(135deg, #111827 0%, #0f172a 100%);
+    border-color: rgba(148, 163, 184, 0.18);
+    box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.32);
+  }
+
+  .examples-hero__content {
+    h1 {
+      color: #ffffff;
+      text-shadow: 0 0.15rem 0.8rem rgba(0, 0, 0, 0.25);
+    }
+
+    p {
+      color: #dbeafe;
+    }
+  }
+
+  .section-kicker {
+    background: rgba(56, 189, 248, 0.16);
+    color: #38bdf8;
+  }
+
+  .examples-hero .section-kicker {
+    background: rgba(56, 189, 248, 0.18);
+    color: #7dd3fc;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+  }
+
+  .examples-hero__panel {
+    background:
+      linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.82));
+    border-color: rgba(148, 163, 184, 0.18);
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(14px);
+  }
+
+  .hero-stat {
+    background:
+      linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(124, 58, 237, 0.2));
+    border: 1px solid rgba(148, 163, 184, 0.12);
+
+    strong {
+      color: #ffffff;
+    }
+
+    span {
+      color: #dbeafe;
+    }
+  }
+
+  .section-heading,
+  .examples-section-header {
+    h2,
+    .section-title {
+      color: #f8fafc;
+    }
+
+    p,
+    .examples-section-description {
+      color: #cbd5e1;
+    }
+  }
+
+  .examples-page .feature-card,
+  .example-card {
+    background:
+      linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+    border-color: rgba(148, 163, 184, 0.16);
+    box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.28);
+
+    &:hover {
+      border-color: rgba(56, 189, 248, 0.38);
+      box-shadow: 0 1rem 2.2rem rgba(0, 0, 0, 0.38);
+    }
+
+    h3 {
+      color: #f8fafc;
+    }
+
+    p {
+      color: #cbd5e1;
+    }
+  }
+
+  .examples-page .feature-icon,
+  .example-card__icon {
+    background:
+      linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(124, 58, 237, 0.18));
+    border: 1px solid rgba(148, 163, 184, 0.14);
+  }
+
+  .tag {
+    background: rgba(148, 163, 184, 0.14);
+    color: #cbd5e1;
+  }
+
+  .btn-primary {
+    background: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 0.55rem 1.2rem rgba(37, 99, 235, 0.38);
+
+    &:hover {
+      background: #1d4ed8;
+      color: #ffffff;
+      box-shadow: 0 0.65rem 1.35rem rgba(37, 99, 235, 0.46);
+    }
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f8fafc;
+    border-color: rgba(255, 255, 255, 0.22);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.36);
+    }
+  }
+
+  .examples-hero .btn-secondary {
+    background: rgba(15, 23, 42, 0.62);
+    color: #e0f2fe;
+    border-color: rgba(125, 211, 252, 0.28);
+    box-shadow: 0 0.45rem 1rem rgba(0, 0, 0, 0.18);
+
+    &:hover {
+      background: rgba(30, 41, 59, 0.82);
+      color: #ffffff;
+      border-color: rgba(125, 211, 252, 0.5);
+    }
+  }
+
+  .examples-cta {
+    background:
+      radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 36%),
+      linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+    border-color: rgba(148, 163, 184, 0.16);
+    box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.28);
+
+    h2 {
+      color: #f8fafc;
+    }
+
+    p {
+      color: #cbd5e1;
+    }
+  }
+}
+
 @media (max-width: 64rem) {
   .examples-hero {
     grid-template-columns: 1fr;
